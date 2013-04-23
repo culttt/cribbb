@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'database',
+			'database'  => 'cribbb',
 			'username'  => 'cribbb',
 			'password'  => '',
 			'charset'   => 'utf8',
