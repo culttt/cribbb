@@ -1,0 +1,15 @@
+<?php
+
+class {{className}} extends Seeder {
+
+    public function run()
+    {
+        ${{pluralModel}} = array(
+
+        );
+
+        // Uncomment the below to run the seeder
+        // DB::table('{{pluralModel}}')->insert(${{pluralModel}});
+    }
+
+}

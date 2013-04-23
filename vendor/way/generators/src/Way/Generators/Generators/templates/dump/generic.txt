@@ -1,0 +1,8 @@
+{{{formOpen}}}
+{{{formElements}}}
+
+{{=<% %>=}}
+    <<%element%>>
+        {{ Form::submit() }}
+    </<%element%>>
+{{ Form::close() }}

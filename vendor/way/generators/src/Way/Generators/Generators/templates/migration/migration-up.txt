@@ -1,0 +1,6 @@
+    public function up()
+    {
+        Schema::table('{{tableName}}', function(Blueprint $table) {
+            {{methods}}
+        });
+    }

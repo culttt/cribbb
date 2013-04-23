@@ -1,0 +1,13 @@
+
+{{ Form::open(array('route' => 'dogs.store')) }}
+    <ul>
+        <li>
+            {{ Form::label('name', 'Name:') }}
+            {{ Form::text('name') }}
+        </li>
+
+        <li>
+            {{ Form::submit() }}
+        </li>
+    </ul>
+{{ Form::close() }}

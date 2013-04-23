@@ -2014,6 +2014,22 @@ class Request
         self::$trustedHeaders[$key] = $value;
     }
     /**
+     * Gets the trusted proxy header name.
+     *
+     * @param string $key The header key
+     *
+     * @return string The header name
+     *
+     * @throws \InvalidArgumentException
+     */
+    public static function getTrustedHeaderName($key)
+    {
+        if (!array_key_exists($key, self::$trustedHeaders)) {
+            throw new \InvalidArgumentException(sprintf('Unable to get the trusted header name for key "%s".', $key));
+        }
+        return self::$trustedHeaders[$key];
+    }
+    /**
      * Normalizes a query string.
      *
      * It builds a normalized query string, where keys/value pairs are alphabetized,
@@ -2859,11 +2875,14 @@ class Request
     protected function prepareRequestUri()
     {
         $requestUri = '';
-        if ($this->headers->has('X_ORIGINAL_URL') && false !== stripos(PHP_OS, 'WIN')) {
+        if ($this->headers->has('X_ORIGINAL_URL')) {
             // IIS with Microsoft Rewrite Module
             $requestUri = $this->headers->get('X_ORIGINAL_URL');
             $this->headers->remove('X_ORIGINAL_URL');
-        } elseif ($this->headers->has('X_REWRITE_URL') && false !== stripos(PHP_OS, 'WIN')) {
+            $this->server->remove('HTTP_X_ORIGINAL_URL');
+            $this->server->remove('UNENCODED_URL');
+            $this->server->remove('IIS_WasUrlRewritten');
+        } elseif ($this->headers->has('X_REWRITE_URL')) {
             // IIS with ISAPI_Rewrite
             $requestUri = $this->headers->get('X_REWRITE_URL');
             $this->headers->remove('X_REWRITE_URL');
@@ -4111,7 +4130,7 @@ class NativeSessionStorage implements SessionStorageInterface
      */
     public function __construct(array $options = array(), $handler = null, MetadataBag $metaBag = null)
     {
-        ini_set('session.cache_limiter', '');
+        session_cache_limiter('');
         // disable by default because it's managed by HeaderBag (if used)
         ini_set('session.use_cookies', 1);
         if (version_compare(phpversion(), '5.4.0', '>=')) {
@@ -6260,13 +6279,13 @@ class FileLoader implements LoaderInterface
     /**
      * Apply any cascades to an array of package options.
      *
-     * @param  string  $environment
+     * @param  string  $env
      * @param  string  $package
      * @param  string  $group
      * @param  array   $items
      * @return array
      */
-    public function cascadePackage($environment, $package, $group, $items)
+    public function cascadePackage($env, $package, $group, $items)
     {
         // First we will look for a configuration file in the packages configuration
         // folder. If it exists, we will load it and merge it with these original
@@ -6278,11 +6297,24 @@ class FileLoader implements LoaderInterface
         // Once we have merged the regular package configuration we need to look for
         // an environment specific configuration file. If one exists, we will get
         // the contents and merge them on top of this array of options we have.
-        $path = $this->defaultPath . "/{$environment}/" . $file;
+        $path = $this->getPackagePath($env, $package, $group);
         if ($this->files->exists($path)) {
             $items = array_merge($items, $this->getRequire($path));
         }
         return $items;
+    }
+    /**
+     * Get the package path for an environment and group.
+     *
+     * @param  string  $env
+     * @param  string  $package
+     * @param  string  $group
+     * @return string
+     */
+    protected function getPackagePath($env, $package, $group)
+    {
+        $file = "packages/{$package}/{$env}/{$group}.php";
+        return $this->defaultPath . '/' . $file;
     }
     /**
      * Get the configuration path for a namespace.
@@ -12440,6 +12472,15 @@ class Logger implements LoggerInterface
         return $this->addRecord(static::EMERGENCY, $message, $context);
     }
     /**
+     * Gets all supported logging levels.
+     * 
+     * @return array Assoc array with human-readable level names => level codes.
+     */
+    public static function getLevels()
+    {
+        return array_flip(static::$levels);
+    }
+    /**
      * Gets the name of the logging level.
      *
      * @param  integer $level
@@ -13698,7 +13739,7 @@ class Route implements \Serializable
         return isset($this->options[$name]) ? $this->options[$name] : null;
     }
     /**
-     * Checks if a an option has been set
+     * Checks if an option has been set
      *
      * @param string $name An option name
      *
@@ -14163,7 +14204,7 @@ class Route extends BaseRoute
      * @param  string  $expression
      * @return \Illuminate\Routing\Route
      */
-    public function where($name, $expression)
+    public function where($name, $expression = null)
     {
         if (is_array($name)) {
             return $this->setArrayOfWheres($name);
@@ -17113,7 +17154,7 @@ class Response
     }
     /**
      * Returns the number of seconds after the time specified in the response's Date
-     * header when the the response should no longer be considered fresh.
+     * header when the response should no longer be considered fresh.
      *
      * First, it checks for a s-maxage directive, then a max-age directive, and then it falls
      * back on an expires header. It returns null when no maximum age can be established.
@@ -17987,10 +18028,10 @@ class Cookie
                 $str .= '; expires=' . gmdate('D, d-M-Y H:i:s T', $this->getExpiresTime());
             }
         }
-        if ('/' !== $this->path) {
+        if ($this->path) {
             $str .= '; path=' . $this->path;
         }
-        if (null !== $this->getDomain()) {
+        if ($this->getDomain()) {
             $str .= '; domain=' . $this->getDomain();
         }
         if (true === $this->isSecure()) {

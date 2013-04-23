@@ -1,0 +1,131 @@
+<?php
+
+class {{name}} extends BaseController {
+
+    /**
+     * {{modelClass}} Repository
+     *
+     * @var {{modelClass}}
+     */
+    protected ${{modelInstance}};
+
+    public function __construct({{modelClass}} ${{modelInstance}})
+    {
+        $this->{{modelInstance}} = ${{modelInstance}};
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        ${{collection}} = $this->{{modelInstance}}->all();
+
+        return View::make('{{collection}}.index', compact('{{collection}}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return View::make('{{collection}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $input = Input::all();
+        $validation = Validator::make($input, {{modelClass}}::$rules);
+
+        if ($validation->passes())
+        {
+            $this->{{modelInstance}}->create($input);
+
+            return Redirect::route('{{collection}}.index');
+        }
+
+        return Redirect::route('{{collection}}.create')
+            ->withInput()
+            ->withErrors($validation)
+            ->with('flash', 'There were validation errors.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        ${{modelInstance}} = $this->{{modelInstance}}->findOrFail($id);
+
+        return View::make('{{collection}}.show', compact('{{modelInstance}}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        ${{modelInstance}} = $this->{{modelInstance}}->find($id);
+
+        if (is_null(${{modelInstance}}))
+        {
+            return Redirect::route('{{collection}}.index');
+        }
+
+        return View::make('{{collection}}.edit', compact('{{modelInstance}}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $input = array_except(Input::all(), '_method');
+        $validation = Validator::make($input, {{modelClass}}::$rules);
+
+        if ($validation->passes())
+        {
+            ${{modelInstance}} = $this->{{modelInstance}}->find($id);
+            ${{modelInstance}}->update($input);
+
+            return Redirect::route('{{collection}}.show', $id);
+        }
+
+        return Redirect::route('{{collection}}.edit', $id)
+            ->withInput()
+            ->withErrors($validation)
+            ->with('flash', 'There were validation errors.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $this->{{modelInstance}}->find($id)->delete();
+
+        return Redirect::route('{{collection}}.index');
+    }
+
+}

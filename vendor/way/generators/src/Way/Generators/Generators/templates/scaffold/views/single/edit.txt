@@ -1,0 +1,20 @@
+@section('main')
+
+<h1>Edit {{className}}</h1>
+{{ Form::model(${{model}}, array('method' => 'PATCH', 'route' => array('{{pluralModel}}.update', ${{model}}->id))) }}
+    <ul>
+{{formElements}}
+        <li>
+            {{ Form::submit('Update', array('class' => 'btn btn-info')) }}
+            {{ link_to_route('{{pluralModel}}.show', 'Cancel', ${{model}}->id, array('class' => 'btn')) }}
+        </li>
+    </ul>
+{{ Form::close() }}
+
+@if ($errors->any())
+    <ul>
+        {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+    </ul>
+@endif
+
+@stop
