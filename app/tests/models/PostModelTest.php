@@ -14,6 +14,9 @@ class PostModelTest extends TestCase {
     $this->assertFalse( $post->save() );
   }
 
+  /**
+   * Test that a Post belongs to a User
+   */
   public function testRelationshipWithUser()
   {
     $post = FactoryMuff::create('Post');
