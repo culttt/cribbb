@@ -213,10 +213,12 @@ class ResourceGeneratorCommand extends Command {
      */
     protected function generateMigration()
     {
+        $name = 'create_' . Pluralizer::plural($this->model) . '_table';
+
         $this->call(
             'generate:migration',
             array(
-                'name'      => "create_{$this->model}s_table",
+                'name'      => $name,
                 '--fields'  => $this->option('fields')
             )
         );

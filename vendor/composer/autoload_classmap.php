@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddUserIdToPostsTable' => $baseDir . '/app/database/migrations/2013_04_24_184013_add_user_id_to_posts_table.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/Carbon/Carbon.php',
     'Carbon\\Tests\\TestFixture' => $vendorDir . '/nesbot/carbon/Carbon/Tests/TestFixture.php',
@@ -19,6 +20,7 @@ return array(
     'ClassPreloader\\Parser\\DirVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/DirVisitor.php',
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
+    'CreatePostsTable' => $baseDir . '/app/database/migrations/2013_04_23_184021_create_posts_table.php',
     'DatabaseSeeder' => $baseDir . '/app/database/seeds/DatabaseSeeder.php',
     'Doctrine\\Common\\Annotations\\Annotation' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/Annotation.php',
     'Doctrine\\Common\\Annotations\\AnnotationException' => $vendorDir . '/doctrine/annotations/lib/Doctrine/Common/Annotations/AnnotationException.php',
@@ -443,6 +445,7 @@ return array(
     'Illuminate\\Html\\FormBuilder' => $vendorDir . '/laravel/framework/src/Illuminate/Html/FormBuilder.php',
     'Illuminate\\Html\\HtmlBuilder' => $vendorDir . '/laravel/framework/src/Illuminate/Html/HtmlBuilder.php',
     'Illuminate\\Html\\HtmlServiceProvider' => $vendorDir . '/laravel/framework/src/Illuminate/Html/HtmlServiceProvider.php',
+    'Illuminate\\Http\\JsonResponse' => $vendorDir . '/laravel/framework/src/Illuminate/Http/JsonResponse.php',
     'Illuminate\\Http\\RedirectResponse' => $vendorDir . '/laravel/framework/src/Illuminate/Http/RedirectResponse.php',
     'Illuminate\\Http\\Request' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Request.php',
     'Illuminate\\Http\\Response' => $vendorDir . '/laravel/framework/src/Illuminate/Http/Response.php',
@@ -831,6 +834,9 @@ return array(
     'Patchwork\\PHP\\Shim\\Xml' => $vendorDir . '/patchwork/utf8/class/Patchwork/PHP/Shim/Xml.php',
     'Patchwork\\Utf8' => $vendorDir . '/patchwork/utf8/class/Patchwork/Utf8.php',
     'Patchwork\\Utf8\\Bootup' => $vendorDir . '/patchwork/utf8/class/Patchwork/Utf8/Bootup.php',
+    'Post' => $baseDir . '/app/models/Post.php',
+    'PostsController' => $baseDir . '/app/controllers/PostsController.php',
+    'PostsTableSeeder' => $baseDir . '/app/database/seeds/PostsTableSeeder.php',
     'Predis\\Autoloader' => $vendorDir . '/predis/predis/lib/Predis/Autoloader.php',
     'Predis\\BasicClientInterface' => $vendorDir . '/predis/predis/lib/Predis/BasicClientInterface.php',
     'Predis\\Client' => $vendorDir . '/predis/predis/lib/Predis/Client.php',
@@ -1350,6 +1356,7 @@ return array(
     'Symfony\\Component\\HttpKernel\\DependencyInjection\\ContainerAwareHttpKernel' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/DependencyInjection/ContainerAwareHttpKernel.php',
     'Symfony\\Component\\HttpKernel\\DependencyInjection\\Extension' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/DependencyInjection/Extension.php',
     'Symfony\\Component\\HttpKernel\\DependencyInjection\\MergeExtensionConfigurationPass' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/DependencyInjection/MergeExtensionConfigurationPass.php',
+    'Symfony\\Component\\HttpKernel\\DependencyInjection\\RegisterListenersPass' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/DependencyInjection/RegisterListenersPass.php',
     'Symfony\\Component\\HttpKernel\\EventListener\\DeprecationLoggerListener' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/EventListener/DeprecationLoggerListener.php',
     'Symfony\\Component\\HttpKernel\\EventListener\\EsiListener' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/EventListener/EsiListener.php',
     'Symfony\\Component\\HttpKernel\\EventListener\\ExceptionListener' => $vendorDir . '/symfony/http-kernel/Symfony/Component/HttpKernel/EventListener/ExceptionListener.php',
@@ -1573,6 +1580,9 @@ return array(
     'Whoops\\Handler\\HandlerInterface' => $vendorDir . '/filp/whoops/src/Whoops/Handler/HandlerInterface.php',
     'Whoops\\Handler\\JsonResponseHandler' => $vendorDir . '/filp/whoops/src/Whoops/Handler/JsonResponseHandler.php',
     'Whoops\\Handler\\PrettyPageHandler' => $vendorDir . '/filp/whoops/src/Whoops/Handler/PrettyPageHandler.php',
+    'Whoops\\Module' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Zend/Module.php',
     'Whoops\\Provider\\Silex\\WhoopsServiceProvider' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Silex/WhoopsServiceProvider.php',
+    'Whoops\\Provider\\Zend\\ExceptionStrategy' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Zend/ExceptionStrategy.php',
+    'Whoops\\Provider\\Zend\\RouteNotFoundStrategy' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Zend/RouteNotFoundStrategy.php',
     'Whoops\\Run' => $vendorDir . '/filp/whoops/src/Whoops/Run.php',
 );

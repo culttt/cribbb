@@ -1,5 +1,9 @@
 {
-    "hash": "882b0f611cc11edf397fea43af9627f4",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "55ae45563ab61eafd685ce3ec7906658",
     "packages": [
 
     ],
@@ -10,12 +14,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "cc72f44a00c9abc963e91a796db6166f0c7a7a7e"
+                "reference": "f0d465adfd157a254a856e9ef0302fc2239642d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/cc72f44a00c9abc963e91a796db6166f0c7a7a7e",
-                "reference": "cc72f44a00c9abc963e91a796db6166f0c7a7a7e",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/f0d465adfd157a254a856e9ef0302fc2239642d3",
+                "reference": "f0d465adfd157a254a856e9ef0302fc2239642d3",
                 "shasum": ""
             },
             "require": {
@@ -55,7 +59,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2013-04-04 17:33:04"
+            "time": "2013-04-17 21:08:10"
         },
         {
             "name": "pimple/pimple",
@@ -147,12 +151,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Silex.git",
-                "reference": "1cd7f3f050b78dae4458d93892355720f56659f9"
+                "reference": "8bf675f57cb7967cbfa3988be501f1dfe6c45432"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Silex/zipball/1cd7f3f050b78dae4458d93892355720f56659f9",
-                "reference": "1cd7f3f050b78dae4458d93892355720f56659f9",
+                "url": "https://api.github.com/repos/fabpot/Silex/zipball/8bf675f57cb7967cbfa3988be501f1dfe6c45432",
+                "reference": "8bf675f57cb7967cbfa3988be501f1dfe6c45432",
                 "shasum": ""
             },
             "require": {
@@ -221,7 +225,7 @@
             "keywords": [
                 "microframework"
             ],
-            "time": "2013-04-11 12:23:56"
+            "time": "2013-04-24 12:29:40"
         },
         {
             "name": "symfony/event-dispatcher",

@@ -8,7 +8,7 @@ namespace Whoops\Handler;
 use Whoops\Handler\Handler;
 
 /**
- * Catches an exception and converts it to a JSON 
+ * Catches an exception and converts it to a JSON
  * response. Additionally can also return exception
  * frames for consumption by an API.
  */
@@ -81,7 +81,7 @@ class JsonResponseHandler extends Handler
                 'line'    => $exception->getLine()
             )
         );
-        
+
         if($this->addTraceToOutput()) {
             $inspector = $this->getInspector();
             $frames    = $inspector->getFrames();

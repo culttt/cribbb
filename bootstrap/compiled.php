@@ -5016,6 +5016,7 @@ class ExceptionServiceProvider extends ServiceProvider
         $this->registerWhoopsHandler();
         $this->app['whoops'] = $this->app->share(function ($app) {
             $whoops = new \Whoops\Run();
+            $whoops->writeToOutput(false);
             $whoops->allowQuit(false);
             return $whoops->pushHandler($app['whoops.handler']);
         });
@@ -5083,9 +5084,8 @@ class ExceptionServiceProvider extends ServiceProvider
      */
     protected function displayWhoopsException($exception)
     {
-        ob_start();
-        $this->app['whoops']->handleException($exception);
-        with(new Response(ob_get_clean(), 500))->send();
+        $response = $this->app['whoops']->handleException($exception);
+        with(new Response($response, 500))->send();
     }
     /**
      * Set the given Closure as the exception handler.
@@ -6588,6 +6588,16 @@ class Filesystem
         return is_dir($directory);
     }
     /**
+     * Determine if the given path is writable.
+     *
+     * @param  string  $path
+     * @return bool
+     */
+    public function isWritable($path)
+    {
+        return is_writable($path);
+    }
+    /**
      * Determine if the given path is a file.
      *
      * @param  string  $file
@@ -7215,9 +7225,24 @@ class SessionServiceProvider extends ServiceProvider
      */
     protected function registerCloseEvent()
     {
+        $this->registerCookieLifetimeUpdater();
         $app = $this->app;
         $this->app->close(function () use($app) {
             $app['session']->save();
+        });
+    }
+    /**
+     * Update the session cookie lifetime on each page load.
+     *
+     * @return void
+     */
+    protected function registerCookieLifetimeUpdater()
+    {
+        $app = $this->app;
+        $this->app->close(function () use($app) {
+            $c = $app['config']['session'];
+            $expire = $c['lifetime'] == 0 ? 0 : time() + $c['lifetime'] * 60;
+            setcookie($c['cookie'], session_id(), $expire, $c['path'], $c['domain']);
         });
     }
 }
