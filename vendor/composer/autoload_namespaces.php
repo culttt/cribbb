@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'Whoops' => $vendorDir . '/filp/whoops/src',
     'Way\\Generators' => $vendorDir . '/way/generators/src',
+    'Symfony\\Component\\Yaml\\' => $vendorDir . '/symfony/yaml',
     'Symfony\\Component\\Translation\\' => $vendorDir . '/symfony/translation',
     'Symfony\\Component\\Routing\\' => $vendorDir . '/symfony/routing',
     'Symfony\\Component\\Process\\' => $vendorDir . '/symfony/process',
