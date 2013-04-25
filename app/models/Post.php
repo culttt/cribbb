@@ -10,6 +10,11 @@ class Post extends Ardent {
       'user_id' => 'required|numeric'
     );
 
+    public static $factory = array(
+      'body'    => 'text',
+      'user_id' => 'factory|User',
+    );
+
     public function user()
     {
       return $this->belongs_to('User');
