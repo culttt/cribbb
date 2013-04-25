@@ -29,6 +29,7 @@ return array(
     'Normalizer' => $vendorDir . '/patchwork/utf8/class',
     'Mustache' => $vendorDir . '/mustache/mustache/src',
     'Monolog' => $vendorDir . '/monolog/monolog/src',
+    'LaravelBook\\Ardent' => $vendorDir . '/laravelbook/ardent/src',
     'Illuminate' => $vendorDir . '/laravel/framework/src',
     'Doctrine\\DBAL\\' => $vendorDir . '/doctrine/dbal/lib',
     'Doctrine\\Common\\Lexer\\' => $vendorDir . '/doctrine/lexer/lib',
