@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "21001a2c1f5c02d6d2496e4ebf10b230",
+    "hash": "4d3d22d0cac5813bd1efb9968765de31",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -2287,6 +2287,47 @@
                 }
             ],
             "time": "2013-04-24 18:08:18"
+        },
+        {
+            "name": "zizaco/factory-muff",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Zizaco/factory-muff.git",
+                "reference": "v1.4.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Zizaco/factory-muff/zipball/v1.4.2",
+                "reference": "v1.4.2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Zizaco\\FactoryMuff": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zizaco Zizuini",
+                    "email": "zizaco@gmail.com"
+                }
+            ],
+            "description": "The goal of this Package is to enable the rapid creation of objects for the purpose of testing.",
+            "keywords": [
+                "factory",
+                "laravel",
+                "testing"
+            ],
+            "time": "2013-03-26 20:29:48"
         }
     ],
     "packages-dev": [
@@ -2298,7 +2339,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "way/generators": 20,
-        "laravelbook/ardent": 20
+        "laravelbook/ardent": 20,
+        "zizaco/factory-muff": 20
     },
     "platform": [
 

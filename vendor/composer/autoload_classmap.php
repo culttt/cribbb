@@ -1940,4 +1940,6 @@ return array(
     'Whoops\\Provider\\Zend\\ExceptionStrategy' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Zend/ExceptionStrategy.php',
     'Whoops\\Provider\\Zend\\RouteNotFoundStrategy' => $vendorDir . '/filp/whoops/src/Whoops/Provider/Zend/RouteNotFoundStrategy.php',
     'Whoops\\Run' => $vendorDir . '/filp/whoops/src/Whoops/Run.php',
+    'Zizaco\\FactoryMuff\\Facade\\FactoryMuff' => $vendorDir . '/zizaco/factory-muff/src/Zizaco/FactoryMuff/Facade/FactoryMuff.php',
+    'Zizaco\\FactoryMuff\\FactoryMuff' => $vendorDir . '/zizaco/factory-muff/src/Zizaco/FactoryMuff/FactoryMuff.php',
 );

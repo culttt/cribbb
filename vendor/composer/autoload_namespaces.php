@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zizaco\\FactoryMuff' => $vendorDir . '/zizaco/factory-muff/src',
     'Whoops' => $vendorDir . '/filp/whoops/src',
     'Way\\Generators' => $vendorDir . '/way/generators/src',
     'Symfony\\Component\\Yaml\\' => $vendorDir . '/symfony/yaml',
