@@ -9,7 +9,7 @@ class PostModelTest extends TestCase {
   {
     $post = new Post;
 
-    $this->assertTrue($post->save());
+    $this->assertFalse($post->save());
   }
 
 }

@@ -1,6 +1,7 @@
 <?php
+use LaravelBook\Ardent\Ardent;
 
-class Post extends Eloquent {
+class Post extends Ardent {
 
     protected $guarded = array('id', 'created_at', 'updated_at');
 
