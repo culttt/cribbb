@@ -17,6 +17,6 @@ class Post extends Ardent {
 
   public function user()
   {
-    return $this->belongs_to('User');
+    return $this->belongsTo('User');
   }
 }
