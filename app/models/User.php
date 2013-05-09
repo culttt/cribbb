@@ -14,6 +14,13 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   protected $table = 'users';
 
   /**
+   * Properties that can be mass assigned
+   *
+   * @var array
+   */
+  protected $fillable = array('first_name', 'last_name', 'email');
+
+  /**
    * Post relationship
    */
   public function posts()
