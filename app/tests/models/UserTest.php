@@ -2,7 +2,7 @@
 
 class UserTest extends TestCase {
 
-  public function test()
+  public function testThatTrueIsTrue()
   {
     $this->assertTrue(true);
   }
