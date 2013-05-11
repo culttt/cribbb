@@ -1,6 +1,7 @@
 <?php
 
-class Post extends Eloquent {
+use LaravelBook\Ardent\Ardent;
+class Post extends Ardent {
 
   /**
    * Properties that can be mass assigned
@@ -14,7 +15,7 @@ class Post extends Eloquent {
    */
   public static $rules = array(
     'body' => 'required',
-    'user_id' => 'required'
+    'user_id' => 'required|numeric'
   );
 
   /**
