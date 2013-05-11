@@ -46,6 +46,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   );
 
   /**
+   * Factory
+   */
+  public static $factory = array(
+    'username' => 'string',
+    'email' => 'email',
+    'password' => 'password',
+    'password_confirmation' => 'password'
+  );
+
+  /**
    * Auto purge redundant attributes
    *
    * @var bool
