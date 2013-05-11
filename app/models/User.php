@@ -36,6 +36,16 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   protected $hidden = array('password');
 
   /**
+   * Ardent validation rules
+   */
+  public static $rules = array(
+    'username' => 'required|between:4,16',
+    'email' => 'required|email',
+    'password' => 'required|alpha_num|between:4,8|confirmed',
+    'password_confirmation' => 'required|alpha_num|between:4,8',
+  );
+
+  /**
    * Auto purge redundant attributes
    *
    * @var bool
