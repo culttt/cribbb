@@ -114,7 +114,6 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider'
-
 	),
 
 	/*
@@ -159,7 +158,11 @@ return array(
 		'File'            => 'Illuminate\Support\Facades\File',
 		'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
+<<<<<<< HEAD
 		'Html'            => 'Illuminate\Support\Facades\Html',
+=======
+		'HTML'            => 'Illuminate\Support\Facades\Html',
+>>>>>>> laravel/develop
 		'Input'           => 'Illuminate\Support\Facades\Input',
 		'Lang'            => 'Illuminate\Support\Facades\Lang',
 		'Log'             => 'Illuminate\Support\Facades\Log',

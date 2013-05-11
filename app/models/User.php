@@ -81,5 +81,4 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   {
     return $this->email;
   }
-
 }
