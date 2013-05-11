@@ -3,7 +3,8 @@
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
 		"laravelbook/ardent": "dev-master",
-		"phpunit/phpunit": "3.7.*"
+		"phpunit/phpunit": "3.7.*",
+		"zizaco/factory-muff": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
