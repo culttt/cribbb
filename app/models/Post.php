@@ -35,14 +35,6 @@ class Post extends Ardent {
   }
 
   /**
-   * User relationship
-   */
-  public function user()
-  {
-    return $this->belongsTo('User');
-  }
-
-  /**
    * Clique relationship
    */
   public function clique()
