@@ -50,4 +50,12 @@ class Post extends Ardent {
     return $this->belongsTo('Clique');
   }
 
+  /**
+   * Comment relationship
+   */
+  public function comments()
+  {
+    return $this->morphMany('Comment', 'commentable');
+  }
+
 }
