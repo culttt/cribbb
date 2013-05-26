@@ -5,29 +5,29 @@ use Illuminate\Database\Schema\Blueprint;
 
 class AddUsernameToUsersTable extends Migration {
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+  /**
+   * Run the migrations.
+   *
+   * @return void
+   */
+  public function up()
+  {
+    Schema::table('users', function(Blueprint $table)
     {
-      Schema::table('users', function(Blueprint $table)
-      {
-        $table->string('username');
-      });
-    }
+      $table->string('username');
+    });
+  }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-      Schema::table('users', function(Blueprint $table) {
-        $table->dropColumn('username');
-      });
-    }
+  /**
+   * Reverse the migrations.
+   *
+   * @return void
+   */
+  public function down()
+  {
+    Schema::table('users', function(Blueprint $table) {
+      $table->dropColumn('username');
+    });
+  }
 
 }
