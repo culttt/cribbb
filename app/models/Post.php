@@ -25,6 +25,7 @@ class Post extends Ardent {
   public static $factory = array(
     'body' => 'text',
     'user_id' => 'factory|User',
+    'clique_id' => 'factory|Clique'
   );
 
   /**

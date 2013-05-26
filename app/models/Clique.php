@@ -3,6 +3,13 @@
 class Clique extends Eloquent {
 
   /**
+   * Factory
+   */
+  public static $factory = array(
+    'name' => 'string'
+  );
+
+  /**
    * User relationship
    */
   public function user(){

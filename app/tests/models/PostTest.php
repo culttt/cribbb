@@ -27,6 +27,12 @@ class PostTest extends TestCase {
     // Set the boy
     $post->body = "Yada yada yada";
 
+    // Create a new Clique
+    $clique = FactoryMuff::create('Clique');
+
+    // Set the clique_id
+    $post->clique_id = $clique->id;
+
     // Post should not save
     $this->assertFalse($post->save());
 
@@ -48,8 +54,14 @@ class PostTest extends TestCase {
     // Create new Post
     $post = new Post;
 
-    // Grab User 1
+    // Create a new user
     $user = FactoryMuff::create('User');
+
+    // Create a new Clique
+    $clique = FactoryMuff::create('Clique');
+
+    // Set the clique_id
+    $post->clique_id = $clique->id;
 
     // Post should not save
     $this->assertFalse($user->posts()->save($post));
