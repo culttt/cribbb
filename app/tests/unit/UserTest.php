@@ -222,6 +222,4 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[1], "The password confirmation field is required.");
   }
 
-
-
 }
