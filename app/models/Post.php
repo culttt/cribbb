@@ -1,6 +1,7 @@
 <?php
 
 use LaravelBook\Ardent\Ardent;
+
 class Post extends Ardent {
 
   /**
