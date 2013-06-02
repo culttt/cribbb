@@ -28,7 +28,7 @@ class Clique extends Ardent {
   /**
    * User relationship
    */
-  public function user(){
+  public function users(){
     return $this->belongsToMany('User');
   }
 
