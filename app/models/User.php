@@ -45,13 +45,6 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   }
 
   /**
-   * Clique relationship
-   */
-  public function clique(){
-    return $this->belongsToMany('Clique');
-  }
-
-  /**
    * The attributes excluded from the model's JSON form.
    *
    * @var array
