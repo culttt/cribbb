@@ -1,6 +1,13 @@
 <?php
 
+use Cribbb\Storage\User\UserRepository as User;
+
 class UserController extends BaseController {
+
+  public function __construct(User $user)
+  {
+    $this->user = $user;
+  }
 
   /**
    * Display a listing of the resource.
@@ -9,7 +16,7 @@ class UserController extends BaseController {
    */
   public function index()
   {
-    //
+    return $this->user->all();
   }
 
   /**
