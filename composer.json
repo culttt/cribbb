@@ -2,9 +2,12 @@
 	"require": {
 		"laravel/framework": "4.0.*",
 		"way/generators": "dev-master",
-		"laravelbook/ardent": "dev-master",
+		"laravelbook/ardent": "dev-master"
+	},
+	"require-dev": {
 		"phpunit/phpunit": "3.7.*",
-		"zizaco/factory-muff": "dev-master"
+		"zizaco/factory-muff": "dev-master",
+		"mockery/mockery": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
