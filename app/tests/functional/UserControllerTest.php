@@ -13,7 +13,7 @@ class UserControllerTest extends TestCase {
   {
     Mockery::close();
   }
-   
+
   public function mock($class)
   {
     $mock = Mockery::mock($class);
