@@ -2,7 +2,7 @@
 
 use Cribbb\Storage\User\UserRepository as User;
 
-class UserController extends BaseController {
+class UsersController extends BaseController {
 
   /**
    * User Repository
