@@ -8,13 +8,18 @@ class UserControllerTest extends TestCase {
 
     $this->mock = $this->mock('Cribbb\Storage\User\UserRepository');
   }
+
+  public function tearDown()
+  {
+    Mockery::close();
+  }
    
   public function mock($class)
   {
     $mock = Mockery::mock($class);
- 
+
     $this->app->instance($class, $mock);
- 
+
     return $mock;
   }
 
