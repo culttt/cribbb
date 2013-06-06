@@ -2,9 +2,8 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use LaravelBook\Ardent\Ardent;
 
-class User extends Ardent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
 
   /**
    * The database table used by the model.
@@ -52,7 +51,7 @@ class User extends Ardent implements UserInterface, RemindableInterface {
   protected $hidden = array('password');
 
   /**
-   * Ardent validation rules
+   * Validation rules
    */
   public static $rules = array(
     'username' => 'required|between:4,16',

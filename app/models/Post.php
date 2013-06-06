@@ -1,8 +1,6 @@
 <?php
 
-use LaravelBook\Ardent\Ardent;
-
-class Post extends Ardent {
+class Post extends Eloquent {
 
   /**
    * Properties that can be mass assigned
@@ -12,7 +10,7 @@ class Post extends Ardent {
   protected $fillable = array('body');
 
   /**
-   * Ardent validation rules
+   * Validation rules
    */
   public static $rules = array(
     'body' => 'required',
