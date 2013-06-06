@@ -44,7 +44,12 @@ class UsersController extends BaseController {
    */
   public function store()
   {
-    //
+    $input = Input::all();
+
+    $this->user->create($input);
+
+    return Redirect::route('user.index')
+      ->with('flash', 'The user has been created!');
   }
 
   /**

@@ -32,4 +32,11 @@ class UsersControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
+  public function testCreate()
+  {
+    $this->call('GET', 'users/create');
+
+    $this->assertResponseOk();
+  }
+
 }
