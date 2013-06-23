@@ -55,6 +55,39 @@ class UserTest extends TestCase {
   }
 
   /**
+   * Two users can't have the same username
+   */
+  public function testTwoUsersCantHaveTheSameUsername()
+  {
+    // Create first User
+    $user1 = new User;
+    $user1->username = "philipbrown";
+    $user1->email = "phil@ipbrown.com";
+    $user1->password = "password";
+    $user1->password_confirmation = "password";
+    // User should save
+    $this->assertTrue($user1->save());
+
+    // Create first User
+    $user2 = new User;
+    $user2->username = "philipbrown";
+    $user2->email = "pb@yflag.com";
+    $user2->password = "password";
+    $user2->password_confirmation = "password";
+    // User should save
+    $this->assertFalse($user2->save());
+
+    // Save the errors
+    $errors = $user2->errors()->all();
+
+    // There should be 1 error
+    $this->assertCount(1, $errors);
+
+    // The error should be set
+    $this->assertEquals($errors[0], "The username has already been taken.");
+  }
+
+  /**
    * Test Email is required
    */
   public function testEmailIsRequired()
@@ -101,6 +134,39 @@ class UserTest extends TestCase {
 
     // The error should be set
     $this->assertEquals($errors[0], "The email format is invalid.");
+  }
+
+  /**
+   * Two users can't have the same username
+   */
+  public function testTwoUsersCantHaveTheSameEmail()
+  {
+    // Create first User
+    $user1 = new User;
+    $user1->username = "philipbrown";
+    $user1->email = "phil@ipbrown.com";
+    $user1->password = "password";
+    $user1->password_confirmation = "password";
+    // User should save
+    $this->assertTrue($user1->save());
+
+    // Create first User
+    $user2 = new User;
+    $user2->username = "philly";
+    $user2->email = "phil@ipbrown.com";
+    $user2->password = "password";
+    $user2->password_confirmation = "password";
+    // User should save
+    $this->assertFalse($user2->save());
+
+    // Save the errors
+    $errors = $user2->errors()->all();
+
+    // There should be 1 error
+    $this->assertCount(1, $errors);
+
+    // The error should be set
+    $this->assertEquals($errors[0], "The email has already been taken.");
   }
 
   /**
