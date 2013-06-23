@@ -3,7 +3,7 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Magniloquent implements UserInterface, RemindableInterface {
 
   /**
    * The database table used by the model.
@@ -54,10 +54,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    * Validation rules
    */
   public static $rules = array(
-    'username' => 'required|between:4,16',
-    'email' => 'required|email',
-    'password' => 'required|min:8|confirmed',
-    'password_confirmation' => 'required|min:8',
+    "save" => array(
+      'username' => 'required|min:4',
+      'email' => 'required|email',
+      'password' => 'required|min:8'
+    ),
+    "create" => array(
+      'username' => 'unique:users',
+      'email' => 'unique:users',
+      'password' => 'confirmed',
+      'password_confirmation' => 'required|min:8'
+    ),
+    "update" => array()
   );
 
   /**
