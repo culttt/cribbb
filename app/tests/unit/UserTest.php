@@ -30,7 +30,7 @@ class UserTest extends TestCase {
   }
 
   /**
-   * Test Username should be 4 - 16 characters
+   * Test Username should be 4 characters
    */
   public function testUsernameLength()
   {
