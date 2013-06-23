@@ -44,12 +44,19 @@ class UsersController extends BaseController {
    */
   public function store()
   {
-    $input = Input::all();
+    $v = new Cribbb\Services\Validators\User;
 
-    $this->user->create($input);
+    if($v->passes())
+    {
+      $this->user->create($input);
 
-    return Redirect::route('user.index')
-      ->with('flash', 'The user has been created!');
+      return Redirect::route('users.index')
+        ->with('flash', 'The new user has been created');
+    }
+
+    return Redirect::route('users.create')
+      ->withInput()
+      ->withErrors($v->getErrors());
   }
 
   /**
