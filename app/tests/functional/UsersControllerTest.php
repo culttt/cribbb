@@ -39,4 +39,13 @@ class UsersControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
+  public function testStore()
+  {
+
+    Input::replace($input = array('username' => ''));
+ 
+    $this->call('POST', 'users');
+
+  }
+
 }
