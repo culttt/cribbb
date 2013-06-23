@@ -2,6 +2,7 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Magniloquent\Magniloquent\Magniloquent;
 
 class User extends Magniloquent implements UserInterface, RemindableInterface {
 
