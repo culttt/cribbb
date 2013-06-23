@@ -1,6 +1,6 @@
 <?php
 
-class Post extends Eloquent {
+class Post extends Magniloquent {
 
   /**
    * Properties that can be mass assigned
@@ -13,8 +13,12 @@ class Post extends Eloquent {
    * Validation rules
    */
   public static $rules = array(
-    'body' => 'required',
-    'user_id' => 'required|numeric',
+    "save" => array(
+      'body' => 'required',
+      'user_id' => 'required|numeric',
+    ),
+    "create" => array(),
+    "update" => array()
   );
 
   /**
