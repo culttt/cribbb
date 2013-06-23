@@ -114,7 +114,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Cribbb\Storage\StorageServiceProvider'
+		'Cribbb\Storage\StorageServiceProvider',
+		'Magniloquent\Magniloquent\MagniloquentServiceProvider',
 	),
 
 	/*
