@@ -273,6 +273,31 @@ class UserTest extends TestCase {
   }
 
   /**
+   * Test a password can be updated correctly
+   */
+  public function testPasswordUpdatesCorrectly()
+  {
+    // Create a new User
+    $user = new User;
+    $user->username = "philipbrown";
+    $user->email = "phil@ipbrown.com";
+    $user->password = "password";
+    $user->password_confirmation = "password";
+
+    // User should save
+    $this->assertTrue($user->save());
+
+    // Find the user
+    $philip = User::find(1);
+
+    // Update password
+    $philip->password = "newpassword";
+    
+    // User should save
+    $this->assertTrue($philip->save());
+  }
+
+  /**
    * Test a user can follower other users
    */
   public function testUserCanFollowerUsers()
