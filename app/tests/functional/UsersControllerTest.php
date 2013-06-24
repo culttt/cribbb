@@ -39,13 +39,28 @@ class UsersControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
-  public function testStore()
+  public function testStoreFails()
   {
+    $this->mock->shouldReceive('create')
+      ->once()
+      ->andReturn(Mockery::mock(array('passes' => false, 'errors' => array())));
 
-    Input::replace($input = array('username' => ''));
- 
     $this->call('POST', 'users');
 
+    $this->assertRedirectedToRoute('users.create');
+    $this->assertSessionHasErrors();
+  }
+
+  public function testStoreSuccess()
+  {
+    $this->mock->shouldReceive('create')
+      ->once()
+      ->andReturn(Mockery::mock(array('passes' => true)));
+
+    $this->call('POST', 'users');
+
+    $this->assertRedirectedToRoute('users.index');
+    $this->assertSessionHas('flash');
   }
 
 }
