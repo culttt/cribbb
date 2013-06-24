@@ -65,7 +65,7 @@ class UsersController extends BaseController {
    */
   public function show($id)
   {
-    //
+    return $this->user->find($id);
   }
 
   /**
@@ -76,7 +76,7 @@ class UsersController extends BaseController {
    */
   public function edit($id)
   {
-    //
+    return View::make('users.edit');
   }
 
   /**
@@ -87,7 +87,17 @@ class UsersController extends BaseController {
    */
   public function update($id)
   {
-    //
+    $s = $this->user->update($id);
+
+    if($s->passes())
+    {
+      return Redirect::route('users.show', $id)
+        ->with('flash', 'The user was updated');
+    }
+
+    return Redirect::route('users.edit', $id)
+      ->withInput()
+      ->withErrors($s->errors());
   }
 
   /**
@@ -98,7 +108,7 @@ class UsersController extends BaseController {
    */
   public function destroy($id)
   {
-    //
+    return $this->user->delete($id);
   }
 
 }

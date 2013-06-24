@@ -19,4 +19,20 @@ class EloquentUserRepository implements UserRepository {
     return User::create($input);
   }
 
+  public function update($id)
+  {
+    $user = $this->find($id);
+
+    $user->save(\Input::all());
+
+    return $user;
+  }
+
+  public function delete($id)
+  {
+    $user = $this->find($id);
+
+    return $user->delete();
+  }
+
 }

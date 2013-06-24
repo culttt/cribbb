@@ -8,4 +8,7 @@ interface UserRepository {
 
   public function create($input);
 
+  public function update($input);
+
+  public function delete($id);
 }
