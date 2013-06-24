@@ -18,7 +18,7 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
    *
    * @var array
    */
-  protected $fillable = array('first_name', 'last_name', 'email');
+  protected $fillable = array('username', 'first_name', 'last_name', 'email', "password", "password_confirmation");
 
   /**
    * Post relationship
