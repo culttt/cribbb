@@ -10,6 +10,10 @@ class StorageServiceProvider extends ServiceProvider {
       'Cribbb\Storage\User\UserRepository',
       'Cribbb\Storage\User\EloquentUserRepository'
     );
+    $this->app->bind(
+      'Cribbb\Storage\Post\PostRepository',
+      'Cribbb\Storage\Post\EloquentPostRepository'
+    );
   }
 
 }
