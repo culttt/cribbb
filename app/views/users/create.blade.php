@@ -1,1 +1,3 @@
-Create a new user
+{{ Form::open(array('url' => 'users')) }}
+    
+{{ Form::close() }}
