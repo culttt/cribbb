@@ -16,6 +16,6 @@ Route::get('/', function()
   return View::make('hello');
 });
 
-Route::resource('users', 'UsersController');
+Route::resource('users', 'UserController');
 
-Route::resource('posts', 'PostsController');
+Route::resource('posts', 'PostController');

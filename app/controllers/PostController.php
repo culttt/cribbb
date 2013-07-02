@@ -1,20 +1,20 @@
 <?php
 
-use Cribbb\Storage\User\UserRepository as User;
+use Cribbb\Storage\Post\PostRepository as Post;
 
-class UsersController extends BaseController {
+class PostController extends BaseController {
 
   /**
-   * User Repository
+   * Post Repository
    */
-  protected $user;
+  protected $post;
 
   /**
    * Inject the User Repository
    */
-  public function __construct(User $user)
+  public function __construct(Post $post)
   {
-    $this->user = $user;
+    $this->post = $post;
   }
 
   /**
@@ -24,7 +24,7 @@ class UsersController extends BaseController {
    */
   public function index()
   {
-    return $this->user->all();
+    return $this->post->all();
   }
 
   /**
@@ -34,7 +34,7 @@ class UsersController extends BaseController {
    */
   public function create()
   {
-    return View::make('users.create');
+    return View::make('posts.create');
   }
 
   /**
@@ -44,15 +44,15 @@ class UsersController extends BaseController {
    */
   public function store()
   {
-    $s = $this->user->create(Input::all());
+    $s = $this->post->create(Input::all());
 
     if($s->passes())
     {
-      return Redirect::route('users.index')
-        ->with('flash', 'The new user has been created');
+      return Redirect::route('posts.index')
+        ->with('flash', 'A new has been created');
     }
 
-    return Redirect::route('users.create')
+    return Redirect::route('posts.create')
       ->withInput()
       ->withErrors($s->errors());
   }
@@ -65,7 +65,7 @@ class UsersController extends BaseController {
    */
   public function show($id)
   {
-    return $this->user->find($id);
+    return $this->post->find($id);
   }
 
   /**
@@ -76,7 +76,7 @@ class UsersController extends BaseController {
    */
   public function edit($id)
   {
-    return View::make('users.edit');
+    return View::make('posts.edit');
   }
 
   /**
@@ -87,15 +87,15 @@ class UsersController extends BaseController {
    */
   public function update($id)
   {
-    $s = $this->user->update($id);
+    $s = $this->post->update($id);
 
     if($s->passes())
     {
-      return Redirect::route('users.show', $id)
-        ->with('flash', 'The user was updated');
+      return Redirect::route('posts.show', $id)
+        ->with('flash', 'The post was updated');
     }
 
-    return Redirect::route('users.edit', $id)
+    return Redirect::route('posts.edit', $id)
       ->withInput()
       ->withErrors($s->errors());
   }
@@ -108,7 +108,7 @@ class UsersController extends BaseController {
    */
   public function destroy($id)
   {
-    return $this->user->delete($id);
+    return $this->post->delete($id);
   }
 
 }

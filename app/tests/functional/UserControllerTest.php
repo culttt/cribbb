@@ -1,6 +1,6 @@
 <?php
 
-class UsersControllerTest extends TestCase {
+class UserControllerTest extends TestCase {
 
   /**
    * Set up
