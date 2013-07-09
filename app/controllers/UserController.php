@@ -46,7 +46,7 @@ class UserController extends BaseController {
   {
     $s = $this->user->create(Input::all());
 
-    if($s->passes())
+    if($s->isSaved())
     {
       return Redirect::route('users.index')
         ->with('flash', 'The new user has been created');
@@ -89,7 +89,7 @@ class UserController extends BaseController {
   {
     $s = $this->user->update($id);
 
-    if($s->passes())
+    if($s->isSaved())
     {
       return Redirect::route('users.show', $id)
         ->with('flash', 'The user was updated');

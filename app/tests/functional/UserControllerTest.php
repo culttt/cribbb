@@ -61,7 +61,7 @@ class UserControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('create')
       ->once()
-      ->andReturn(Mockery::mock(array('passes' => false, 'errors' => array())));
+      ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
     $this->call('POST', 'users');
 
@@ -76,7 +76,7 @@ class UserControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('create')
       ->once()
-      ->andReturn(Mockery::mock(array('passes' => true)));
+      ->andReturn(Mockery::mock(array('isSaved' => true)));
 
     $this->call('POST', 'users');
 
@@ -116,7 +116,7 @@ class UserControllerTest extends TestCase {
     $this->mock->shouldReceive('update')
       ->once()
       ->with(1)
-      ->andReturn(Mockery::mock(array('passes' => false, 'errors' => array())));
+      ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
     $this->call('PUT', 'users/1');
 
@@ -132,7 +132,7 @@ class UserControllerTest extends TestCase {
     $this->mock->shouldReceive('update')
       ->once()
       ->with(1)
-      ->andReturn(Mockery::mock(array('passes' => true)));
+      ->andReturn(Mockery::mock(array('isSaved' => true)));
 
     $this->call('PUT', 'users/1');
 
