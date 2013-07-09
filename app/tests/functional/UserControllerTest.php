@@ -103,6 +103,11 @@ class UserControllerTest extends TestCase {
    */
   public function testEdit()
   {
+    $this->mock->shouldReceive('find')
+      ->once()
+      ->with(1)
+      ->andReturn(Mockery::mock('user', array('getAttribute' => 1, 'offsetExists' => false)));
+
     $this->call('GET', 'users/1/edit');
 
     $this->assertResponseOk();
