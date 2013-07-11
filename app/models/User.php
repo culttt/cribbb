@@ -58,13 +58,13 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
     "save" => array(
       'username' => 'required|min:4',
       'email' => 'required|email',
-      'password' => 'required|min:8'
+      'password' => 'required'
     ),
     "create" => array(
       'username' => 'unique:users',
       'email' => 'unique:users',
       'password' => 'confirmed',
-      'password_confirmation' => 'required|min:8'
+      'password_confirmation' => 'required'
     ),
     "update" => array()
   );
