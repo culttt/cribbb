@@ -27,3 +27,12 @@ Route::post('register', array(
   'uses' => 'RegisterController@store',
   'as' => 'register.store'
 ));
+
+Route::get('login', array(
+  'uses' => 'LoginController@index',
+  'as' => 'login.index'
+));
+Route::post('login', array(
+  'uses' => 'LoginController@attempt',
+  'as' => 'login.attempt'
+));
