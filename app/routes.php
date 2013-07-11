@@ -17,5 +17,13 @@ Route::get('/', function()
 });
 
 Route::resource('users', 'UserController');
-
 Route::resource('posts', 'PostController');
+
+Route::get('register', array(
+  'uses' => 'RegisterController@index',
+  'as' => 'register.index'
+));
+Route::post('register', array(
+  'uses' => 'RegisterController@store',
+  'as' => 'register.store'
+));
