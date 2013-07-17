@@ -19,6 +19,15 @@ Route::get('/', function()
 Route::resource('users', 'UserController');
 Route::resource('posts', 'PostController');
 
+Route::get('login', array(
+  'uses' => 'SessionController@create',
+  'as' => 'session.create'
+));
+Route::post('login', array(
+  'uses' => 'SessionController@store',
+  'as' => 'session.store'
+));
+
 Route::get('register', array(
   'uses' => 'RegisterController@index',
   'as' => 'register.index'
@@ -26,13 +35,4 @@ Route::get('register', array(
 Route::post('register', array(
   'uses' => 'RegisterController@store',
   'as' => 'register.store'
-));
-
-Route::get('login', array(
-  'uses' => 'LoginController@index',
-  'as' => 'login.index'
-));
-Route::post('login', array(
-  'uses' => 'LoginController@attempt',
-  'as' => 'login.attempt'
 ));

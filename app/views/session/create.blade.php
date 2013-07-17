@@ -1,16 +1,14 @@
-@if($errors->any())
-  <ul>
-    {{ implode('', $errors->all('<li>:message</li>'))}}
-  </ul>
+@if (Session::has('login_errors'))
+  <span class="error">Username or password incorrect.</span>
 @endif
 
-{{ Form::open(array('route' => 'login.attempt')) }}
+{{ Form::open(array('route' => 'session.store')) }}
 
   <p>{{ Form::label('email', 'Email') }}
   {{ Form::text('email') }}</p>
 
   <p>{{ Form::label('password', 'Password') }}
-  {{ Form::text('password') }}</p>
+  {{ Form::password('password') }}</p>
 
   <p>{{ Form::submit('Submit') }}</p>
 
