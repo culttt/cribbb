@@ -16,7 +16,17 @@ class EloquentPostRepository implements PostRepository {
 
   public function create($input)
   {
-    return Post::create($input);
+    // Create new post
+    $post = new Post($input);
+
+    // Get the current user
+    $user = \Auth::user();
+
+    // Save the post
+    $user->posts()->save($post);
+
+    // Return the post
+    return $post;
   }
 
   public function update($id)

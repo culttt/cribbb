@@ -46,7 +46,7 @@ class PostController extends BaseController {
   {
     $s = $this->post->create(Input::all());
 
-    if($s->passes())
+    if($s->isSaved())
     {
       return Redirect::route('posts.index')
         ->with('flash', 'A new has been created');
@@ -89,7 +89,7 @@ class PostController extends BaseController {
   {
     $s = $this->post->update($id);
 
-    if($s->passes())
+    if($s->isSaved())
     {
       return Redirect::route('posts.show', $id)
         ->with('flash', 'The post was updated');
