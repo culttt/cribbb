@@ -36,11 +36,11 @@ class SessionController extends BaseController {
             ->with('login_errors', true);
   }
 
-  public function destroy($id)
+  public function destroy()
   {
     Auth::logout();
     
-    return View::make('logout');
+    return View::make('session.destroy');
   }
 
 }

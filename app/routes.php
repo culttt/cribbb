@@ -27,6 +27,10 @@ Route::post('login', array(
   'uses' => 'SessionController@store',
   'as' => 'session.store'
 ));
+Route::get('logout', array(
+  'uses' => 'SessionController@destroy',
+  'as' => 'session.destroy'
+));
 
 Route::get('register', array(
   'uses' => 'RegisterController@index',
