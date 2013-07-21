@@ -29,7 +29,7 @@ class SessionController extends BaseController {
   {
     if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
     {
-      return Redirect::intended('dashboard');
+      return Redirect::intended('/');
     }
     return Redirect::route('session.create')
             ->withInput()
@@ -39,7 +39,7 @@ class SessionController extends BaseController {
   public function destroy()
   {
     Auth::logout();
-    
+
     return View::make('session.destroy');
   }
 
