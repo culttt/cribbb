@@ -61,7 +61,7 @@ class PostControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('create')
       ->once()
-      ->andReturn(Mockery::mock(array('passes' => false, 'errors' => array())));
+      ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
     $this->call('POST', 'posts');
 
@@ -76,7 +76,7 @@ class PostControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('create')
       ->once()
-      ->andReturn(Mockery::mock(array('passes' => true)));
+      ->andReturn(Mockery::mock(array('isSaved' => true)));
 
     $this->call('POST', 'posts');
 
@@ -103,6 +103,11 @@ class PostControllerTest extends TestCase {
    */
   public function testEdit()
   {
+    $this->mock->shouldReceive('find')
+      ->once()
+      ->with(1)
+      ->andReturn(Mockery::mock('post', array('getAttribute' => 1, 'offsetExists' => false)));
+
     $this->call('GET', 'posts/1/edit');
 
     $this->assertResponseOk();
@@ -116,7 +121,7 @@ class PostControllerTest extends TestCase {
     $this->mock->shouldReceive('update')
       ->once()
       ->with(1)
-      ->andReturn(Mockery::mock(array('passes' => false, 'errors' => array())));
+      ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
     $this->call('PUT', 'posts/1');
 
@@ -132,7 +137,7 @@ class PostControllerTest extends TestCase {
     $this->mock->shouldReceive('update')
       ->once()
       ->with(1)
-      ->andReturn(Mockery::mock(array('passes' => true)));
+      ->andReturn(Mockery::mock(array('isSaved' => true)));
 
     $this->call('PUT', 'posts/1');
 

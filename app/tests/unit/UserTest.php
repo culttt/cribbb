@@ -194,34 +194,6 @@ class UserTest extends TestCase {
   }
 
   /**
-   * Test Password length
-   */
-  public function testPasswordLength()
-  {
-    // Create a new User
-    $user = new User;
-    $user->username = "philipbrown";
-    $user->email = "phil@ipbrown.com";
-    $user->password = "abc";
-    $user->password_confirmation = "abc";
-
-    // User should not save
-    $this->assertFalse($user->save());
-
-    // Save the errors
-    $errors = $user->errors()->all();
-
-    // There should be 2 errors
-    $this->assertCount(2, $errors);
-
-    // The error should be set
-    $this->assertEquals($errors[0], "The password must be at least 8 characters.");
-
-    // The error should be set
-    $this->assertEquals($errors[1], "The password confirmation must be at least 8 characters.");
-  }
-
-  /**
    * Test Password and Confirmation match
    */
   public function testPasswordAndConfirmationMatch(){
