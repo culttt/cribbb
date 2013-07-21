@@ -76,7 +76,9 @@ class PostController extends BaseController {
    */
   public function edit($id)
   {
-    return View::make('posts.edit');
+    $post = $this->post->find($id);
+
+    return View::make('posts.edit')->with('post', $post);;
   }
 
   /**
