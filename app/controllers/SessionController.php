@@ -29,7 +29,7 @@ class SessionController extends BaseController {
   {
     if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password'))))
     {
-      return Redirect::intended('/');
+      return Redirect::intended('users');
     }
     return Redirect::route('session.create')
             ->withInput()

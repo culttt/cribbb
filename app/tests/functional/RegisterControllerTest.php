@@ -1,6 +1,36 @@
 <?php
 
-class RegisterController extends TestCase{
+class RegisterControllerTest extends TestCase{
+
+  /**
+   * Set up
+   */
+  public function setUp()
+  {
+    parent::setUp();
+
+    $this->mock = $this->mock('Cribbb\Storage\User\UserRepository');
+  }
+
+  /**
+   * Tear down
+   */
+  public function tearDown()
+  {
+    Mockery::close();
+  }
+
+  /**
+   * Mock
+   */
+  public function mock($class)
+  {
+    $mock = Mockery::mock($class);
+
+    $this->app->instance($class, $mock);
+
+    return $mock;
+  }
 
   /**
    * Test Index
@@ -23,7 +53,7 @@ class RegisterController extends TestCase{
 
     $this->call('POST', 'register');
 
-    $this->assertRedirectedToRoute('users.create');
+    $this->assertRedirectedToRoute('register.index');
     $this->assertSessionHasErrors();
   }
 
