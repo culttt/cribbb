@@ -7,7 +7,7 @@
 {{ Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT')) }}
 
   <p>{{ Form::label('body', 'Body') }}
-  {{ Form::textarea('body') }}</p>
+  {{ Form::text('body', 'Body') }}</p>
 
   <p>{{ Form::submit('Submit') }}</p>
 

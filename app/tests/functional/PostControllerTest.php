@@ -103,10 +103,13 @@ class PostControllerTest extends TestCase {
    */
   public function testEdit()
   {
+    $post = Mockery::self();
+    $post->id = 1;
+
     $this->mock->shouldReceive('find')
       ->once()
       ->with(1)
-      ->andReturn(Mockery::mock('post', array('getAttribute' => 1, 'offsetExists' => false)));
+      ->andReturn($post);
 
     $this->call('GET', 'posts/1/edit');
 
