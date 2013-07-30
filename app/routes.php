@@ -55,8 +55,8 @@ Route::get('password/reset', array(
   'as' => 'password.remind'
 ));
 Route::post('password/reset', array(
-  'uses' => 'PasswordController@send',
-  'as' => 'password.send'
+  'uses' => 'PasswordController@request',
+  'as' => 'password.request'
 ));
 Route::get('password/reset/{token}', array(
   'uses' => 'PasswordController@reset',

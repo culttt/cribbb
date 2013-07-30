@@ -4,10 +4,10 @@ class PasswordController extends BaseController {
 
   public function remind()
   {
-
+    return View::make('password.remind');
   }
 
-  public function send()
+  public function request()
   {
 
   }
@@ -19,7 +19,7 @@ class PasswordController extends BaseController {
 
   public function update()
   {
-    
+
   }
 
 }
