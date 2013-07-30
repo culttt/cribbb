@@ -19,6 +19,9 @@ Route::get('/', function()
 Route::resource('users', 'UserController');
 Route::resource('posts', 'PostController');
 
+/**
+ * Login
+ */
 Route::get('login', array(
   'uses' => 'SessionController@create',
   'as' => 'session.create'
@@ -32,6 +35,9 @@ Route::get('logout', array(
   'as' => 'session.destroy'
 ));
 
+/**
+ * Register
+ */
 Route::get('register', array(
   'uses' => 'RegisterController@index',
   'as' => 'register.index'
@@ -40,3 +46,25 @@ Route::post('register', array(
   'uses' => 'RegisterController@store',
   'as' => 'register.store'
 ));
+
+/**
+ * Password Reset
+ */
+Route::get('password/reset', array(
+  'uses' => 'PasswordController@remind',
+  'as' => 'password.remind'
+));
+Route::post('password/reset', array(
+  'uses' => 'PasswordController@send',
+  'as' => 'password.send'
+));
+Route::get('password/reset/{token}', array(
+  'uses' => 'PasswordController@reset',
+  'as' => 'password.reset'
+));
+Route::post('password/reset/{token}', array(
+  'uses' => 'PasswordController@update',
+  'as' => 'password.update'
+));
+
+
