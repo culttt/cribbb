@@ -10,14 +10,16 @@
 		"mockery/mockery": "dev-master"
 	},
 	"autoload": {
+		"psr-0": {
+			"Cribbb": "app/"
+		},
 		"classmap": [
 			"app/commands",
 			"app/controllers",
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php",
-			"app/lib"
+			"app/tests/TestCase.php"
 		]
 	},
 	"scripts": {
