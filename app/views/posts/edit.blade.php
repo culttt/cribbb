@@ -1,14 +1,18 @@
-@if($errors->any())
-  <ul>
-    {{ implode('', $errors->all('<li>:message</li>'))}}
-  </ul>
-@endif
+@extends('layouts.master')
 
-{{ Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT')) }}
+@section('content')
+  @if($errors->any())
+    <ul>
+      {{ implode('', $errors->all('<li>:message</li>'))}}
+    </ul>
+  @endif
 
-  <p>{{ Form::label('body', 'Body') }}
-  {{ Form::text('body', 'Body') }}</p>
+  {{ Form::model($post, array('route' => array('posts.update', $post->id), 'method' => 'PUT')) }}
 
-  <p>{{ Form::submit('Submit') }}</p>
+    <p>{{ Form::label('body', 'Body') }}
+    {{ Form::text('body', 'Body') }}</p>
 
-{{ Form::close() }}
+    <p>{{ Form::submit('Submit') }}</p>
+
+  {{ Form::close() }}
+@stop

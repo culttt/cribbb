@@ -10,6 +10,11 @@ class SessionController extends BaseController {
   protected $user;
 
   /**
+   * The layout that should be used for responses.
+   */
+  protected $layout = 'layouts.master';
+
+  /**
    * Inject the User Repository
    */
   public function __construct(User $user)

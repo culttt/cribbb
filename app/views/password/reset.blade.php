@@ -1,20 +1,24 @@
-@if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-@endif
+@extends('layouts.master')
 
-{{ Form::open(array('route' => array('password.update', $token))) }}
+@section('content')
+  @if (Session::has('error'))
+      {{ trans(Session::get('reason')) }}
+  @endif
 
-  <p>{{ Form::label('email', 'Email') }}
-  {{ Form::text('email') }}</p>
+  {{ Form::open(array('route' => array('password.update', $token))) }}
 
-  <p>{{ Form::label('password', 'Password') }}
-  {{ Form::text('password') }}</p>
+    <p>{{ Form::label('email', 'Email') }}
+    {{ Form::text('email') }}</p>
 
-  <p>{{ Form::label('password_confirmation', 'Password confirm') }}
-  {{ Form::text('password_confirmation') }}</p>
+    <p>{{ Form::label('password', 'Password') }}
+    {{ Form::text('password') }}</p>
 
-  {{ Form::hidden('token', $token) }}
+    <p>{{ Form::label('password_confirmation', 'Password confirm') }}
+    {{ Form::text('password_confirmation') }}</p>
 
-  <p>{{ Form::submit('Submit') }}</p>
+    {{ Form::hidden('token', $token) }}
 
-{{ Form::close() }}
+    <p>{{ Form::submit('Submit') }}</p>
+
+  {{ Form::close() }}
+@stop

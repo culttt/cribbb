@@ -1,14 +1,18 @@
-@if (Session::has('error'))
-  {{ trans(Session::get('reason')) }}
-@elseif (Session::has('success'))
-  An email with the password reset has been sent.
-@endif
+@extends('layouts.master')
 
-{{ Form::open(array('route' => 'password.request')) }}
+@section('content')
+  @if (Session::has('error'))
+    {{ trans(Session::get('reason')) }}
+  @elseif (Session::has('success'))
+    An email with the password reset has been sent.
+  @endif
 
-  <p>{{ Form::label('email', 'Email') }}
-  {{ Form::text('email') }}</p>
+  {{ Form::open(array('route' => 'password.request')) }}
 
-  <p>{{ Form::submit('Submit') }}</p>
+    <p>{{ Form::label('email', 'Email') }}
+    {{ Form::text('email') }}</p>
 
-{{ Form::close() }}
+    <p>{{ Form::submit('Submit') }}</p>
+
+  {{ Form::close() }}
+@stop

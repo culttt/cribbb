@@ -1,14 +1,18 @@
-@if($errors->any())
-  <ul>
-    {{ implode('', $errors->all('<li>:message</li>'))}}
-  </ul>
-@endif
+@extends('layouts.master')
 
-{{ Form::open(array('route' => 'posts.store')) }}
+@section('content')
+  @if($errors->any())
+    <ul>
+      {{ implode('', $errors->all('<li>:message</li>'))}}
+    </ul>
+  @endif
 
-  <p>{{ Form::label('body', 'Body') }}
-  {{ Form::textarea('body') }}</p>
+  {{ Form::open(array('route' => 'posts.store')) }}
 
-  <p>{{ Form::submit('Submit') }}</p>
+    <p>{{ Form::label('body', 'Body') }}
+    {{ Form::textarea('body') }}</p>
 
-{{ Form::close() }}
+    <p>{{ Form::submit('Submit') }}</p>
+
+  {{ Form::close() }}
+@stop

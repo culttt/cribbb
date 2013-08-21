@@ -1,15 +1,19 @@
-@if (Session::has('login_errors'))
-  <span class="error">Username or password incorrect.</span>
-@endif
+@extends('layouts.master')
 
-{{ Form::open(array('route' => 'session.store')) }}
+@section('content')
+  @if (Session::has('login_errors'))
+    <span class="error">Username or password incorrect.</span>
+  @endif
 
-  <p>{{ Form::label('email', 'Email') }}
-  {{ Form::text('email') }}</p>
+  {{ Form::open(array('route' => 'session.store')) }}
 
-  <p>{{ Form::label('password', 'Password') }}
-  {{ Form::password('password') }}</p>
+    <p>{{ Form::label('email', 'Email') }}
+    {{ Form::text('email') }}</p>
 
-  <p>{{ Form::submit('Submit') }}</p>
+    <p>{{ Form::label('password', 'Password') }}
+    {{ Form::password('password') }}</p>
 
-{{ Form::close() }}
+    <p>{{ Form::submit('Submit') }}</p>
+
+  {{ Form::close() }}
+@stop
