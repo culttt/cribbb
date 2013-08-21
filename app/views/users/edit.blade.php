@@ -7,7 +7,7 @@
     </ul>
   @endif
 
-  {{ Form::model($user, array('route' => array('users.update', $user->id), 'method' => 'PUT')) }}
+  {{ Form::model($user, array('route' => array('user.update', $user->id), 'method' => 'PUT')) }}
 
     <p>{{ Form::label('username', 'Username') }}
     {{ Form::text('username', 'Username') }}</p>

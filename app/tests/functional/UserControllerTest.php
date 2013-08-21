@@ -39,7 +39,7 @@ class UserControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('all')->once();
 
-    $this->call('GET', 'users');
+    $this->call('GET', 'user');
 
     $this->assertResponseOk();
   }
@@ -49,7 +49,7 @@ class UserControllerTest extends TestCase {
    */
   public function testCreate()
   {
-    $this->call('GET', 'users/create');
+    $this->call('GET', 'user/create');
 
     $this->assertResponseOk();
   }
@@ -63,9 +63,9 @@ class UserControllerTest extends TestCase {
       ->once()
       ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
-    $this->call('POST', 'users');
+    $this->call('POST', 'user');
 
-    $this->assertRedirectedToRoute('users.create');
+    $this->assertRedirectedToRoute('user.create');
     $this->assertSessionHasErrors();
   }
 
@@ -78,9 +78,9 @@ class UserControllerTest extends TestCase {
       ->once()
       ->andReturn(Mockery::mock(array('isSaved' => true)));
 
-    $this->call('POST', 'users');
+    $this->call('POST', 'user');
 
-    $this->assertRedirectedToRoute('users.index');
+    $this->assertRedirectedToRoute('user.index');
     $this->assertSessionHas('flash');
   }
 
@@ -93,7 +93,7 @@ class UserControllerTest extends TestCase {
       ->once()
       ->with(1);
 
-    $this->call('GET', 'users/1');
+    $this->call('GET', 'user/1');
 
     $this->assertResponseOk();
   }
@@ -111,7 +111,7 @@ class UserControllerTest extends TestCase {
       ->with(1)
       ->andReturn($user);
 
-    $this->call('GET', 'users/1/edit');
+    $this->call('GET', 'user/1/edit');
 
     $this->assertResponseOk();
   }
@@ -126,9 +126,9 @@ class UserControllerTest extends TestCase {
       ->with(1)
       ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
-    $this->call('PUT', 'users/1');
+    $this->call('PUT', 'user/1');
 
-    $this->assertRedirectedToRoute('users.edit', 1);
+    $this->assertRedirectedToRoute('user.edit', 1);
     $this->assertSessionHasErrors();
   }
 
@@ -142,9 +142,9 @@ class UserControllerTest extends TestCase {
       ->with(1)
       ->andReturn(Mockery::mock(array('isSaved' => true)));
 
-    $this->call('PUT', 'users/1');
+    $this->call('PUT', 'user/1');
 
-    $this->assertRedirectedToRoute('users.show', 1);
+    $this->assertRedirectedToRoute('user.show', 1);
     $this->assertSessionHas('flash');
   }
 

@@ -48,11 +48,11 @@ class PostController extends BaseController {
 
     if($s->isSaved())
     {
-      return Redirect::route('posts.index')
+      return Redirect::route('post.index')
         ->with('flash', 'A new has been created');
     }
 
-    return Redirect::route('posts.create')
+    return Redirect::route('post.create')
       ->withInput()
       ->withErrors($s->errors());
   }
@@ -93,11 +93,11 @@ class PostController extends BaseController {
 
     if($s->isSaved())
     {
-      return Redirect::route('posts.show', $id)
+      return Redirect::route('post.show', $id)
         ->with('flash', 'The post was updated');
     }
 
-    return Redirect::route('posts.edit', $id)
+    return Redirect::route('post.edit', $id)
       ->withInput()
       ->withErrors($s->errors());
   }

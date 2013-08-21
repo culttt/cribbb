@@ -39,7 +39,7 @@ class PostControllerTest extends TestCase {
   {
     $this->mock->shouldReceive('all')->once();
 
-    $this->call('GET', 'posts');
+    $this->call('GET', 'post');
 
     $this->assertResponseOk();
   }
@@ -49,7 +49,7 @@ class PostControllerTest extends TestCase {
    */
   public function testCreate()
   {
-    $this->call('GET', 'posts/create');
+    $this->call('GET', 'post/create');
 
     $this->assertResponseOk();
   }
@@ -63,9 +63,9 @@ class PostControllerTest extends TestCase {
       ->once()
       ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
-    $this->call('POST', 'posts');
+    $this->call('POST', 'post');
 
-    $this->assertRedirectedToRoute('posts.create');
+    $this->assertRedirectedToRoute('post.create');
     $this->assertSessionHasErrors();
   }
 
@@ -78,9 +78,9 @@ class PostControllerTest extends TestCase {
       ->once()
       ->andReturn(Mockery::mock(array('isSaved' => true)));
 
-    $this->call('POST', 'posts');
+    $this->call('POST', 'post');
 
-    $this->assertRedirectedToRoute('posts.index');
+    $this->assertRedirectedToRoute('post.index');
     $this->assertSessionHas('flash');
   }
 
@@ -93,7 +93,7 @@ class PostControllerTest extends TestCase {
       ->once()
       ->with(1);
 
-    $this->call('GET', 'posts/1');
+    $this->call('GET', 'post/1');
 
     $this->assertResponseOk();
   }
@@ -111,7 +111,7 @@ class PostControllerTest extends TestCase {
       ->with(1)
       ->andReturn($post);
 
-    $this->call('GET', 'posts/1/edit');
+    $this->call('GET', 'post/1/edit');
 
     $this->assertResponseOk();
   }
@@ -126,9 +126,9 @@ class PostControllerTest extends TestCase {
       ->with(1)
       ->andReturn(Mockery::mock(array('isSaved' => false, 'errors' => array())));
 
-    $this->call('PUT', 'posts/1');
+    $this->call('PUT', 'post/1');
 
-    $this->assertRedirectedToRoute('posts.edit', 1);
+    $this->assertRedirectedToRoute('post.edit', 1);
     $this->assertSessionHasErrors();
   }
 
@@ -142,9 +142,9 @@ class PostControllerTest extends TestCase {
       ->with(1)
       ->andReturn(Mockery::mock(array('isSaved' => true)));
 
-    $this->call('PUT', 'posts/1');
+    $this->call('PUT', 'post/1');
 
-    $this->assertRedirectedToRoute('posts.show', 1);
+    $this->assertRedirectedToRoute('post.show', 1);
     $this->assertSessionHas('flash');
   }
 

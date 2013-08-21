@@ -6,7 +6,9 @@ class HomeController extends BaseController {
   {
     if (Auth::check())
     {
-      return View::make('home.dashboard');
+      $posts = Post::all();
+
+      return View::make('home.dashboard', compact('posts'));
     }
     return View::make('home.landing');
   }

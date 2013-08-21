@@ -7,7 +7,7 @@
     </ul>
   @endif
 
-  {{ Form::open(array('route' => 'users.store')) }}
+  {{ Form::open(array('route' => 'user.store')) }}
 
     <p>{{ Form::label('username', 'Username') }}
     {{ Form::text('username') }}</p>

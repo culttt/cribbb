@@ -21,8 +21,8 @@ Route::get('feed', array('before' => 'auth',
   'as' => 'home.feed'
 ));
 
-Route::resource('users', 'UserController');
-Route::resource('posts', 'PostController');
+Route::resource('user', 'UserController');
+Route::resource('post', 'PostController');
 
 /**
  * Login
