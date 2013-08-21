@@ -10,7 +10,7 @@ class PostController extends BaseController {
   protected $post;
 
   /**
-   * Inject the User Repository
+   * Inject the Post Repository
    */
   public function __construct(Post $post)
   {
