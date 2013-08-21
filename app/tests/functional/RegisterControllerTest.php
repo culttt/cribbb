@@ -68,7 +68,7 @@ class RegisterControllerTest extends TestCase{
 
     $this->call('POST', 'register');
 
-    $this->assertRedirectedToRoute('users.index');
+    $this->assertRedirectedToRoute('home.feed');
     $this->assertSessionHas('flash');
   }
 }

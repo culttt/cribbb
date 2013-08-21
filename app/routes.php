@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function()
-{
-  return View::make('hello');
-});
+Route::get('/', array(
+  'uses' => 'HomeController@index',
+  'as' => 'home.index'
+));
+
+Route::get('feed', array('before' => 'auth',
+  'uses' => 'HomeController@index',
+  'as' => 'home.feed'
+));
 
 Route::resource('users', 'UserController');
 Route::resource('posts', 'PostController');

@@ -64,7 +64,7 @@ class SessionControllerTest extends TestCase{
 
     $this->call('POST', 'login');
 
-    $this->assertRedirectedToRoute('users.index');
+    $this->assertRedirectedToRoute('home.feed');
   }
 
 }
