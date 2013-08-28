@@ -79,6 +79,17 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
     'password_confirmation' => 'password'
   );
 
+  public function feed()
+  {
+   $id = Auth::user()->id;
+   return Post::whereIn('user_id', function($query) use ($id)
+          {
+            $query->select('follow_id')
+                  ->from('user_follows')
+                  ->where('user_id', $id);
+          })->orWhere('user_id', $id)->get();
+  }
+
   /**
    * Auto purge redundant attributes
    *

@@ -313,4 +313,56 @@ class UserTest extends TestCase {
     $this->assertCount(2, $biz->followers);
   }
 
+  public function testUserFeed()
+  {
+    // Create users
+    $philip = FactoryMuff::create('User');
+    $jack = FactoryMuff::create('User');
+    $ev = FactoryMuff::create('User');
+    $biz = FactoryMuff::create('User');
+
+    // Create relationships
+    $philip->follow()->save($jack);
+    $philip->follow()->save($ev);
+    $philip->follow()->save($biz);
+    $biz->follow()->save($ev);
+    $biz->follow()->save($jack);
+    $jack->follow()->save($biz);
+    $ev->follow()->save($biz);
+
+    // Create posts
+    $philip->posts()->save(FactoryMuff::create('Post'));
+    $jack->posts()->save(FactoryMuff::create('Post'));
+    $ev->posts()->save(FactoryMuff::create('Post'));
+    $biz->posts()->save(FactoryMuff::create('Post'));
+
+    // Set the current user
+    $this->be($philip);
+
+    // Assert count
+    $posts = $philip->feed();
+    $this->assertCount(4, $posts);
+
+    // Set the current user
+    $this->be($jack);
+
+    // Assert count
+    $posts = $jack->feed();
+    $this->assertCount(2, $posts);
+
+    // Set the current user
+    $this->be($ev);
+
+    // Assert count
+    $posts = $ev->feed();
+    $this->assertCount(2, $posts);
+
+    // Set the current user
+    $this->be($biz);
+
+    // Assert count
+    $posts = $biz->feed();
+    $this->assertCount(3, $posts);
+  }
+
 }
