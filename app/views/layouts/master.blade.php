@@ -10,6 +10,7 @@
   <nav>
     <ul>
       <li><a href="/post/create">New post</a></li>
+    </ul>
   </nav>
 
   <div class="container">
