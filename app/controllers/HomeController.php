@@ -1,27 +1,27 @@
 <?php
 
-use Cribbb\Storage\Post\PostRepository as Post;
+use Cribbb\Storage\User\UserRepository as User;
 
 class HomeController extends BaseController {
 
   /**
-   * Post Repository
+   * User Repository
    */
-  protected $post;
+  protected $user;
 
   /**
    * Inject the User Repository
    */
-  public function __construct(Post $post)
+  public function __construct(User $user)
   {
-    $this->post = $post;
+    $this->user = $user;
   }
 
   public function index()
   {
     if (Auth::check())
     {
-      $posts = $this->post->all();
+      $posts = $this->user->feed();
 
       return View::make('home.dashboard', compact('posts'));
     }

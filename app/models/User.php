@@ -81,7 +81,8 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
 
   public function feed()
   {
-   $id = Auth::user()->id;
+    $id = $this->id;
+
    return Post::whereIn('user_id', function($query) use ($id)
           {
             $query->select('follow_id')

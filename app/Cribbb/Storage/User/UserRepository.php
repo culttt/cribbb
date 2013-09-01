@@ -11,4 +11,6 @@ interface UserRepository {
   public function update($input);
 
   public function delete($id);
+
+  public function feed();
 }
