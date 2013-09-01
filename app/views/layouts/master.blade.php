@@ -7,6 +7,11 @@
 </head>
 <body>
 
+  <nav>
+    <ul>
+      <li><a href="/post/create">New post</a></li>
+  </nav>
+
   <div class="container">
     @yield('content')
   </div>

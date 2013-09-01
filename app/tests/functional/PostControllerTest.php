@@ -80,7 +80,7 @@ class PostControllerTest extends TestCase {
 
     $this->call('POST', 'post');
 
-    $this->assertRedirectedToRoute('post.index');
+    $this->assertRedirectedToRoute('home.feed');
     $this->assertSessionHas('flash');
   }
 

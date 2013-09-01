@@ -48,7 +48,7 @@ class PostController extends BaseController {
 
     if($s->isSaved())
     {
-      return Redirect::route('post.index')
+      return Redirect::route('home.feed')
         ->with('flash', 'A new has been created');
     }
 
