@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Cribbb</title>
-  <link rel="stylesheet" href="/css/screen.css">
+  <?= stylesheet_link_tag() ?>
+  <?= javascript_include_tag() ?>
 </head>
 <body>
 
