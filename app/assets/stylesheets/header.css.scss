@@ -21,6 +21,19 @@ header{
     @include border-radius(20px);
   }
 
+  a:link{
+    color: #fff;
+    text-decoration: none;
+  }
+  a:visited{
+    color: #fff;
+    text-decoration: none;
+  }
+  a:hover{
+    color: #fff;
+    text-decoration: none;
+  }
+
   nav{
     position: absolute;
     top: 12px;
@@ -28,8 +41,7 @@ header{
 
     .btn{
       color: #fff;
-      border: 1px solid #ababab;
+      border: 1px solid #595959;
     }
   }
 }
-

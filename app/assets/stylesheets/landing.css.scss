@@ -1,0 +1,8 @@
+@import "_utilities";
+
+.hero{
+  height: 700px;
+  background: url('bg.jpg') no-repeat center center fixed;
+  @include background-size;
+  width: 100%;
+}

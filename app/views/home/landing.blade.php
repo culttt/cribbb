@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <h1>Welcome to Cribbb</h1>
+  <div class="hero">
+
+  </div>
 @stop
