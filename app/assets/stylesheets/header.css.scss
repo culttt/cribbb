@@ -15,7 +15,6 @@ header{
     font-size: 22px;
     font-weight: normal;
     text-transform: uppercase;
-    @include font-regular;
     letter-spacing: 2px;
     border: 1px solid #fff;
     @include border-radius(20px);

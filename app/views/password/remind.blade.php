@@ -1,18 +1,25 @@
 @extends('layouts.master')
 
 @section('content')
-  @if (Session::has('error'))
-    {{ trans(Session::get('reason')) }}
-  @elseif (Session::has('success'))
-    An email with the password reset has been sent.
-  @endif
 
-  {{ Form::open(array('route' => 'password.request')) }}
+  <div class="wrapper">
+    <div class="flash">
+      @if (Session::has('error'))
+        <span class="error">{{ trans(Session::get('reason')) }}</span>
+      @elseif (Session::has('success'))
+        <span class="confirm">An email with the password reset has been sent.</span>
+      @endif
+    </div>
+  </div>
 
-    <p>{{ Form::label('email', 'Email') }}
-    {{ Form::text('email') }}</p>
+  <section class="session-box">
+    {{ Form::open(array('route' => 'password.request')) }}
 
-    <p>{{ Form::submit('Submit') }}</p>
+      {{ Form::label('email', 'Email') }}
+      {{ Form::text('email', null, array('class' => 'input-block')) }}
 
-  {{ Form::close() }}
+      {{ Form::submit('Submit', array('class' => 'btn')) }}
+
+    {{ Form::close() }}
+  </section>
 @stop

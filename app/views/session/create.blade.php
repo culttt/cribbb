@@ -1,19 +1,28 @@
 @extends('layouts.master')
 
 @section('content')
+
   @if (Session::has('login_errors'))
-    <span class="error">Username or password incorrect.</span>
+    <div class="wrapper">
+      <div class="flash">
+        <span class="error">Username or password incorrect.</span>
+      </div>
+    </div>
   @endif
 
-  {{ Form::open(array('route' => 'session.store')) }}
+  <section class="session-box">
+    {{ Form::open(array('route' => 'session.store')) }}
 
-    <p>{{ Form::label('email', 'Email') }}
-    {{ Form::text('email') }}</p>
+      {{ Form::label('email', 'Email') }}
+      {{ Form::text('email', null, array('class' => 'input-block')) }}
 
-    <p>{{ Form::label('password', 'Password') }}
-    {{ Form::password('password') }}</p>
+      {{ Form::label('password', 'Password') }}
+      {{ Form::password('password', array('class' => 'input-block')) }}
 
-    <p>{{ Form::submit('Submit') }}</p>
+      {{ Form::submit('Submit', array('class' => 'btn')) }}
 
-  {{ Form::close() }}
+      <div class="password-reset"><a href="/password/reset" class="text-link">Forgot password?</a></div>
+
+    {{ Form::close() }}
+  </section>
 @stop

@@ -13,4 +13,5 @@
  *= require global
  *= require header
  *= require landing
+ *= require session
  */

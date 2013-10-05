@@ -1,12 +1,18 @@
 @import "_utilities";
+@import "_fonts";
 
-.group:after {
+.group:after{
   content: "";
   display: table;
   clear: both;
 }
 
+*{
+  box-sizing: Border-box
+}
+
 body{
+  @include font-regular;
   background-color: #1c1d1f;
 }
 
@@ -15,15 +21,37 @@ body{
   width: 960px;
 }
 
+.container{
+  padding: 0px;
+}
+
+.flash{
+  margin: 40px 0;
+
+  span{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    @include border-radius(5px);
+  }
+
+  .error{
+    background-color: #e75754;
+  }
+
+  .confirm{
+    background-color: #468847;
+  }
+}
+
 .btn{
   display: inline-block;
   padding: 11px 20px;
   font-size: 12px;
   text-decoration: none;
   letter-spacing: 1px;
+  background-color: transparent;
+  border: 0px;
   @include border-radius(3px);
-
-  &:hover{
-    margin: 1px 0 0 0;
-  }
 }
