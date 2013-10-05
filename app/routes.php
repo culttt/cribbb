@@ -11,18 +11,20 @@
 |
 */
 
+/**
+ * Home (Feed)
+ */
 Route::get('/', array(
   'uses' => 'HomeController@index',
   'as' => 'home.index'
 ));
-
-Route::get('feed', array('before' => 'auth',
+Route::get('feed', array(
+  'before' => 'auth',
   'uses' => 'HomeController@index',
   'as' => 'home.feed'
 ));
 
 Route::resource('user', 'UserController');
-Route::resource('post', 'PostController');
 
 /**
  * Login
@@ -72,4 +74,39 @@ Route::post('password/reset/{token}', array(
   'as' => 'password.update'
 ));
 
-
+/**
+ * Posts
+ */
+Route::get('post', array(
+  'uses' => 'PostController@index',
+  'as' => 'post.index'
+));
+Route::get('post/create', array(
+  'before' => 'auth',
+  'uses' => 'PostController@create',
+  'as' => 'post.create'
+));
+Route::get('post/{id}', array(
+  'uses' => 'PostController@show',
+  'as' => 'post.show'
+));
+Route::post('post', array(
+  'before' => 'auth',
+  'uses' => 'PostController@store',
+  'as' => 'post.store'
+));
+Route::get('post/{id}/edit', array(
+  'before' => 'auth',
+  'uses' => 'PostController@edit',
+  'as' => 'post.edit'
+));
+Route::put('post/{id}', array(
+  'before' => 'auth',
+  'uses' => 'PostController@update',
+  'as' => 'post.update'
+));
+Route::delete('post/{id}', array(
+  'before' => 'auth',
+  'uses' => 'PostController@destroy',
+  'as' => 'post.destory'
+));
