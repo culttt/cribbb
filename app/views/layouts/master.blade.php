@@ -8,11 +8,9 @@
 </head>
 <body>
 
-  <nav>
-    <ul>
-      <li><a href="/post/create">New post</a></li>
-    </ul>
-  </nav>
+  <header>
+    <span>Cribbb</span>
+  </headeR>
 
   <div class="container">
     @yield('content')
