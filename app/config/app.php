@@ -115,6 +115,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Cribbb\Storage\StorageServiceProvider',
+		'Codesleeve\AssetPipeline\AssetPipelineServiceProvider'
 	),
 
 	/*
