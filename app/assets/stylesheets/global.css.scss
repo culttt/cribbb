@@ -1,0 +1,25 @@
+@import "_utilities";
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.wrapper{
+  margin: auto;
+  width: 960px;
+}
+
+.btn{
+  display: inline-block;
+  padding: 11px 20px;
+  font-size: 12px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  @include border-radius(3px);
+
+  &:hover{
+    margin: 1px 0 0 0;
+  }
+}

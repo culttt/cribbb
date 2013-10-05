@@ -9,11 +9,14 @@
 <body>
 
   <header>
-    <span>Cribbb</span>
+    <h1>Cribbb</h1>
+    <nav>
+      <a href="/login" class="btn">Login</a>
+    </nav>
   </headeR>
 
   <div class="container">
-    @yield('content')
+    <!--@yield('content')-->
   </div>
 
 </body>

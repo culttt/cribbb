@@ -1,0 +1,35 @@
+@import "_utilities";
+@import "_fonts";
+
+header{
+  position: relative;
+  padding: 18px 0;
+  text-align: center;
+  background-color: #000;
+
+  h1{
+    display: inline;
+    margin: 0;
+    padding: 4px 6px;
+    color: #fff;
+    font-size: 22px;
+    font-weight: normal;
+    text-transform: uppercase;
+    @include font-regular;
+    letter-spacing: 2px;
+    border: 1px solid #fff;
+    @include border-radius(20px);
+  }
+
+  nav{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    .btn{
+      color: #fff;
+      border: 1px solid #ababab;
+    }
+  }
+}
+
