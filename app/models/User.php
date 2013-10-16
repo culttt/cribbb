@@ -33,7 +33,7 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
    */
   public function follow()
   {
-    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id');
+    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id')->withTimestamps();;
   }
 
   /**
@@ -41,7 +41,7 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
    */
   public function followers()
   {
-    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id');
+    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id')->withTimestamps();;
   }
 
   /**
