@@ -1,21 +1,16 @@
 {
   "name": "Cribbb",
+  "title": "I need to think of a catchy title",
+  "url": "http://cribbb.com",
+  "author": "Philip Brown",
+  "copyright": "2013",
   "version": "0.0.1",
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.4"
-  },
-  "gitHead": "3bbe185659d052b4277a7202fab9ace6e7cfc845",
-  "readmeFilename": "readme.md",
-  "description": "...Full read me coming soon...",
-  "main": "GruntFile.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/cribbb/cribbb.git"
   },
-  "author": "",
-  "license": "GNU"
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.4"
+  }
 }
