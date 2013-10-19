@@ -5,12 +5,13 @@
   "author": "Philip Brown",
   "copyright": "2013",
   "version": "0.0.1",
+  "license": "GNU",
   "repository": {
     "type": "git",
     "url": "git://github.com/cribbb/cribbb.git"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.4"
+    "grunt-contrib-sass": "~0.5.0"
   }
 }
