@@ -27,15 +27,17 @@ module.exports = function(grunt) {
     project: {
       app: 'app',
       assets: '<%= project.app %>/assets',
+      src: '<%= project.assets %>/src',
       css: [
-        '<%= project.assets %>/scss/style.scss'
+        '<%= project.src %>/scss/style.scss'
+      ],
+      js: [
+        '<%= project.src %>/js/*.js'
       ]
     },
 
     /**
      * Project banner
-     * Dynamically appended to CSS/JS files
-     * Inherits text from package.json
      */
     tag: {
       banner: '/*!\n' +
@@ -49,9 +51,7 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Compile Sass/SCSS files
-     * https://github.com/gruntjs/grunt-contrib-sass
-     * Compiles all Sass/SCSS files and appends project banner
+     * Sass
      */
     sass: {
       dev: {
@@ -75,10 +75,20 @@ module.exports = function(grunt) {
       }
     },
 
+    /**
+     * Watch
+     */
+    watch: {
+      sass: {
+        files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
+        tasks: ['sass:dev']
+      }
+    }
+
   });
 
   /**
-   * Load npm tasks
+   * Load Grunt plugins
    */
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -87,7 +97,8 @@ module.exports = function(grunt) {
    * Run `grunt` on the command line
    */
   grunt.registerTask('default', [
-    'sass:dev'
+    'sass:dev',
+    'watch'
   ]);
 
   /**
