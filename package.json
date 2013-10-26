@@ -1,0 +1,18 @@
+{
+  "name": "Cribbb",
+  "title": "I need to think of a catchy title",
+  "url": "http://cribbb.com",
+  "author": "Philip Brown",
+  "copyright": "2013",
+  "version": "0.0.1",
+  "license": "GNU",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cribbb/cribbb.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.5.0",
+    "matchdep": "~0.3.0"
+  }
+}
