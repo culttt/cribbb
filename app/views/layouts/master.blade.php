@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Cribbb</title>
-  <?= stylesheet_link_tag() ?>
-  <?= javascript_include_tag() ?>
 </head>
 <body>
 
