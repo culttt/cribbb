@@ -3,25 +3,21 @@
 @section('content')
 
   @if (Session::has('login_errors'))
-    <div class="wrapper">
-      <div class="flash">
-        <span class="error">Username or password incorrect.</span>
-      </div>
-    </div>
+    Username or password incorrect.
   @endif
 
-  <section class="session-box">
+  <section>
     {{ Form::open(array('route' => 'session.store')) }}
 
       {{ Form::label('email', 'Email') }}
-      {{ Form::text('email', null, array('class' => 'input-block')) }}
+      {{ Form::text('email') }}
 
       {{ Form::label('password', 'Password') }}
-      {{ Form::password('password', array('class' => 'input-block')) }}
+      {{ Form::password('password') }}
 
-      {{ Form::submit('Submit', array('class' => 'btn')) }}
+      {{ Form::submit('Submit') }}
 
-      <div class="password-reset"><a href="/password/reset" class="text-link">Forgot password?</a></div>
+      <a href="/password/reset">Forgot password?</a>
 
     {{ Form::close() }}
   </section>

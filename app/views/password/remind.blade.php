@@ -2,23 +2,23 @@
 
 @section('content')
 
-  <div class="wrapper">
-    <div class="flash">
+  <div>
+    <div>
       @if (Session::has('error'))
-        <span class="error">{{ trans(Session::get('reason')) }}</span>
+        <span>{{ trans(Session::get('reason')) }}</span>
       @elseif (Session::has('success'))
-        <span class="confirm">An email with the password reset has been sent.</span>
+        <span>An email with the password reset has been sent.</span>
       @endif
     </div>
   </div>
 
-  <section class="session-box">
+  <section>
     {{ Form::open(array('route' => 'password.request')) }}
 
       {{ Form::label('email', 'Email') }}
-      {{ Form::text('email', null, array('class' => 'input-block')) }}
+      {{ Form::text('email') }}
 
-      {{ Form::submit('Submit', array('class' => 'btn')) }}
+      {{ Form::submit('Submit') }}
 
     {{ Form::close() }}
   </section>

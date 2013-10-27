@@ -3,28 +3,24 @@
 @section('content')
 
   @if (Session::has('error'))
-    <div class="wrapper">
-      <div class="flash">
-        <span class="error">{{ trans(Session::get('reason')) }}</span>
-      </div>
-    </div>
+    {{ trans(Session::get('reason')) }}
   @endif
 
-  <section class="session-box">
+  <section>
     {{ Form::open(array('route' => array('password.update', $token))) }}
 
       <p>{{ Form::label('email', 'Email') }}
-      {{ Form::text('email', null, array('class' => 'input-block')) }}</p>
+      {{ Form::text('email') }}</p>
 
       <p>{{ Form::label('password', 'Password') }}
-      {{ Form::text('password', array('class' => 'input-block')) }}</p>
+      {{ Form::text('password') }}</p>
 
       <p>{{ Form::label('password_confirmation', 'Password confirm') }}
-      {{ Form::text('password_confirmation', array('class' => 'input-block')) }}</p>
+      {{ Form::text('password_confirmation') }}</p>
 
       {{ Form::hidden('token', $token) }}
 
-      <p>{{ Form::submit('Submit', array('class' => 'btn')) }}</p>
+      <p>{{ Form::submit('Submit') }}</p>
 
     {{ Form::close() }}
   </section>
