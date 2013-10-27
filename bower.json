@@ -2,7 +2,6 @@
   "name": "Cribbb",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "~1.10.2",
     "normalize-css": "~2.1.3"
   }
 }
