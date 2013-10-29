@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Cribbb</title>
+  <link href="css/style.min.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 

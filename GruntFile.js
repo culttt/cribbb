@@ -27,12 +27,11 @@ module.exports = function(grunt) {
     project: {
       app: 'app',
       assets: '<%= project.app %>/assets',
-      src: '<%= project.assets %>/src',
       css: [
-        '<%= project.src %>/scss/style.scss'
+        '<%= project.assets %>/scss/style.scss'
       ],
       js: [
-        '<%= project.src %>/js/*.js'
+        'public/js/*.js'
       ]
     },
 
@@ -61,7 +60,7 @@ module.exports = function(grunt) {
           compass: true
         },
         files: {
-          '<%= project.assets %>/css/style.css': '<%= project.css %>'
+          'public/css/style.css': '<%= project.css %>'
         }
       },
       dist: {
@@ -70,7 +69,37 @@ module.exports = function(grunt) {
           compass: true
         },
         files: {
-          '<%= project.assets %>/css/style.css': '<%= project.css %>'
+          'public/css/style.css': '<%= project.css %>'
+        }
+      }
+    },
+
+    /**
+     * CSSMin
+     * CSS minification
+     * https://github.com/gruntjs/grunt-contrib-cssmin
+     */
+    cssmin: {
+      dev: {
+        options: {
+          banner: '<%= tag.banner %>'
+        },
+        files: {
+          'public/css/style.min.css': [
+            '<%= project.assets %>/bower/normalize-css/normalize.css',
+            '<%= project.assets %>/scss/style.scss'
+          ]
+        }
+      },
+      dist: {
+        options: {
+          banner: '<%= tag.banner %>'
+        },
+        files: {
+          'public/css/style.min.css': [
+            '<%= project.src %>/bower/normalize-css/normalize.css',
+            '<%= project.assets %>/scss/style.scss'
+          ]
         }
       }
     },
@@ -80,8 +109,8 @@ module.exports = function(grunt) {
      */
     watch: {
       sass: {
-        files: '<%= project.src %>/scss/{,*/}*.{scss,sass}',
-        tasks: ['sass:dev']
+        files: '<%= project.assets %>/scss/{,*/}*.{scss,sass}',
+        tasks: ['sass:dev', 'cssmin:dev']
       }
     }
 
@@ -98,6 +127,7 @@ module.exports = function(grunt) {
    */
   grunt.registerTask('default', [
     'sass:dev',
+    'cssmin:dev',
     'watch'
   ]);
 
