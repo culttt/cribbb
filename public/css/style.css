@@ -20,3 +20,8 @@
 .clear:after {
   clear: both;
 }
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+}
