@@ -3,7 +3,9 @@
 @section('content')
 
   <header>
-    Cribbb
+    <nav>
+      <a href="/login" class="button button-invert">Login</a>
+    </nav>
   </head>
 
 @stop

@@ -1,3 +1,11 @@
-header{
+header {
   @extend %wrapper;
+  @include outer-container;
+  padding: 1em 0;
+}
+
+nav {
+  @include span-columns(1);
+  @include shift(11);
+  text-align: right;
 }
