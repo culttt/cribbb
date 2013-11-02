@@ -1,11 +1,14 @@
 header {
-  @extend %wrapper;
   @include outer-container;
-  padding: 1em 0;
+  background-color: green;
 }
 
-nav {
-  @include span-columns(1);
-  @include shift(11);
-  text-align: right;
+.left{
+  background-color: red;
+  @include span-columns(6);
+}
+
+.right{
+  background-color: orange;
+  @include span-columns(6);
 }

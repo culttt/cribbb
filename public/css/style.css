@@ -1,17 +1,55 @@
-/*!
- * Cribbb
- * I need to think of a catchy title
- * http://cribbb.com
- * @author Philip Brown
- * @version 0.0.1
- * Copyright 2013. GNU licensed.
- */
-
 /* Import all the things */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body:before {
+  content: '';
+  display: inline-block;
+  background-image: deprecated-webkit-gradient(linear, left top, left bottom, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 6.17215%, rgba(0, 0, 0, 0) 6.17215%, rgba(0, 0, 0, 0) 8.5298%, red 8.5298%, red 14.70196%, rgba(0, 0, 0, 0) 14.70196%, rgba(0, 0, 0, 0) 17.05961%, red 17.05961%, red 23.23176%, rgba(0, 0, 0, 0) 23.23176%, rgba(0, 0, 0, 0) 25.58941%, red 25.58941%, red 31.76157%, rgba(0, 0, 0, 0) 31.76157%, rgba(0, 0, 0, 0) 34.11922%, red 34.11922%, red 40.29137%, rgba(0, 0, 0, 0) 40.29137%, rgba(0, 0, 0, 0) 42.64902%, red 42.64902%, red 48.82117%, rgba(0, 0, 0, 0) 48.82117%, rgba(0, 0, 0, 0) 51.17883%, red 51.17883%, red 57.35098%, rgba(0, 0, 0, 0) 57.35098%, rgba(0, 0, 0, 0) 59.70863%, red 59.70863%, red 65.88078%, rgba(0, 0, 0, 0) 65.88078%, rgba(0, 0, 0, 0) 68.23843%, red 68.23843%, red 74.41059%, rgba(0, 0, 0, 0) 74.41059%, rgba(0, 0, 0, 0) 76.76824%, red 76.76824%, red 82.94039%, rgba(0, 0, 0, 0) 82.94039%, rgba(0, 0, 0, 0) 85.29804%, red 85.29804%, red 91.4702%, rgba(0, 0, 0, 0) 91.4702%, rgba(0, 0, 0, 0) 93.82785%, red 93.82785%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  max-width: 102.4em;
+  opacity: 0.5;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+@media screen and (max-width: 768px) {
+  body:before {
+    background-image: deprecated-webkit-gradient(linear, left top, left bottom, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+    background-image: linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 9.36867%, rgba(0, 0, 0, 0) 9.36867%, rgba(0, 0, 0, 0) 12.94733%, red 12.94733%, red 22.316%, rgba(0, 0, 0, 0) 22.316%, rgba(0, 0, 0, 0) 25.89467%, red 25.89467%, red 35.26334%, rgba(0, 0, 0, 0) 35.26334%, rgba(0, 0, 0, 0) 38.842%, red 38.842%, red 48.21067%, rgba(0, 0, 0, 0) 48.21067%, rgba(0, 0, 0, 0) 51.78933%, red 51.78933%, red 61.158%, rgba(0, 0, 0, 0) 61.158%, rgba(0, 0, 0, 0) 64.73666%, red 64.73666%, red 74.10533%, rgba(0, 0, 0, 0) 74.10533%, rgba(0, 0, 0, 0) 77.684%, red 77.684%, red 87.05267%, rgba(0, 0, 0, 0) 87.05267%, rgba(0, 0, 0, 0) 90.63133%, red 90.63133%, red 100.0%, rgba(0, 0, 0, 0) 100.0%);
+  }
+}
+@media screen and (max-width: 480px) {
+  body:before {
+    background-image: deprecated-webkit-gradient(linear, left top, left bottom, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+    background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+    background-image: -ms-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+    background-image: linear-gradient(left, rgba(0, 0, 0, 0) 0, red 0, red 19.43277%, rgba(0, 0, 0, 0) 19.43277%, rgba(0, 0, 0, 0) 26.85574%, red 26.85574%, red 46.28851%, rgba(0, 0, 0, 0) 46.28851%, rgba(0, 0, 0, 0) 53.71149%, red 53.71149%, red 73.14426%, rgba(0, 0, 0, 0) 73.14426%, rgba(0, 0, 0, 0) 80.56723%, red 80.56723%, red 100%, rgba(0, 0, 0, 0) 100%);
+  }
 }
 
 /* Modules */
@@ -33,11 +71,6 @@
 
 /* Wrapper */
 /* Typography */
-header {
-  margin: auto;
-  width: 1200px;
-}
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 62.5%;
@@ -70,10 +103,10 @@ body {
 /* Partials */
 header {
   *zoom: 1;
-  max-width: 1200px;
+  max-width: 102.4em;
   margin-left: auto;
   margin-right: auto;
-  padding: 1em 0;
+  background-color: green;
 }
 header:before, header:after {
   content: " ";
@@ -83,14 +116,24 @@ header:after {
   clear: both;
 }
 
-nav {
+.left {
+  background-color: red;
   display: block;
   float: left;
-  margin-right: 2.5641%;
-  width: 5.98291%;
-  margin-left: 94.01709%;
-  text-align: right;
+  margin-right: 2.35765%;
+  width: 48.82117%;
 }
-nav:last-child {
+.left:last-child {
+  margin-right: 0;
+}
+
+.right {
+  background-color: orange;
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 48.82117%;
+}
+.right:last-child {
   margin-right: 0;
 }

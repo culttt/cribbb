@@ -55,9 +55,7 @@ module.exports = function(grunt) {
     sass: {
       dev: {
         options: {
-          style: 'expanded',
-          banner: '<%= tag.banner %>',
-          compass: true
+          style: 'expanded'
         },
         files: {
           'public/css/style.css': '<%= project.css %>'
@@ -65,8 +63,7 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          style: 'compressed',
-          compass: true
+          style: 'compressed'
         },
         files: {
           'public/css/style.css': '<%= project.css %>'
@@ -81,9 +78,6 @@ module.exports = function(grunt) {
      */
     cssmin: {
       dev: {
-        options: {
-          banner: '<%= tag.banner %>'
-        },
         files: {
           'public/css/style.min.css': [
             '<%= project.assets %>/bower/normalize-css/normalize.css',
