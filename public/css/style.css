@@ -31,6 +31,13 @@
   clear: both;
 }
 
+/* Wrapper */
+/* Typography */
+header {
+  margin: auto;
+  width: 960px;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 62.5%;
@@ -42,3 +49,5 @@ body {
   margin: 0px;
   background-color: #343945;
 }
+
+/* Partials */
