@@ -2,9 +2,11 @@ header {
   @include outer-container;
   padding: 20px 0;
 
+  @include breakpoint(jackie) {
+    padding: 20px;
+  }
+
   nav {
-    @include span-columns(2);
-    @include shift(10);
     text-align: right;
   }
 }

@@ -3,7 +3,7 @@
 @import "../bower/bourbon/dist/bourbon";
 @import "settings/neat";
 @import "../bower/neat/app/assets/stylesheets/neat";
-
+@import "mixins/mixins";
 @import "modules/modules";
 @import "styles/styles";
 @import "partials/partials";
