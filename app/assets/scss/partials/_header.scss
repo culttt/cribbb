@@ -1,14 +1,10 @@
 header {
   @include outer-container;
-  background-color: green;
-}
+  padding: 20px 0;
 
-.left{
-  background-color: red;
-  @include span-columns(6);
-}
-
-.right{
-  background-color: orange;
-  @include span-columns(6);
+  nav {
+    @include span-columns(2);
+    @include shift(10);
+    text-align: right;
+  }
 }

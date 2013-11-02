@@ -3,8 +3,9 @@
 @section('content')
 
   <header>
-    <div class="left">left</div>
-    <div class="right">right</div>
+    <nav>
+      <a href="/login" class="button button-grey">Sign in</a>
+    </nav>
   </head>
 
 @stop
