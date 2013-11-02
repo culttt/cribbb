@@ -9,6 +9,10 @@
 
 /* Import all the things */
 /* Modules */
+* {
+  box-sizing: border-box;
+}
+
 .clear:before, .clear:after {
   content: '';
   display: table;
