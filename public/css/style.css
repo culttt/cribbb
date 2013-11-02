@@ -7,3 +7,16 @@
  * Copyright 2013. GNU licensed.
  */
 
+/* Import all the things */
+/* Modules */
+.clear:before, .clear:after {
+  content: '';
+  display: table;
+}
+
+.clear {
+  *zoom: 1;
+}
+.clear:after {
+  clear: both;
+}
