@@ -1,2 +1,7 @@
 /* Import all the things */
-@import 'modules/_modules.scss';
+
+@import "../bower/bourbon/dist/bourbon";
+@import "../bower/neat/app/assets/stylesheets/neat";
+
+@import "modules/modules";
+@import "styles/styles";

@@ -8,6 +8,12 @@
  */
 
 /* Import all the things */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* Modules */
 * {
   box-sizing: border-box;
@@ -28,4 +34,11 @@
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 62.5%;
+}
+
+/* Styles */
+/* Colors */
+body {
+  margin: 0px;
+  background-color: #343945;
 }

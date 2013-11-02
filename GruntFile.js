@@ -87,7 +87,7 @@ module.exports = function(grunt) {
         files: {
           'public/css/style.min.css': [
             '<%= project.assets %>/bower/normalize-css/normalize.css',
-            '<%= project.assets %>/scss/style.scss'
+            'public/css/style.css'
           ]
         }
       },
@@ -97,8 +97,8 @@ module.exports = function(grunt) {
         },
         files: {
           'public/css/style.min.css': [
-            '<%= project.src %>/bower/normalize-css/normalize.css',
-            '<%= project.assets %>/scss/style.scss'
+            '<%= project.assets %>/bower/normalize-css/normalize.css',
+            'public/css/style.css'
           ]
         }
       }

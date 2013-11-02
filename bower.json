@@ -2,6 +2,8 @@
   "name": "Cribbb",
   "version": "0.0.1",
   "dependencies": {
-    "normalize-css": "~2.1.3"
+    "normalize-css": "~2.1.3",
+    "bourbon": "7e6e3f22d14641a787f021e985781bff4edf9627",
+    "neat": "1.4.0"
   }
 }
