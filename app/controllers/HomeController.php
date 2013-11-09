@@ -21,9 +21,11 @@ class HomeController extends BaseController {
   {
     if (Auth::check())
     {
+      $user = Auth::user();
+
       $posts = $this->user->feed();
 
-      return View::make('home.dashboard', compact('posts'));
+      return View::make('home.dashboard', compact('user', 'posts'));
     }
     return View::make('home.landing');
   }

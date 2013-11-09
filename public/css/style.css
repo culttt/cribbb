@@ -164,6 +164,12 @@ header nav {
   text-align: right;
 }
 
+.header-dropdown {
+  color: #fff;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
 .auth-form {
   width: 400px;
   margin: 60px auto;
@@ -235,5 +241,9 @@ header nav {
 }
 
 .flash-error {
+  background-color: red;
+}
+
+.dropdown {
   background-color: red;
 }
