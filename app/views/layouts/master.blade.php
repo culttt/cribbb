@@ -9,7 +9,15 @@
   <link rel="stylesheet" href="css/style.min.css">
 </head>
 <body>
-  @yield('content')
+  <header>
+    <nav>
+      <a href="/login" class="button button-grey">Sign in</a>
+    </nav>
+  </header>
+
+  <div class="site-container">
+    @yield('content')
+  </div>
 </body>
 <script type="text/javascript">
   (function() {

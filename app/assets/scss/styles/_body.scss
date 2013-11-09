@@ -5,6 +5,7 @@ body {
 
   /*
   Ladies and Gentleman, The Jackson 5
+  */
   @include breakpoint(michael) {
     background-color: yellow;
   }
@@ -20,6 +21,5 @@ body {
   @include breakpoint(tito) {
     background-color: blue;
   }
-  */
 
 }

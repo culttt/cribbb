@@ -1,0 +1,54 @@
+.auth-form {
+  width: 400px;
+  margin: 60px auto;
+}
+
+.auth-form-header {
+  padding: 10px 20px 0 20px;
+  background-color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+  h1 {
+    margin: 0px;
+    color: #000;
+    font-size: 1.6em;
+    font-weight: normal;
+    @include font-stack-bold;
+  }
+}
+
+.auth-form-body {
+  padding: 20px;
+  background-color: #fff;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  label {
+    display: block;
+    padding: 0 0 5px;
+    font-size: 1.3em;
+    color: #000;
+  }
+
+  .email,
+  .password {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px 0;
+    padding: 7px 8px;
+    font-size: 1.2em;
+    background-color: transparent;
+    border: 1px solid #d9d9d9;
+    border-radius: 3px;
+  }
+
+  .submit{
+    border: 0px;
+  }
+
+  p {
+    margin: 20px 0 0 0;
+    font-size: 1.3em;
+  }
+}
