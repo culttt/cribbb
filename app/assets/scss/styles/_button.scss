@@ -8,3 +8,15 @@
     @include linear-gradient(#556168, #3c454b);
   }
 }
+
+.button-green {
+  @include linear-gradient(#81B72F, #72A620);
+  color: #fff;
+  border-color: #2d373d;
+  box-shadow: inset 0 1px 0 0 #fff,0 1px 1px 0 rgba(0,0,0,0.3);
+
+  &:hover{
+    @include linear-gradient(#72A620, #72A620);
+  }
+}
+

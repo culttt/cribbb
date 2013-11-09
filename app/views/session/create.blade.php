@@ -21,7 +21,7 @@
         {{ Form::label('password', 'Password') }}
         {{ Form::password('password', array('class' => 'password')) }}
 
-        {{ Form::submit('Submit', array('class' => 'submit button button-grey')) }}
+        {{ Form::submit('Sign in', array('class' => 'submit button button-green')) }}
 
         <p><a href="/password/reset">Forgot password?</a></p>
 
