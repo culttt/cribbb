@@ -64,7 +64,7 @@ class UserTest extends TestCase {
     $user1->username = "philipbrown";
     $user1->email = "phil@ipbrown.com";
     $user1->password = "password";
-    $user1->password_confirmation = "password";
+
     // User should save
     $this->assertTrue($user1->save());
 
@@ -73,7 +73,7 @@ class UserTest extends TestCase {
     $user2->username = "philipbrown";
     $user2->email = "pb@yflag.com";
     $user2->password = "password";
-    $user2->password_confirmation = "password";
+
     // User should save
     $this->assertFalse($user2->save());
 
@@ -96,7 +96,6 @@ class UserTest extends TestCase {
     $user = new User;
     $user->username = "philipbrown";
     $user->password = "password";
-    $user->password_confirmation = "password";
 
     // User should not save
     $this->assertFalse($user->save());
@@ -121,7 +120,6 @@ class UserTest extends TestCase {
     $user->username = "philipbrown";
     $user->email = "This is not an email address";
     $user->password = "password";
-    $user->password_confirmation = "password";
 
     // User should not save
     $this->assertFalse($user->save());
@@ -146,7 +144,7 @@ class UserTest extends TestCase {
     $user1->username = "philipbrown";
     $user1->email = "phil@ipbrown.com";
     $user1->password = "password";
-    $user1->password_confirmation = "password";
+
     // User should save
     $this->assertTrue($user1->save());
 
@@ -155,7 +153,7 @@ class UserTest extends TestCase {
     $user2->username = "philly";
     $user2->email = "phil@ipbrown.com";
     $user2->password = "password";
-    $user2->password_confirmation = "password";
+
     // User should save
     $this->assertFalse($user2->save());
 
@@ -178,7 +176,6 @@ class UserTest extends TestCase {
     $user = new User;
     $user->username = "philipbrown";
     $user->email = "phil@ipbrown.com";
-    $user->password_confirmation = "password";
 
     // User should not save
     $this->assertFalse($user->save());
@@ -194,57 +191,6 @@ class UserTest extends TestCase {
   }
 
   /**
-   * Test Password and Confirmation match
-   */
-  public function testPasswordAndConfirmationMatch(){
-    // Create a new User
-    $user = new User;
-    $user->username = "philipbrown";
-    $user->email = "phil@ipbrown.com";
-    $user->password = "password";
-    $user->password_confirmation = "reallysecure";
-
-    // User should not save
-    $this->assertFalse($user->save());
-
-    // Save the errors
-    $errors = $user->errors()->all();
-
-    // There should be 1 error
-    $this->assertCount(1, $errors);
-
-    // The error should be set
-    $this->assertEquals($errors[0], "The password confirmation does not match.");
-  }
-
-  /**
-   * Test Password Confirmatiom is required
-   */
-  public function testPasswordConfirmationIsRequired()
-  {
-    // Create a new User
-    $user = new User;
-    $user->username = "philipbrown";
-    $user->email = "phil@ipbrown.com";
-    $user->password = "password";
-
-    // User should not save
-    $this->assertFalse($user->save());
-
-    // Save the errors
-    $errors = $user->errors()->all();
-
-    // There should be 2 errors
-    $this->assertCount(2, $errors);
-
-    // The error should be set
-    $this->assertEquals($errors[0], "The password confirmation does not match.");
-
-    // The error should be set
-    $this->assertEquals($errors[1], "The password confirmation field is required.");
-  }
-
-  /**
    * Test a password can be updated correctly
    */
   public function testPasswordUpdatesCorrectly()
@@ -254,7 +200,6 @@ class UserTest extends TestCase {
     $user->username = "philipbrown";
     $user->email = "phil@ipbrown.com";
     $user->password = "password";
-    $user->password_confirmation = "password";
 
     // User should save
     $this->assertTrue($user->save());
@@ -264,7 +209,7 @@ class UserTest extends TestCase {
 
     // Update password
     $philip->password = "newpassword";
-    
+
     // User should save
     $this->assertTrue($philip->save());
   }

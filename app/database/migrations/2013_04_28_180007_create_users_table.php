@@ -16,8 +16,10 @@ class CreateUsersTable extends Migration {
     {
       $table->increments('id');
       $table->string('email');
-      $table->string('password');
+      $table->string('first_name')->nullable();
+      $table->string('last_name')->nullable();
       $table->string('username');
+      $table->string('password');
       $table->timestamps();
     });
   }
@@ -29,7 +31,7 @@ class CreateUsersTable extends Migration {
    */
   public function down()
   {
-      Schema::drop('users');
+    Schema::drop('users');
   }
 
 }

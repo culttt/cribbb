@@ -18,7 +18,7 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
    *
    * @var array
    */
-  protected $fillable = array('username', 'first_name', 'last_name', 'email', "password", "password_confirmation");
+  protected $fillable = array('username', 'first_name', 'last_name', 'email', "password");
 
   /**
    * Post relationship
@@ -63,8 +63,6 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
     "create" => array(
       'username' => 'unique:users',
       'email' => 'unique:users',
-      'password' => 'confirmed',
-      'password_confirmation' => 'required'
     ),
     "update" => array()
   );
@@ -75,8 +73,7 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
   public static $factory = array(
     'username' => 'string',
     'email' => 'email',
-    'password' => 'password',
-    'password_confirmation' => 'password'
+    'password' => 'string',
   );
 
   public function feed()
