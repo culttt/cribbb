@@ -8,5 +8,7 @@ $visual-grid-opacity: 0.5;
 // Change the grid settings
 $max-width: em(1024, 10);
 
-$tablet: new-breakpoint(max-width 768px 8);
+$tablet: new-breakpoint(max-width 1024px 6);
+$tablet: new-breakpoint(max-width 800px 5);
+$tablet: new-breakpoint(max-width 600px 4);
 $mobile: new-breakpoint(max-width 480px 3);

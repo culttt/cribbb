@@ -2,7 +2,7 @@ header {
   @include outer-container;
   padding: 20px 0;
 
-  @include breakpoint(jackie) {
+  @include breakpoint(michael) {
     padding: 20px;
   }
 

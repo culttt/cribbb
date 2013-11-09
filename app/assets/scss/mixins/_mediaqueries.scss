@@ -1,15 +1,17 @@
 @mixin breakpoint($point) {
   @if $point == michael {
-    @media (max-width: 1600px) { @content; }
+    @media (max-width: 1024px) { @content; }
   }
   @else if $point == jermaine {
-    @media (max-width: 1250px) { @content; }
+    @media (max-width: 800px) { @content; }
   }
   @else if $point == jackie {
-    @media (max-width: 650px)  { @content; }
+    @media (max-width: 700px)  { @content; }
   }
-  /*
-    marlon
-    tito
-  */
+  @else if $point == marlon {
+    @media (max-width: 600px)  { @content; }
+  }
+  @else if $point == tito {
+    @media (max-width: 500px)  { @content; }
+  }
 }
