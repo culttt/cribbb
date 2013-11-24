@@ -1,0 +1,25 @@
+.navigation {
+  background-color: white;
+  @include span-columns(2);
+
+  @include media($michael) {
+    @include span-columns(2);
+  }
+
+  @include media($jermaine) {
+    @include span-columns(2);
+  }
+
+  @include media($jackie) {
+    @include span-columns(2);
+  }
+
+  @include media($marlon) {
+    @include span-columns(2);
+  }
+
+  @include media($tito) {
+    @include span-columns(2);
+  }
+
+}

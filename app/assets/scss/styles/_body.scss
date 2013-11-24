@@ -21,5 +21,10 @@ body {
   @include breakpoint(tito) {
     background-color: blue;
   }
+}
 
+.site-container {
+  margin: auto;
+  width: 100%;
+  max-width: 1024px;
 }

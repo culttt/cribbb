@@ -4,7 +4,7 @@
 
   @if (Session::has('login_errors'))
     <div class="flash flash-error">
-    Username or password incorrect.
+      Username or password incorrect.
     </div>
   @endif
 
@@ -28,4 +28,5 @@
       {{ Form::close() }}
     </div>
   </div>
+
 @stop

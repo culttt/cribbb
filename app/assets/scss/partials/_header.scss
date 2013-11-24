@@ -1,6 +1,7 @@
 header {
   @include outer-container;
   padding: 20px 0;
+  background-color: green;
 
   @include breakpoint(michael) {
     padding: 20px;
@@ -9,10 +10,4 @@ header {
   nav {
     text-align: right;
   }
-}
-
-.header-dropdown {
-  color: #fff;
-  font-size: 1.4em;
-  text-decoration: none;
 }
