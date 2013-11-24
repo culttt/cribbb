@@ -3,5 +3,19 @@
 @import "settings/neat";
 @import "../bower/neat/app/assets/stylesheets/neat";
 
+/* Settings */
+@import "settings/settings.scss";
+
 /* Mixins */
 @import "mixins/mediaqueries";
+
+/* Base */
+@import "base/reset";
+@import "base/clear";
+
+/* Style */
+@import "style/body";
+@import "style/fonts";
+
+/* Components */
+@import "components/button.scss";

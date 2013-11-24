@@ -6,12 +6,12 @@
     @media (max-width: 800px) { @content; }
   }
   @else if $point == jackie {
-    @media (max-width: 700px)  { @content; }
+    @media (max-width: 700px) { @content; }
   }
   @else if $point == marlon {
-    @media (max-width: 600px)  { @content; }
+    @media (max-width: 600px) { @content; }
   }
   @else if $point == tito {
-    @media (max-width: 500px)  { @content; }
+    @media (max-width: 500px) { @content; }
   }
 }

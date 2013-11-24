@@ -11,4 +11,54 @@
   box-sizing: border-box;
 }
 
+/* Settings */
+/* Wrapper */
+/* Typography */
+/* Colors */
 /* Mixins */
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+.clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style */
+body {
+  background-color: #343945;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 62.5%;
+}
+
+/* Components */
+.button, .button-grey {
+  padding: 0.6em 1em;
+  display: inline-block;
+  vertical-align: middle;
+  color: #000;
+  font-size: 1.3em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button-grey {
+  background-color: #5e6b73;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5e6b73), color-stop(100%, #454f56));
+  background-image: -webkit-linear-gradient(#5e6b73, #454f56);
+  background-image: linear-gradient(#5e6b73, #454f56);
+  color: #fff;
+  border-color: #2d373d;
+  box-shadow: inset 0 1px 0 0 #788892, 0 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+.button-grey:hover {
+  background-color: #556168;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #556168), color-stop(100%, #3c454b));
+  background-image: -webkit-linear-gradient(#556168, #3c454b);
+  background-image: linear-gradient(#556168, #3c454b);
+}
