@@ -2,4 +2,6 @@
 
 @section('content')
 
+  @include('navigation.header')
+
 @stop
