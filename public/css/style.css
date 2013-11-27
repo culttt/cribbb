@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+/*
+$michael: new-breakpoint(min-width 1024px 9);
+$jermaine: new-breakpoint(max-width 800px 10);
+$jackie: new-breakpoint(max-width 700px 9);
+$marlon: new-breakpoint(max-width 600px 8);
+$tito: new-breakpoint(max-width 500px 6);
+*/
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -21,17 +28,47 @@
   box-sizing: border-box;
 }
 
-.clear:after {
+.clear:after, .sidebar:after, .inbox:after, .content:after {
   content: "";
   display: table;
   clear: both;
 }
 
 /* Style */
-body {
+body, html {
+  margin: 0px;
+  height: 100%;
   background-color: #343945;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 62.5%;
+}
+
+.site-container {
+  margin: auto;
+  width: 1024px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.sidebar {
+  width: 200px;
+  float: left;
+  height: 100%;
+  background-color: #252525;
+}
+
+.inbox {
+  width: 270px;
+  float: left;
+  height: 100%;
+  background-color: #f6f5f3;
+}
+
+.content {
+  width: 554px;
+  float: left;
+  height: 100%;
+  background-color: #fff;
 }
 
 /* Components */

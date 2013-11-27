@@ -1,5 +1,38 @@
-body {
+body, html {
+  margin: 0px;
+  height: 100%;
   background-color: $color-background;
   font-family: $settings-typography;
   font-size: 62.5%;
+}
+
+.site-container {
+  margin: auto;
+  width: 1024px;
+  height: 100%;
+  background-color: #fff;
+}
+
+.sidebar {
+  width: 200px;
+  float: left;
+  height: 100%;
+  background-color: #252525;
+  @extend .clear;
+}
+
+.inbox {
+  width: 270px;
+  float: left;
+  height: 100%;
+  background-color: #f6f5f3;
+  @extend .clear;
+}
+
+.content {
+  width: 554px;
+  float: left;
+  height: 100%;
+  background-color: #fff;
+  @extend .clear;
 }
