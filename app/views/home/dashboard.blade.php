@@ -6,7 +6,7 @@
   @include('partials.inbox')
 
   <section class="content">
-    content
+
   </section>
 
 @stop

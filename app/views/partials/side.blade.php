@@ -1,5 +1,9 @@
 <aside class="sidebar">
   <nav class="navigation">
-    navigation
+    <ul>
+      @foreach ($cribbbs as $cribbb)
+        <li>{{ $cribbb }}</li>
+      @endforeach
+    </ul>
   </nav>
 </aside>
