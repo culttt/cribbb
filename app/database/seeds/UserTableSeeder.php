@@ -4,6 +4,8 @@ class UserTableSeeder extends Seeder {
 
   public function run()
   {
+    $cribbbs = Cribbb::all();
+
     $user = User::create(array(
       'username' => 'philipbrown',
       'first_name' => 'Philip',
@@ -11,6 +13,11 @@ class UserTableSeeder extends Seeder {
       'email' => 'phil@ipbrown.com',
       'password' => 'qwerty'
     ));
+
+    foreach($cribbbs as $cribbb)
+    {
+      $user->cribbbs()->save($cribbb);
+    }
 
     $faker = Faker\Factory::create();
 

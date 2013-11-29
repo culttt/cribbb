@@ -6,9 +6,17 @@ class PostTableSeeder extends Seeder {
   {
     $faker = Faker\Factory::create();
 
-    for ($i = 0; $i < 100; $i++)
+    for ($i = 0; $i < 200; $i++)
     {
-      $post = Post::create::();
+      $post = Post::create(array(
+        'body' => $faker->text,
+        'user_id' => 1
+      ));
+
+      $cribbb = Cribbb::find(1);
+
+      $cribbb->posts()->save($post);
+
     }
   }
 

@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder {
     Eloquent::unguard();
 
     $tables = array(
+      'cribbbs',
       'users',
       'posts'
     );
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder {
       DB::table($table)->truncate();
     }
 
+    $this->call('CribbbTableSeeder');
     $this->call('UserTableSeeder');
     $this->call('PostTableSeeder');
   }

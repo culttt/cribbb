@@ -40,6 +40,14 @@ class Post extends Magniloquent {
   }
 
   /**
+   * Cribbb relationship
+   */
+  public function cribbb()
+  {
+    return $this->belongsTo('Cribbb');
+  }
+
+  /**
    * Comment relationship
    */
   public function comments()

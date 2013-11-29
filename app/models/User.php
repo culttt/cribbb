@@ -21,6 +21,14 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
   protected $fillable = array('username', 'first_name', 'last_name', 'email', "password");
 
   /**
+   * Cribbb relationship
+   */
+  public function cribbbs()
+  {
+    return $this->belongsToMany('Cribbb');
+  }
+
+  /**
    * Post relationship
    */
   public function posts()

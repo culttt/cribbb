@@ -18,7 +18,7 @@
     <span class="navigation__title">Your Cribbbs</span>
     <ul>
       @foreach ($cribbbs as $cribbb)
-        <li><a href="#"><i class="icon icon-right-open-mini"></i>{{{ $cribbb }}}</a></li>
+        <li><a href="#"><i class="icon icon-right-open-mini"></i>{{{ $cribbb->name }}}</a></li>
       @endforeach
     </ul>
   </nav>

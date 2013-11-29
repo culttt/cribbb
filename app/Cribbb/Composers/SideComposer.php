@@ -6,8 +6,10 @@ class SideComposer {
 
   public function compose($view)
   {
-    $view->with('user', Auth::user());
-    $view->with('cribbbs', array('first', 'second', 'third'));
+    $user = Auth::user();
+
+    $view->with('user', $user);
+    $view->with('cribbbs', $user->cribbbs);
   }
 
 }
