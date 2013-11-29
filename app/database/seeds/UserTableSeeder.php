@@ -4,7 +4,6 @@ class UserTableSeeder extends Seeder {
 
   public function run()
   {
-
     $user = User::create(array(
       'username' => 'philipbrown',
       'first_name' => 'Philip',
@@ -25,7 +24,6 @@ class UserTableSeeder extends Seeder {
         'password' => $faker->word
       ));
     }
-
   }
 
 }
