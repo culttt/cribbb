@@ -1,0 +1,23 @@
+.sidebar {
+  float: left;
+  width: 200px;
+  height: 100%;
+  color: #fff;
+  background-color: #252525;
+  @extend .clear;
+}
+
+.user-card {
+  padding: 30px;
+  font-size: 1.3em;
+}
+
+.user-card__avatar {
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.user-card__username {
+  margin-top: 9px;
+}
+

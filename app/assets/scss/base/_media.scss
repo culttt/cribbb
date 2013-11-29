@@ -1,0 +1,16 @@
+.media {
+  display: block;
+  overflow: hidden;
+  @extend .clear;
+}
+
+.media__image {
+  float:left;
+}
+.media__image img{
+  display:block;
+}
+
+.media__body {
+  overflow: hidden;
+}

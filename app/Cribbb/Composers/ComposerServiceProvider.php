@@ -6,7 +6,7 @@ class ComposerServiceProvider extends ServiceProvider {
 
   public function register()
   {
-    $this->app->view->composer('partials.side', 'Cribbb\Composers\LayoutComposer');
+    $this->app->view->composer('partials.side', 'Cribbb\Composers\SideComposer');
   }
 
 }

@@ -12,10 +12,12 @@
 /* Base */
 @import "base/reset";
 @import "base/clear";
+@import "base/media";
 
 /* Style */
 @import "style/body";
 @import "style/fonts";
+@import "style/side";
 
 /* Components */
 @import "components/button.scss";

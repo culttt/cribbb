@@ -28,16 +28,36 @@ $tito: new-breakpoint(max-width 500px 6);
   box-sizing: border-box;
 }
 
-.clear:after, .sidebar:after, .inbox:after, .content:after {
+.clear:after, .media:after, .inbox:after, .content:after, .sidebar:after {
   content: "";
   display: table;
   clear: both;
 }
 
+.media {
+  display: block;
+  overflow: hidden;
+}
+
+.media__image {
+  float: left;
+}
+
+.media__image img {
+  display: block;
+}
+
+.media__body {
+  overflow: hidden;
+}
+
 /* Style */
 body, html {
-  margin: 0px;
   height: 100%;
+}
+
+body {
+  margin: 0px;
   background-color: #343945;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 62.5%;
@@ -48,13 +68,6 @@ body, html {
   width: 1024px;
   height: 100%;
   background-color: #fff;
-}
-
-.sidebar {
-  width: 200px;
-  float: left;
-  height: 100%;
-  background-color: #252525;
 }
 
 .inbox {
@@ -69,6 +82,28 @@ body, html {
   float: left;
   height: 100%;
   background-color: #fff;
+}
+
+.sidebar {
+  float: left;
+  width: 200px;
+  height: 100%;
+  color: #fff;
+  background-color: #252525;
+}
+
+.user-card {
+  padding: 30px;
+  font-size: 1.3em;
+}
+
+.user-card__avatar {
+  margin-right: 15px;
+  border-radius: 5px;
+}
+
+.user-card__username {
+  margin-top: 9px;
 }
 
 /* Components */

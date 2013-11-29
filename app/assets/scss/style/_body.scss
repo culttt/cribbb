@@ -1,6 +1,9 @@
 body, html {
-  margin: 0px;
   height: 100%;
+}
+
+body{
+  margin: 0px;
   background-color: $color-background;
   font-family: $settings-typography;
   font-size: 62.5%;
@@ -11,14 +14,6 @@ body, html {
   width: 1024px;
   height: 100%;
   background-color: #fff;
-}
-
-.sidebar {
-  width: 200px;
-  float: left;
-  height: 100%;
-  background-color: #252525;
-  @extend .clear;
 }
 
 .inbox {
