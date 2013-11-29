@@ -125,4 +125,12 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
     return $this->email;
   }
 
+  /**
+   * Gravatar
+   */
+  public function gravatar()
+  {
+    return 'http://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'?s=35';
+  }
+
 }
