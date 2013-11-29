@@ -6,6 +6,7 @@ body{
   margin: 0px;
   background-color: $color-background;
   font-family: $settings-typography;
+  @include font-stack-regular;
   font-size: 62.5%;
 }
 
