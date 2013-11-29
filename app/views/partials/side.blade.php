@@ -7,10 +7,10 @@
 
   <nav class="navigation site-navigation">
     <ul>
-      <li><a href="#">Feed</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="#">Following</a></li>
-      <li><a href="#">Favourites</a></li>
+      <li><a href="#"><i class="icon icon-home"></i>Feed</a></li>
+      <li><a href="#"><i class="icon icon-user"></i>Profile</a></li>
+      <li><a href="#"><i class="icon icon-users"></i>Following</a></li>
+      <li><a href="#"><i class="icon icon-star"></i>Favourites</a></li>
     </ul>
   </nav>
 
@@ -18,7 +18,7 @@
     <span class="navigation__title">Your Cribbbs</span>
     <ul>
       @foreach ($cribbbs as $cribbb)
-        <li><a href="#">{{{ $cribbb }}}</a></li>
+        <li><a href="#"><i class="icon icon-right-open-mini"></i>{{{ $cribbb }}}</a></li>
       @endforeach
     </ul>
   </nav>
