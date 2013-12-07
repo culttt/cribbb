@@ -20,7 +20,7 @@ class Cribbb extends Eloquent {
   /**
    * Define a many-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
    */
   public function users()
   {
@@ -30,7 +30,7 @@ class Cribbb extends Eloquent {
   /**
    * Define a one-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   * @return Illuminate\Database\Eloquent\Relations\HasMany
    */
   public function posts()
   {

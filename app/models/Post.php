@@ -21,7 +21,7 @@ class Post extends Eloquent {
   /**
    * Define a one-to-one relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function user()
   {
@@ -31,7 +31,7 @@ class Post extends Eloquent {
   /**
    * Define a one-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+   * @return Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function cribbb()
   {
