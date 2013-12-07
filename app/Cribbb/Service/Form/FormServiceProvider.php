@@ -15,6 +15,11 @@ class FormServiceProvider extends ServiceProvider {
   {
     $app = $this->app;
 
+    /**
+     * User Form
+     *
+     * @return Cribbb\Service\Form\User\UserForm
+     */
     $app->bind('Cribbb\Service\Form\User\UserForm', function($app)
     {
       return new UserForm(
