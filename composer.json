@@ -1,8 +1,7 @@
 {
 	"require": {
 		"laravel/framework": "4.0.*",
-		"way/generators": "dev-master",
-		"magniloquent/magniloquent": "dev-master"
+		"way/generators": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*",
