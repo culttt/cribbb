@@ -7,7 +7,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
   /**
    * Validator
    *
-   * @var \Illuminate\Validation\Factory
+   * @var Illuminate\Validation\Factory
    */
     protected $validator;
 
@@ -35,7 +35,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
   /**
    * Construct
    *
-   * @param \Illuminate\Validation\Factory $validator
+   * @param Illuminate\Validation\Factory $validator
    */
   public function __construct(Factory $validator)
   {
@@ -46,7 +46,7 @@ abstract class AbstractLaravelValidator implements ValidableInterface {
    * Set data to validate
    *
    * @param array $data
-   * @return \Cribbb\Service\Validation\AbstractLaravelValidator
+   * @return Cribbb\Service\Validation\AbstractLaravelValidator
    */
     public function with(array $data)
     {

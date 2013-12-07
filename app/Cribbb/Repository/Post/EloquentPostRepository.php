@@ -88,7 +88,8 @@ class EloquentPostRepository implements PostRepository {
       $query->select('follow_id')
             ->from('user_follows')
             ->where('user_id', $id);
-    })->orWhere('user_id', $id)->get();
+    })->orWhere('user_id', $id)
+      ->get();
   }
 
 }

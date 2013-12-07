@@ -13,7 +13,7 @@ class EloquentUser implements UserRepository {
   /**
    * Construct
    *
-   * @param \Illuminate\Database\Eloquent\Model $user
+   * @param Illuminate\Database\Eloquent\Model $user
    * @param PostRepository $post
    */
   public function __construct(Model $user, PostRepository $post)
@@ -25,7 +25,7 @@ class EloquentUser implements UserRepository {
   /**
    * All
    *
-   * @return \Illuminate\Database\Eloquent\Model
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function all()
   {
@@ -36,7 +36,7 @@ class EloquentUser implements UserRepository {
    * Find
    *
    * @param int $id
-   * @return \Illuminate\Database\Eloquent\Model
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function find($id)
   {
@@ -82,7 +82,7 @@ class EloquentUser implements UserRepository {
    * Feed
    *
    * @param int $id
-   * @return \Cribbb\Repository\Post\PostRepository
+   * @return Cribbb\Repository\Post\PostRepository
    */
   public function feed($id)
   {
