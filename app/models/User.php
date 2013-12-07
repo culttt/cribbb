@@ -29,7 +29,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   /**
    * Define a many-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
    */
   public function cribbbs()
   {
@@ -39,7 +39,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   /**
    * Define a one-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   * @return Illuminate\Database\Eloquent\Relations\HasMany
    */
   public function posts()
   {
@@ -49,7 +49,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   /**
    * Define a many-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
    */
   public function follow()
   {
@@ -59,7 +59,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   /**
    * Define a many-to-many relationship.
    *
-   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
    */
   public function followers()
   {
@@ -103,21 +103,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getReminderEmail()
   {
     return $this->email;
-  }
-
-  /**
-   * To be removed
-   */
-  public function feed()
-  {
-    $id = $this->id;
-
-   return Post::whereIn('user_id', function($query) use ($id)
-          {
-            $query->select('follow_id')
-                  ->from('user_follows')
-                  ->where('user_id', $id);
-          })->orWhere('user_id', $id)->get();
   }
 
   /**

@@ -114,7 +114,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'Cribbb\Storage\StorageServiceProvider',
+		'Cribbb\Repository\RepositoryServiceProvider',
 		'Cribbb\Composers\ComposerServiceProvider',
 	),
 
