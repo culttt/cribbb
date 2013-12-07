@@ -12,7 +12,7 @@ class EloquentPostRepository implements PostRepository {
   /**
    * Construct
    *
-   * @param Model $post
+   * @param Illuminate\Database\Eloquent\Model $post
    */
   public function __construct(Model $post)
   {
@@ -22,7 +22,7 @@ class EloquentPostRepository implements PostRepository {
   /**
    * All
    *
-   * @return Model
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function all()
   {
@@ -33,7 +33,7 @@ class EloquentPostRepository implements PostRepository {
    * Find
    *
    * @param int $id
-   * @return Model
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function find($id)
   {
@@ -79,7 +79,7 @@ class EloquentPostRepository implements PostRepository {
    * Get User Feed
    *
    * @param int $id
-   * @return Model
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function getUserFeed($id)
   {

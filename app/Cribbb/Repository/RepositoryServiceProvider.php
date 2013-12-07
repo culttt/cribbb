@@ -15,7 +15,7 @@ class RepositoryServiceProvider extends ServiceProvider {
     /**
      * User Model
      *
-     * @return EloquentUser
+     * @return \Cribbb\Repository\User\EloquentUser
      */
     $this->app->bind('Cribbb\Repository\User\UserRepository', function($app)
     {
@@ -30,7 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider {
     /**
      * Post Model
      *
-     * @return EloquentPost
+     * @return \Cribbb\Repository\User\EloquentPost
      */
     $this->app->bind('Cribbb\Repository\Post\PostRepository', function($app)
     {
