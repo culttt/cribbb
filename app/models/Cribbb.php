@@ -25,6 +25,14 @@ class Cribbb extends Magniloquent {
   );
 
   /**
+   * Factory
+   */
+  public static $factory = array(
+    'name' => 'text',
+    'slug' => 'text'
+  );
+
+  /**
    * User relationship
    */
   public function users()

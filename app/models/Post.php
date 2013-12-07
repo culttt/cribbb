@@ -18,6 +18,7 @@ class Post extends Magniloquent {
     "save" => array(
       'body' => 'required',
       'user_id' => 'required|numeric',
+      'cribbb_id' => 'required|numeric'
     ),
     "create" => array(),
     "update" => array()
@@ -29,6 +30,7 @@ class Post extends Magniloquent {
   public static $factory = array(
     'body' => 'text',
     'user_id' => 'factory|User',
+    'cribbb_id' => 'factory|Cribbb'
   );
 
   /**
