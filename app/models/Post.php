@@ -1,8 +1,6 @@
 <?php
 
-use Magniloquent\Magniloquent\Magniloquent;
-
-class Post extends Magniloquent {
+class Post extends Eloquent {
 
   /**
    * Properties that can be mass assigned
@@ -10,19 +8,6 @@ class Post extends Magniloquent {
    * @var array
    */
   protected $fillable = array('body');
-
-  /**
-   * Validation rules
-   */
-  public static $rules = array(
-    "save" => array(
-      'body' => 'required',
-      'user_id' => 'required|numeric',
-      'cribbb_id' => 'required|numeric'
-    ),
-    "create" => array(),
-    "update" => array()
-  );
 
   /**
    * Factory
@@ -34,7 +19,9 @@ class Post extends Magniloquent {
   );
 
   /**
-   * User relationship
+   * Define a one-to-one relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function user()
   {
@@ -42,7 +29,9 @@ class Post extends Magniloquent {
   }
 
   /**
-   * Cribbb relationship
+   * Define a one-to-many relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
    */
   public function cribbb()
   {
@@ -50,7 +39,9 @@ class Post extends Magniloquent {
   }
 
   /**
-   * Comment relationship
+   * Define a polymorphic relationship
+   *
+   * @return
    */
   public function comments()
   {

@@ -2,9 +2,8 @@
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use Magniloquent\Magniloquent\Magniloquent;
 
-class User extends Magniloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface {
 
   /**
    * The database table used by the model.
@@ -21,38 +20,6 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
   protected $fillable = array('username', 'first_name', 'last_name', 'email', "password");
 
   /**
-   * Cribbb relationship
-   */
-  public function cribbbs()
-  {
-    return $this->belongsToMany('Cribbb');
-  }
-
-  /**
-   * Post relationship
-   */
-  public function posts()
-  {
-    return $this->hasMany('Post');
-  }
-
-  /**
-   * User following relationship
-   */
-  public function follow()
-  {
-    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id')->withTimestamps();;
-  }
-
-  /**
-   * User followers relationship
-   */
-  public function followers()
-  {
-    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id')->withTimestamps();;
-  }
-
-  /**
    * The attributes excluded from the model's JSON form.
    *
    * @var array
@@ -60,20 +27,44 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
   protected $hidden = array('password');
 
   /**
-   * Validation rules
+   * Define a many-to-many relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
    */
-  public static $rules = array(
-    "save" => array(
-      'username' => 'required|min:4',
-      'email' => 'required|email',
-      'password' => 'required'
-    ),
-    "create" => array(
-      'username' => 'unique:users',
-      'email' => 'unique:users',
-    ),
-    "update" => array()
-  );
+  public function cribbbs()
+  {
+    return $this->belongsToMany('Cribbb');
+  }
+
+  /**
+   * Define a one-to-many relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
+  public function posts()
+  {
+    return $this->hasMany('Post');
+  }
+
+  /**
+   * Define a many-to-many relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function follow()
+  {
+    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id')->withTimestamps();;
+  }
+
+  /**
+   * Define a many-to-many relationship.
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function followers()
+  {
+    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id')->withTimestamps();;
+  }
 
   /**
    * Factory
@@ -83,25 +74,6 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
     'email' => 'email',
     'password' => 'string',
   );
-
-  public function feed()
-  {
-    $id = $this->id;
-
-   return Post::whereIn('user_id', function($query) use ($id)
-          {
-            $query->select('follow_id')
-                  ->from('user_follows')
-                  ->where('user_id', $id);
-          })->orWhere('user_id', $id)->get();
-  }
-
-  /**
-   * Auto purge redundant attributes
-   *
-   * @var bool
-   */
-  public $autoPurgeRedundantAttributes = true;
 
   /**
    * Get the unique identifier for the user.
@@ -134,7 +106,22 @@ class User extends Magniloquent implements UserInterface, RemindableInterface {
   }
 
   /**
-   * Gravatar
+   * To be removed
+   */
+  public function feed()
+  {
+    $id = $this->id;
+
+   return Post::whereIn('user_id', function($query) use ($id)
+          {
+            $query->select('follow_id')
+                  ->from('user_follows')
+                  ->where('user_id', $id);
+          })->orWhere('user_id', $id)->get();
+  }
+
+  /**
+   * To be removed
    */
   public function gravatar()
   {

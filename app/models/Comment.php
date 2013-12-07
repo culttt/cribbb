@@ -10,21 +10,18 @@ class Comment extends Eloquent {
   protected $fillable = array('body');
 
   /**
-   * Ardent validation rules
-   */
-  public static $rules = array(
-    'body' => 'required',
-  );
-
-  /**
    * Factory
+   *
+   * @var array
    */
   public static $factory = array(
     'body' => 'text',
   );
 
   /**
-   * Comment polymorphic relationship
+   * Define a polymorphic relationship
+   *
+   * @return
    */
   public function commentable()
   {
