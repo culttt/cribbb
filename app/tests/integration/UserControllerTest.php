@@ -1,10 +1,9 @@
 <?php
 
+
+/*
 class UserControllerTest extends TestCase {
 
-  /**
-   * Set up
-   */
   public function setUp()
   {
     parent::setUp();
@@ -12,17 +11,11 @@ class UserControllerTest extends TestCase {
     $this->mock = $this->mock('Cribbb\Storage\User\UserRepository');
   }
 
-  /**
-   * Tear down
-   */
   public function tearDown()
   {
     Mockery::close();
   }
 
-  /**
-   * Mock
-   */
   public function mock($class)
   {
     $mock = Mockery::mock($class);
@@ -32,9 +25,6 @@ class UserControllerTest extends TestCase {
     return $mock;
   }
 
-  /**
-   * Test Index
-   */
   public function testIndex()
   {
     $this->mock->shouldReceive('all')->once();
@@ -44,9 +34,6 @@ class UserControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Create
-   */
   public function testCreate()
   {
     $this->call('GET', 'user/create');
@@ -54,9 +41,6 @@ class UserControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Store fails
-   */
   public function testStoreFails()
   {
     $this->mock->shouldReceive('create')
@@ -69,9 +53,6 @@ class UserControllerTest extends TestCase {
     $this->assertSessionHasErrors();
   }
 
-  /**
-   * Test Store success
-   */
   public function testStoreSuccess()
   {
     $this->mock->shouldReceive('create')
@@ -84,9 +65,6 @@ class UserControllerTest extends TestCase {
     $this->assertSessionHas('flash');
   }
 
-  /**
-   * Test Show
-   */
   public function testShow()
   {
     $this->mock->shouldReceive('find')
@@ -98,9 +76,6 @@ class UserControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Edit
-   */
   public function testEdit()
   {
     $user = Mockery::self();
@@ -116,9 +91,6 @@ class UserControllerTest extends TestCase {
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Update fails
-   */
   public function testUpdateFails()
   {
     $this->mock->shouldReceive('update')
@@ -132,9 +104,6 @@ class UserControllerTest extends TestCase {
     $this->assertSessionHasErrors();
   }
 
-  /**
-   * Test Update success
-   */
   public function testUpdateSuccess()
   {
     $this->mock->shouldReceive('update')
@@ -149,3 +118,4 @@ class UserControllerTest extends TestCase {
   }
 
 }
+*/

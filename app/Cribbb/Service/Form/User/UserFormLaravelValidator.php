@@ -7,7 +7,7 @@ class UserFormLaravelValidator extends AbstractLaravelValidator {
   /**
    * Validation rules
    *
-   * @var Array
+   * @var array
    */
   protected $rules = array(
     'username' => 'required|min:2',

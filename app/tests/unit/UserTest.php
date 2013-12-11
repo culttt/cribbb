@@ -1,12 +1,14 @@
 <?php
 
+
+
+
+
+/*
 use Zizaco\FactoryMuff\Facade\FactoryMuff;
 
 class UserTest extends TestCase {
 
-  /**
-   * Test Username is required
-   */
   public function testUsernameIsRequired()
   {
     // Create a new User
@@ -29,9 +31,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The username field is required.");
   }
 
-  /**
-   * Test Username should be 4 characters
-   */
   public function testUsernameLength()
   {
     // Create first User
@@ -54,9 +53,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The username must be at least 4 characters.");
   }
 
-  /**
-   * Two users can't have the same username
-   */
   public function testTwoUsersCantHaveTheSameUsername()
   {
     // Create first User
@@ -87,9 +83,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The username has already been taken.");
   }
 
-  /**
-   * Test Email is required
-   */
   public function testEmailIsRequired()
   {
     // Create a new User
@@ -110,9 +103,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The email field is required.");
   }
 
-  /**
-   * Test Email only accepts the correct format
-   */
   public function testEmailFormat()
   {
     // Create a new User
@@ -134,9 +124,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The email format is invalid.");
   }
 
-  /**
-   * Two users can't have the same username
-   */
   public function testTwoUsersCantHaveTheSameEmail()
   {
     // Create first User
@@ -167,9 +154,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The email has already been taken.");
   }
 
-  /**
-   * Test Password is required
-   */
   public function testPasswordIsRequired()
   {
     // Create a new User
@@ -190,9 +174,6 @@ class UserTest extends TestCase {
     $this->assertEquals($errors[0], "The password field is required.");
   }
 
-  /**
-   * Test a password can be updated correctly
-   */
   public function testPasswordUpdatesCorrectly()
   {
     // Create a new User
@@ -214,9 +195,6 @@ class UserTest extends TestCase {
     $this->assertTrue($philip->save());
   }
 
-  /**
-   * Test a user can follower other users
-   */
   public function testUserCanFollowerUsers()
   {
     // Create users
@@ -311,3 +289,4 @@ class UserTest extends TestCase {
   }
 
 }
+*/

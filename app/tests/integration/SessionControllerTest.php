@@ -1,10 +1,8 @@
 <?php
 
+/*
 class SessionControllerTest extends TestCase{
 
-  /**
-   * Set up
-   */
   public function setUp()
   {
     parent::setUp();
@@ -12,17 +10,11 @@ class SessionControllerTest extends TestCase{
     $this->mock = $this->mock('Cribbb\Storage\User\UserRepository');
   }
 
-  /**
-   * Tear down
-   */
   public function tearDown()
   {
     Mockery::close();
   }
 
-  /**
-   * Mock
-   */
   public function mock($class)
   {
     $mock = Mockery::mock($class);
@@ -32,9 +24,6 @@ class SessionControllerTest extends TestCase{
     return $mock;
   }
 
-  /**
-   * Test Index
-   */
   public function testCreate()
   {
     $this->call('GET', 'login');
@@ -42,9 +31,6 @@ class SessionControllerTest extends TestCase{
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Store failure
-   */
   public function testStoreFailure()
   {
     Auth::shouldReceive('attempt')->andReturn(false);
@@ -55,9 +41,6 @@ class SessionControllerTest extends TestCase{
     $this->assertSessionHas('flash');
   }
 
-  /**
-   * Test Store success
-   */
   public function testStoreSuccess()
   {
     Auth::shouldReceive('attempt')->andReturn(true);
@@ -68,3 +51,4 @@ class SessionControllerTest extends TestCase{
   }
 
 }
+*/

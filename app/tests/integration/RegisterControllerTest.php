@@ -1,10 +1,8 @@
 <?php
 
+/*
 class RegisterControllerTest extends TestCase{
 
-  /**
-   * Set up
-   */
   public function setUp()
   {
     parent::setUp();
@@ -12,17 +10,11 @@ class RegisterControllerTest extends TestCase{
     $this->mock = $this->mock('Cribbb\Storage\User\UserRepository');
   }
 
-  /**
-   * Tear down
-   */
   public function tearDown()
   {
     Mockery::close();
   }
 
-  /**
-   * Mock
-   */
   public function mock($class)
   {
     $mock = Mockery::mock($class);
@@ -32,9 +24,6 @@ class RegisterControllerTest extends TestCase{
     return $mock;
   }
 
-  /**
-   * Test Index
-   */
   public function testIndex()
   {
     $this->call('GET', 'register');
@@ -42,9 +31,6 @@ class RegisterControllerTest extends TestCase{
     $this->assertResponseOk();
   }
 
-  /**
-   * Test Store fails
-   */
   public function testStoreFails()
   {
     $this->mock->shouldReceive('create')
@@ -57,9 +43,6 @@ class RegisterControllerTest extends TestCase{
     $this->assertSessionHasErrors();
   }
 
-  /**
-   * Test Store success
-   */
   public function testStoreSuccess()
   {
     $this->mock->shouldReceive('create')
@@ -72,3 +55,4 @@ class RegisterControllerTest extends TestCase{
     $this->assertSessionHas('flash');
   }
 }
+*/

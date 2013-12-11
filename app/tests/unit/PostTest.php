@@ -1,24 +1,19 @@
 <?php
 
+/*
 use Zizaco\FactoryMuff\Facade\FactoryMuff;
 
 class PostTest extends TestCase {
 
-  /**
-   * Test relationship with User
-   */
   public function testRelationshipWithUser()
   {
     // Instantiate new Post
     $post = FactoryMuff::create('Post');
-   
+
     // Check that the user_id has been set correctly
     $this->assertEquals($post->user_id, $post->user->id);
   }
 
-  /**
-   * Test that user_id is required
-   */
   public function testUserIdIsRequired()
   {
     // Create new Post
@@ -40,9 +35,6 @@ class PostTest extends TestCase {
     $this->assertEquals($errors[0], "The user id field is required.");
   }
 
-  /**
-   * Test that Posts' body is required
-   */
   public function testPostBodyIsRequired()
   {
     // Create new Post
@@ -64,9 +56,6 @@ class PostTest extends TestCase {
     $this->assertEquals($errors[0], "The body field is required.");
   }
 
-  /**
-   * Test Post saves correctly
-   */
   public function testPostSavesCorrectly()
   {
     // Create a new Post
@@ -76,9 +65,6 @@ class PostTest extends TestCase {
     $this->assertTrue($post->save());
   }
 
-  /**
-   *  Test adding new comment
-   */
   public function testAddingNewComment()
   {
     // Create a new Post
@@ -95,3 +81,4 @@ class PostTest extends TestCase {
   }
 
 }
+*/
