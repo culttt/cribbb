@@ -6,16 +6,31 @@ interface ValidableInterface {
    * Add data to validation against
    *
    * @param array
-   * @return $this
+   * @return self
    */
   public function with(array $input);
 
   /**
-   * Test if validation passes
+   * Verify if the data passes the on create rules
    *
    * @return boolean
    */
-  public function passes();
+  public function canCreate();
+
+  /**
+   * Verify if the data passes the on update rules
+   *
+   * @return boolean
+   */
+  public function canUpdate();
+
+  /**
+   * Test if validation passes
+   *
+   * @param array $rules
+   * @return boolean
+   */
+  public function passes(array $rules);
 
   /**
    * Retrieve validation errors

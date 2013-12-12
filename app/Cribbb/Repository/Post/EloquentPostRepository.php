@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class EloquentPostRepository implements PostRepository {
+class EloquentPostRepository implements RepositoryInterface, PostRepository {
 
   /**
    * @var $post

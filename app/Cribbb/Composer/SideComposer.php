@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Composers;
+<?php namespace Cribbb\Composer;
 
 use Auth;
 

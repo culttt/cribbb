@@ -3,7 +3,7 @@
 use Illuminate\Database\Eloquent\Model;
 use Cribbb\Repository\Post\PostRepository;
 
-class EloquentUser implements UserRepository {
+class EloquentUser implements RepositoryInterface, UserRepository {
 
   /**
    * @var Model
