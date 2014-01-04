@@ -14,34 +14,6 @@ abstract class LaravelValidator extends AbstractValidator implements ValidableIn
   protected $validator;
 
   /**
-   * Data to be validated
-   *
-   * @var array
-   */
-  protected $data = array();
-
-  /**
-   * Validation errors
-   *
-   * @var array
-   */
-  protected $errors = array();
-
-  /**
-   * Create Rules
-   *
-   * @var array
-   */
-  protected $createRules = array();
-
-  /**
-   * Update Rules
-   *
-   * @var array
-   */
-  protected $updateRules = array();
-
-  /**
    * Construct
    *
    * @param Illuminate\Validation\Factory $validator
@@ -52,36 +24,29 @@ abstract class LaravelValidator extends AbstractValidator implements ValidableIn
   }
 
   /**
-   * Set data to validate
+   * Replace placeholders with attributes
    *
-   * @param array $data
-   * @return Cribbb\Service\Validation\Laravel\AbstractValidator
+   * @return array
    */
-  public function with(array $data)
+  public function replace()
   {
-    $this->data = $data;
+    $data = $this->data;
+    $rules = $this->rules;
 
-    return $this;
-  }
+    array_walk($rules, function(&$rule) use ($data)
+    {
+      preg_match_all('/\{(.*?)\}/', $rule, $matches);
 
-  /**
-   * Verify if the data passes the on create rules
-   *
-   * @return boolean
-   */
-  public function canCreate()
-  {
-    return $this->passes($this->createRules);
-  }
+      foreach($matches[0] as $key => $placeholder)
+      {
+        if(isset($data[$matches[1][$key]]))
+        {
+          $rule = str_replace($placeholder, $data[$matches[1][$key]], $rule);
+        }
+      }
+    });
 
-  /**
-   * Verify if the data passes the on update rules
-   *
-   * @return boolean
-   */
-  public function canUpdate()
-  {
-    return $this->passes($this->updateRules);
+    return $rules;
   }
 
   /**
@@ -89,8 +54,10 @@ abstract class LaravelValidator extends AbstractValidator implements ValidableIn
    *
    * @return boolean
    */
-  public function passes(array $rules)
+  public function passes()
   {
+    $rules = $this->replace();
+
     $validator = $this->validator->make($this->data, $rules);
 
     if( $validator->fails() )
@@ -100,16 +67,6 @@ abstract class LaravelValidator extends AbstractValidator implements ValidableIn
     }
 
     return true;
-  }
-
-  /**
-   * Return errors
-   *
-   * @return array
-   */
-  public function errors()
-  {
-    return $this->errors;
   }
 
 }

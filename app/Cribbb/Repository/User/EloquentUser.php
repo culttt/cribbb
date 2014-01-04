@@ -25,7 +25,7 @@ class EloquentUser implements RepositoryInterface, UserRepository {
   /**
    * All
    *
-   * @return Illuminate\Database\Eloquent\Model
+   * @return Illuminate\Database\Eloquent\Collection
    */
   public function all()
   {

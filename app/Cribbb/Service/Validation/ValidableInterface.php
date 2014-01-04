@@ -3,7 +3,7 @@
 interface ValidableInterface {
 
   /**
-   * Add data to validation against
+   * Add data to validate against
    *
    * @param array
    * @return self
@@ -11,31 +11,16 @@ interface ValidableInterface {
   public function with(array $input);
 
   /**
-   * Verify if the data passes the on create rules
-   *
-   * @return boolean
-   */
-  public function canCreate();
-
-  /**
-   * Verify if the data passes the on update rules
-   *
-   * @return boolean
-   */
-  public function canUpdate();
-
-  /**
    * Test if validation passes
    *
-   * @param array $rules
    * @return boolean
    */
-  public function passes(array $rules);
+  public function passes();
 
   /**
    * Retrieve validation errors
    *
-   * @return array
+   * @return Illuminate\Support\MessageBag
    */
   public function errors();
 

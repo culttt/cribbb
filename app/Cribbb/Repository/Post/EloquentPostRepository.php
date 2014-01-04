@@ -22,7 +22,7 @@ class EloquentPostRepository implements RepositoryInterface, PostRepository {
   /**
    * All
    *
-   * @return Illuminate\Database\Eloquent\Model
+   * @return Illuminate\Database\Eloquent\Collection
    */
   public function all()
   {
@@ -79,7 +79,7 @@ class EloquentPostRepository implements RepositoryInterface, PostRepository {
    * Get User Feed
    *
    * @param int $id
-   * @return Illuminate\Database\Eloquent\Model
+   * @return Illuminate\Database\Eloquent\Collection
    */
   public function getUserFeed($id)
   {

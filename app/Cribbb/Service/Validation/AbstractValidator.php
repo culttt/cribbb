@@ -17,25 +17,18 @@ abstract class AbstractValidator implements ValidableInterface {
   protected $data = array();
 
   /**
+   * Validation Rules
+   *
+   * @var array
+   */
+  protected $rules = array();
+
+  /**
    * Validation errors
    *
-   * @var array
+   * @var Illuminate\Support\MessageBag
    */
-  protected $errors = array();
-
-  /**
-   * Create Rules
-   *
-   * @var array
-   */
-  protected $createRules = array();
-
-  /**
-   * Update Rules
-   *
-   * @var array
-   */
-  protected $updateRules = array();
+  protected $errors;
 
   /**
    * Set data to validate
@@ -51,36 +44,16 @@ abstract class AbstractValidator implements ValidableInterface {
   }
 
   /**
-   * Verify if the data passes the on create rules
-   *
-   * @return boolean
-   */
-  public function canCreate()
-  {
-    return $this->passes($this->createRules);
-  }
-
-  /**
-   * Verify if the data passes the on update rules
-   *
-   * @return boolean
-   */
-  public function canUpdate()
-  {
-    return $this->passes($this->updateRules);
-  }
-
-  /**
    * Pass the data and the rules to the validator
    *
    * @return boolean
    */
-  abstract function passes(array $rules);
+  abstract function passes();
 
   /**
    * Return errors
    *
-   * @return array
+   * @return Illuminate\Support\MessageBag
    */
   public function errors()
   {

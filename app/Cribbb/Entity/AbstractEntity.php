@@ -1,98 +1,79 @@
-<?php Cribbb\Entity;
+<?php namespace Cribbb\Entity;
 
 abstract class AbstractEntity {
 
   /**
-   * Data
+   * All
    *
-   * @var array
+   * @return Illuminate\Database\Eloquent\Collection
    */
-  protected $data;
-
-  /**
-   * Validator
-   *
-   * @var Cribbb\Service\Validation\ValidableInterface
-   */
-  protected $validator;
-
-  /**
-   * Repository
-   *
-   * @var Cribbb\Repository\RepositoryInterface
-   */
-  protected $repository;
-
-  /**
-   * Construct
-   *
-   * @param Cribbb\Service\Validation\ValidableInterface $validator
-   * @param Cribbb\Repository\RepositoryInterface $repository
-   */
-  public function __construct(ValidableInterface $validator, RepositoryInterface $repository)
+  public function all()
   {
-    $this->validator = $validator;
-    $this->repository = $repository;
+    return $this->repository->all();
   }
 
   /**
-   * Verify if the data passes the on create rules
+   * Fimd
    *
-   * @return boolean
+   * @return Illuminate\Database\Eloquent\Model
    */
-  public function canCreate(array $input)
+  public function find($id)
   {
-    return $this->validator->with($input)->canCreate();
+    return $this->repository->find($id);
   }
 
   /**
-   * Verify if the data passes the on update rules
+   * Create
    *
+   * @param array $data
    * @return boolean
    */
-  public function canUpdate(array $input)
+  public function create(array $data)
   {
-    return $this->validator->with($input)->canUpdate();
-  }
-
-  /**
-   * Create an new entity
-   *
-   * @return boolean
-   */
-  public function create(array $input)
-  {
-    if( ! $this->canCreate($input) )
+    if( ! $this->createValidator->with($data)->passes() )
     {
+      $this->errors = $this->createValidator->errors();
       return false;
     }
 
-    return $this->repository->create($input);
+    return $this->repository->create($data);
   }
 
   /**
-   * Update an existing entity
+   * Update
    *
+   * @param array $data
    * @return boolean
    */
-  public function update(array $input)
+  public function update(array $data)
   {
-    if( ! $this->canUpdate($input) )
+    if( ! $this->updateValidator->with($data)->passes() )
     {
+      $this->errors = $this->updateValidator->errors();
       return false;
     }
 
-    return $this->repository->update($input);
+    return $this->repository->update($data);
   }
 
   /**
-   * Return any validation errors
+   * Delete
    *
-   * @return array
+   * @return boolean
+   */
+  public function delete($id)
+  {
+    return $this->repository->delete($id);
+  }
+
+  /**
+   * Errors
+   *
+   * @return Illuminate\Support\MessageBag
    */
   public function errors()
   {
-    return $this->validator->errors();
+    return $this->errors;
   }
 
 }
