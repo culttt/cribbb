@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Service\Validation;
 
-abstract class AbstractValidator implements ValidableInterface {
+abstract class AbstractValidator {
 
   /**
    * Validator
