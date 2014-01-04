@@ -12,8 +12,7 @@ class StubRepository implements RepositoryInterface {
   /**
    * Construct
    *
-   * @param
-   * @param
+   * @param Illuminate\Database\Eloquent\Model $model
    */
   public function __construct(Model $model)
   {
