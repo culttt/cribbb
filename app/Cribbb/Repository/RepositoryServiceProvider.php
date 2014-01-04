@@ -2,43 +2,36 @@
 
 use User;
 use Post;
-use Cribbb\Repository\User\EloquentUser;
-use Cribbb\Repository\User\EloquentPost;
 use Illuminate\Support\ServiceProvider;
+use Cribbb\Repository\User\EloquentUserRepository;
+use Cribbb\Repository\Post\EloquentPostRepository;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
   public function register()
   {
-    $app = $this->app;
-
     /**
-     * User Model
+     * User Repository
      *
-     * @return Cribbb\Repository\User\EloquentUser
+     * @return Cribbb\Repository\User\EloquentUserRepository
      */
     $this->app->bind('Cribbb\Repository\User\UserRepository', function($app)
     {
-      $user = new EloquentUser(
+      return new EloquentUserRepository(
         new User,
         $app->make('Cribbb\Repository\Post\PostRepository')
       );
-
-      return $user;
     });
 
     /**
-     * Post Model
+     * Post Repository
      *
-     * @return Cribbb\Repository\User\EloquentPost
+     * @return Cribbb\Repository\Post\EloquentPostRepository
      */
     $this->app->bind('Cribbb\Repository\Post\PostRepository', function($app)
     {
-      $post = new EloquentPost(new Post);
-
-      return $post;
+      return new EloquentPostRepository( new Post );
     });
-
   }
 
 }
