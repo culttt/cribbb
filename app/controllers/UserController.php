@@ -26,10 +26,7 @@ class UserController extends BaseController {
    */
   public function index()
   {
-    $users = $this->user->all();
-
-    var_dump($users);
-    var_dump(DB::getQueryLog());
+    return $this->user->all();
   }
 
   /**
