@@ -34,30 +34,14 @@ class UserController extends BaseController {
    *
    * @return Response
    */
-  public function create()
-  {
-    return View::make('users.create');
-  }
+  public function create(){}
 
   /**
    * Store a newly created resource in storage.
    *
    * @return Response
    */
-  public function store()
-  {
-    $s = $this->user->create(Input::all());
-
-    if($s->isSaved())
-    {
-      return Redirect::route('user.index')
-        ->with('flash', 'The new user has been created');
-    }
-
-    return Redirect::route('user.create')
-      ->withInput()
-      ->withErrors($s->errors());
-  }
+  public function store(){}
 
   /**
    * Display the specified resource.
@@ -65,10 +49,7 @@ class UserController extends BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function show($id)
-  {
-    return $this->user->find($id);
-  }
+  public function show($id){}
 
   /**
    * Show the form for editing the specified resource.
@@ -76,12 +57,7 @@ class UserController extends BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function edit($id)
-  {
-    $user = $this->user->find($id);
-
-    return View::make('users.edit')->with('user', $user);;
-  }
+  public function edit($id){}
 
   /**
    * Update the specified resource in storage.
@@ -89,20 +65,7 @@ class UserController extends BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
-  {
-    $s = $this->user->update($id);
-
-    if($s->isSaved())
-    {
-      return Redirect::route('user.show', $id)
-        ->with('flash', 'The user was updated');
-    }
-
-    return Redirect::route('user.edit', $id)
-      ->withInput()
-      ->withErrors($s->errors());
-  }
+  public function update($id){}
 
   /**
    * Remove the specified resource from storage.
@@ -110,9 +73,6 @@ class UserController extends BaseController {
    * @param  int  $id
    * @return Response
    */
-  public function destroy($id)
-  {
-    return $this->user->delete($id);
-  }
+  public function destroy($id){}
 
 }
