@@ -8,6 +8,6 @@ interface UserRepository {
    * @param int $id
    * @return object
    */
-  public function feed();
+  public function feed($id);
 
 }

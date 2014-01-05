@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Storage\Post;
+<?php namespace Cribbb\Repository\Post;
 
 interface PostRepository {
 

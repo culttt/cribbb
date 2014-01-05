@@ -2,7 +2,9 @@
 
 use User;
 use Post;
+use Cribbb\Service\Cache\LaravelCache;
 use Illuminate\Support\ServiceProvider;
+use Cribbb\Repository\User\CacheDecorator;
 use Cribbb\Repository\User\EloquentUserRepository;
 use Cribbb\Repository\Post\EloquentPostRepository;
 
@@ -17,9 +19,14 @@ class RepositoryServiceProvider extends ServiceProvider {
      */
     $this->app->bind('Cribbb\Repository\User\UserRepository', function($app)
     {
-      return new EloquentUserRepository(
+      $user = new EloquentUserRepository(
         new User,
         $app->make('Cribbb\Repository\Post\PostRepository')
+      );
+
+      return new CacheDecorator(
+        $user,
+        new LaravelCache($app['cache'], 'user')
       );
     });
 

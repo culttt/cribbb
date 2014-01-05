@@ -1,6 +1,7 @@
-<?php namespace Cribbb\Storage\Post;
+<?php namespace Cribbb\Repository\Post;
 
 use Illuminate\Database\Eloquent\Model;
+use Cribbb\Repository\RepositoryInterface;
 
 class EloquentPostRepository implements RepositoryInterface, PostRepository {
 

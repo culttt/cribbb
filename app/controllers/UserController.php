@@ -1,18 +1,20 @@
 <?php
 
-use Cribbb\Storage\User\UserRepository as User;
+use Cribbb\Entity\User\UserEntity;
 
 class UserController extends BaseController {
 
   /**
-   * User Repository
+   * UserEntity
    */
   protected $user;
 
   /**
-   * Inject the User Repository
+   * Construct
+   *
+   * @param UserEntity $user
    */
-  public function __construct(User $user)
+  public function __construct(UserEntity $user)
   {
     $this->user = $user;
   }

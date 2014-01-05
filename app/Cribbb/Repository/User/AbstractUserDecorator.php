@@ -1,26 +1,22 @@
 <?php namespace Cribbb\Repository\User;
 
-use Illuminate\Database\Eloquent\Model;
 use Cribbb\Repository\RepositoryInterface;
-use Cribbb\Repository\Post\PostRepository;
 
-class EloquentUserRepository implements RepositoryInterface, UserRepository {
+abstract class AbstractUserDecorator implements RepositoryInterface, UserRepository {
 
   /**
-   * @var Model
+   * @var UserRepository
    */
   protected $user;
 
   /**
    * Construct
    *
-   * @param Illuminate\Database\Eloquent\Model $user
-   * @param PostRepository $post
+   * @param UserRepository $user
    */
-  public function __construct(Model $user, PostRepository $post)
+  public function __construct(UserRepository $user)
   {
     $this->user = $user;
-    $this->post = $post;
   }
 
   /**
@@ -52,7 +48,7 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    */
   public function create(array $data)
   {
-
+    return $this->user->create($data);
   }
 
   /**
@@ -63,7 +59,7 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    */
   public function update(array $data)
   {
-
+    return $this->user->update($data);
   }
 
   /**
@@ -74,9 +70,7 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    */
   public function delete($id)
   {
-    $user = $this>find($id);
-
-    return $user->delete();
+    return $this->user->delete($id);
   }
 
   /**
@@ -87,7 +81,7 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    */
   public function feed($id)
   {
-    return $this->post->getUserFeed($id);
+    return $this->user->feed($id);
   }
 
 }

@@ -115,6 +115,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Cribbb\Repository\RepositoryServiceProvider',
+		'Cribbb\Entity\EntityServiceProvider',
 		'Cribbb\Composer\ComposerServiceProvider',
 	),
 
