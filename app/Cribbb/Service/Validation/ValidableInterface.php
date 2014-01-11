@@ -3,7 +3,7 @@
 interface ValidableInterface {
 
   /**
-   * Add data to validate against
+   * With
    *
    * @param array
    * @return self
@@ -11,14 +11,14 @@ interface ValidableInterface {
   public function with(array $input);
 
   /**
-   * Test if validation passes
+   * Passes
    *
    * @return boolean
    */
   public function passes();
 
   /**
-   * Retrieve validation errors
+   * Errors
    *
    * @return Illuminate\Support\MessageBag
    */
