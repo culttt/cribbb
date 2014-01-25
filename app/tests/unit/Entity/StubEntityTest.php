@@ -16,7 +16,7 @@ class EntityTest extends TestCase {
   public function testCreateMethodThrowsExceptionIfNotArray()
   {
     $entity = new StubEntity;
-    $repository->create('hello world');
+    $entity->create('hello world');
   }
 
   /**
