@@ -10,4 +10,12 @@ interface UserRepository {
    */
   public function feed($id);
 
+  /**
+   * Cribbbs
+   *
+   * @param int $id
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function cribbbs($id);
+
 }

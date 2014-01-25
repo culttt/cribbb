@@ -86,4 +86,26 @@ class CacheDecorator extends AbstractUserDecorator {
     return $feed;
   }
 
+  /**
+   * Cribbbs
+   *
+   * @param int $id
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function cribbbs($id)
+  {
+    $key = md5('cribbbs.'.$id);
+
+    if($this->cache->has($key))
+    {
+      return $this->cache->get($key);
+    }
+
+    $cribbbs = $this->user->cribbbs($id);
+
+    $this->cache->put($key, $cribbbs);
+
+    return $cribbbs;
+  }
+
 }

@@ -74,7 +74,7 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    */
   public function delete($id)
   {
-    $user = $this>find($id);
+    $user = $this->find($id);
 
     return $user->delete();
   }
@@ -88,6 +88,22 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
   public function feed($id)
   {
     return $this->post->getUserFeed($id);
+  }
+
+  /**
+   * Cribbbs
+   *
+   * @param int $id
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function cribbbs($id)
+  {
+    $user = $this->find($id);
+
+    if($user)
+    {
+      return $user->cribbbs();
+    }
   }
 
 }
