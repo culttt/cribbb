@@ -42,4 +42,15 @@ class UserEntity extends AbstractEntity implements EntityInterface {
     $this->updateValidator = $updateValidator;
   }
 
+  /**
+   * Cribbbs
+   *
+   * @param int $id
+   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   */
+  public function cribbbs($id)
+  {
+    return $this->repository->cribbbs($id);
+  }
+
 }
