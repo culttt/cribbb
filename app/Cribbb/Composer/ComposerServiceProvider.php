@@ -6,7 +6,7 @@ class ComposerServiceProvider extends ServiceProvider {
 
   public function register()
   {
-    $this->app['view.composer.side'] = $this->app->share(function($app)
+    $this->app->bind('Cribbb\Composer\SideComposer', function($app)
     {
       new SideComposer($this->app->make('Cribbb\Entity\User\UserEntity'));
     });
@@ -14,7 +14,8 @@ class ComposerServiceProvider extends ServiceProvider {
 
   public function boot()
   {
-    $this->app->view->composer('partials.side', $this->app['view.composer.side']);
+    $this->app->view->composer('partials.side', $this->app->make('Cribbb\Composer\SideComposer'));
   }
 
 }
+
