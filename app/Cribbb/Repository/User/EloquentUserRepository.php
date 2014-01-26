@@ -12,6 +12,11 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
   protected $user;
 
   /**
+   * @var PostRepository
+   */
+  protected $post;
+
+  /**
    * Construct
    *
    * @param Illuminate\Database\Eloquent\Model $user
@@ -83,11 +88,16 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    * Feed
    *
    * @param int $id
-   * @return Cribbb\Repository\Post\PostRepository
+   * @return Illuminate\Database\Eloquent\Collection
    */
   public function feed($id)
   {
-    return $this->post->getUserFeed($id);
+    return $this->post->whereIn('user_id', function($query) use ($id)
+    {
+      $query->select('follow_id')
+            ->from('user_follows')
+            ->where('user_id', $id);
+    })->orWhere('user_id', $id)->get();
   }
 
   /**

@@ -76,21 +76,4 @@ class EloquentPostRepository implements RepositoryInterface, PostRepository {
     return $post->delete();
   }
 
-  /**
-   * Get User Feed
-   *
-   * @param int $id
-   * @return Illuminate\Database\Eloquent\Collection
-   */
-  public function getUserFeed($id)
-  {
-    return $this->post->whereIn('user_id', function($query) use ($id)
-    {
-      $query->select('follow_id')
-            ->from('user_follows')
-            ->where('user_id', $id);
-    })->orWhere('user_id', $id)
-      ->get();
-  }
-
 }
