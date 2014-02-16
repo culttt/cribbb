@@ -1,9 +1,9 @@
-<?php namespace Cribbb\Service\Validation;
+<?php namespace Cribbb\Validators;
 
 abstract class AbstractValidator {
 
   /**
-   * Validator
+   * The validator instance
    *
    * @var object
    */

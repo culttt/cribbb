@@ -1,20 +1,19 @@
-<?php namespace Cribbb\Service\Validation\Laravel;
+<?php namespace Cribbb\Validators;
 
 use Illuminate\Validation\Factory;
-use Cribbb\Service\Validation\ValidableInterface;
-use Cribbb\Service\Validation\AbstractValidator;
+use Cribbb\Validators\AbstractValidator;
 
-abstract class LaravelValidator extends AbstractValidator implements ValidableInterface {
+abstract class LaravelValidator extends AbstractValidator {
 
   /**
-   * Validator
+   * The Validator instance
    *
    * @var Illuminate\Validation\Factory
    */
   protected $validator;
 
   /**
-   * Construct
+   * Inject the Validator instance
    *
    * @param Illuminate\Validation\Factory $validator
    */
@@ -60,13 +59,12 @@ abstract class LaravelValidator extends AbstractValidator implements ValidableIn
 
     $validator = $this->validator->make($this->data, $rules);
 
-    if( $validator->fails() )
+    if( $validator->passes() )
     {
-      $this->errors = $validator->messages();
-      return false;
+      return true;
     }
 
-    return true;
+    $this->errors = $validator->messages();
   }
 
 }

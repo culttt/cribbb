@@ -106,10 +106,10 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
-		'Cribbb\Repository\RepositoryServiceProvider',
-		'Cribbb\Entity\EntityServiceProvider',
-		'Cribbb\Composer\ComposerServiceProvider',
+		'Cribbb\Validators\ValidatorsServiceProvider'
+		//'Cribbb\Repository\RepositoryServiceProvider',
+		//'Cribbb\Entity\EntityServiceProvider',
+		//'Cribbb\Composer\ComposerServiceProvider',
 	),
 
 	/*

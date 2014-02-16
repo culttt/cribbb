@@ -1,24 +1,24 @@
-<?php namespace Cribbb\Service\Validation;
+<?php namespace Cribbb\Validators;
 
-interface ValidableInterface {
+interface Validable {
 
   /**
-   * With
+   * Pass the data to the validator
    *
    * @param array
    * @return self
    */
-  public function with(array $input);
+  public function with(array $data);
 
   /**
-   * Passes
+   * Determine if the data passes the validation rules
    *
    * @return boolean
    */
   public function passes();
 
   /**
-   * Errors
+   * Return the errors
    *
    * @return Illuminate\Support\MessageBag
    */
