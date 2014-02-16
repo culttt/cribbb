@@ -5,6 +5,13 @@ use Cribbb\Repositories\User\EloquentUserRepository;
 
 class UserRepositoryTest extends TestCase {
 
+  public function setUp()
+  {
+    parent::setUp();
+
+    $this->r = App::make('Cribbb\Repositories\User\UserRepository');
+  }
+
   public function tearDown()
   {
     m::close();
@@ -37,8 +44,7 @@ class UserRepositoryTest extends TestCase {
    */
   public function testUserRepositoryCreateMethodOnlyAcceptsArray()
   {
-    $r = App::make('Cribbb\Repositories\User\UserRepository');
-    $r->create('hello world');
+    $this->r->create('hello world');
   }
 
   /**
@@ -46,8 +52,7 @@ class UserRepositoryTest extends TestCase {
    */
   public function testUserRepositoryUpdateMethodOnlyAcceptsArray()
   {
-    $r = App::make('Cribbb\Repositories\User\UserRepository');
-    $r->update('hello world');
+    $this->r->update('hello world');
   }
 
 }
