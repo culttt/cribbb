@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Repository\User;
+<?php namespace Cribbb\Repositories\User;
 
-use Cribbb\Repository\RepositoryInterface;
+use Cribbb\Repositories\Repository;
 
-abstract class AbstractUserDecorator implements RepositoryInterface, UserRepository {
+abstract class AbstractUserDecorator {
 
   /**
    * @var UserRepository
@@ -22,22 +22,24 @@ abstract class AbstractUserDecorator implements RepositoryInterface, UserReposit
   /**
    * All
    *
+   * @param array $with
    * @return Illuminate\Database\Eloquent\Collection
    */
-  public function all()
+  public function all(array $with = array())
   {
-    return $this->user->all();
+    return $this->user->all($with);
   }
 
   /**
    * Find
    *
    * @param int $id
+   * @param array $with
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function find($id)
+  public function find($id, array $with = array())
   {
-    return $this->user->find($id);
+    return $this->user->find($id, $with);
   }
 
   /**
@@ -77,7 +79,7 @@ abstract class AbstractUserDecorator implements RepositoryInterface, UserReposit
    * Feed
    *
    * @param int $id
-   * @return Cribbb\Repository\Post\PostRepository
+   * @return Cribbb\Repositories\Post\PostRepository
    */
   public function feed($id)
   {

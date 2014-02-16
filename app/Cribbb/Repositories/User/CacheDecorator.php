@@ -1,6 +1,6 @@
-<?php namespace Cribbb\Repository\User;
+<?php namespace Cribbb\Repositories\User;
 
-use Cribbb\Service\Cache\CacheInterface;
+use Cribbb\Cache\CacheInterface;
 
 class CacheDecorator extends AbstractUserDecorator {
 
@@ -24,9 +24,10 @@ class CacheDecorator extends AbstractUserDecorator {
   /**
    * All
    *
+   * @param array $with
    * @return Illuminate\Database\Eloquent\Collection
    */
-  public function all()
+  public function all(array $with = array())
   {
     $key = md5('all');
 
@@ -35,7 +36,7 @@ class CacheDecorator extends AbstractUserDecorator {
       return $this->cache->get($key);
     }
 
-    $users = $this->user->all();
+    $users = $this->user->all($with);
 
     $this->cache->put($key, $users);
 
@@ -46,9 +47,10 @@ class CacheDecorator extends AbstractUserDecorator {
    * Find
    *
    * @param int $id
+   * @param array $with
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function find($id)
+  public function find($id, array $with = array())
   {
     $key = md5('id.'.$id);
 
@@ -57,7 +59,7 @@ class CacheDecorator extends AbstractUserDecorator {
       return $this->cache->get($key);
     }
 
-    $user = $this->user->find($id);
+    $user = $this->user->find($id, $with);
 
     $this->cache->put($key, $user);
 
@@ -79,7 +81,7 @@ class CacheDecorator extends AbstractUserDecorator {
       return $this->cache->get($key);
     }
 
-    $feed = $this->user->feed($id);
+    $feed = $this->user->feed($id, $with);
 
     $this->cache->put($key, $feed);
 
@@ -90,7 +92,7 @@ class CacheDecorator extends AbstractUserDecorator {
    * Cribbbs
    *
    * @param int $id
-   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Illuminate\Database\Eloquent\Collection
    */
   public function cribbbs($id)
   {

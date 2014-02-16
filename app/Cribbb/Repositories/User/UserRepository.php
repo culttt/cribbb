@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Repository\User;
+<?php namespace Cribbb\Repositories\User;
 
 interface UserRepository {
 
@@ -14,7 +14,7 @@ interface UserRepository {
    * Cribbbs
    *
    * @param int $id
-   * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+   * @return Collection
    */
   public function cribbbs($id);
 

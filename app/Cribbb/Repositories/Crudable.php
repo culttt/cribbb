@@ -1,40 +1,34 @@
-<?php namespace Cribbb\Repository;
+<?php namespace Cribbb\Repositories;
 
-interface RepositoryInterface {
-
-  /**
-   * All
-   *
-   * @return Illuminate\Database\Eloquent\Collection
-   */
-  public function all();
+interface Crudable {
 
   /**
-   * Find
+   * Find a single entity
    *
    * @param int $id
+   * @param array $with
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function find($id);
+  public function find($id, array $with = array());
 
   /**
-   * Create
+   * Create a new entity
    *
    * @param array $data
-   * @return boolean
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function create(array $input);
 
   /**
-   * Update
+   * Update an existing entity
    *
    * @param array $data
-   * @return boolean
+   * @return Illuminate\Database\Eloquent\Model
    */
   public function update(array $input);
 
   /**
-   * Delete
+   * Delete an existing entity
    *
    * @param int $id
    * @return boolean

@@ -1,15 +1,19 @@
-<?php namespace Cribbb\Repository\User;
+<?php namespace Cribbb\Repositories\User;
 
+use Illuminate\Support\MessageBag;
+use Cribbb\Repositories\Repository;
+use Cribbb\Repositories\Crudable;
+use Cribbb\Repositories\Paginable;
 use Illuminate\Database\Eloquent\Model;
-use Cribbb\Repository\RepositoryInterface;
-use Cribbb\Repository\Post\PostRepository;
+use Cribbb\Repositories\AbstractRepository;
+use Cribbb\Repositories\Post\PostRepository;
 
-class EloquentUserRepository implements RepositoryInterface, UserRepository {
+class EloquentUserRepository extends AbstractRepository implements Repository, Crudable, Paginable, UserRepository {
 
   /**
    * @var Model
    */
-  protected $user;
+  protected $model;
 
   /**
    * @var PostRepository
@@ -22,54 +26,29 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
    * @param Illuminate\Database\Eloquent\Model $user
    * @param PostRepository $post
    */
-  public function __construct(Model $user, PostRepository $post)
+  public function __construct(Model $model, PostRepository $post)
   {
-    $this->user = $user;
+    parent::__construct(new MessageBag);
+
+    $this->model = $model;
     $this->post = $post;
-  }
-
-  /**
-   * All
-   *
-   * @return Illuminate\Database\Eloquent\Collection
-   */
-  public function all()
-  {
-    return $this->user->all();
-  }
-
-  /**
-   * Find
-   *
-   * @param int $id
-   * @return Illuminate\Database\Eloquent\Model
-   */
-  public function find($id)
-  {
-    return $this->user->find($id);
   }
 
   /**
    * Create
    *
    * @param array $data
-   * @return boolean
+   * @return Illuminate\Database\Eloquent\Model
    */
-  public function create(array $data)
-  {
-
-  }
+  public function create(array $data){}
 
   /**
    * Update
    *
    * @param array $data
-   * @return boolean
+   * @return Illuminate\Database\Eloquent\Model
    */
-  public function update(array $data)
-  {
-
-  }
+  public function update(array $data){}
 
   /**
    * Delete
@@ -81,7 +60,10 @@ class EloquentUserRepository implements RepositoryInterface, UserRepository {
   {
     $user = $this->find($id);
 
-    return $user->delete();
+    if($user)
+    {
+      return $user->delete();
+    }
   }
 
   /**
