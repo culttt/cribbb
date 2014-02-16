@@ -1,11 +1,9 @@
 {
 	"require": {
-		"laravel/framework": "4.1.*",
-		"way/generators": "dev-master"
+		"laravel/framework": "4.1.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*",
-		"zizaco/factory-muff": "dev-master",
 		"mockery/mockery": "dev-master",
 		"fzaninotto/faker": "1.3.*@dev"
 	},
