@@ -108,7 +108,6 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Cribbb\Validators\ValidatorsServiceProvider'
 		//'Cribbb\Repository\RepositoryServiceProvider',
-		//'Cribbb\Entity\EntityServiceProvider',
 		//'Cribbb\Composer\ComposerServiceProvider',
 	),
 
