@@ -6,3 +6,4 @@ composer.lock
 .sass-cache
 node_modules
 /app/assets/bower
+.vagrant
