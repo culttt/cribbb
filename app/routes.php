@@ -11,10 +11,7 @@
 |
 */
 
-/**
- * Home
- */
-Route::get('/', array(
-  'uses' => 'HomeController@index',
-  'as' => 'home.index'
+Route::get('join', array(
+  'uses' => 'JoinController@index',
+  'as' => 'join.index'
 ));
