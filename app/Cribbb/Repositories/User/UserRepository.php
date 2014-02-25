@@ -3,14 +3,6 @@
 interface UserRepository {
 
   /**
-   * Feed
-   *
-   * @param int $id
-   * @return object
-   */
-  public function feed($id);
-
-  /**
    * Cribbbs
    *
    * @param int $id

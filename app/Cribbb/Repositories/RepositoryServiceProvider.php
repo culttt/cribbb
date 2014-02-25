@@ -26,10 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider {
   {
     $this->app->bind('Cribbb\Repositories\User\UserRepository', function($app)
     {
-      $user = new EloquentUserRepository(
-        new User,
-        $app->make('Cribbb\Repositories\Post\PostRepository')
-      );
+      $user = new EloquentUserRepository( new User, $app['hash'] );
 
       $user->registerValidator(
         'create', $this->app->make('Cribbb\Validators\User\UserCreateValidator')
@@ -39,10 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider {
         'update', $this->app->make('Cribbb\Validators\User\UserUpdateValidator')
       );
 
-      return new CacheDecorator(
-        $user,
-        new LaravelCache($app['cache'], 'user')
-      );
+      return new CacheDecorator( $user, new LaravelCache( $app['cache'], 'user') );
     });
 
   }

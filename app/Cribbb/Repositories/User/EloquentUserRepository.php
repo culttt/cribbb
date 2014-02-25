@@ -1,37 +1,31 @@
 <?php namespace Cribbb\Repositories\User;
 
-use Illuminate\Support\MessageBag;
-use Cribbb\Repositories\Repository;
 use Cribbb\Repositories\Crudable;
+use Illuminate\Support\MessageBag;
 use Cribbb\Repositories\Paginable;
+use Cribbb\Repositories\Repository;
+use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Database\Eloquent\Model;
 use Cribbb\Repositories\AbstractRepository;
-use Cribbb\Repositories\Post\PostRepository;
 
 class EloquentUserRepository extends AbstractRepository implements Repository, Crudable, Paginable, UserRepository {
 
   /**
-   * @var Model
+   * @var Illuminate\Database\Eloquent\Model
    */
   protected $model;
-
-  /**
-   * @var PostRepository
-   */
-  protected $post;
 
   /**
    * Construct
    *
    * @param Illuminate\Database\Eloquent\Model $user
-   * @param PostRepository $post
    */
-  public function __construct(Model $model, PostRepository $post)
+  public function __construct(Model $model, BcryptHasher $hasher)
   {
     parent::__construct(new MessageBag);
 
     $this->model = $model;
-    $this->post = $post;
+    $this->hasher = $hasher;
   }
 
   /**
@@ -40,7 +34,15 @@ class EloquentUserRepository extends AbstractRepository implements Repository, C
    * @param array $data
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function create(array $data){}
+  public function create(array $data)
+  {
+    if($this->isValid('create', $data))
+    {
+      $data['password'] = $this->hasher->make($data['password']);
+
+      return $this->model->create($data);
+    }
+  }
 
   /**
    * Update
@@ -64,22 +66,6 @@ class EloquentUserRepository extends AbstractRepository implements Repository, C
     {
       return $user->delete();
     }
-  }
-
-  /**
-   * Feed
-   *
-   * @param int $id
-   * @return Illuminate\Database\Eloquent\Collection
-   */
-  public function feed($id)
-  {
-    return $this->post->whereIn('user_id', function($query) use ($id)
-    {
-      $query->select('follow_id')
-            ->from('user_follows')
-            ->where('user_id', $id);
-    })->orWhere('user_id', $id)->get();
   }
 
   /**

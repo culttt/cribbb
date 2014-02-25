@@ -51,4 +51,20 @@ class EloquentPostRepository extends AbstractRepository implements Repository, C
    */
   public function delete($id){}
 
+  /**
+   * Feed
+   *
+   * @param int $id
+   * @return Illuminate\Database\Eloquent\Collection
+   */
+  public function feed($id)
+  {
+    return $this->post->whereIn('user_id', function($query) use ($id)
+    {
+      $query->select('follow_id')
+            ->from('user_follows')
+            ->where('user_id', $id);
+    })->orWhere('user_id', $id)->get();
+  }
+
 }

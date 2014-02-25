@@ -19,7 +19,7 @@ class UserRepositoryTest extends TestCase {
 
   public function testUserRepositoryIsErrorsIsMessageBag()
   {
-    $r = new EloquentUserRepository(m::mock('Illuminate\Database\Eloquent\Model'), App::make('Cribbb\Repositories\Post\PostRepository'));
+    $r = new EloquentUserRepository(m::mock('Illuminate\Database\Eloquent\Model'), App::make('hash'));
     $this->assertInstanceOf('Illuminate\Support\MessageBag', $r->errors());
   }
 
@@ -28,13 +28,13 @@ class UserRepositoryTest extends TestCase {
    */
   public function testUserRepositoryRequiresModel()
   {
-    $r = new EloquentUserRepository(array(), App::make('Cribbb\Repositories\Post\PostRepository'));
+    $r = new EloquentUserRepository(array(), App::make('hash'));
   }
 
   /**
    * @expectedException Exception
    */
-  public function testUserRepositoryRequiresPostRepository()
+  public function testUserRepositoryRequiresHasher()
   {
     $r = new EloquentUserRepository(m::mock('Illuminate\Database\Eloquent\Model'), array());
   }
