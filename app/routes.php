@@ -11,7 +11,27 @@
 |
 */
 
-Route::get('join', array(
-  'uses' => 'JoinController@index',
-  'as' => 'join.index'
+Route::get('test', function(){
+  Session::put('key', 'yog');
+    var_dump(Session::get('key'));
+});
+
+Route::get('session', function(){
+  var_dump(Session::get('creds'));
+});
+
+
+Route::get('auth/twitter', array(
+  'uses' => 'AuthController@twitter',
+  'as' => 'auth.twitter'
+));
+
+Route::get('auth/callback', array(
+  'uses' => 'AuthController@callback',
+  'as' => 'auth.callback'
+));
+
+Route::get('auth/redirect', array(
+  'uses' => 'AuthController@redirect',
+  'as' => 'auth.redirect'
 ));

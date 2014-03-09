@@ -107,7 +107,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Cribbb\Validators\ValidatorsServiceProvider',
-		'Cribbb\Repositories\RepositoryServiceProvider'
+		'Cribbb\Repositories\RepositoryServiceProvider',
+		'Cribbb\Authenticators\AuthenticatorsServiceProvider'
 	),
 
 	/*
