@@ -4,7 +4,6 @@ use Cribbb\Repositories\Crudable;
 use Illuminate\Support\MessageBag;
 use Cribbb\Repositories\Paginable;
 use Cribbb\Repositories\Repository;
-use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Database\Eloquent\Model;
 use Cribbb\Repositories\AbstractRepository;
 
@@ -20,12 +19,11 @@ class EloquentUserRepository extends AbstractRepository implements Repository, C
    *
    * @param Illuminate\Database\Eloquent\Model $user
    */
-  public function __construct(Model $model, BcryptHasher $hasher)
+  public function __construct(Model $model)
   {
     parent::__construct(new MessageBag);
 
     $this->model = $model;
-    $this->hasher = $hasher;
   }
 
   /**
@@ -36,12 +34,7 @@ class EloquentUserRepository extends AbstractRepository implements Repository, C
    */
   public function create(array $data)
   {
-    if($this->isValid('create', $data))
-    {
-      $data['password'] = $this->hasher->make($data['password']);
-
-      return $this->model->create($data);
-    }
+    return $this->model->create($data);
   }
 
   /**
