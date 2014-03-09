@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'bfMBxdc1z0MuNhqubiQ5BpsCahpdWBKM',
+	'key' => $_ENV['laravel_key'],
 
 	/*
 	|--------------------------------------------------------------------------
