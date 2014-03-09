@@ -24,59 +24,35 @@ class AuthController extends BaseController {
 
   /**
    * Authenticate through Twitter
-   *
    */
   public function twitter()
   {
-    $creds = $this->twitter->getTemporaryCredentials();
+    $credentials = $this->twitter->getTemporaryCredentials();
 
-    Session::put('creds', $creds);
+    Session::put('temp_credentials', $credentials);
     Session::save();
 
-    $this->twitter->authorize(Session::get('creds'));
+    $this->twitter->authorize($credentials);
   }
 
   /**
-   * Recieve the call back from
+   * Receive the callback from
    * the authentication provider
    */
   public function callback()
   {
-    // We will now retrieve token credentials from the server
-    $tokenCredentials = $this->twitter->getTokenCredentials(Session::get('creds'), Input::get('oauth_token'), Input::get('oauth_verifier'));
+    $token = $this->twitter->getTokenCredentials(
+      Session::get('temp_credentials'),
+      Input::get('oauth_token'),
+      Input::get('oauth_verifier')
+    );
 
-    echo "<pre>";
-
-    var_dump('Get Identifier');
-    var_dump($tokenCredentials->getIdentifier());
-
-    var_dump('Get Secret');
-    var_dump($tokenCredentials->getSecret());
-
-    var_dump('Get user details');
-    var_dump($this->twitter->getUserDetails($tokenCredentials));
-
-    var_dump('Get user uid');
-    var_dump($this->twitter->getUserUid($tokenCredentials));
-
-    var_dump('Get user email');
-    var_dump($this->twitter->getUserEmail($tokenCredentials));
-
-    var_dump('Get token credentials');
-    var_dump($this->twitter->getUserScreenName($tokenCredentials));
+    var_dump($token->getIdentifier());
+    var_dump($token->getSecret());
+    var_dump($this->twitter->getUserDetails($token));
+    var_dump($this->twitter->getUserUid($token));
+    var_dump($this->twitter->getUserEmail($token));
+    var_dump($this->twitter->getUserScreenName($token));
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

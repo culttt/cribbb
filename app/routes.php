@@ -20,8 +20,3 @@ Route::get('auth/callback', array(
   'uses' => 'AuthController@callback',
   'as' => 'auth.callback'
 ));
-
-Route::get('auth/redirect', array(
-  'uses' => 'AuthController@redirect',
-  'as' => 'auth.redirect'
-));
