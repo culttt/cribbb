@@ -11,12 +11,28 @@
 |
 */
 
-Route::get('auth/twitter', array(
-  'uses' => 'AuthController@twitter',
-  'as' => 'auth.twitter'
+/**
+ * Oauth
+ *
+ * Routes for authenticating with third-party
+ * social authentication services
+ */
+Route::get('oauth/authorize', array(
+  'uses' => 'OauthController@authorize',
+  'as' => 'oauth.authorize'
 ));
 
-Route::get('auth/callback', array(
-  'uses' => 'AuthController@callback',
-  'as' => 'auth.callback'
+Route::get('oauth/callback', array(
+  'uses' => 'OauthController@callback',
+  'as' => 'oauth.callback'
+));
+
+Route::get('oauth/register', array(
+  'uses' => 'OauthController@register',
+  'as' => 'oauth.register'
+));
+
+Route::post('oauth', array(
+  'uses' => 'OauthController@store',
+  'as' => 'oauth.store'
 ));
