@@ -10,7 +10,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    *
    * @var array
    */
-  protected $fillable = array('username', 'first_name', 'last_name', 'email', "password");
+  protected $fillable = array(
+    'username',
+    'first_name',
+    'last_name',
+    'email',
+    'password',
+    'oauth_token',
+    'oauth_token_secret'
+  );
 
   /**
    * Define a many-to-many relationship.
@@ -53,15 +61,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   }
 
   /**
-   * Factory
-   */
-  public static $factory = array(
-    'username' => 'string',
-    'email' => 'email',
-    'password' => 'string',
-  );
-
-  /**
    * Get the unique identifier for the user.
    *
    * @return mixed
@@ -89,14 +88,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   public function getReminderEmail()
   {
     return $this->email;
-  }
-
-  /**
-   * To be removed
-   */
-  public function gravatar()
-  {
-    return 'http://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'?s=35';
   }
 
 }

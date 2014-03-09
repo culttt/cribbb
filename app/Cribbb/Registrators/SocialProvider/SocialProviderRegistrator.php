@@ -1,9 +1,12 @@
 <?php namespace Cribbb\Registrators\SocialProvider;
 
 use Cribbb\Validators\Validable;
-use Cribbb\Repositories\UserRepository;
+use Illuminate\Support\MessageBag;
+use Cribbb\Registrators\Registrator;
+use Cribbb\Repositories\User\UserRepository;
+use Cribbb\Registrators\AbstractRegistrator;
 
-class SocialProviderRegistrator implements Registrator {
+class SocialProviderRegistrator extends AbstractRegistrator implements Registrator {
 
   /**
    * Validator instance
@@ -24,10 +27,12 @@ class SocialProviderRegistrator implements Registrator {
    *
    * @param Validable $validator
    */
-  public function __construct(Validable $validator, UserRepository $repository)
+  public function __construct(UserRepository $repository, Validable $validator)
   {
     $this->validator = $validator;
     $this->repository = $repository;
+
+    parent::__construct(new MessageBag);
   }
 
   /**
@@ -44,6 +49,8 @@ class SocialProviderRegistrator implements Registrator {
       // Create
       return $this->repository->create($data);
     }
+
+    $this->errors = $this->validator->errors();
   }
 
 }

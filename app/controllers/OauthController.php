@@ -32,8 +32,10 @@ class OauthController extends BaseController {
 
   /**
    * Authenticate through Twitter
+   *
+   * @return Redirect
    */
-  public function twitter()
+  public function authorize()
   {
     $credentials = $this->twitter->getTemporaryCredentials();
 
@@ -45,6 +47,8 @@ class OauthController extends BaseController {
 
   /**
    * Receive the callback from the authentication provider
+   *
+   * @return Redirect
    */
   public function callback()
   {
@@ -61,12 +65,14 @@ class OauthController extends BaseController {
     Session::put('oauth_token_secret', $token->getSecret());
     Session::save();
 
-    Redirect::to('oauth/register');
+    return Redirect::route('oauth.register');
   }
 
   /**
    * Display the form to allow the
    * user to complete their registration
+   *
+   * @return View
    */
   public function register()
   {
@@ -75,18 +81,24 @@ class OauthController extends BaseController {
 
   /**
    * Create the new user
+   *
+   * @return Redirect
    */
   public function store()
   {
-    $user = $this->registrator->create(Input::all());
+    $user = $this->registrator->create(array(
+      'username' => Session::get('username'),
+      'email' => Input::get('email'),
+      'oauth_token' => Session::get('oauth_token'),
+      'oauth_token_secret' => Session::get('oauth_token_secret')
+    ));
 
     if($user)
     {
-      // Authenticate user
-      // Redirect to home screen
+      die('Great success!');
     }
 
-    return // Redirect back with errors
+    return Redirect::route('oauth.register')->withInput()->withErrors($this->registrator->errors());
   }
 
 }

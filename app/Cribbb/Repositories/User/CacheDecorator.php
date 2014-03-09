@@ -2,7 +2,7 @@
 
 use Cribbb\Cache\CacheInterface;
 
-class CacheDecorator extends AbstractUserDecorator {
+class CacheDecorator extends AbstractUserDecorator implements UserRepository {
 
   /**
    * @var CacheInterface

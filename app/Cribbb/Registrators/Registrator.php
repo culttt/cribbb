@@ -9,4 +9,11 @@ interface Registrator {
    */
   public function create(array $data);
 
+  /**
+   * Return the errors
+   *
+   * @return Illuminate\Support\MessageBag
+   */
+  public function errors();
+
 }
