@@ -11,16 +11,6 @@
 |
 */
 
-Route::get('test', function(){
-  Session::put('key', 'yog');
-    var_dump(Session::get('key'));
-});
-
-Route::get('session', function(){
-  var_dump(Session::get('creds'));
-});
-
-
 Route::get('auth/twitter', array(
   'uses' => 'AuthController@twitter',
   'as' => 'auth.twitter'

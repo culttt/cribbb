@@ -60,4 +60,16 @@ return array(
 
 	),
 
+	'providers' => array(
+
+		'twitter' => array(
+
+  		'identifier'    => $_ENV['twitter_identifier'],
+  		'secret'        => $_ENV['twitter_secret'],
+  		'callback_uri'  => $_ENV['twitter_callback_uri']
+
+		)
+
+	)
+
 );

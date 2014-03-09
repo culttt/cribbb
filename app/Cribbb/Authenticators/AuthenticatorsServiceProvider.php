@@ -22,9 +22,9 @@ class AuthenticatorsServiceProvider extends ServiceProvider {
     $this->app->bind('Cribbb\Authenticators\Providers\Twitter', function($app)
     {
       return new LeagueTwitterProvider(new Twitter(array(
-        'identifier'    => 'QGgWdfVnsjqDo7fmjlT1Q',
-        'secret'        => 'v96mqnwIfs3BQ8XFJqr8gxrjDXwbCqRrdIUT1TpCY4',
-        'callback_uri'  => "http://cribbb.dev/auth/callback",
+        'identifier'    => $app['config']->get('auth.providers.twitter.identifier'),
+        'secret'        => $app['config']->get('auth.providers.twitter.secret'),
+        'callback_uri'  => $app['config']->get('auth.providers.twitter.callback_uri')
       )));
     });
   }
