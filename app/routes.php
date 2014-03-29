@@ -12,6 +12,17 @@
 */
 
 /**
+ * Home
+ *
+ * The root of the application. This will either be
+ * the index page or the user's dashboard
+ */
+Route::get('/', array(
+  'uses' => 'HomeController@index',
+  'as' => 'home.index'
+));
+
+/**
  * Oauth
  *
  * Routes for authenticating with third-party

@@ -95,7 +95,9 @@ class OauthController extends BaseController {
 
     if($user)
     {
-      die('Great success!');
+      Auth::login($user);
+
+      return Redirect::route('home.index');
     }
 
     return Redirect::route('oauth.register')->withInput()->withErrors($this->registrator->errors());
