@@ -2,11 +2,13 @@
 
 use Post;
 use User;
+use Invite;
 use Cribbb\Cache\LaravelCache;
 use Illuminate\Support\ServiceProvider;
 use Cribbb\Repositories\User\CacheDecorator;
 use Cribbb\Repositories\User\EloquentUserRepository;
 use Cribbb\Repositories\Post\EloquentPostRepository;
+use Cribbb\Repositories\Invite\EloquentInviteRepository;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
@@ -17,6 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider {
   {
     $this->registerPostRepository();
     $this->registerUserRepository();
+    $this->registerInviteRepository();
   }
 
   /**
@@ -49,6 +52,17 @@ class RepositoryServiceProvider extends ServiceProvider {
     $this->app->bind('Cribbb\Repositories\Post\PostRepository', function($app)
     {
       return new EloquentPostRepository( new Post );
+    });
+  }
+
+  /**
+   * Register Invite Repository
+   */
+  public function registerInviteRepository()
+  {
+    $this->app->bind('Cribbb\Repositories\Invite\InviteRepository', function($app)
+    {
+      return new EloquentInviteRepository( new Invite );
     });
   }
 

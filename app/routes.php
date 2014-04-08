@@ -47,3 +47,11 @@ Route::post('oauth', array(
   'uses' => 'OauthController@store',
   'as' => 'oauth.store'
 ));
+
+/**
+ * Invite
+ */
+Route::post('invite', array(
+  'uses' => 'InviteController@store',
+  'as' => 'invite.store'
+));
