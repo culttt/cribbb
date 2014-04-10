@@ -23,6 +23,26 @@ Route::get('/', array(
 ));
 
 /**
+ * Invite
+ *
+ * The route to create a new Invite
+ */
+Route::post('invite', array(
+  'uses' => 'InviteController@store',
+  'as' => 'invite.store'
+));
+
+/**
+ * Register
+ *
+ * Sign up as a new user
+ */
+Route::get('register', array(
+  'uses' => 'RegisterController@index',
+  'as' => 'register.index'
+));
+
+/**
  * Oauth
  *
  * Routes for authenticating with third-party
@@ -46,12 +66,4 @@ Route::get('oauth/register', array(
 Route::post('oauth', array(
   'uses' => 'OauthController@store',
   'as' => 'oauth.store'
-));
-
-/**
- * Invite
- */
-Route::post('invite', array(
-  'uses' => 'InviteController@store',
-  'as' => 'invite.store'
 ));

@@ -26,6 +26,17 @@ class EloquentInviteRepository extends AbstractRepository implements Repository,
   }
 
   /**
+   * Find a valid invite by a code
+   *
+   * @param string $code
+   * @return Illuminate\Database\Eloquent\Model
+   */
+  public function getValidInviteByCode($code)
+  {
+    return $this->model->where('code', '=', $code)->where('valid', '=', true)->first();
+  }
+
+  /**
    * Create
    *
    * @param array $data
