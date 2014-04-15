@@ -17,7 +17,7 @@ class CreateInvitesTable extends Migration {
       $table->increments('id');
       $table->string('code');
       $table->string('email');
-      $table->boolean('valid')->default(true);
+      $table->timestamp('claimed_at')->nullable();
       $table->timestamps();
     });
   }
