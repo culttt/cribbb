@@ -1,24 +1,24 @@
 <?php
 
-use Cribbb\Repositories\Invite\InviteRepository;
+use Cribbb\Inviters\Requester;
 
 class InviteController extends BaseController {
 
   /**
-   * InviteRepository
+   * The Invite Request service
    *
-   * @var Cribbb\Repositories\Invite\InviteRepository
+   * @var Cribbb\Inviters\Requester
    */
-  protected $repository;
+  protected $requester;
 
   /**
    * Create a new instance of the InviteController
    *
-   * @param Cribbb\Repositories\Invite\InviteRepository
+   * @param Cribbb\Inviters\Requester
    */
-  public function __construct(InviteRepository $repository)
+  public function __construct(Requester $requester)
   {
-    $this->repository = $repository;
+    $this->requester = $requester;
   }
 
   /**
@@ -28,7 +28,15 @@ class InviteController extends BaseController {
    */
   public function store()
   {
-    $invite = $this->repository->create(Input::all());
+    $invite = $this->requester->create(Input::all());
+
+    if($invite)
+    {
+      // yay
+    }
+
+    // oh no
+    $this->requester->errors();
   }
 
 }

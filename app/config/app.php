@@ -110,6 +110,7 @@ return array(
 		'Cribbb\Repositories\RepositoryServiceProvider',
 		'Cribbb\Authenticators\AuthenticatorsServiceProvider',
 		'Cribbb\Registrators\RegistratorsServiceProvider',
+		'Cribbb\Inviters\InvitersServiceProvider'
 	),
 
 	/*

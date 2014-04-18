@@ -78,3 +78,30 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/*
+|--------------------------------------------------------------------------
+| Invitation Filter
+|--------------------------------------------------------------------------
+|
+| The invite filter will only allow requests that include a valid
+| "code" as part of the query string to access the given route.
+| If the request does not have a valid code in the query
+| string a "404 Not Found" response will be returned
+|
+*/
+
+Route::filter('invite', function()
+{
+  if (! Input::has('code'))
+  {
+    App::abort(404);
+  }
+
+  $repository = App::make('Cribbb\Repositories\Invite\InviteRepository');
+
+  if(! $repository->getValidInviteByCode(Input::get('code')))
+  {
+    App::abort(404);
+  }
+});
