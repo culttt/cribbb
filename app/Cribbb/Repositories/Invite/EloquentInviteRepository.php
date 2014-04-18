@@ -33,7 +33,9 @@ class EloquentInviteRepository extends AbstractRepository implements Repository,
    */
   public function getValidInviteByCode($code)
   {
-    return $this->model->where('code', '=', $code)->where('valid', '=', true)->first();
+    return $this->model->where('code', '=', $code)
+                       ->where('claimed_at', '=', null)
+                       ->first();
   }
 
   /**
@@ -44,8 +46,6 @@ class EloquentInviteRepository extends AbstractRepository implements Repository,
    */
   public function create(array $data)
   {
-    $data['code'] = bin2hex(openssl_random_pseudo_bytes(16));
-
     return $this->model->create($data);
   }
 
