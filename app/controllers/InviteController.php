@@ -28,11 +28,11 @@ class InviteController extends BaseController {
    */
   public function store()
   {
-    $invite = $this->requester->create(Input::all());
+    $invite = $this->requester->create(Input::all(), Session::get('referral', null));
 
     if($invite)
     {
-      // yay
+      dd($invite);
     }
 
     // oh no

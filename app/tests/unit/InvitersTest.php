@@ -44,6 +44,17 @@ class InvitersTest extends TestCase {
     $invite = $inviter->create($user, array('email' => 'phil@ipbrown.com'));
   }
 
+  public function testRequestSentByReferral()
+  {
+    $requester = App::make('Cribbb\Inviters\Requester');
+    $invite1 = $requester->create(array('email' => 'phil@ipbrown.com'));
+
+    $invite2 = $requester->create(array('email' => 'pb@yflag.com'), $invite1->referral_code);
+
+    $invite1 = Invite::find($invite1->id);
+    $this->assertEquals(1, count($invite1->referral_count));
+  }
+
   private function resetEvents()
   {
     $models = array('Invite');

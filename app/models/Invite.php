@@ -20,18 +20,19 @@ class Invite extends Eloquent {
 
     static::creating(function($model)
     {
-      $model->generateInvitationCode();
+      $model->invitation_code = $model->generateCode();
+      $model->referral_code   = $model->generateCode();
     });
   }
 
   /**
-   * Generate an invitation code
+   * Generate an code
    *
-   * @return void
+   * @return string
    */
-  protected function generateInvitationCode()
+  protected function generateCode()
   {
-    $this->code = bin2hex(openssl_random_pseudo_bytes(16));
+    return bin2hex(openssl_random_pseudo_bytes(16));
   }
 
 }

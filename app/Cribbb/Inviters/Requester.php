@@ -49,10 +49,20 @@ class Requester extends AbstractInviter {
    * @param array $data
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function create(array $data)
+  public function create(array $data, $referral = null)
   {
     if($this->runValidationChecks($data))
     {
+      if($referral)
+      {
+        $referer = $this->inviteRepository->getBy('referral_code', $referral)->first();
+
+        if($referer)
+        {
+          $referer->increment('referral_count');
+        }
+      }
+
       return $this->inviteRepository->create($data);
     }
   }
