@@ -29,7 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider {
   {
     $this->app->bind('Cribbb\Repositories\User\UserRepository', function($app)
     {
-      $user = new EloquentUserRepository( new User, $app['hash'] );
+      $user = new EloquentUserRepository( new User );
 
       $user->registerValidator(
         'create', $this->app->make('Cribbb\Validators\User\UserCreateValidator')
