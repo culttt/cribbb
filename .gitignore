@@ -9,3 +9,4 @@ node_modules
 .vagrant
 .env.php
 .env.local.php
+.env.testing.php
