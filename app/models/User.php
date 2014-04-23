@@ -47,7 +47,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    */
   public function follow()
   {
-    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id')->withTimestamps();;
+    return $this->belongsToMany('User', 'user_follows', 'user_id', 'follow_id')->withTimestamps();
   }
 
   /**
@@ -57,7 +57,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
    */
   public function followers()
   {
-    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id')->withTimestamps();;
+    return $this->belongsToMany('User', 'user_follows', 'follow_id', 'user_id')->withTimestamps();
   }
 
   /**
