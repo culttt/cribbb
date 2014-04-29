@@ -61,6 +61,8 @@ class Inviter extends AbstractInviter {
    */
   public function create(User $user, $data)
   {
+    $data = array_merge($data, ['referrer_id' => $user->id]);
+
     foreach($this->policies as $policy)
     {
       if($policy instanceof Policy)

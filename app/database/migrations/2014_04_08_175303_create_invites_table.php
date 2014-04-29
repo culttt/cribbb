@@ -19,6 +19,7 @@ class CreateInvitesTable extends Migration {
       $table->string('invitation_code');
       $table->string('referral_code');
       $table->integer('referral_count')->default(0);
+      $table->integer('referrer_id')->nullable();
       $table->timestamp('claimed_at')->nullable();
       $table->timestamps();
     });

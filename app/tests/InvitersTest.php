@@ -28,10 +28,11 @@ class InvitersTest extends TestCase {
   public function testUserInviteAnotherUser()
   {
     $inviter = App::make('Cribbb\Inviters\Inviter');
-    $user = new User;
+    $user = User::create(['username' => 'philipbrown', 'email' => 'phil@ipbrown.com']);
     $user->invitations = 1;
-    $invite = $inviter->create($user, array('email' => 'phil@ipbrown.com'));
+    $invite = $inviter->create($user, array('email' => 'pb@yflag.com'));
     $this->assertInstanceOf('Invite', $invite);
+    $this->assertEquals(1, $invite->referrer_id);
   }
 
   /**
@@ -40,8 +41,8 @@ class InvitersTest extends TestCase {
   public function testUserHasNoInvitations()
   {
     $inviter = App::make('Cribbb\Inviters\Inviter');
-    $user = new User;
-    $invite = $inviter->create($user, array('email' => 'phil@ipbrown.com'));
+    $user = User::create(['username' => 'philipbrown', 'email' => 'phil@ipbrown.com']);
+    $invite = $inviter->create($user, array('email' => 'pb@yflag.com'));
   }
 
   public function testRequestSentByReferral()

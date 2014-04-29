@@ -7,7 +7,7 @@ class Invite extends Eloquent {
    *
    * @var array
    */
-  protected $fillable = array('email');
+  protected $fillable = array('email', 'referrer_id');
 
   /**
    * Register the model events

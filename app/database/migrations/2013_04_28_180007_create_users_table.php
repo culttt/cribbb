@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration {
       $table->string('oauth_token')->nullable();
       $table->string('oauth_token_secret')->nullable();
       $table->integer('invitations')->default(0);
+      $table->integer('invited_by')->nullable();
+      $table->string('remember_token')->nullable();
       $table->timestamps();
     });
   }
