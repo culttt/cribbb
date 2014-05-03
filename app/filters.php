@@ -93,15 +93,20 @@ Route::filter('csrf', function()
 
 Route::filter('invite', function()
 {
-  if (! Input::has('code'))
+  if (! Input::has('code') and ! Session::has('invitation_code'))
   {
-    App::abort(404);
+    return App::abort(404);
   }
 
-  $repository = App::make('Cribbb\Repositories\Invite\InviteRepository');
-
-  if(! $repository->getValidInviteByCode(Input::get('code')))
+  if(Input::has('code'))
   {
-    App::abort(404);
+    $repository = App::make('Cribbb\Repositories\Invite\InviteRepository');
+
+    if(! $repository->getValidInviteByCode(Input::get('code')))
+    {
+      return App::abort(404);
+    }
+
+    Session::put('invitation_code');
   }
 });
