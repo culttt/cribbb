@@ -17,30 +17,21 @@
  * The root of the application. This will either be
  * the index page or the user's dashboard
  */
-Route::get('/', array(
-  'uses' => 'HomeController@index',
-  'as' => 'home.index'
-));
+Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
 
 /**
  * Invite
  *
  * The route to create a new Invite
  */
-Route::post('invite', array(
-  'uses' => 'InviteController@store',
-  'as' => 'invite.store'
-));
+Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store']);
 
 /**
  * Register
  *
  * Sign up as a new user
  */
-Route::get('register', array(
-  'uses' => 'RegisterController@index',
-  'as' => 'register.index'
-));
+Route::get('register', ['uses' => 'RegisterController@index', 'as' => 'register.index']);
 
 /**
  * Oauth
@@ -48,22 +39,7 @@ Route::get('register', array(
  * Routes for authenticating with third-party
  * social authentication services
  */
-Route::get('oauth/authorize', array(
-  'uses' => 'OauthController@authorize',
-  'as' => 'oauth.authorize'
-));
-
-Route::get('oauth/callback', array(
-  'uses' => 'OauthController@callback',
-  'as' => 'oauth.callback'
-));
-
-Route::get('oauth/register', array(
-  'uses' => 'OauthController@register',
-  'as' => 'oauth.register'
-));
-
-Route::post('oauth', array(
-  'uses' => 'OauthController@store',
-  'as' => 'oauth.store'
-));
+Route::get('oauth/authorize', ['uses' => 'OauthController@authorize', 'as' => 'oauth.authorize']);
+Route::get('oauth/callback', ['uses' => 'OauthController@callback', 'as' => 'oauth.callback']);
+Route::get('oauth/register', ['uses' => 'OauthController@register', 'as' => 'oauth.register']);
+Route::post('oauth', ['uses' => 'OauthController@store', 'as' => 'oauth.store']);
