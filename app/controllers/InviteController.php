@@ -32,11 +32,10 @@ class InviteController extends BaseController {
 
     if($invite)
     {
-      dd($invite);
+      return Redirect::route('home.index')->with('message', 'Thank you for requesting an invite to Cribbb!');
     }
 
-    // oh no
-    $this->requester->errors();
+    return Redirect::route('home.index')->withInput()->withErrors($this->requester->errors());
   }
 
 }
