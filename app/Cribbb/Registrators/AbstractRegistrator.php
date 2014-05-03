@@ -14,11 +14,11 @@ abstract class AbstractRegistrator {
   /**
    * Set the empty MessageBag instance on instantiation
    *
-   * @param Illuminate\Support\MessageBag
+   * @return void
    */
-  public function __construct(MessageBag $errors)
+  public function __construct()
   {
-    $this->errors = $errors;
+    $this->errors = new MessageBag;
   }
 
   /**
