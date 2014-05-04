@@ -1,5 +1,7 @@
 <?php
 
+use Cribbb\Registrators\CredentialsRegistrator;
+
 class RegisterController extends BaseController {
 
   /**
@@ -7,9 +9,10 @@ class RegisterController extends BaseController {
    *
    * @return void
    */
-  public function __construct()
+  public function __construct(CredentialsRegistrator $registrator)
   {
     $this->beforeFilter('invite');
+    $this->registrator = $registrator;
   }
 
   /**
@@ -29,7 +32,10 @@ class RegisterController extends BaseController {
    */
   public function store()
   {
+    $user = $this->registrator->create(Input::all());
 
+    echo "<pre>";
+    dd($user);
   }
 
 }

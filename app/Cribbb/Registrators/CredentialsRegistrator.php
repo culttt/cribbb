@@ -1,6 +1,15 @@
 <?php namespace Cribbb\Registrators;
 
+use Cribbb\Repositories\User\UserRepository;
+
 class CredentialsRegistrator extends AbstractRegistrator implements Registrator {
+
+  /**
+   * The UserRepository
+   *
+   * @param Cribbb\Repositories\User\UserRepository
+   */
+  protected $userRepository;
 
   /**
    * An array of Validable classes
@@ -14,11 +23,12 @@ class CredentialsRegistrator extends AbstractRegistrator implements Registrator 
    *
    * @return void
    */
-  public function __construct(array $validators)
+  public function __construct(UserRepository $userRepository, array $validators)
   {
-    parent::__constuct();
+    parent::__construct();
 
-    $this->validators = $validations;
+    $this->userRepository = $userRepository;
+    $this->validators = $validators;
   }
 
   /**
@@ -29,7 +39,10 @@ class CredentialsRegistrator extends AbstractRegistrator implements Registrator 
    */
   public function create(array $data)
   {
-    // Create
+    if($this->runValidationChecks($data))
+    {
+      return $this->userRepository->create($data);
+    }
   }
 
 }

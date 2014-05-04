@@ -2,6 +2,7 @@
 
 use Exception;
 use Cribbb\Validators\Validable;
+use Illuminate\Support\MessageBag;
 
 abstract class AbstractRegistrator {
 
