@@ -29,7 +29,7 @@ class RegisterController extends BaseController {
    */
   public function store()
   {
-    $user = $this->registrator->create(Input::all());
+
   }
 
 }
