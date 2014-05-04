@@ -9,7 +9,7 @@ class RegisterController extends BaseController {
    */
   public function __construct()
   {
-    $this->beforeFilter('invite', array('only' => 'index'));
+    $this->beforeFilter('invite');
   }
 
   /**
@@ -19,7 +19,7 @@ class RegisterController extends BaseController {
    */
   public function index()
   {
-    return 'Sign up here';
+    return View::make('register.index');
   }
 
 }

@@ -32,14 +32,3 @@ Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store
  * Sign up as a new user
  */
 Route::get('register', ['uses' => 'RegisterController@index', 'as' => 'register.index']);
-
-/**
- * Oauth
- *
- * Routes for authenticating with third-party
- * social authentication services
- */
-Route::get('oauth/authorize', ['uses' => 'OauthController@authorize', 'as' => 'oauth.authorize']);
-Route::get('oauth/callback', ['uses' => 'OauthController@callback', 'as' => 'oauth.callback']);
-Route::get('oauth/register', ['uses' => 'OauthController@register', 'as' => 'oauth.register']);
-Route::post('oauth', ['uses' => 'OauthController@store', 'as' => 'oauth.store']);
