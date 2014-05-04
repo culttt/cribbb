@@ -22,4 +22,14 @@ class RegisterController extends BaseController {
     return View::make('register.index');
   }
 
+  /**
+   * Create a new user
+   *
+   * @return Redirect
+   */
+  public function store()
+  {
+    $user = $this->registrator->create(Input::all());
+  }
+
 }

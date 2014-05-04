@@ -32,3 +32,4 @@ Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store
  * Sign up as a new user
  */
 Route::get('register', ['uses' => 'RegisterController@index', 'as' => 'register.index']);
+Route::post('register', ['uses' => 'RegisterController@store', 'as' => 'register.store']);

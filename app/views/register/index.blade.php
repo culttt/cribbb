@@ -1,4 +1,4 @@
-{{ Form::open(array('route' => 'oauth.store')) }}
+{{ Form::open(array('route' => 'register.store')) }}
 
   @if($errors->any())
     <ul>
@@ -9,6 +9,16 @@
   <div>
   {{ Form::label('email', 'Email Address') }}
   {{ Form::text('email') }}
+  </div>
+
+  <div>
+  {{ Form::label('username', 'Username') }}
+  {{ Form::text('username') }}
+  </div>
+
+  <div>
+  {{ Form::label('password', 'Password') }}
+  {{ Form::text('password') }}
   </div>
 
   {{ Form::submit('Complete') }}
