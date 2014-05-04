@@ -107,6 +107,6 @@ Route::filter('invite', function()
       return App::abort(404);
     }
 
-    Session::put('invitation_code');
+    Session::put('invitation_code', Input::get('code'));
   }
 });
