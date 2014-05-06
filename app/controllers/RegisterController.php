@@ -34,8 +34,15 @@ class RegisterController extends BaseController {
   {
     $user = $this->registrator->create(Input::all());
 
-    echo "<pre>";
-    dd($user);
+    if($user)
+    {
+      Auth::login($user);
+
+      return Redirect::route('home.index');
+    }
+
+    return Redirect::route('register.index')->withInput()
+                                            ->withErrors($this->registrator->errors());
   }
 
 }
