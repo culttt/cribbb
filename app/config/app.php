@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => $_ENV['laravel_key'],
+	'key' => $_ENV['LARAVEL_KEY'],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -109,7 +109,8 @@ return array(
 		'Cribbb\Validators\ValidatorsServiceProvider',
 		'Cribbb\Repositories\RepositoryServiceProvider',
 		'Cribbb\Inviters\InvitersServiceProvider',
-		'Cribbb\Registrators\RegistratorsServiceProvider'
+		'Cribbb\Registrators\RegistratorsServiceProvider',
+		'Cribbb\Authenticators\AuthenticatorsServiceProvider'
 	),
 
 	/*

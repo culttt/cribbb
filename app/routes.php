@@ -33,3 +33,11 @@ Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store
  */
 Route::get('register', ['uses' => 'RegisterController@index', 'as' => 'register.index']);
 Route::post('register', ['uses' => 'RegisterController@store', 'as' => 'register.store']);
+
+/**
+ * Social Authentication
+ *
+ * Authenticate via a social provider
+ */
+Route::get('auth/{provider}', ['uses' => 'AuthenticateController@authorise', 'as' => 'authenticate.authorise']);
+Route::get('auth/{provider}/callback', ['uses' => 'AuthenticateController@callback', 'as' => 'authenticate.callback']);
