@@ -19,7 +19,7 @@ class AuthenticateController extends BaseController {
    */
   public function __construct(Manager $manager)
   {
-    //$this->beforeFilter('invite');
+    $this->beforeFilter('invite');
     $this->manager = $manager;
   }
 
@@ -72,8 +72,7 @@ class AuthenticateController extends BaseController {
       Session::put('oauth_token_secret', $token->getSecret());
       Session::save();
 
-      echo "<pre>";
-      dd($user);
+      // Redirect to account completion
     }
 
     catch(Exception $e)
