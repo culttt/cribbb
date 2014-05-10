@@ -3,6 +3,7 @@
 use Illuminate\Support\ServiceProvider;
 use Cribbb\Registrators\Validators\EmailValidator;
 use Cribbb\Registrators\Validators\UsernameValidator;
+use Cribbb\Registrators\Validators\OauthTokenValidator;
 
 class RegistratorsServiceProvider extends ServiceProvider {
 
@@ -14,6 +15,7 @@ class RegistratorsServiceProvider extends ServiceProvider {
   public function register()
   {
     $this->registerCredentialsRegistrator();
+    $this->registerSocialProviderRegistrator();
   }
 
   /**
@@ -32,5 +34,24 @@ class RegistratorsServiceProvider extends ServiceProvider {
     });
   }
 
-}
+  /**
+   * Register the CredentialsRegistrator service
+   *
+   * @return void
+   */
+  public function registerSocialProviderRegistrator()
+  {
+    $this->app->bind('Cribbb\Registrators\SocialProviderRegistrator', function($app)
+    {
+      return new SocialProviderRegistrator(
+        $this->app->make('Cribbb\Repositories\User\UserRepository'),
+        [
+          new UsernameValidator($app['validator']),
+          new EmailValidator($app['validator']),
+          new OauthTokenValidator($app['validator'])
+        ]
+      );
+    });
+  }
 
+}

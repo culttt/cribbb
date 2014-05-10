@@ -31,7 +31,7 @@ Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store
  *
  * Sign up as a new user
  */
-Route::get('register', ['uses' => 'RegisterController@index', 'as' => 'register.index']);
+Route::get('register',  ['uses' => 'RegisterController@index', 'as' => 'register.index']);
 Route::post('register', ['uses' => 'RegisterController@store', 'as' => 'register.store']);
 
 /**
@@ -39,5 +39,7 @@ Route::post('register', ['uses' => 'RegisterController@store', 'as' => 'register
  *
  * Authenticate via a social provider
  */
-Route::get('auth/{provider}', ['uses' => 'AuthenticateController@authorise', 'as' => 'authenticate.authorise']);
-Route::get('auth/{provider}/callback', ['uses' => 'AuthenticateController@callback', 'as' => 'authenticate.callback']);
+Route::get('auth/register',             ['uses' => 'AuthenticateController@register', 'as' => 'authenticate.register']);
+Route::get('auth/{provider}',           ['uses' => 'AuthenticateController@authorise', 'as' => 'authenticate.authorise']);
+Route::get('auth/{provider}/callback',  ['uses' => 'AuthenticateController@callback', 'as' => 'authenticate.callback']);
+Route::post('auth',                     ['uses' => 'AuthenticateController@store', 'as' => 'authenticate.store']);

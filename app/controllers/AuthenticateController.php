@@ -1,6 +1,7 @@
 <?php
 
 use Cribbb\Authenticators\Manager;
+use Cribbb\Registrators\SocialProviderRegistrator;
 
 class AuthenticateController extends BaseController {
 
@@ -12,15 +13,23 @@ class AuthenticateController extends BaseController {
   protected $manager;
 
   /**
+   * The Registrator instance
+   *
+   * @param Cribbb\Registrators\SocialProviderRegistrator
+   */
+  protected $registrator;
+
+  /**
    * Create a new instance of the AuthenticateController
    *
    * @param Cribbb\Authenticators\Manager
    * @return void
    */
-  public function __construct(Manager $manager)
+  public function __construct(Manager $manager, SocialProviderRegistrator $registrator)
   {
     $this->beforeFilter('invite');
     $this->manager = $manager;
+    $this->registrator = $registrator;
   }
 
   /**
@@ -72,13 +81,50 @@ class AuthenticateController extends BaseController {
       Session::put('oauth_token_secret', $token->getSecret());
       Session::save();
 
-      // Redirect to account completion
+      return Redirect::route('authenticate.register');
     }
 
     catch(Exception $e)
     {
       return App::abort(404);
     }
+  }
+
+  /**
+   * Return the form so the user can complete their registration
+   *
+   * @return View
+   */
+  public function register()
+  {
+    return View::make('authenticate.register', ['username' => Session::get('username')]);
+  }
+
+  /**
+   * Store the user's details and authenticate on success
+   *
+   * @return Redirect
+   */
+  public function store()
+  {
+    $data = [
+      'username'            => Input::get('username'),
+      'email'               => Input::get('email'),
+      'oauth_token'         => Session::get('oauth_token'),
+      'oauth_token_secret'  => Session::get('oauth_token_secret')
+    ];
+
+    $user = $this->registrator->create($data);
+
+    if($user)
+    {
+      Auth::login($user);
+
+      return Redirect::route('home.index');
+    }
+
+    return Redirect::route('authenticate.register')->withInput()
+                                                   ->withErrors($this->registrator->errors());
   }
 
 }

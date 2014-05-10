@@ -19,7 +19,7 @@ abstract class AbstractInviter {
       {
         if(! $validator->with($data)->passes())
         {
-          $this->errors = $validator->errors();
+          $this->errors->merge($validator->errors());
         }
       }
 
