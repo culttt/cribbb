@@ -22,12 +22,13 @@ class AuthenticateController extends BaseController {
   /**
    * Create a new instance of the AuthenticateController
    *
-   * @param Cribbb\Authenticators\Manager
+   * @param Cribbb\Authenticators\Manager $manager
+   * @param Cribbb\Registrators\SocialProviderRegistrator $registrator
    * @return void
    */
   public function __construct(Manager $manager, SocialProviderRegistrator $registrator)
   {
-    $this->beforeFilter('invite');
+    $this->beforeFilter('invite', ['except' => 'callback']);
     $this->manager = $manager;
     $this->registrator = $registrator;
   }
@@ -76,7 +77,19 @@ class AuthenticateController extends BaseController {
 
       $user = $provider->getUserDetails($token);
 
+      $auth = $this->registrator->findByUid($user->uid);
+
+      if($auth)
+      {
+        $this->registrator->updateUserTokens($auth, $token->getIdentifier(), $token->getSecret());
+
+        Auth::loginUsingId($auth->id);
+
+        return Redirect::route('home.index');
+      }
+
       Session::put('username', $user->nickname);
+      Session::put('uid', $user->uid);
       Session::put('oauth_token', $token->getIdentifier());
       Session::put('oauth_token_secret', $token->getSecret());
       Session::save();
@@ -110,6 +123,7 @@ class AuthenticateController extends BaseController {
     $data = [
       'username'            => Input::get('username'),
       'email'               => Input::get('email'),
+      'uid'                 => Session::get('uid'),
       'oauth_token'         => Session::get('oauth_token'),
       'oauth_token_secret'  => Session::get('oauth_token_secret')
     ];

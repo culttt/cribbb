@@ -39,7 +39,17 @@ Route::post('register', ['uses' => 'RegisterController@store', 'as' => 'register
  *
  * Authenticate via a social provider
  */
-Route::get('auth/register',             ['uses' => 'AuthenticateController@register', 'as' => 'authenticate.register']);
-Route::get('auth/{provider}',           ['uses' => 'AuthenticateController@authorise', 'as' => 'authenticate.authorise']);
-Route::get('auth/{provider}/callback',  ['uses' => 'AuthenticateController@callback', 'as' => 'authenticate.callback']);
-Route::post('auth',                     ['uses' => 'AuthenticateController@store', 'as' => 'authenticate.store']);
+Route::get('auth/register',             ['uses' => 'AuthenticateController@register',   'as' => 'authenticate.register']);
+Route::get('auth/{provider}',           ['uses' => 'AuthenticateController@authorise',  'as' => 'authenticate.authorise']);
+Route::get('auth/{provider}/callback',  ['uses' => 'AuthenticateController@callback',   'as' => 'authenticate.callback']);
+Route::post('auth',                     ['uses' => 'AuthenticateController@store',      'as' => 'authenticate.store']);
+
+/**
+ * Authentication
+ *
+ * Allow a user to log in and log out of the application
+ */
+Route::get('login',             ['uses' => 'SessionController@create',    'as' => 'session.create']);
+Route::get('login/{provider}',  ['uses' => 'SessionController@authorise', 'as' => 'session.authorise']);
+Route::post('login',            ['uses' => 'SessionController@store',     'as' => 'session.store']);
+Route::delete('logout',         ['uses' => 'SessionController@destroy',   'as' => 'session.destroy']);

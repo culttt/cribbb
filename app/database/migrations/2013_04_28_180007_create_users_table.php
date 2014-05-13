@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration {
       $table->string('first_name')->nullable();
       $table->string('last_name')->nullable();
       $table->string('password')->nullable();
+      $table->string('uid')->nullable();
       $table->string('oauth_token')->nullable();
       $table->string('oauth_token_secret')->nullable();
       $table->integer('invitations')->default(0);

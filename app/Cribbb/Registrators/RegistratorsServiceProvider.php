@@ -48,7 +48,8 @@ class RegistratorsServiceProvider extends ServiceProvider {
         [
           new UsernameValidator($app['validator']),
           new EmailValidator($app['validator']),
-          new OauthTokenValidator($app['validator'])
+          new OauthTokenValidator($app['validator']),
+          new UidValidator($app['validator'])
         ]
       );
     });

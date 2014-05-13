@@ -76,6 +76,19 @@ abstract class AbstractUserDecorator {
   }
 
   /**
+   * Search for many results by key and value
+   *
+   * @param string $key
+   * @param mixed $value
+   * @param array $with
+   * @return Illuminate\Database\Query\Builders
+   */
+  public function getBy($key, $value, array $with = array())
+  {
+    return $this->user->getBy($key, $value, $with);
+  }
+
+  /**
    * Feed
    *
    * @param int $id
