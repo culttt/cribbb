@@ -11,6 +11,7 @@ class HomeController extends BaseController {
   {
     $this->storeReferralCode();
 
+    $this->layout->title = 'Welcome to Cribbb!';
     $this->layout->nest('content', 'website.index');
   }
 
