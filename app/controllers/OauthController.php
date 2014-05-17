@@ -76,7 +76,8 @@ class OauthController extends BaseController {
    */
   public function register()
   {
-    return View::make('oauth.register');
+    $this->layout->title = 'Join Cribbb';
+    $this->layout->nest('content', 'oauth.register');
   }
 
   /**

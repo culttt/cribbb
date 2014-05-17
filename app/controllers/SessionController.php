@@ -29,12 +29,13 @@ class SessionController extends BaseController {
    */
   public function create()
   {
-    if (Auth::guest())
+    if (Auth::user())
     {
-      return View::make('session.create');
+      return Redirect::route('home.index');
     }
 
-    return Redirect::route('home.index');
+    $this->layout->title = "Sign in";
+    $this->layout->nest('content', 'session.create');
   }
 
   /**
@@ -49,7 +50,8 @@ class SessionController extends BaseController {
       return Redirect::route('home.index');
     }
 
-    return Redirect::route('session.create')->withInput()->with('error', 'Your email or password was incorrect, please try again!');
+    return Redirect::route('session.create')->withInput()
+                                            ->with('error', 'Your email or password was incorrect, please try again!');
   }
 
   /**

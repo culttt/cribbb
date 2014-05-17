@@ -22,7 +22,8 @@ class RegisterController extends BaseController {
    */
   public function index()
   {
-    return View::make('register.index');
+    $this->layout->title = 'Join Cribbb';
+    $this->layout->nest('content', 'register.index');
   }
 
   /**

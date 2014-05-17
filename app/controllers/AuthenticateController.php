@@ -110,7 +110,8 @@ class AuthenticateController extends BaseController {
    */
   public function register()
   {
-    return View::make('authenticate.register', ['username' => Session::get('username')]);
+    $this->layout->title = 'Join Cribbb';
+    $this->layout->nest('content', 'authenticate.register', ['username' => Session::get('username')]);
   }
 
   /**
