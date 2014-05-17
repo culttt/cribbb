@@ -102,11 +102,14 @@ Route::filter('invite', function()
   {
     $repository = App::make('Cribbb\Repositories\Invite\InviteRepository');
 
-    if(! $repository->getValidInviteByCode(Input::get('code')))
+    $invite = $repository->getValidInviteByCode(Input::get('code'));
+
+    if(! $invite)
     {
       return App::abort(404);
     }
 
     Session::put('invitation_code', Input::get('code'));
+    Session::put('referrer_id', $invite->referrer_id);
   }
 });

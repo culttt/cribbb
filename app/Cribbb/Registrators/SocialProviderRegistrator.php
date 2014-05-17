@@ -1,6 +1,7 @@
 <?php namespace Cribbb\Registrators;
 
 use User;
+use Illuminate\Events\Dispatcher;
 use Cribbb\Repositories\User\UserRepository;
 
 class SocialProviderRegistrator extends AbstractRegistrator implements Registrator {
@@ -13,6 +14,13 @@ class SocialProviderRegistrator extends AbstractRegistrator implements Registrat
   protected $userRepository;
 
   /**
+   * The events dispatcher
+   *
+   * @var Illuminate\Events\Dispatcher
+   */
+  protected $events;
+
+  /**
    * An array of Validable classes
    *
    * @param array
@@ -22,9 +30,12 @@ class SocialProviderRegistrator extends AbstractRegistrator implements Registrat
   /**
    * Create a new instance of the CredentialsRegistrator
    *
+   * @param Cribbb\Repositories\User\UserRepository $userRepository
+   * @param Illuminate\Events\Dispatcher $events
+   * @param array $validators
    * @return void
    */
-  public function __construct(UserRepository $userRepository, array $validators)
+  public function __construct(UserRepository $userRepository, Dispatcher $events, array $validators)
   {
     parent::__construct();
 
@@ -42,7 +53,11 @@ class SocialProviderRegistrator extends AbstractRegistrator implements Registrat
   {
     if($this->runValidationChecks($data))
     {
-      return $this->userRepository->create($data);
+      $user = $this->userRepository->create($data);
+
+      $this->events->fire('user.register', [$user]);
+
+      return $user;
     }
   }
 
