@@ -33,7 +33,10 @@ class RegisterController extends BaseController {
    */
   public function store()
   {
-    $user = $this->registrator->create(Input::all());
+    $user = $this->registrator->create(array_merge(
+      Input::all(),
+      ['referrer_id' => Session::get('referrer_id')]
+    ));
 
     if($user)
     {
