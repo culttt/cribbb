@@ -1,12 +1,23 @@
 <?php namespace Cribbb\Registrators;
 
 use Illuminate\Support\ServiceProvider;
+use Cribbb\Registrators\Events\WelcomeEmailHandler;
 use Cribbb\Registrators\Validators\UidValidator;
 use Cribbb\Registrators\Validators\EmailValidator;
 use Cribbb\Registrators\Validators\UsernameValidator;
 use Cribbb\Registrators\Validators\OauthTokenValidator;
 
 class RegistratorsServiceProvider extends ServiceProvider {
+
+  /**
+   * Boot the Registrator Events
+   *
+   * @return void
+   */
+  public function boot()
+  {
+    $this->app->events->subscribe(new WelcomeEmailHandler($this->app['mailer']));
+  }
 
   /**
    * Register the binding
@@ -17,7 +28,6 @@ class RegistratorsServiceProvider extends ServiceProvider {
   {
     $this->registerCredentialsRegistrator();
     $this->registerSocialProviderRegistrator();
-    $this->registerEventHandlers();
   }
 
   /**
@@ -57,16 +67,6 @@ class RegistratorsServiceProvider extends ServiceProvider {
         ]
       );
     });
-  }
-
-  /**
-   * Register the Event handlers
-   *
-   * @return void
-   */
-  public function registerEventHandlers()
-  {
-    $this->app->events->listen('user.register', 'Cribbb\Registrators\Events\WelcomeEmailHandler');
   }
 
 }
