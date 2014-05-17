@@ -58,6 +58,11 @@ class SocialProviderRegistrator extends AbstractRegistrator implements Registrat
 
       $this->events->fire('user.register', [$user]);
 
+      if(! is_null($data['referrer_id']))
+      {
+        $this->events->fire('user.invited', [$user, $data['invitation_code']]);
+      }
+
       return $user;
     }
   }

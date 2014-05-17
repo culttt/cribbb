@@ -127,7 +127,8 @@ class AuthenticateController extends BaseController {
       'uid'                 => Session::get('uid'),
       'oauth_token'         => Session::get('oauth_token'),
       'oauth_token_secret'  => Session::get('oauth_token_secret'),
-      'referrer_id'         => Session::get('referrer_id')
+      'referrer_id'         => Session::get('referrer_id'),
+      'invitation_code'     => Session::get('invitation_code')
     ];
 
     $user = $this->registrator->create($data);

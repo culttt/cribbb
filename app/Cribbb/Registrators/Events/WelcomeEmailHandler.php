@@ -25,6 +25,7 @@ class WelcomeEmailHandler {
   /**
    * Send a welcome email to the new user
    *
+   * @param User $user
    * @return void
    */
   public function handle($user)
@@ -40,7 +41,7 @@ class WelcomeEmailHandler {
    */
   public function subscribe($events)
   {
-    $events->listen('user.register', 'Cribbb\Registrators\Events\WelcomeEmailHandler@handle');
+    $events->listen('user.register', 'Cribbb\Registrators\Events\WelcomeEmailHandler');
   }
 
 }

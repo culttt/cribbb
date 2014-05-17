@@ -1,9 +1,10 @@
 <?php namespace Cribbb\Registrators;
 
 use Illuminate\Support\ServiceProvider;
-use Cribbb\Registrators\Events\WelcomeEmailHandler;
 use Cribbb\Registrators\Validators\UidValidator;
 use Cribbb\Registrators\Validators\EmailValidator;
+use Cribbb\Registrators\Events\WelcomeEmailHandler;
+use Cribbb\Registrators\Events\NotifyInviterHandler;
 use Cribbb\Registrators\Validators\UsernameValidator;
 use Cribbb\Registrators\Validators\OauthTokenValidator;
 
@@ -16,7 +17,13 @@ class RegistratorsServiceProvider extends ServiceProvider {
    */
   public function boot()
   {
-    $this->app->events->subscribe(new WelcomeEmailHandler($this->app['mailer']));
+    $this->app->events->subscribe(new WelcomeEmailHandler(
+      $this->app['mailer'])
+    );
+    $this->app->events->subscribe(new NotifyInviterHandler(
+      $this->app['mailer'],
+      $this->app->make('Cribbb\Repositories\Invite\InviteRepository'))
+    );
   }
 
   /**
