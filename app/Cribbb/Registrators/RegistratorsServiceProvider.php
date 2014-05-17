@@ -1,6 +1,7 @@
 <?php namespace Cribbb\Registrators;
 
 use Illuminate\Support\ServiceProvider;
+use Cribbb\Registrators\Validators\UidValidator;
 use Cribbb\Registrators\Validators\EmailValidator;
 use Cribbb\Registrators\Validators\UsernameValidator;
 use Cribbb\Registrators\Validators\OauthTokenValidator;

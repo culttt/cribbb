@@ -81,7 +81,7 @@ class AuthenticateController extends BaseController {
 
       if($auth)
       {
-        $this->registrator->updateUserTokens($auth, $token->getIdentifier(), $token->getSecret());
+        $this->registrator->updateUsersTokens($auth, $token->getIdentifier(), $token->getSecret());
 
         Auth::loginUsingId($auth->id);
 
