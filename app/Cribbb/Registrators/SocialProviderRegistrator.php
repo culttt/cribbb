@@ -41,6 +41,7 @@ class SocialProviderRegistrator extends AbstractRegistrator implements Registrat
 
     $this->userRepository = $userRepository;
     $this->validators = $validators;
+    $this->events = $events;
   }
 
   /**

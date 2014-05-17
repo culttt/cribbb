@@ -17,6 +17,7 @@ class RegistratorsServiceProvider extends ServiceProvider {
   {
     $this->registerCredentialsRegistrator();
     $this->registerSocialProviderRegistrator();
+    $this->registerEventHandlers();
   }
 
   /**
@@ -29,7 +30,8 @@ class RegistratorsServiceProvider extends ServiceProvider {
     $this->app->bind('Cribbb\Registrators\CredentialsRegistrator', function($app)
     {
       return new CredentialsRegistrator(
-        $this->app->make('Cribbb\Repositories\User\UserRepository'),
+        $app->make('Cribbb\Repositories\User\UserRepository'),
+        $app['events'],
         [ new UsernameValidator($app['validator']), new EmailValidator($app['validator']) ]
       );
     });
@@ -45,7 +47,8 @@ class RegistratorsServiceProvider extends ServiceProvider {
     $this->app->bind('Cribbb\Registrators\SocialProviderRegistrator', function($app)
     {
       return new SocialProviderRegistrator(
-        $this->app->make('Cribbb\Repositories\User\UserRepository'),
+        $app->make('Cribbb\Repositories\User\UserRepository'),
+        $app['events'],
         [
           new UsernameValidator($app['validator']),
           new EmailValidator($app['validator']),
@@ -54,6 +57,16 @@ class RegistratorsServiceProvider extends ServiceProvider {
         ]
       );
     });
+  }
+
+  /**
+   * Register the Event handlers
+   *
+   * @return void
+   */
+  public function registerEventHandlers()
+  {
+    $this->app->events->listen('user.register', 'Cribbb\Registrators\Events\WelcomeEmailHandler');
   }
 
 }

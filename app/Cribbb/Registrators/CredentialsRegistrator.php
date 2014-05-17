@@ -40,6 +40,7 @@ class CredentialsRegistrator extends AbstractRegistrator implements Registrator 
 
     $this->userRepository = $userRepository;
     $this->validators = $validators;
+    $this->events = $events;
   }
 
   /**
