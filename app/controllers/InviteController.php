@@ -22,6 +22,16 @@ class InviteController extends BaseController {
   }
 
   /**
+   * Request an invite
+   *
+   * @return View
+   */
+  public function request()
+  {
+    $this->layout->nest('content', 'invite.request');
+  }
+
+  /**
    * Create a new invite
    *
    * @return Response

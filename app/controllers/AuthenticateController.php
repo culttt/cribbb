@@ -88,6 +88,11 @@ class AuthenticateController extends BaseController {
         return Redirect::route('home.index');
       }
 
+      if(! Session::has('invitition_code'))
+      {
+        return Redirect::route('invite.request');
+      }
+
       Session::put('username', $user->nickname);
       Session::put('uid', $user->uid);
       Session::put('oauth_token', $token->getIdentifier());

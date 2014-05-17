@@ -24,6 +24,7 @@ Route::get('/', ['uses' => 'HomeController@index', 'as' => 'home.index']);
  *
  * The route to create a new Invite
  */
+Route::get('request', ['uses' => 'InviteController@request', 'as' => 'invite.request']);
 Route::post('invite', ['uses' => 'InviteController@store', 'as' => 'invite.store']);
 
 /**
