@@ -11,7 +11,7 @@ class HomeController extends BaseController {
   {
     $this->storeReferralCode();
 
-    return View::make('home.index');
+    $this->layout->nest('content', 'website.index');
   }
 
   /**
