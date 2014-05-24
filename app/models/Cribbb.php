@@ -7,15 +7,7 @@ class Cribbb extends Eloquent {
    *
    * @var array
    */
-  protected $fillable = array('name', 'slug');
-
-  /**
-   * Factory
-   */
-  public static $factory = array(
-    'name' => 'text',
-    'slug' => 'text'
-  );
+  protected $fillable = ['name', 'slug'];
 
   /**
    * Define a many-to-many relationship.

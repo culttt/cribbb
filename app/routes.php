@@ -54,3 +54,17 @@ Route::get('login',             ['uses' => 'SessionController@create',    'as' =
 Route::get('login/{provider}',  ['uses' => 'SessionController@authorise', 'as' => 'session.authorise']);
 Route::post('login',            ['uses' => 'SessionController@store',     'as' => 'session.store']);
 Route::delete('logout',         ['uses' => 'SessionController@destroy',   'as' => 'session.destroy']);
+
+/**
+ * Cribbbs
+ *
+ * The routes to create a Cribbb
+ */
+Route::get('cribbbs/create',    ['uses' => 'CribbbsController@create',     'as' => 'cribbbs.create']);
+Route::post('cribbbs',          ['uses' => 'CribbbsController@store',     'as' => 'cribbbs.store']);
+Route::get('{cribbb}',          ['uses' => 'CribbbsController@show',      'as' => 'cribbbs.view']);
+Route::get('{cribbb}/edit',     ['uses' => 'CribbbsController@edit',      'as' => 'cribbbs.edit']);
+Route::put('{cribbb}',          ['uses' => 'CribbbsController@update',    'as' => 'cribbbs.update']);
+Route::get('{cribbb}/delete',   ['uses' => 'CribbbsController@delete',    'as' => 'cribbbs.delete']);
+Route::post('{cribbb}/comment', ['uses' => 'CribbbsController@comment',   'as' => 'cribbbs.comment']);
+Route::delete('{cribbb}',       ['uses' => 'CribbbsController@destroy',   'as' => 'cribbbs.destroy']);

@@ -3,12 +3,14 @@
 use Post;
 use User;
 use Invite;
+use Cribbb;
 use Cribbb\Cache\LaravelCache;
 use Illuminate\Support\ServiceProvider;
 use Cribbb\Repositories\User\CacheDecorator;
 use Cribbb\Repositories\User\EloquentUserRepository;
 use Cribbb\Repositories\Post\EloquentPostRepository;
 use Cribbb\Repositories\Invite\EloquentInviteRepository;
+use Cribbb\Repositories\Cribbb\EloquentCribbbRepository;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
@@ -20,10 +22,13 @@ class RepositoryServiceProvider extends ServiceProvider {
     $this->registerPostRepository();
     $this->registerUserRepository();
     $this->registerInviteRepository();
+    $this->registerCribbbRepository();
   }
 
   /**
-   * Register User Repository
+   * Register the User Repository
+   *
+   * @return void
    */
   public function registerUserRepository()
   {
@@ -45,7 +50,9 @@ class RepositoryServiceProvider extends ServiceProvider {
   }
 
   /**
-   * Register Post Repository
+   * Register the Post Repository
+   *
+   * @return void
    */
   public function registerPostRepository()
   {
@@ -56,7 +63,9 @@ class RepositoryServiceProvider extends ServiceProvider {
   }
 
   /**
-   * Register Invite Repository
+   * Register the Invite Repository
+   *
+   * @return void
    */
   public function registerInviteRepository()
   {
@@ -65,5 +74,17 @@ class RepositoryServiceProvider extends ServiceProvider {
       return new EloquentInviteRepository( new Invite );
     });
   }
+
+  /**
+   * Register the Cribbb Repository
+   *
+   * @return void
+   */
+  public function registerCribbbRepository()
+  {
+    $this->app->bind('Cribbb\Repositories\Cribbb\CribbbRepository', function($app)
+    {
+      return new EloquentCribbbRepository( new Cribbb );
+    });
 
 }
