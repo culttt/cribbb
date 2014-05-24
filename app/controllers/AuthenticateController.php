@@ -88,7 +88,7 @@ class AuthenticateController extends BaseController {
         return Redirect::route('home.index');
       }
 
-      if(! Session::has('invitition_code'))
+      if(! Session::has('invitation_code'))
       {
         return Redirect::route('invite.request');
       }
