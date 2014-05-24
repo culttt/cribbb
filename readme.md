@@ -6,7 +6,7 @@ In the mean time, check out http://culttt.com/tag/cribbb/
 
 ## Copyright / License
 
-Copyright 2013 Yellow Flag LTD.
+Copyright 2014 Yellow Flag LTD.
 
 Licensed under the GNU General Public License Version 2.0 (or later);
 you may not use this work except in compliance with the License.
