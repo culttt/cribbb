@@ -6,6 +6,7 @@ use Cribbb\Repositories\Paginable;
 use Cribbb\Repositories\Repository;
 use Illuminate\Database\Eloquent\Model;
 use Cribbb\Repositories\AbstractRepository;
+use Illuminate\Support\Str;
 
 class EloquentCribbbRepository extends AbstractRepository implements Repository, Crudable, Paginable, CribbbRepository {
 
@@ -34,7 +35,15 @@ class EloquentCribbbRepository extends AbstractRepository implements Repository,
    * @param array $data
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function create(array $data){}
+  public function create(array $data)
+  {
+    $data['slug'] = Str::slug($data['name']);
+
+    if($this->isValid('create', $data))
+    {
+      return $this->model->create($data);
+    }
+  }
 
   /**
    * Update an existing Cribbb

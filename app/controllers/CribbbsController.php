@@ -50,10 +50,22 @@ class CribbbsController extends BaseController {
 
     if($cribbb)
     {
-      dd('yay');
+      return Redirect::route('cribbbs.show', $cribbb->slug);
     }
 
-    dd('oh no');
+    return Redirect::route('cribbbs.create')->withInput()
+                                            ->withErrors($this->cribbbRepository->errors());
   }
+
+  /**
+   * Display a Cribbb
+   *
+   * @return View
+   */
+  public function show($slug)
+  {
+    dd($slug);
+  }
+
 
 }
