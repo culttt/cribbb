@@ -106,7 +106,6 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Cribbb\Validators\ValidatorsServiceProvider',
 		'Cribbb\Repositories\RepositoryServiceProvider',
 		'Cribbb\Inviters\InvitersServiceProvider',
 		'Cribbb\Registrators\RegistratorsServiceProvider',

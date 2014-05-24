@@ -46,7 +46,14 @@ class CribbbsController extends BaseController {
    */
   public function store()
   {
+    $cribbb = $this->cribbbRepository->create(Input::all());
 
+    if($cribbb)
+    {
+      dd('yay');
+    }
+
+    dd('oh no');
   }
 
 }

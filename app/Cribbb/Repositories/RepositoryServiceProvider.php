@@ -7,6 +7,8 @@ use Cribbb;
 use Cribbb\Cache\LaravelCache;
 use Illuminate\Support\ServiceProvider;
 use Cribbb\Repositories\User\CacheDecorator;
+use Cribbb\Repositories\User\UserCreateValidator;
+use Cribbb\Repositories\User\UserUpdateValidator;
 use Cribbb\Repositories\User\EloquentUserRepository;
 use Cribbb\Repositories\Post\EloquentPostRepository;
 use Cribbb\Repositories\Invite\EloquentInviteRepository;
@@ -34,17 +36,12 @@ class RepositoryServiceProvider extends ServiceProvider {
   {
     $this->app->bind('Cribbb\Repositories\User\UserRepository', function($app)
     {
-      $user = new EloquentUserRepository( new User );
+      $repository = new EloquentUserRepository( new User );
 
-      $user->registerValidator(
-        'create', $this->app->make('Cribbb\Validators\User\UserCreateValidator')
-      );
+      $repository->registerValidator('create', new UserCreateValidator($app['validator']));
+      $repository->registerValidator('update', new UserUpdateValidator($app['validator']));
 
-      $user->registerValidator(
-        'update', $this->app->make('Cribbb\Validators\User\UserUpdateValidator')
-      );
-
-      return new CacheDecorator( $user, new LaravelCache( $app['cache'], 'user') );
+      return new CacheDecorator( $repository, new LaravelCache( $app['cache'], 'user') );
     });
 
   }
@@ -84,7 +81,10 @@ class RepositoryServiceProvider extends ServiceProvider {
   {
     $this->app->bind('Cribbb\Repositories\Cribbb\CribbbRepository', function($app)
     {
-      return new EloquentCribbbRepository( new Cribbb );
+      $repository = new EloquentCribbbRepository( new Cribbb );
+
+      return $repository;
     });
+  }
 
 }
