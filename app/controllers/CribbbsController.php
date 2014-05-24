@@ -57,15 +57,4 @@ class CribbbsController extends BaseController {
                                             ->withErrors($this->cribbbRepository->errors());
   }
 
-  /**
-   * Display a Cribbb
-   *
-   * @return View
-   */
-  public function show($slug)
-  {
-    dd($slug);
-  }
-
-
 }

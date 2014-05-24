@@ -11,7 +11,7 @@ class UsernameValidator extends LaravelValidator implements Validable {
    * @var array
    */
   protected $rules = [
-    'username' => 'required|alpha_dash|unique:users'
+    'username' => 'required|alpha_dash|name|unique:users'
   ];
 
 }

@@ -11,7 +11,7 @@ class CribbbCreateValidator extends LaravelValidator implements Validable {
    * @var array
    */
   protected $rules = [
-    'name' => 'required|alpha|unique:cribbbs,name',
+    'name' => 'required|alpha|name|unique:cribbbs,name',
   ];
 
 }
