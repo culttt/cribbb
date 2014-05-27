@@ -51,7 +51,17 @@ class EloquentCribbbRepository extends AbstractRepository implements Repository,
    * @param array $data
    * @return Illuminate\Database\Eloquent\Model
    */
-  public function update(array $data){}
+  public function update(array $data)
+  {
+    if($this->isValid('update', $data))
+    {
+      $cribbb = $this->find($data['id']);
+      $cribbb->name = $data['name'];
+      $cribbb->slug = Str::slug($data['name']);
+      $cribbb->save();
+      return $cribbb;
+    }
+  }
 
   /**
    * Delete a Cribbb
@@ -59,6 +69,11 @@ class EloquentCribbbRepository extends AbstractRepository implements Repository,
    * @param int $id
    * @return boolean
    */
-  public function delete($id){}
+  public function delete($id)
+  {
+    $cribbb = $this->find($id);
+
+    return $cribbb->delete();
+  }
 
 }

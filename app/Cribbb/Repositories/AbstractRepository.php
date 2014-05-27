@@ -127,9 +127,22 @@ abstract class AbstractRepository {
    * @param array $with
    * @return Illuminate\Database\Query\Builders
    */
-  public function getBy($key, $value, array $with = array())
+  public function getManyBy($key, $value, array $with = array())
   {
     return $this->make($with)->where($key, '=', $value)->get();
+  }
+
+  /**
+   * Search a single result by key and value
+   *
+   * @param string $key
+   * @param mixed $value
+   * @param array $with
+   * @return Illuminate\Database\Query\Builders
+   */
+  public function getFirstBy($key, $value, array $with = array())
+  {
+    return $this->make($with)->where($key, '=', $value)->first();
   }
 
   /**

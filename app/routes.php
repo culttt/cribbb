@@ -66,5 +66,5 @@ Route::get('{cribbb}',          ['uses' => 'CribbbsController@show',        'as'
 Route::get('{cribbb}/edit',     ['uses' => 'CribbbsController@edit',        'as' => 'cribbbs.edit']);
 Route::put('{cribbb}',          ['uses' => 'CribbbsController@update',      'as' => 'cribbbs.update']);
 Route::get('{cribbb}/delete',   ['uses' => 'CribbbsController@delete',      'as' => 'cribbbs.delete']);
-Route::post('{cribbb}/comment', ['uses' => 'CribbbsController@comment',     'as' => 'cribbbs.comment']);
 Route::delete('{cribbb}',       ['uses' => 'CribbbsController@destroy',     'as' => 'cribbbs.destroy']);
+Route::post('{cribbb}/comment', ['uses' => 'CribbbsController@comment',     'as' => 'cribbbs.comment']);

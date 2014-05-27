@@ -14,6 +14,7 @@ use Cribbb\Repositories\Post\EloquentPostRepository;
 use Cribbb\Repositories\Invite\EloquentInviteRepository;
 use Cribbb\Repositories\Cribbb\EloquentCribbbRepository;
 use Cribbb\Repositories\Cribbb\CribbbCreateValidator;
+use Cribbb\Repositories\Cribbb\CribbbUpdateValidator;
 
 class RepositoryServiceProvider extends ServiceProvider {
 
@@ -85,6 +86,7 @@ class RepositoryServiceProvider extends ServiceProvider {
       $repository = new EloquentCribbbRepository( new Cribbb );
 
       $repository->registerValidator('create', new CribbbCreateValidator($app['validator']));
+      $repository->registerValidator('update', new CribbbUpdateValidator($app['validator']));
 
       return $repository;
     });

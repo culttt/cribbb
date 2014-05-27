@@ -11,14 +11,24 @@ interface Repository {
   public function all(array $with = array());
 
   /**
-   * Search by key and value
+   * Search for many results by key and value
    *
    * @param string $key
    * @param mixed $value
    * @param array $with
    * @return Illuminate\Database\Query\Builders
    */
-  public function getBy($key, $value, array $with = array());
+  public function getManyBy($key, $value, array $with = array());
+
+  /**
+   * Search a single result by key and value
+   *
+   * @param string $key
+   * @param mixed $value
+   * @param array $with
+   * @return Illuminate\Database\Query\Builders
+   */
+  public function getFirstBy($key, $value, array $with = array());
 
   /**
    * Return the errors
