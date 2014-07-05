@@ -4,7 +4,7 @@ return [
     'simple_annotations' => false,
 
     'metadata' => [
-        base_path('app/models')
+        base_path('app/Cribbb/Entities')
     ],
 
     'proxy' => [
