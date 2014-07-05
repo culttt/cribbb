@@ -3,10 +3,7 @@
 composer.phar
 composer.lock
 .DS_Store
-.sass-cache
-node_modules
-/app/assets/bower
 .vagrant
 .env.php
 .env.local.php
-.env.testing.php
+

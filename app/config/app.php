@@ -65,7 +65,9 @@ return array(
   |
   */
 
-  'key' => $_ENV['LARAVEL_KEY'],
+  'key' => 'sssshhhhh',
+
+  'cipher' => MCRYPT_RIJNDAEL_256,
 
   /*
   |--------------------------------------------------------------------------
@@ -105,13 +107,7 @@ return array(
     'Illuminate\Translation\TranslationServiceProvider',
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
-    'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Cribbb\Repositories\RepositoryServiceProvider',
-    'Cribbb\Inviters\InvitersServiceProvider',
-    'Cribbb\Registrators\RegistratorsServiceProvider',
-    'Cribbb\Authenticators\AuthenticatorsServiceProvider',
-    'Cribbb\Validators\ValidatorsServiceProvider',
-    'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
+    'Illuminate\Workbench\WorkbenchServiceProvider'
   ),
 
   /*
@@ -152,7 +148,6 @@ return array(
     'Crypt'           => 'Illuminate\Support\Facades\Crypt',
     'DB'              => 'Illuminate\Support\Facades\DB',
     'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
-    'EntityManager'   => 'Mitch\LaravelDoctrine\EntityManagerFacade',
     'Event'           => 'Illuminate\Support\Facades\Event',
     'File'            => 'Illuminate\Support\Facades\File',
     'Form'            => 'Illuminate\Support\Facades\Form',
