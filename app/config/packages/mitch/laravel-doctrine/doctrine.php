@@ -4,7 +4,7 @@ return [
     'simple_annotations' => false,
 
     'metadata' => [
-        base_path('Cribbb')
+        base_path('app/Cribbb')
     ],
 
     'proxy' => [
