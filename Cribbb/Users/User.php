@@ -13,11 +13,63 @@ class User {
    * @ORM\GeneratedValue
    * @ORM\Column(type="integer")
    */
-  protected $id;
+  private $id;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $email;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $username;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $password;
+
+  public function __construct(Email $email, Username $username, Password $password)
+  {
+    $this->setEmail($email);
+    $this->setUsername($username);
+    $this->setPassword($password);
+  }
 
   public function getId()
   {
     return $this->id;
+  }
+
+  public function getEmail()
+  {
+    return $this->email;
+  }
+
+  public function setEmail(Cribbb\Users\Email $email)
+  {
+    $this->email = $email;
+  }
+
+  public function getUsername()
+  {
+    return $this->username;
+  }
+
+  public function setUsername(Cribbb\Users\Username $username)
+  {
+    $this->username = $username;
+  }
+
+  public function getPassword()
+  {
+    return $this->username;
+  }
+
+  public function setPassword(Cribbb\Users\Password $password)
+  {
+    $this->password = $password;
   }
 
 }
