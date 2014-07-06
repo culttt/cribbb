@@ -47,7 +47,7 @@ class User {
     return $this->email;
   }
 
-  public function setEmail(Cribbb\Users\Email $email)
+  public function setEmail(Email $email)
   {
     $this->email = $email;
   }
@@ -57,7 +57,7 @@ class User {
     return $this->username;
   }
 
-  public function setUsername(Cribbb\Users\Username $username)
+  public function setUsername(Username $username)
   {
     $this->username = $username;
   }
@@ -67,7 +67,7 @@ class User {
     return $this->username;
   }
 
-  public function setPassword(Cribbb\Users\Password $password)
+  public function setPassword(Password $password)
   {
     $this->password = $password;
   }
