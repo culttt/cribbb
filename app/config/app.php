@@ -107,7 +107,8 @@ return array(
     'Illuminate\Translation\TranslationServiceProvider',
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
-    'Illuminate\Workbench\WorkbenchServiceProvider'
+    'Illuminate\Workbench\WorkbenchServiceProvider',
+    'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
   ),
 
   /*
@@ -173,6 +174,7 @@ return array(
     'URL'             => 'Illuminate\Support\Facades\URL',
     'Validator'       => 'Illuminate\Support\Facades\Validator',
     'View'            => 'Illuminate\Support\Facades\View',
+    'EntityManager' => 'Mitch\LaravelDoctrine\EntityManagerFacade'
 
   ),
 
