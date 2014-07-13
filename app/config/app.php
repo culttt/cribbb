@@ -13,7 +13,7 @@ return array(
   |
   */
 
-  'debug' => true,
+  'debug' => false,
 
   /*
   |--------------------------------------------------------------------------
@@ -65,7 +65,9 @@ return array(
   |
   */
 
-  'key' => $_ENV['LARAVEL_KEY'],
+  'key' => 'sssshhhhh',
+
+  'cipher' => MCRYPT_RIJNDAEL_256,
 
   /*
   |--------------------------------------------------------------------------
@@ -106,11 +108,6 @@ return array(
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Cribbb\Repositories\RepositoryServiceProvider',
-    'Cribbb\Inviters\InvitersServiceProvider',
-    'Cribbb\Registrators\RegistratorsServiceProvider',
-    'Cribbb\Authenticators\AuthenticatorsServiceProvider',
-    'Cribbb\Validators\ValidatorsServiceProvider',
     'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
   ),
 
@@ -152,7 +149,6 @@ return array(
     'Crypt'           => 'Illuminate\Support\Facades\Crypt',
     'DB'              => 'Illuminate\Support\Facades\DB',
     'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
-    'EntityManager'   => 'Mitch\LaravelDoctrine\EntityManagerFacade',
     'Event'           => 'Illuminate\Support\Facades\Event',
     'File'            => 'Illuminate\Support\Facades\File',
     'Form'            => 'Illuminate\Support\Facades\Form',
@@ -178,6 +174,7 @@ return array(
     'URL'             => 'Illuminate\Support\Facades\URL',
     'Validator'       => 'Illuminate\Support\Facades\Validator',
     'View'            => 'Illuminate\Support\Facades\View',
+    'EntityManager' => 'Mitch\LaravelDoctrine\EntityManagerFacade'
 
   ),
 
