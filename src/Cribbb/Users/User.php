@@ -1,7 +1,7 @@
 <?php namespace Cribbb\Users;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Cribbb\Users\Username\Username;
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")

@@ -1,5 +1,7 @@
 <?php namespace Cribbb\Users;
 
+use Cribbb\Users\Username\Username;
+
 class UserTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp()

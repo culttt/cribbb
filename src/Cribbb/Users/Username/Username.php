@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Users;
+<?php namespace Cribbb\Users\Username;
 
 use DomainException;
 
