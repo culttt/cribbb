@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Users\Username;
+<?php namespace Cribbb\Users\Email;
 
 use Cribbb\Users\UserRepository;
 
-class UsernameIsUnique implements UsernameSpecification {
+class EmailIsUnique implements EmailSpecification {
 
   /**
    * @var Cribbb\Users\UserRepository
@@ -10,7 +10,7 @@ class UsernameIsUnique implements UsernameSpecification {
   private $repository;
 
   /**
-   * Create a new instance of the UsernameIsUnique specification
+   * Create a new instance of the EmailIsUnique specification
    *
    * @param Cribbb\Users\UserRepository $repository
    */
@@ -22,12 +22,12 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Users\Username\Username $username
+   * @param Cribbb\Users\Email\Email $email
    * @return bool
    */
-  public function isSatisfiedBy(Username $username)
+  public function isSatisfiedBy(Email $email)
   {
-    if($this->repository->findBy(['username' => $username]))
+    if($this->repository->findBy(['email' => $email]))
     {
       return false;
     }

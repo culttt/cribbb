@@ -1,7 +1,10 @@
 <?php namespace Cribbb\Users;
 
 use Doctrine\ORM\Mapping as ORM;
+use Cribbb\Users\Email\Email;
 use Cribbb\Users\Username\Username;
+use Cribbb\Users\Password\Password;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")

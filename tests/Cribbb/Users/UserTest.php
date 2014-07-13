@@ -1,6 +1,8 @@
 <?php namespace Cribbb\Users;
 
+use Cribbb\Users\Email\Email;
 use Cribbb\Users\Username\Username;
+use Cribbb\Users\Password\Password;
 
 class UserTest extends \PHPUnit_Framework_TestCase {
 
