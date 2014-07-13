@@ -4,11 +4,7 @@ return [
     'simple_annotations' => false,
 
     'metadata' => [
-<<<<<<< HEAD
-        base_path('app/Cribbb/Entities')
-=======
         base_path('Cribbb')
->>>>>>> fresh
     ],
 
     'proxy' => [
