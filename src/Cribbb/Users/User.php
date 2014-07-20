@@ -36,7 +36,7 @@ class User {
   private $password;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Cribbb\Cribbbs\Cribbb", inversedBy="users")
+   * @ORM\ManyToMany(targetEntity="Cribbb\Cribbbs\Cribbb", mappedBy="users")
    */
   private $cribbbs;
 
@@ -55,17 +55,6 @@ class User {
     $this->setPassword($password);
 
     $this->cribbbs = new ArrayCollection();
-  }
-
-  /**
-   * Add the user to a Cribbb
-   *
-   * @param Cribbb\Cribbbs\Cribbb $cribbb
-   * @return void
-   */
-  public function addToCribbb(Cribbb $cribbb)
-  {
-    $this->cribbbs[] = $cribbb;
   }
 
   /**
@@ -139,6 +128,19 @@ class User {
   public function setPassword(Password $password)
   {
     $this->password = $password;
+  }
+
+  /**
+   * Add the user to a Cribbb
+   *
+   * @param Cribbb\Cribbbs\Cribbb $cribbb
+   * @return void
+   */
+  public function addToCribbb(Cribbb $cribbb)
+  {
+    $cribbb->addUser($this);
+
+    $this->cribbbs[] = $cribbb;
   }
 
 }

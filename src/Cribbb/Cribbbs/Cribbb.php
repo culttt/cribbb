@@ -24,7 +24,7 @@ class Cribbb {
   private $name;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Cribbb\Users\User", mappedBy="cribbbs")
+   * @ORM\ManyToMany(targetEntity="Cribbb\Users\User", inversedBy="cribbbs")
    */
   private $users;
 
@@ -59,6 +59,17 @@ class Cribbb {
   public function setName(Name $name)
   {
     $this->name = $name;
+  }
+
+  /**
+   * Add a User to the Cribbb
+   *
+   * @param Cribbb\Users\User $user
+   * @return void
+   */
+  public function addUser(User $user)
+  {
+    $this->users[] = $user;
   }
 
 }
