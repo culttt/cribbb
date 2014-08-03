@@ -83,7 +83,7 @@ class User {
    * @param Cribbb\Users\Email\Email $email
    * @return void
    */
-  public function setEmail(Email $email)
+  private function setEmail(Email $email)
   {
     $this->email = $email;
   }
@@ -104,7 +104,7 @@ class User {
    * @param Cribbb\Users\Username\Username
    * @return void
    */
-  public function setUsername(Username $username)
+  private function setUsername(Username $username)
   {
     $this->username = $username;
   }
@@ -125,7 +125,7 @@ class User {
    * @param Cribbb\Users\Password\Password
    * @return void
    */
-  public function setPassword(Password $password)
+  private function setPassword(Password $password)
   {
     $this->password = $password;
   }
