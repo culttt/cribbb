@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Users\Password;
+<?php namespace Cribbb\Domain\Users\Password;
 
 use Assert\Assertion;
 

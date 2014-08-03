@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Users\Email;
+<?php namespace Cribbb\Domain\Users\Email;
 
 interface EmailSpecification {
 

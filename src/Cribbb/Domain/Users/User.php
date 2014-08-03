@@ -1,16 +1,16 @@
-<?php namespace Cribbb\Users;
+<?php namespace Cribbb\Domain\Users;
 
-use Cribbb\Cribbbs\Cribbb;
-use Cribbb\Users\Email\Email;
 use Doctrine\ORM\Mapping as ORM;
-use Cribbb\Users\Username\Username;
-use Cribbb\Users\Password\Password;
+use Cribbb\Domain\Cribbbs\Cribbb;
+use Cribbb\Domain\Users\Email\Email;
+use Cribbb\Domain\Users\Username\Username;
+use Cribbb\Domain\Users\Password\Password;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\entity(repositoryClass="Cribbb\Users\DoctrineUserRepository")
+ * @ORM\entity(repositoryClass="Cribbb\Infrastructure\Repositories\DoctrineUserRepository")
  */
 class User {
 
@@ -37,16 +37,16 @@ class User {
   private $password;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Cribbb\Cribbbs\Cribbb", mappedBy="users")
+   * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Cribbbs\Cribbb", mappedBy="users")
    */
   private $cribbbs;
 
   /**
    * Create a new User instance
    *
-   * @param Cribbb\Users\Email\Email $email
-   * @param Cribbb\Users\Username\Username $username
-   * @param Cribbb\Users\Password\Password $password
+   * @param Cribbb\Domain\Users\Email\Email $email
+   * @param Cribbb\Domain\Users\Username\Username $username
+   * @param Cribbb\Domain\Users\Password\Password $password
    * @return void
    */
   public function __construct(Email $email, Username $username, Password $password)
@@ -81,7 +81,7 @@ class User {
   /**
    * Set the User's email address
    *
-   * @param Cribbb\Users\Email\Email $email
+   * @param Cribbb\Domain\Users\Email\Email $email
    * @return void
    */
   private function setEmail(Email $email)
@@ -102,7 +102,7 @@ class User {
   /**
    * Set the User's username
    *
-   * @param Cribbb\Users\Username\Username
+   * @param Cribbb\Domain\Users\Username\Username
    * @return void
    */
   private function setUsername(Username $username)
@@ -123,7 +123,7 @@ class User {
   /**
    * Set the User's password
    *
-   * @param Cribbb\Users\Password\Password
+   * @param Cribbb\Domain\Users\Password\Password
    * @return void
    */
   private function setPassword(Password $password)
@@ -134,7 +134,7 @@ class User {
   /**
    * Add the user to a Cribbb
    *
-   * @param Cribbb\Cribbbs\Cribbb $cribbb
+   * @param Cribbb\Domain\Cribbbs\Cribbb $cribbb
    * @return void
    */
   public function addToCribbb(Cribbb $cribbb)

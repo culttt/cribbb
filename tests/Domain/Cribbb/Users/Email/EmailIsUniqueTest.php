@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Users\Email;
+<?php namespace Cribbb\Domain\Users\Email;
 
 use Mockery as m;
 
@@ -6,7 +6,7 @@ class EmailIsUniqueTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp()
   {
-    $this->repository = m::mock('Cribbb\Users\UserRepository');
+    $this->repository = m::mock('Cribbb\Domain\Users\UserRepository');
     $this->spec = new EmailIsUnique($this->repository);
   }
 

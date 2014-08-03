@@ -1,6 +1,6 @@
-<?php namespace Cribbb\Users\Email;
+<?php namespace Cribbb\Domain\Users\Email;
 
-use Cribbb\Users\UserRepository;
+use Cribbb\Domain\Users\UserRepository;
 
 class EmailIsUnique implements EmailSpecification {
 
@@ -12,7 +12,7 @@ class EmailIsUnique implements EmailSpecification {
   /**
    * Create a new instance of the EmailIsUnique specification
    *
-   * @param Cribbb\Users\UserRepository $repository
+   * @param Cribbb\Domain\Users\UserRepository $repository
    */
   public function __construct(UserRepository $repository)
   {
@@ -22,7 +22,7 @@ class EmailIsUnique implements EmailSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Users\Email\Email $email
+   * @param Cribbb\Domain\Users\Email\Email $email
    * @return bool
    */
   public function isSatisfiedBy(Email $email)
