@@ -21,7 +21,7 @@ class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase {
   public function should_return_false_when_not_unique()
   {
     $this->repository->shouldReceive('findBy')->andReturn(['id' => 1]);
-    $this->assertFalse($this->spec->isSatisfiedBy(new Username('hello_world')));
+    $this->assertFalse($this->spec->isSatisfiedBy(new Username('philipbrown')));
   }
 
 }
