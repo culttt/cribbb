@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
+ * @ORM\entity(repositoryClass="Cribbb\Users\DoctrineUserRepository")
  */
 class User {
 
