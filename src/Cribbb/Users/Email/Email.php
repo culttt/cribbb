@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Users\Email;
 
-use DomainException;
+use Assert\Assertion;
 
 class Email {
 
@@ -17,10 +17,7 @@ class Email {
    */
   public function __construct($email)
   {
-    if( ! filter_var($email, FILTER_VALIDATE_EMAIL) !== false )
-    {
-      throw new DomainException;
-    }
+    Assertion::email($email);
 
     $this->email = $email;
   }

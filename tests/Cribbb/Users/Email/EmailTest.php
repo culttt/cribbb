@@ -12,7 +12,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function should_require_valid_email()
   {
-    $this->setExpectedException('DomainException');
+    $this->setExpectedException('Assert\AssertionFailedException');
     $email = new Email('this_is_not_a_valid_email');
   }
 

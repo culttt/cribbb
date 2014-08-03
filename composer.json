@@ -1,7 +1,8 @@
 {
 	"require": {
 		"laravel/framework": "4.2.*",
-		"mitch/laravel-doctrine": "0.*"
+		"mitch/laravel-doctrine": "0.*",
+		"beberlei/assert": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "3.7.*",

@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Users\Username;
 
-use DomainException;
+use Assert\Assertion;
 
 class Username {
 
@@ -17,10 +17,7 @@ class Username {
    */
   public function __construct($username)
   {
-    if( ! preg_match('/^[\pL\pM\pN_-]+$/u', $username))
-    {
-      throw new DomainException;
-    }
+    Assertion::regex($username, '/^[\pL\pM\pN_-]+$/u');
 
     $this->username = $username;
   }

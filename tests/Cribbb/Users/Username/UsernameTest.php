@@ -12,7 +12,7 @@ class UsernameTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function should_require_valid_username()
   {
-    $this->setExpectedException('DomainException');
+    $this->setExpectedException('Assert\AssertionFailedException');
     $username = new Username('@@@');
   }
 

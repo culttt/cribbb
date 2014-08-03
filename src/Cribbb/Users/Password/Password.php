@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Users\Password;
 
-use DomainException;
+use Assert\Assertion;
 
 class Password {
 
@@ -17,10 +17,7 @@ class Password {
    */
   public function __construct($password)
   {
-    if( strlen($password) < 8 )
-    {
-      throw new DomainException;
-    }
+    Assertion::minLength($password, 8);
 
     $this->password = $password;
   }
