@@ -116,7 +116,7 @@ class User {
    */
   public function getPassword()
   {
-    return $this->username;
+    return $this->password;
   }
 
   /**

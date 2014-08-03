@@ -39,6 +39,10 @@ class UserTest extends \PHPUnit_Framework_TestCase {
   {
     $user = new User($this->email, $this->username, $this->password);
     $this->assertInstanceOf('Cribbb\Users\User', $user);
+
+    $this->assertEquals($user->getEmail(), 'name@domain.com');
+    $this->assertEquals($user->getUsername(), 'my_username');
+    $this->assertEquals($user->getPassword(), 'super_secret_password');
   }
 
 }
