@@ -1,6 +1,4 @@
-<?php namespace Cribbb\Domain\Users\Email;
-
-use Cribbb\Domain\Users\UserRepository;
+<?php namespace Cribbb\Domain\Users;
 
 class EmailIsUnique implements EmailSpecification {
 

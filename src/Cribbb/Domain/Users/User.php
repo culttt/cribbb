@@ -2,9 +2,9 @@
 
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\Cribbbs\Cribbb;
-use Cribbb\Domain\Users\Email\Email;
-use Cribbb\Domain\Users\Username\Username;
-use Cribbb\Domain\Users\Password\Password;
+use Cribbb\Domain\Users\Email;
+use Cribbb\Domain\Users\Username;
+use Cribbb\Domain\Users\Password;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -44,9 +44,9 @@ class User {
   /**
    * Create a new User instance
    *
-   * @param Cribbb\Domain\Users\Email\Email $email
-   * @param Cribbb\Domain\Users\Username\Username $username
-   * @param Cribbb\Domain\Users\Password\Password $password
+   * @param Cribbb\Domain\Users\Email $email
+   * @param Cribbb\Domain\Users\Username $username
+   * @param Cribbb\Domain\Users\Password $password
    * @return void
    */
   public function __construct(Email $email, Username $username, Password $password)
@@ -81,7 +81,7 @@ class User {
   /**
    * Set the User's email address
    *
-   * @param Cribbb\Domain\Users\Email\Email $email
+   * @param Cribbb\Domain\Users\Email $email
    * @return void
    */
   private function setEmail(Email $email)
@@ -102,7 +102,7 @@ class User {
   /**
    * Set the User's username
    *
-   * @param Cribbb\Domain\Users\Username\Username
+   * @param Cribbb\Domain\Users\Username
    * @return void
    */
   private function setUsername(Username $username)
@@ -123,7 +123,7 @@ class User {
   /**
    * Set the User's password
    *
-   * @param Cribbb\Domain\Users\Password\Password
+   * @param Cribbb\Domain\Users\Password
    * @return void
    */
   private function setPassword(Password $password)

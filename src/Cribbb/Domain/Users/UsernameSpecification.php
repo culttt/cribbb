@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users\Username;
+<?php namespace Cribbb\Domain\Users;
 
 interface UsernameSpecification {
 

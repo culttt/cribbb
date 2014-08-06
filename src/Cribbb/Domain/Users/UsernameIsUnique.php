@@ -1,6 +1,4 @@
-<?php namespace Cribbb\Domain\Users\Username;
-
-use Cribbb\Domain\Users\UserRepository;
+<?php namespace Cribbb\Domain\Users;
 
 class UsernameIsUnique implements UsernameSpecification {
 
@@ -22,7 +20,7 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Domain\Users\Username\Username $username
+   * @param Cribbb\Domain\Users\Username $username
    * @return bool
    */
   public function isSatisfiedBy(Username $username)
