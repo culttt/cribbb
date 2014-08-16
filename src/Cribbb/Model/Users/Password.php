@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 use Assert\Assertion;
 
@@ -7,19 +7,19 @@ class Password {
   /**
    * @var string
    */
-  private $password;
+  private $value;
 
   /**
    * Create a new Password
    *
-   * @param string $password
+   * @param string $value
    * @return void
    */
-  public function __construct($password)
+  public function __construct($value)
   {
-    Assertion::minLength($password, 8);
+    Assertion::minLength($value, 8);
 
-    $this->password = $password;
+    $this->value = $value;
   }
 
   /**
@@ -29,7 +29,7 @@ class Password {
    */
   public function __toString()
   {
-    return $this->password;
+    return $this->value;
   }
 
 }

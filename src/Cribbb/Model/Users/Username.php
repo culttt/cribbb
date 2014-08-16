@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 use Assert\Assertion;
 
@@ -7,7 +7,7 @@ class Username {
   /**
    * @var string
    */
-  private $username;
+  private $value;
 
   /**
    * Create a new Username
@@ -15,11 +15,11 @@ class Username {
    * @param string $username
    * @return void
    */
-  public function __construct($username)
+  public function __construct($value)
   {
-    Assertion::regex($username, '/^[\pL\pM\pN_-]+$/u');
+    Assertion::regex($value, '/^[\pL\pM\pN_-]+$/u');
 
-    $this->username = $username;
+    $this->value = $value;
   }
 
   /**
@@ -29,7 +29,7 @@ class Username {
    */
   public function __toString()
   {
-    return $this->username;
+    return $this->value;
   }
 
 }

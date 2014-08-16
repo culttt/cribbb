@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 use Mockery as m;
 
@@ -6,7 +6,7 @@ class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp()
   {
-    $this->repository = m::mock('Cribbb\Domain\Users\UserRepository');
+    $this->repository = m::mock('Cribbb\Model\Users\UserRepository');
     $this->spec = new UsernameIsUnique($this->repository);
   }
 

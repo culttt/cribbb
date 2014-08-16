@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 class UsernameIsUnique implements UsernameSpecification {
 
@@ -10,7 +10,7 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Create a new instance of the UsernameIsUnique specification
    *
-   * @param Cribbb\Domain\Users\UserRepository $repository
+   * @param Cribbb\Model\Users\UserRepository $repository
    */
   public function __construct(UserRepository $repository)
   {
@@ -20,7 +20,7 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Domain\Users\Username $username
+   * @param Cribbb\Model\Users\Username $username
    * @return bool
    */
   public function isSatisfiedBy(Username $username)

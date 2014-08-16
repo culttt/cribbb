@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 use Assert\Assertion;
 
@@ -7,19 +7,19 @@ class Email {
   /**
    * @var string
    */
-  private $email;
+  private $value;
 
   /**
    * Create a new Email
    *
-   * @param string $email
+   * @param string $value
    * @return void
    */
-  public function __construct($email)
+  public function __construct($value)
   {
-    Assertion::email($email);
+    Assertion::email($value);
 
-    $this->email = $email;
+    $this->value = $value;
   }
 
   /**
@@ -29,7 +29,7 @@ class Email {
    */
   public function __toString()
   {
-    return $this->email;
+    return $this->value;
   }
 
 }

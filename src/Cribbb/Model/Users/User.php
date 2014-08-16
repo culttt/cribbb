@@ -1,16 +1,15 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cribbb\Domain\Cribbbs\Cribbb;
-use Cribbb\Domain\Users\Email;
-use Cribbb\Domain\Users\Username;
-use Cribbb\Domain\Users\Password;
+use Cribbb\Model\Users\Email;
+use Cribbb\Model\Users\Username;
+use Cribbb\Model\Users\Password;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\entity(repositoryClass="Cribbb\Domain\Users\UserRepository")
+ * @ORM\entity(repositoryClass="Cribbb\Model\Users\UserRepository")
  */
 class User {
 
@@ -37,16 +36,11 @@ class User {
   private $password;
 
   /**
-   * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Cribbbs\Cribbb", mappedBy="users")
-   */
-  private $cribbbs;
-
-  /**
    * Create a new User instance
    *
-   * @param Cribbb\Domain\Users\Email $email
-   * @param Cribbb\Domain\Users\Username $username
-   * @param Cribbb\Domain\Users\Password $password
+   * @param Cribbb\Model\Users\Email $email
+   * @param Cribbb\Model\Users\Username $username
+   * @param Cribbb\Model\Users\Password $password
    * @return void
    */
   public function __construct(Email $email, Username $username, Password $password)
@@ -81,7 +75,7 @@ class User {
   /**
    * Set the User's email address
    *
-   * @param Cribbb\Domain\Users\Email $email
+   * @param Cribbb\Model\Users\Email $email
    * @return void
    */
   private function setEmail(Email $email)
@@ -102,7 +96,7 @@ class User {
   /**
    * Set the User's username
    *
-   * @param Cribbb\Domain\Users\Username
+   * @param Cribbb\Model\Users\Username
    * @return void
    */
   private function setUsername(Username $username)
@@ -123,25 +117,12 @@ class User {
   /**
    * Set the User's password
    *
-   * @param Cribbb\Domain\Users\Password
+   * @param Cribbb\Model\Users\Password
    * @return void
    */
   private function setPassword(Password $password)
   {
     $this->password = $password;
-  }
-
-  /**
-   * Add the user to a Cribbb
-   *
-   * @param Cribbb\Domain\Cribbbs\Cribbb $cribbb
-   * @return void
-   */
-  public function addToCribbb(Cribbb $cribbb)
-  {
-    $cribbb->addUser($this);
-
-    $this->cribbbs[] = $cribbb;
   }
 
 }

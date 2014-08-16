@@ -1,3 +1,3 @@
-<?php namespace Cribbb\Domain\Users;
+<?php namespace Cribbb\Model\Users;
 
 interface UserRepository {}
