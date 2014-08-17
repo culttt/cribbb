@@ -13,14 +13,14 @@ class EmailIsUniqueTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function should_return_true_when_unique()
   {
-    $this->repository->shouldReceive('findBy')->andReturn(null);
+    $this->repository->shouldReceive('userOfEmail')->andReturn(null);
     $this->assertTrue($this->spec->isSatisfiedBy(new Email('name@domain.com')));
   }
 
   /** @test */
   public function should_return_false_when_not_unique()
   {
-    $this->repository->shouldReceive('findBy')->andReturn(['id' => 1]);
+    $this->repository->shouldReceive('userOfEmail')->andReturn(['id' => 1]);
     $this->assertFalse($this->spec->isSatisfiedBy(new Email('name@domain.com')));
   }
 

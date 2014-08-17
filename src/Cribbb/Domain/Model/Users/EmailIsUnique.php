@@ -25,7 +25,7 @@ class EmailIsUnique implements EmailSpecification {
    */
   public function isSatisfiedBy(Email $email)
   {
-    if($this->repository->findBy(['email' => $email]))
+    if($this->repository->userOfEmail($email))
     {
       return false;
     }

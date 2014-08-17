@@ -13,14 +13,14 @@ class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function should_return_true_when_unique()
   {
-    $this->repository->shouldReceive('findBy')->andReturn(null);
+    $this->repository->shouldReceive('userOfUsername')->andReturn(null);
     $this->assertTrue($this->spec->isSatisfiedBy(new Username('430r0923r0209rjw')));
   }
 
   /** @test */
   public function should_return_false_when_not_unique()
   {
-    $this->repository->shouldReceive('findBy')->andReturn(['id' => 1]);
+    $this->repository->shouldReceive('userOfUsername')->andReturn(['id' => 1]);
     $this->assertFalse($this->spec->isSatisfiedBy(new Username('philipbrown')));
   }
 
