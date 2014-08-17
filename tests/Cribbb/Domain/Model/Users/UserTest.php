@@ -4,6 +4,18 @@ use Rhumsaa\Uuid\Uuid;
 
 class UserTest extends \PHPUnit_Framework_TestCase {
 
+  /** @var UserId */
+  private $userId;
+
+  /** @var Email */
+  private $email;
+
+  /** @var Username */
+  private $username;
+
+  /** @var Password */
+  private $password;
+
   public function setUp()
   {
     $this->userId = new UserId(Uuid::uuid4());

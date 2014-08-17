@@ -4,6 +4,12 @@ use Mockery as m;
 
 class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase {
 
+  /** @var UserRepository */
+  private $repository;
+
+  /** @var UsernameIsUnique */
+  private $spec;
+
   public function setUp()
   {
     $this->repository = m::mock('Cribbb\Domain\Model\Users\UserRepository');
