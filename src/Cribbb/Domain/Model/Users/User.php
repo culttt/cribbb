@@ -36,10 +36,10 @@ class User {
    * @param UserId $userId
    * @param Email $email
    * @param Username $username
-   * @param Password $password
+   * @param HashedPassword $password
    * @return void
    */
-  private function __construct(UserId $userId, Email $email, Username $username, Password $password)
+  private function __construct(UserId $userId, Email $email, Username $username, HashedPassword $password)
   {
     $this->setId($userId);
     $this->setEmail($email);
@@ -53,10 +53,10 @@ class User {
    * @param UserId $userId
    * @param Email $email
    * @param Username $username
-   * @param Password $password
+   * @param HashedPassword $password
    * @return User
    */
-  public static function register(UserId $userId, Email $email, Username $username, Password $password)
+  public static function register(UserId $userId, Email $email, Username $username, HashedPassword $password)
   {
     return new User($userId, $email, $username, $password);
   }
@@ -79,7 +79,7 @@ class User {
    */
   private function setId(UserId $userId)
   {
-    $this->id = (string) $userId;
+    $this->id = $userId;
   }
 
   /**
@@ -127,10 +127,10 @@ class User {
   /**
    * Set the User's password
    *
-   * @param Password
+   * @param HashedPassword
    * @return void
    */
-  private function setPassword(Password $password)
+  private function setPassword(HashedPassword $password)
   {
     $this->password = $password;
   }

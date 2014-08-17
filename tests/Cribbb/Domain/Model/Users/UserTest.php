@@ -13,7 +13,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
   /** @var Username */
   private $username;
 
-  /** @var Password */
+  /** @var HashedPassword */
   private $password;
 
   public function setUp()
@@ -21,7 +21,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
     $this->userId = new UserId(Uuid::uuid4());
     $this->email = new Email('name@domain.com');
     $this->username = new Username('my_username');
-    $this->password = new Password('super_secret_password');
+    $this->password = new HashedPassword('super_secret_password');
   }
 
   /** @test */
