@@ -1,15 +1,15 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cribbb\Model\Users\Email;
-use Cribbb\Model\Users\Username;
-use Cribbb\Model\Users\Password;
+use Cribbb\Domain\Model\Users\Email;
+use Cribbb\Domain\Model\Users\Username;
+use Cribbb\Domain\Model\Users\Password;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\entity(repositoryClass="Cribbb\Model\Users\UserRepository")
+ * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Users\UserRepository")
  */
 class User {
 
@@ -38,9 +38,9 @@ class User {
   /**
    * Create a new User instance
    *
-   * @param Cribbb\Model\Users\Email $email
-   * @param Cribbb\Model\Users\Username $username
-   * @param Cribbb\Model\Users\Password $password
+   * @param Cribbb\Domain\Model\Users\Email $email
+   * @param Cribbb\Domain\Model\Users\Username $username
+   * @param Cribbb\Domain\Model\Users\Password $password
    * @return void
    */
   public function __construct(Email $email, Username $username, Password $password)
@@ -75,7 +75,7 @@ class User {
   /**
    * Set the User's email address
    *
-   * @param Cribbb\Model\Users\Email $email
+   * @param Cribbb\Domain\Model\Users\Email $email
    * @return void
    */
   private function setEmail(Email $email)
@@ -96,7 +96,7 @@ class User {
   /**
    * Set the User's username
    *
-   * @param Cribbb\Model\Users\Username
+   * @param Cribbb\Domain\Model\Users\Username
    * @return void
    */
   private function setUsername(Username $username)
@@ -117,7 +117,7 @@ class User {
   /**
    * Set the User's password
    *
-   * @param Cribbb\Model\Users\Password
+   * @param Cribbb\Domain\Model\Users\Password
    * @return void
    */
   private function setPassword(Password $password)

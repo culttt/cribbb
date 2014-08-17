@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
-use Cribbb\Model\Users\Email;
-use Cribbb\Model\Users\Username;
-use Cribbb\Model\Users\Password;
+use Cribbb\Domain\Model\Users\Email;
+use Cribbb\Domain\Model\Users\Username;
+use Cribbb\Domain\Model\Users\Password;
 
 class UserTest extends \PHPUnit_Framework_TestCase {
 
@@ -38,7 +38,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
   public function should_create_new_user()
   {
     $user = new User($this->email, $this->username, $this->password);
-    $this->assertInstanceOf('Cribbb\Model\Users\User', $user);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Users\User', $user);
 
     $this->assertEquals($user->getEmail(), 'name@domain.com');
     $this->assertEquals($user->getUsername(), 'my_username');

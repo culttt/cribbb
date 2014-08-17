@@ -108,7 +108,7 @@ return array(
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
+    //'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
   ),
 
   /*

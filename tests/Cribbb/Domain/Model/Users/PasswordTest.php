@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
 class PasswordTest extends \PHPUnit_Framework_TestCase {
 
@@ -20,7 +20,7 @@ class PasswordTest extends \PHPUnit_Framework_TestCase {
   public function should_accept_valid_password()
   {
     $password = new Password('ffsfewefhwuehfuiwhfiuwiufgiuwgewiugwefiuwbw');
-    $this->assertInstanceOf('Cribbb\Model\Users\Password', $password);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Users\Password', $password);
   }
 
 }

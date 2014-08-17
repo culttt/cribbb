@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
 class EmailIsUnique implements EmailSpecification {
 
@@ -10,7 +10,7 @@ class EmailIsUnique implements EmailSpecification {
   /**
    * Create a new instance of the EmailIsUnique specification
    *
-   * @param Cribbb\Model\Users\UserRepository $repository
+   * @param Cribbb\Domain\Model\Users\UserRepository $repository
    */
   public function __construct(UserRepository $repository)
   {
@@ -20,7 +20,7 @@ class EmailIsUnique implements EmailSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Model\Users\Email $email
+   * @param Cribbb\Domain\Model\Users\Email $email
    * @return bool
    */
   public function isSatisfiedBy(Email $email)

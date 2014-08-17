@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
 class EmailTest extends \PHPUnit_Framework_TestCase {
 
@@ -20,7 +20,7 @@ class EmailTest extends \PHPUnit_Framework_TestCase {
   public function should_accept_valid_email()
   {
     $email = new Email('name@domain.com');
-    $this->assertInstanceOf('Cribbb\Model\Users\Email', $email);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Users\Email', $email);
   }
 
 }

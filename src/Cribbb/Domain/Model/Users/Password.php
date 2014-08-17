@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Model\Users;
+<?php namespace Cribbb\Domain\Model\Users;
 
 use Assert\Assertion;
 
