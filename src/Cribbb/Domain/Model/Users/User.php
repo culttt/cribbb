@@ -1,9 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Users;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cribbb\Domain\Model\Users\Email;
-use Cribbb\Domain\Model\Users\Username;
-use Cribbb\Domain\Model\Users\Password;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -14,9 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class User {
 
   /**
-   * @ORM\Id
-   * @ORM\GeneratedValue
-   * @ORM\Column(type="integer")
+   * @ORM\Column(type="string")
    */
   private $id;
 
@@ -36,15 +31,17 @@ class User {
   private $password;
 
   /**
-   * Create a new User instance
+   * Create a new User
    *
-   * @param Cribbb\Domain\Model\Users\Email $email
-   * @param Cribbb\Domain\Model\Users\Username $username
-   * @param Cribbb\Domain\Model\Users\Password $password
+   * @param UserId $userId
+   * @param Email $email
+   * @param Username $username
+   * @param Password $password
    * @return void
    */
-  public function __construct(Email $email, Username $username, Password $password)
+  private function __construct(UserId $userId, Email $email, Username $username, Password $password)
   {
+    $this->setId($userId);
     $this->setEmail($email);
     $this->setUsername($username);
     $this->setPassword($password);
@@ -53,13 +50,38 @@ class User {
   }
 
   /**
+   * Register a new User
+   *
+   * @param UserId $userId
+   * @param Email $email
+   * @param Username $username
+   * @param Password $password
+   * @return User
+   */
+  public static function register(UserId $userId, Email $email, Username $username, Password $password)
+  {
+    return new User($userId, $email, $username, $password);
+  }
+
+  /**
    * Get the User's id
    *
-   * @return int
+   * @return UserId;
    */
-  public function getId()
+  public function id()
   {
-    return $this->id;
+    return UserId::fromString($this->id);
+  }
+
+  /**
+   * Set the User's id
+   *
+   * @param UserId $userId
+   * @return void
+   */
+  private function setId(UserId $userId)
+  {
+    $this->id = (string) $userId;
   }
 
   /**
@@ -67,7 +89,7 @@ class User {
    *
    * @return string
    */
-  public function getEmail()
+  public function email()
   {
     return $this->email;
   }
@@ -75,7 +97,7 @@ class User {
   /**
    * Set the User's email address
    *
-   * @param Cribbb\Domain\Model\Users\Email $email
+   * @param Email $email
    * @return void
    */
   private function setEmail(Email $email)
@@ -88,7 +110,7 @@ class User {
    *
    * @return string
    */
-  public function getUsername()
+  public function username()
   {
     return $this->username;
   }
@@ -96,7 +118,7 @@ class User {
   /**
    * Set the User's username
    *
-   * @param Cribbb\Domain\Model\Users\Username
+   * @param Username
    * @return void
    */
   private function setUsername(Username $username)
@@ -105,19 +127,9 @@ class User {
   }
 
   /**
-   * Get the User's password
-   *
-   * @return string
-   */
-  public function getPassword()
-  {
-    return $this->password;
-  }
-
-  /**
    * Set the User's password
    *
-   * @param Cribbb\Domain\Model\Users\Password
+   * @param Password
    * @return void
    */
   private function setPassword(Password $password)

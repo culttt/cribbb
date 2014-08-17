@@ -27,7 +27,7 @@ class UserId {
    */
   public static function fromString($userId)
   {
-    return new self(Uuid::fromString($userId));
+    return new UserId(Uuid::fromString($userId));
   }
 
   /**

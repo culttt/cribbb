@@ -3,14 +3,14 @@
 class UsernameIsUnique implements UsernameSpecification {
 
   /**
-   * @var Cribbb\Domain\Model\Users\UserRepository
+   * @var UserRepository
    */
   private $repository;
 
   /**
    * Create a new instance of the UsernameIsUnique specification
    *
-   * @param Cribbb\Domain\Model\Users\UserRepository $repository
+   * @param UserRepository $repository
    */
   public function __construct(UserRepository $repository)
   {
@@ -20,7 +20,7 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Domain\Model\Users\Username $username
+   * @param Username $username
    * @return bool
    */
   public function isSatisfiedBy(Username $username)

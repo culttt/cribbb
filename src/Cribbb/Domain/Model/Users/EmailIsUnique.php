@@ -3,14 +3,14 @@
 class EmailIsUnique implements EmailSpecification {
 
   /**
-   * @var Cribbb\Domain\Model\Users\UserRepository
+   * @var UserRepository
    */
   private $repository;
 
   /**
    * Create a new instance of the EmailIsUnique specification
    *
-   * @param Cribbb\Domain\Model\Users\UserRepository $repository
+   * @param UserRepository $repository
    */
   public function __construct(UserRepository $repository)
   {
@@ -20,7 +20,7 @@ class EmailIsUnique implements EmailSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Cribbb\Domain\Model\Users\Email $email
+   * @param Email $email
    * @return bool
    */
   public function isSatisfiedBy(Email $email)

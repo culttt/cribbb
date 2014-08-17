@@ -1,48 +1,55 @@
 <?php namespace Cribbb\Domain\Model\Users;
 
-use Cribbb\Domain\Model\Users\Email;
-use Cribbb\Domain\Model\Users\Username;
-use Cribbb\Domain\Model\Users\Password;
+use Rhumsaa\Uuid\Uuid;
 
 class UserTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp()
   {
+    $this->userId = new UserId(Uuid::uuid4());
     $this->email = new Email('name@domain.com');
     $this->username = new Username('my_username');
     $this->password = new Password('super_secret_password');
   }
 
   /** @test */
+  public function should_require_user_id()
+  {
+    $this->setExpectedException('Exception');
+
+    $user = User::register(null, $this->email, $this->username, $this->password);
+  }
+
+  /** @test */
   public function should_require_email()
   {
     $this->setExpectedException('Exception');
-    $user = new User(null, $this->username, $this->password);
+    $user = User::register($this->userId, null, $this->username, $this->password);
   }
 
   /** @test */
   public function should_require_username()
   {
     $this->setExpectedException('Exception');
-    $user = new User($this->email, null, $this->password);
+    $user = User::register($this->userId, $this->email, null, $this->password);
   }
 
   /** @test */
   public function should_require_password()
   {
     $this->setExpectedException('Exception');
-    $user = new User($this->email, $this->username, null);
+    $user = User::register($this->userId, $this->email, $this->username, null);
   }
 
   /** @test */
   public function should_create_new_user()
   {
-    $user = new User($this->email, $this->username, $this->password);
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\User', $user);
+    $user = User::register($this->userId, $this->email, $this->username, $this->password);
 
-    $this->assertEquals($user->getEmail(), 'name@domain.com');
-    $this->assertEquals($user->getUsername(), 'my_username');
-    $this->assertEquals($user->getPassword(), 'super_secret_password');
+    $this->assertInstanceOf('Cribbb\Domain\Model\Users\User', $user);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Users\UserId', $user->id());
+    $this->assertEquals($user->email(), 'name@domain.com');
+    $this->assertEquals($user->username(), 'my_username');
   }
 
 }
