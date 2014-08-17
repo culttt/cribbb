@@ -45,8 +45,6 @@ class User {
     $this->setEmail($email);
     $this->setUsername($username);
     $this->setPassword($password);
-
-    $this->cribbbs = new ArrayCollection();
   }
 
   /**
