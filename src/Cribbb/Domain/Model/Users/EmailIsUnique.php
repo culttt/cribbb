@@ -3,7 +3,7 @@
 class EmailIsUnique implements EmailSpecification {
 
   /**
-   * @var Cribbb\Model\Users\UserRepository
+   * @var Cribbb\Domain\Model\Users\UserRepository
    */
   private $repository;
 

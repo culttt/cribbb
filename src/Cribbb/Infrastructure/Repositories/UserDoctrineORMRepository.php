@@ -3,4 +3,4 @@
 use Doctrine\ORM\EntityRepository;
 use Cribbb\Domain\Users\UserRepository;
 
-class DoctrineORMUserRepository extends EntityRepository implements UserRepository {}
+class UserDoctrineORMRepository extends EntityRepository implements UserRepository {}
