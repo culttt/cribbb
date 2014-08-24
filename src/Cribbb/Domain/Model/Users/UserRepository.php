@@ -18,4 +18,12 @@ interface UserRepository {
    */
   public function userOfUsername(Username $username);
 
+  /**
+   * Add a new User
+   *
+   * @param User $user
+   * @return void
+   */
+  public function add(User $user);
+
 }
