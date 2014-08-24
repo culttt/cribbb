@@ -27,7 +27,7 @@ class EmailIsUnique implements EmailSpecification {
   {
     if($this->repository->userOfEmail($email))
     {
-      return false;
+      throw new DomainValueIsNotUnique('The email address is already registered');
     }
 
     return true;

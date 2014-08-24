@@ -24,8 +24,10 @@ class EmailIsUniqueTest extends \PHPUnit_Framework_TestCase {
   }
 
   /** @test */
-  public function should_return_false_when_not_unique()
+  public function should_throw_exception_when_not_unique()
   {
+    $this->setExpectedException('Cribbb\Domain\Model\Identity\DomainValueIsNotUnique');
+
     $this->repository->shouldReceive('userOfEmail')->andReturn(['id' => 1]);
     $this->assertFalse($this->spec->isSatisfiedBy(new Email('name@domain.com')));
   }
