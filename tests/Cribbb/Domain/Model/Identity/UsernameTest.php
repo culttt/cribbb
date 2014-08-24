@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 class UsernameTest extends \PHPUnit_Framework_TestCase {
 
@@ -20,7 +20,7 @@ class UsernameTest extends \PHPUnit_Framework_TestCase {
   public function should_accept_valid_username()
   {
     $username = new Username('philipbrown');
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\Username', $username);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $username);
   }
 
 }

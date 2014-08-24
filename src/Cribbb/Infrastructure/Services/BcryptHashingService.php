@@ -1,24 +1,24 @@
 <?php namespace Cribbb\Infrastructure\Services;
 
-use Cribbb\Domain\Model\Users\Password;
-use Illuminate\Hashing\HasherInterface;
-use Cribbb\Domain\Services\PasswordService;
-use Cribbb\Domain\Model\Users\HashedPassword;
+use Illuminate\Hashing\BcryptHasher;
+use Cribbb\Domain\Model\Identity\Password;
+use Cribbb\Domain\Model\Identity\HashingService;
+use Cribbb\Domain\Model\Identity\HashedPassword;
 
-class PasswordHashingService implements PasswordService {
+class BcryptHashingService implements HashingService {
 
   /**
-   * @var Illuminate\Hashing\HasherInterface
+   * @var Illuminate\Hashing\BcryptHasher
    */
   private $hasher;
 
   /**
    * Create a new PasswordHashingService
    *
-   * @param HasherInterface $hasher
+   * @param BcryptHasher $hasher
    * @return void
    */
-  public function __construct(HasherInterface $hasher)
+  public function __construct(BcryptHasher $hasher)
   {
     $this->hasher = $hasher;
   }

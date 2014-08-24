@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 use Assert\Assertion;
 
-class Username {
+class HashedPassword {
 
   /**
    * @var string
@@ -10,14 +10,14 @@ class Username {
   private $value;
 
   /**
-   * Create a new Username
+   * Create a new Hashed Password
    *
-   * @param string $username
+   * @param string $value
    * @return void
    */
   public function __construct($value)
   {
-    Assertion::regex($value, '/^[\pL\pM\pN_-]+$/u');
+    Assertion::string($value);
 
     $this->value = $value;
   }

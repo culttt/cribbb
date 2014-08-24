@@ -1,9 +1,6 @@
-<?php namespace Cribbb\Domain\Services;
+<?php namespace Cribbb\Domain\Model\Identity;
 
-use Cribbb\Domain\Model\Users\Password;
-use Cribbb\Domain\Model\Users\HashedPassword;
-
-interface PasswordService {
+interface HashingService {
 
   /**
    * Create a new HashedPassword

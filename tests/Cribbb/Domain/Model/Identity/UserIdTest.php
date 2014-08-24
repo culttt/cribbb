@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 use Rhumsaa\Uuid\Uuid;
 
@@ -17,7 +17,7 @@ class UserIdTest extends \PHPUnit_Framework_TestCase {
   {
     $id = new UserId(Uuid::uuid4());
 
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\UserId', $id);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $id);
   }
 
   /** @test */
@@ -25,7 +25,7 @@ class UserIdTest extends \PHPUnit_Framework_TestCase {
   {
     $id = UserId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
 
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\UserId', $id);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $id);
   }
 
 }

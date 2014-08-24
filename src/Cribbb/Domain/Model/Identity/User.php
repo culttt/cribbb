@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Users\UserRepository")
+ * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Identity\UserRepository")
  */
 class User {
 

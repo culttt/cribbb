@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 use Assert\Assertion;
 
-class Email {
+class Password {
 
   /**
    * @var string
@@ -10,14 +10,14 @@ class Email {
   private $value;
 
   /**
-   * Create a new Email
+   * Create a new Password
    *
    * @param string $value
    * @return void
    */
   public function __construct($value)
   {
-    Assertion::email($value);
+    Assertion::minLength($value, 8);
 
     $this->value = $value;
   }

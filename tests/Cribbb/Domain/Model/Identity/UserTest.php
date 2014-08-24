@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
 use Rhumsaa\Uuid\Uuid;
 
@@ -58,8 +58,8 @@ class UserTest extends \PHPUnit_Framework_TestCase {
   {
     $user = User::register($this->userId, $this->email, $this->username, $this->password);
 
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\User', $user);
-    $this->assertInstanceOf('Cribbb\Domain\Model\Users\UserId', $user->id());
+    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $user->id());
     $this->assertEquals($user->email(), 'name@domain.com');
     $this->assertEquals($user->username(), 'my_username');
   }

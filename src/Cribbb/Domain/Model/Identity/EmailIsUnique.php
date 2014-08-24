@@ -1,6 +1,6 @@
-<?php namespace Cribbb\Domain\Model\Users;
+<?php namespace Cribbb\Domain\Model\Identity;
 
-class UsernameIsUnique implements UsernameSpecification {
+class EmailIsUnique implements EmailSpecification {
 
   /**
    * @var UserRepository
@@ -8,7 +8,7 @@ class UsernameIsUnique implements UsernameSpecification {
   private $repository;
 
   /**
-   * Create a new instance of the UsernameIsUnique specification
+   * Create a new instance of the EmailIsUnique specification
    *
    * @param UserRepository $repository
    */
@@ -20,12 +20,12 @@ class UsernameIsUnique implements UsernameSpecification {
   /**
    * Check to see if the specification is satisfied
    *
-   * @param Username $username
+   * @param Email $email
    * @return bool
    */
-  public function isSatisfiedBy(Username $username)
+  public function isSatisfiedBy(Email $email)
   {
-    if($this->repository->userOfUsername($username))
+    if($this->repository->userOfEmail($email))
     {
       return false;
     }

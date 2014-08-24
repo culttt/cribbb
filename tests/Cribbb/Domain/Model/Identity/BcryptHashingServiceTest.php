@@ -1,9 +1,9 @@
 <?php namespace Cribbb\Infrastructure\Services;
 
 use Illuminate\Hashing\BcryptHasher;
-use Cribbb\Domain\Model\Users\Password;
+use Cribbb\Domain\Model\Identity\Password;
 
-class PasswordHashingServiceTest extends \PHPUnit_Framework_TestCase {
+class BcryptHashingServiceTest extends \PHPUnit_Framework_TestCase {
 
   /** @var PasswordHashingService */
   private $service;
@@ -13,7 +13,7 @@ class PasswordHashingServiceTest extends \PHPUnit_Framework_TestCase {
 
   public function setUp()
   {
-    $this->service = new PasswordHashingService(new BcryptHasher);
+    $this->service = new BcryptHashingService(new BcryptHasher);
     $this->password = new Password('my_super_secret_password');
   }
 
@@ -22,7 +22,7 @@ class PasswordHashingServiceTest extends \PHPUnit_Framework_TestCase {
   {
     $hashed = $this->service->make($this->password);
 
-    $this->assertInstanceof('Cribbb\Domain\Model\Users\HashedPassword', $hashed);
+    $this->assertInstanceof('Cribbb\Domain\Model\Identity\HashedPassword', $hashed);
   }
 
   /** @test */
@@ -34,9 +34,3 @@ class PasswordHashingServiceTest extends \PHPUnit_Framework_TestCase {
   }
 
 }
-
-
-
-
-
-
