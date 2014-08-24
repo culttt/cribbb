@@ -1,5 +1,7 @@
 <?php namespace Cribbb\Domain\Model\Users;
 
+use Assert\Assertion;
+
 class HashedPassword {
 
   /**
@@ -15,6 +17,8 @@ class HashedPassword {
    */
   public function __construct($value)
   {
+    Assertion::string($value);
+
     $this->value = $value;
   }
 
