@@ -3,7 +3,7 @@
 interface HashingService {
 
   /**
-   * Create a new HashedPassword
+   * Create a new hashed password
    *
    * @param Password $password
    * @return HashedPassword
