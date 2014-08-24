@@ -8,19 +8,35 @@ class PasswordHashingServiceTest extends \PHPUnit_Framework_TestCase {
   /** @var PasswordHashingService */
   private $service;
 
+  /** @var Password */
+  private $password;
+
   public function setUp()
   {
     $this->service = new PasswordHashingService(new BcryptHasher);
+    $this->password = new Password('my_super_secret_password');
   }
 
   /** @test */
   public function should_make_new_hashed_password_instance()
   {
-    $password = new Password('my_super_secret_password');
-    $hashed = $this->service->make($password);
+    $hashed = $this->service->make($this->password);
 
     $this->assertInstanceof('Cribbb\Domain\Model\Users\HashedPassword', $hashed);
-    $this->assertTrue($this->service->check($password, $hashed));
+  }
+
+  /** @test */
+  public function should_check_password_is_correct()
+  {
+    $hashed = $this->service->make($this->password);
+
+    $this->assertTrue($this->service->check($this->password, $hashed));
   }
 
 }
+
+
+
+
+
+
