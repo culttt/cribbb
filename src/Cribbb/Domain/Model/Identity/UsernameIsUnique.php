@@ -27,7 +27,7 @@ class UsernameIsUnique implements UsernameSpecification {
   {
     if($this->repository->userOfUsername($username))
     {
-      throw new DomainValueIsNotUnique('The username has already been taken');
+      throw new ValueIsNotUniqueException('The username has already been taken');
     }
 
     return true;

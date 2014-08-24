@@ -26,7 +26,7 @@ class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase {
   /** @test */
   public function should_throw_exception_when_not_unique()
   {
-    $this->setExpectedException('Cribbb\Domain\Model\Identity\DomainValueIsNotUnique');
+    $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
 
     $this->repository->shouldReceive('userOfUsername')->andReturn(['id' => 1]);
     $this->assertFalse($this->spec->isSatisfiedBy(new Username('philipbrown')));

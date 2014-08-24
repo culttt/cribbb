@@ -18,6 +18,11 @@ class IdentityApplicationService {
   private $userRepository;
 
   /**
+   * @var HashingService
+   */
+  private $hashingService;
+
+  /**
    * Create a new instance of the IdentityApplicationService
    *
    * @param UserRepository $userRepository
