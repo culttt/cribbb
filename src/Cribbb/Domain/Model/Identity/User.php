@@ -1,5 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
+use Cribbb\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -9,6 +10,8 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Identity\UserRepository")
  */
 class User {
+
+  use HasEvents;
 
   /**
    * @ORM\Column(type="string")
