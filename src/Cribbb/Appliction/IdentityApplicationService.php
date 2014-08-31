@@ -2,6 +2,7 @@
 
 use Cribbb\Domain\Model\Identity\User;
 use Cribbb\Domain\Model\Identity\Email;
+use BigName\EventDispatcher\Dispatcher;
 use Cribbb\Domain\Model\Identity\Username;
 use Cribbb\Domain\Model\Identity\Password;
 use Cribbb\Domain\Model\Identity\EmailIsUnique;
@@ -23,19 +24,27 @@ class IdentityApplicationService {
   private $hashingService;
 
   /**
+   * @var Dispatcher
+   */
+  private $dispatcher;
+
+  /**
    * Create a new instance of the IdentityApplicationService
    *
    * @param UserRepository $userRepository
    * @param HashingService $hashingService
+   * @param Dispatcher $dispatcher;
    * @return void
    */
   public function __construct(
     UserRepository $userRepository,
-    HashingService $hashingService
+    HashingService $hashingService,
+    Dispatcher $dispatcher
   )
   {
     $this->userRepository = $userRepository;
     $this->hashingService = $hashingService;
+    $this->dispatcher = $dispatcher;
   }
 
   /**
@@ -56,9 +65,11 @@ class IdentityApplicationService {
     $id       = $this->userRepository->nextIdentity();
     $password = $this->hashingService->hash($password);
 
-    $user     = User::register($id, $email, $username, $password);
+    $user = User::register($id, $email, $username, $password);
 
     $this->userRepository->add($user);
+
+    $this->dispatcher->dispatch($user->releaseEvents());
 
     return $user;
   }

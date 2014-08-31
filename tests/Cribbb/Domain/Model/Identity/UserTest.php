@@ -62,6 +62,7 @@ class UserTest extends \PHPUnit_Framework_TestCase {
     $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $user->id());
     $this->assertEquals($user->email(), 'name@domain.com');
     $this->assertEquals($user->username(), 'my_username');
+    $this->assertEquals(1, count($user->releaseEvents()));
   }
 
 }

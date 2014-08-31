@@ -3,6 +3,7 @@
 use Cribbb\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 
 /**
  * @ORM\Entity
@@ -48,6 +49,8 @@ class User {
     $this->setEmail($email);
     $this->setUsername($username);
     $this->setPassword($password);
+
+    $this->raiseEvent(new UserHasRegistered($this));
   }
 
   /**
@@ -61,7 +64,9 @@ class User {
    */
   public static function register(UserId $userId, Email $email, Username $username, HashedPassword $password)
   {
-    return new User($userId, $email, $username, $password);
+    $user = new User($userId, $email, $username, $password);
+
+    return $user;
   }
 
   /**
