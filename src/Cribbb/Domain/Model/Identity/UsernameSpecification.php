@@ -1,12 +1,11 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
-interface UsernameSpecification {
-
-  /**
-   * Check to see if the specification is satisfied
-   *
-   * @return bool
-   */
-  public function isSatisfiedBy(Username $username);
-
+interface UsernameSpecification
+{
+    /**
+     * Check to see if the specification is satisfied
+     *
+     * @return bool
+     */
+    public function isSatisfiedBy(Username $username);
 }

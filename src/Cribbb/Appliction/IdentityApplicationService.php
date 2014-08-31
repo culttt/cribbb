@@ -11,91 +11,90 @@ use Cribbb\Domain\Model\Identity\UserRepository;
 use Cribbb\Domain\Model\Identity\UsernameIsUnique;
 use Cribbb\Application\Commands\RegisterUserCommand;
 
-class IdentityApplicationService {
+class IdentityApplicationService
+{
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
 
-  /**
-   * @var UserRepository
-   */
-  private $userRepository;
+    /**
+     * @var HashingService
+     */
+    private $hashingService;
 
-  /**
-   * @var HashingService
-   */
-  private $hashingService;
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
 
-  /**
-   * @var Dispatcher
-   */
-  private $dispatcher;
+    /**
+     * Create a new instance of the IdentityApplicationService
+     *
+     * @param UserRepository $userRepository
+     * @param HashingService $hashingService
+     * @param Dispatcher $dispatcher;
+     * @return void
+     */
+    public function __construct(
+      UserRepository $userRepository,
+      HashingService $hashingService,
+      Dispatcher $dispatcher
+    )
+    {
+        $this->userRepository = $userRepository;
+        $this->hashingService = $hashingService;
+        $this->dispatcher = $dispatcher;
+    }
 
-  /**
-   * Create a new instance of the IdentityApplicationService
-   *
-   * @param UserRepository $userRepository
-   * @param HashingService $hashingService
-   * @param Dispatcher $dispatcher;
-   * @return void
-   */
-  public function __construct(
-    UserRepository $userRepository,
-    HashingService $hashingService,
-    Dispatcher $dispatcher
-  )
-  {
-    $this->userRepository = $userRepository;
-    $this->hashingService = $hashingService;
-    $this->dispatcher = $dispatcher;
-  }
+    /**
+     * Register a new user
+     *
+     * @param RegisterUserCommand $command
+     * @return User
+     */
+    public function registerUser(RegisterUserCommand $command)
+    {
+        $email    = new Email($command->email);
+        $username = new Username($command->username);
+        $password = new Password($command->password);
 
-  /**
-   * Register a new user
-   *
-   * @param RegisterUserCommand $command
-   * @return User
-   */
-  public function registerUser(RegisterUserCommand $command)
-  {
-    $email    = new Email($command->email);
-    $username = new Username($command->username);
-    $password = new Password($command->password);
+        $this->checkEmailIsUnique($email);
+        $this->checkUsernameIsUnique($username);
 
-    $this->checkEmailIsUnique($email);
-    $this->checkUsernameIsUnique($username);
+        $id       = $this->userRepository->nextIdentity();
+        $password = $this->hashingService->hash($password);
 
-    $id       = $this->userRepository->nextIdentity();
-    $password = $this->hashingService->hash($password);
+        $user = User::register($id, $email, $username, $password);
 
-    $user = User::register($id, $email, $username, $password);
+        $this->userRepository->add($user);
 
-    $this->userRepository->add($user);
+        $this->dispatcher->dispatch($user->releaseEvents());
 
-    $this->dispatcher->dispatch($user->releaseEvents());
+        return $user;
+    }
 
-    return $user;
-  }
+    /**
+     * Check that an Email is unique
+     *
+     * @param Email $email
+     * @return void
+     */
+    private function checkEmailIsUnique(Email $email)
+    {
+        $specification = new EmailIsUnique($this->userRepository);
+        $specification->isSatisfiedBy($email);
+    }
 
-  /**
-   * Check that an Email is unique
-   *
-   * @param Email $email
-   * @return void
-   */
-  private function checkEmailIsUnique(Email $email)
-  {
-    $specification = new EmailIsUnique($this->userRepository);
-    $specification->isSatisfiedBy($email);
-  }
-
-  /**
-   * Check that a Username is unique
-   *
-   * @param Username $username
-   * @return void
-   */
-  private function checkUsernameIsUnique(Username $username)
-  {
-    $specification = new UsernameIsUnique($this->userRepository);
-    $specification->isSatisfiedBy($username);
-  }
-
+    /**
+     * Check that a Username is unique
+     *
+     * @param Username $username
+     * @return void
+     */
+    private function checkUsernameIsUnique(Username $username)
+    {
+        $specification = new UsernameIsUnique($this->userRepository);
+        $specification->isSatisfiedBy($username);
+    }
 }

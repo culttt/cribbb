@@ -6,71 +6,71 @@ use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Domain\Model\Identity\HashedPassword;
 use Cribbb\Application\Commands\RegisterUserCommand;
 
-class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase {
+class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase
+{
+    /** @var UserRepository */
+    private $repository;
 
-  /** @var UserRepository */
-  private $repository;
+    /** @var HashingService */
+    private $hashing;
 
-  /** @var HashingService */
-  private $hashing;
+    /** @var Dispatcher */
+    private $dispatcher;
 
-  /** @var Dispatcher */
-  private $dispatcher;
+    /** @var IdentityApplicationService */
+    private $service;
 
-  /** @var IdentityApplicationService */
-  private $service;
+    /** @var UserId */
+    private $uuid;
 
-  /** @var UserId */
-  private $uuid;
+    /** @var HashedPassword */
+    private $password;
 
-  /** @var HashedPassword */
-  private $password;
+    public function setUp()
+    {
+        $this->repository = m::mock('Cribbb\Domain\Model\Identity\UserRepository');
+        $this->hashing = m::mock('Cribbb\Domain\Model\Identity\HashingService');
+        $this->dispatcher = m::mock('BigName\EventDispatcher\Dispatcher');
+        $this->service = new IdentityApplicationService($this->repository, $this->hashing, $this->dispatcher);
+        $this->uuid = new UserId(Uuid::uuid4());
+        $this->password = new HashedPassword('password');
+    }
 
-  public function setUp()
-  {
-    $this->repository = m::mock('Cribbb\Domain\Model\Identity\UserRepository');
-    $this->hashing = m::mock('Cribbb\Domain\Model\Identity\HashingService');
-    $this->dispatcher = m::mock('BigName\EventDispatcher\Dispatcher');
-    $this->service = new IdentityApplicationService($this->repository, $this->hashing, $this->dispatcher);
-    $this->uuid = new UserId(Uuid::uuid4());
-    $this->password = new HashedPassword('password');
-  }
+    /** @test */
+    public function should_throw_exception_if_email_is_not_unique()
+    {
+        $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
 
-  /** @test */
-  public function should_throw_exception_if_email_is_not_unique()
-  {
-    $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
+        $this->repository->shouldReceive('userOfEmail')->andReturn(true);
 
-    $this->repository->shouldReceive('userOfEmail')->andReturn(true);
+        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
+        $user = $this->service->registerUser($command);
+    }
 
-    $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-    $user = $this->service->registerUser($command);
-  }
+    /** @test */
+    public function should_throw_exception_if_username_is_not_unique()
+    {
+        $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
 
-  /** @test */
-  public function should_throw_exception_if_username_is_not_unique()
-  {
-    $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
+        $this->repository->shouldReceive('userOfEmail')->andReturn(null);
+        $this->repository->shouldReceive('userOfUsername')->andReturn(true);
 
-    $this->repository->shouldReceive('userOfEmail')->andReturn(null);
-    $this->repository->shouldReceive('userOfUsername')->andReturn(true);
+        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
+        $user = $this->service->registerUser($command);
+    }
 
-    $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-    $user = $this->service->registerUser($command);
-  }
+    /** @test */
+    public function should_register_new_user()
+    {
+        $this->repository->shouldReceive('userOfEmail')->andReturn(null);
+        $this->repository->shouldReceive('userOfUsername')->andReturn(null);
+        $this->repository->shouldReceive('nextIdentity')->andReturn($this->uuid);
+        $this->hashing->shouldReceive('hash')->andReturn($this->password);
+        $this->repository->shouldReceive('add');
+        $this->dispatcher->shouldReceive('dispatch');
 
-  /** @test */
-  public function should_register_new_user()
-  {
-    $this->repository->shouldReceive('userOfEmail')->andReturn(null);
-    $this->repository->shouldReceive('userOfUsername')->andReturn(null);
-    $this->repository->shouldReceive('nextIdentity')->andReturn($this->uuid);
-    $this->hashing->shouldReceive('hash')->andReturn($this->password);
-    $this->repository->shouldReceive('add');
-    $this->dispatcher->shouldReceive('dispatch');
-
-    $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-    $user = $this->service->registerUser($command);
-    $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
-  }
+        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
+        $user = $this->service->registerUser($command);
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+    }
 }
