@@ -37,9 +37,9 @@ class IdentityApplicationService
      * @return void
      */
     public function __construct(
-      UserRepository $userRepository,
-      HashingService $hashingService,
-      Dispatcher $dispatcher
+        UserRepository $userRepository,
+        HashingService $hashingService,
+        Dispatcher $dispatcher
     )
     {
         $this->userRepository = $userRepository;
