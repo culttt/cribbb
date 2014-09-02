@@ -1,7 +1,6 @@
 <?php namespace Cribbb\Application\Commands;
 
 use Cribbb\Gettable;
-use Assert\Assertion;
 
 class RegisterUserCommand
 {
@@ -31,10 +30,6 @@ class RegisterUserCommand
      */
     public function __construct($email, $username, $password)
     {
-        Assertion::email($email);
-        Assertion::string($username);
-        Assertion::string($password);
-
         $this->email = $email;
         $this->username = $username;
         $this->password = $password;

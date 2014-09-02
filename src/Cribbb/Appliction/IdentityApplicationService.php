@@ -51,6 +51,7 @@ class IdentityApplicationService
      * Register a new user
      *
      * @param RegisterUserCommand $command
+     * @throws ValueIsNotUniqueException
      * @return User
      */
     public function registerUser(RegisterUserCommand $command)
@@ -78,6 +79,7 @@ class IdentityApplicationService
      * Check that an Email is unique
      *
      * @param Email $email
+     * @throws ValueIsNotUniqueException
      * @return void
      */
     private function checkEmailIsUnique(Email $email)
@@ -90,6 +92,7 @@ class IdentityApplicationService
      * Check that a Username is unique
      *
      * @param Username $username
+     * @throws ValueIsNotUniqueException
      * @return void
      */
     private function checkUsernameIsUnique(Username $username)
