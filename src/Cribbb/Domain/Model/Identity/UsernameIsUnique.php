@@ -25,10 +25,10 @@ class UsernameIsUnique implements UsernameSpecification
      */
     public function isSatisfiedBy(Username $username)
     {
-        if ($this->repository->userOfUsername($username)) {
-            throw new ValueIsNotUniqueException('The username has already been taken');
+        if (! $this->repository->userOfUsername($username)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 }

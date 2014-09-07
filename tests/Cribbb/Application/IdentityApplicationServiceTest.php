@@ -43,8 +43,7 @@ class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase
 
         $this->repository->shouldReceive('userOfEmail')->andReturn(true);
 
-        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-        $user = $this->service->registerUser($command);
+        $user = $this->service->registerUser('name@domain.com', 'username', 'password');
     }
 
     /** @test */
@@ -55,8 +54,7 @@ class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase
         $this->repository->shouldReceive('userOfEmail')->andReturn(null);
         $this->repository->shouldReceive('userOfUsername')->andReturn(true);
 
-        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-        $user = $this->service->registerUser($command);
+        $user = $this->service->registerUser('name@domain.com', 'username', 'password');
     }
 
     /** @test */
@@ -69,8 +67,7 @@ class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase
         $this->repository->shouldReceive('add');
         $this->dispatcher->shouldReceive('dispatch');
 
-        $command = new RegisterUserCommand('name@domain.com', 'username', 'password');
-        $user = $this->service->registerUser($command);
+        $user = $this->service->registerUser('name@domain.com', 'username', 'password');
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
     }
 }

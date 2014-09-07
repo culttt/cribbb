@@ -10,6 +10,7 @@ use Cribbb\Domain\Model\Identity\HashingService;
 use Cribbb\Domain\Model\Identity\UserRepository;
 use Cribbb\Domain\Model\Identity\UsernameIsUnique;
 use Cribbb\Application\Commands\RegisterUserCommand;
+use Cribbb\Domain\Model\Identity\ValueIsNotUniqueException;
 
 class IdentityApplicationService
 {
@@ -50,15 +51,16 @@ class IdentityApplicationService
     /**
      * Register a new user
      *
-     * @param RegisterUserCommand $command
-     * @throws ValueIsNotUniqueException
+     * @param string $email
+     * @param string $username
+     * @param string $password
      * @return User
      */
-    public function registerUser(RegisterUserCommand $command)
+    public function registerUser($email, $username, $password)
     {
-        $email    = new Email($command->email);
-        $username = new Username($command->username);
-        $password = new Password($command->password);
+        $email    = new Email($email);
+        $username = new Username($username);
+        $password = new Password($password);
 
         $this->checkEmailIsUnique($email);
         $this->checkUsernameIsUnique($username);
@@ -85,7 +87,10 @@ class IdentityApplicationService
     private function checkEmailIsUnique(Email $email)
     {
         $specification = new EmailIsUnique($this->userRepository);
-        $specification->isSatisfiedBy($email);
+
+        if(! $specification->isSatisfiedBy($email)) {
+            throw new ValueIsNotUniqueException("$email is already registered");
+        }
     }
 
     /**
@@ -98,6 +103,9 @@ class IdentityApplicationService
     private function checkUsernameIsUnique(Username $username)
     {
         $specification = new UsernameIsUnique($this->userRepository);
-        $specification->isSatisfiedBy($username);
+
+        if(! $specification->isSatisfiedBy($username)) {
+            throw new ValueIsNotUniqueException("$username has already been taken");
+        }
     }
 }

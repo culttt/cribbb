@@ -25,10 +25,10 @@ class EmailIsUnique implements EmailSpecification
      */
     public function isSatisfiedBy(Email $email)
     {
-        if ($this->repository->userOfEmail($email)) {
-            throw new ValueIsNotUniqueException('The email address is already registered');
+        if (! $this->repository->userOfEmail($email)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 }
