@@ -1,42 +1,23 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
 use Rhumsaa\Uuid\Uuid;
+use Cribbb\Domain\Model\Identifier;
+use Cribbb\Domain\Model\UuidIdentifier;
 
-class UserId
+class UserId extends UuidIdentifier implements Identifier
 {
     /**
      * @var Uuid
      */
-    private $value;
+    protected $value;
 
     /**
-     * Create a new Uuid instance
+     * Create a new UserId
      *
      * @return void
      */
     public function __construct(Uuid $value)
     {
         $this->value = $value;
-    }
-
-    /**
-     * Create a UserId from a string
-     *
-     * @param string $userId
-     * @return UserId
-     */
-    public static function fromString($userId)
-    {
-        return new UserId(Uuid::fromString($userId));
-    }
-
-    /**
-     * Return the object as a string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->value->toString();
     }
 }

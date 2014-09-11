@@ -5,29 +5,29 @@ trait HasEvents
     /**
      * @var array
      */
-    private $pendingEvents;
+    private $events;
 
     /**
-     * Add an event to the pending events
+     * Record that an event as occured
      *
      * @param $event
      * @return void
      */
-    public function raiseEvent($event)
+    public function record($event)
     {
-        $this->pendingEvents[] = $event;
+        $this->events[] = $event;
     }
 
     /**
-     * Release the events
+     * Release the pending events
      *
      * @return array
      */
-    public function releaseEvents()
+    public function release()
     {
-        $events = $this->pendingEvents;
+        $events = $this->events;
 
-        $this->pendingEvents = [];
+        $this->events = [];
 
         return $events;
     }

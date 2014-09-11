@@ -22,4 +22,31 @@ class UsernameTest extends \PHPUnit_Framework_TestCase
         $username = new Username('philipbrown');
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $username);
     }
+
+    /** @test */
+    public function should_create_from_native()
+    {
+        $username = Username::fromNative('philipbrown');
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $username);
+    }
+
+    /** @test */
+    public function should_test_equality()
+    {
+        $one   = new Username('philipbrown');
+        $two   = new Username('philipbrown');
+        $three = new Username('john');
+
+        $this->assertTrue($one->equals($two));
+        $this->assertFalse($one->equals($three));
+    }
+
+    /** @test */
+    public function should_return_as_string()
+    {
+        $username = new Username('philipbrown');
+
+        $this->assertEquals('philipbrown', $username->toString());
+    }
 }

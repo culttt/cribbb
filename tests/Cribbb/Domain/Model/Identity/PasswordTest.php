@@ -22,4 +22,31 @@ class PasswordTest extends \PHPUnit_Framework_TestCase
         $password = new Password('ffsfewefhwuehfuiwhfiuwiufgiuwgewiugwefiuwbw');
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Password', $password);
     }
+
+    /** @test */
+    public function should_create_from_native()
+    {
+        $password = Password::fromNative('qwertyuiop');
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Password', $password);
+    }
+
+    /** @test */
+    public function should_test_equality()
+    {
+        $one   = new Password('qwertyuiop');
+        $two   = new Password('qwertyuiop');
+        $three = new Password('asdfghjkl');
+
+        $this->assertTrue($one->equals($two));
+        $this->assertFalse($one->equals($three));
+    }
+
+    /** @test */
+    public function should_return_as_string()
+    {
+        $password = new Password('qwertyuiop');
+
+        $this->assertEquals('qwertyuiop', $password->toString());
+    }
 }

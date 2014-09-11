@@ -72,7 +72,7 @@ class IdentityApplicationService
 
         $this->userRepository->add($user);
 
-        $this->dispatcher->dispatch($user->releaseEvents());
+        $this->dispatcher->dispatch($user->release());
 
         return $user;
     }

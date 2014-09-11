@@ -2,6 +2,7 @@
 
 use Cribbb\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
+use Cribbb\Domain\Model\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
 use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 
@@ -10,7 +11,7 @@ use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
  * @ORM\Table(name="users")
  * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Identity\UserRepository")
  */
-class User
+class User implements AggregateRoot
 {
     use HasEvents;
 
@@ -50,7 +51,7 @@ class User
         $this->setUsername($username);
         $this->setPassword($password);
 
-        $this->raiseEvent(new UserHasRegistered($this));
+        $this->record(new UserHasRegistered($this));
     }
 
     /**
@@ -82,12 +83,12 @@ class User
     /**
      * Set the User's id
      *
-     * @param UserId $userId
+     * @param UserId $id
      * @return void
      */
-    private function setId(UserId $userId)
+    private function setId(UserId $id)
     {
-        $this->id = $userId;
+        $this->id = $id->toString();
     }
 
     /**

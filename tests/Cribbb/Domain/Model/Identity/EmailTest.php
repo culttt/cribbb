@@ -22,4 +22,31 @@ class EmailTest extends \PHPUnit_Framework_TestCase
         $email = new Email('name@domain.com');
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Email', $email);
     }
+
+    /** @test */
+    public function should_create_from_native()
+    {
+        $email = Email::fromNative('name@domain.com');
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Email', $email);
+    }
+
+    /** @test */
+    public function should_test_equality()
+    {
+        $one   = new Email('name@domain.com');
+        $two   = new Email('name@domain.com');
+        $three = new Email('name@domain.net');
+
+        $this->assertTrue($one->equals($two));
+        $this->assertFalse($one->equals($three));
+    }
+
+    /** @test */
+    public function should_return_as_string()
+    {
+        $email = new Email('name@domain.com');
+
+        $this->assertEquals('name@domain.com', $email->toString());
+    }
 }
