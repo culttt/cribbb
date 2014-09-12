@@ -3,7 +3,7 @@
 interface Entity
 {
     /**
-     * Return the Aggregate Root identifer
+     * Return the Entity identifer
      *
      * @return Identifier
      */
