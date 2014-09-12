@@ -8,7 +8,7 @@ trait HasEvents
     private $events;
 
     /**
-     * Record that an event as occured
+     * Record that an event as occurred
      *
      * @param $event
      * @return void
