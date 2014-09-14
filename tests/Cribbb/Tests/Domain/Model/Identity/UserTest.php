@@ -1,6 +1,11 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
 
 use Rhumsaa\Uuid\Uuid;
+use Cribbb\Domain\Model\Identity\User;
+use Cribbb\Domain\Model\Identity\Email;
+use Cribbb\Domain\Model\Identity\UserId;
+use Cribbb\Domain\Model\Identity\Username;
+use Cribbb\Domain\Model\Identity\HashedPassword;
 
 class UserTest extends \PHPUnit_Framework_TestCase
 {

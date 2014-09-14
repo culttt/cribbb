@@ -1,6 +1,8 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
 
 use Mockery as m;
+use Cribbb\Domain\Model\Identity\Username;
+use Cribbb\Domain\Model\Identity\UsernameIsUnique;
 
 class UsernameIsUniqueTest extends \PHPUnit_Framework_TestCase
 {

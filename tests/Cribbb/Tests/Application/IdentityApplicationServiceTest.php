@@ -1,9 +1,10 @@
-<?php namespace Cribbb\Application;
+<?php namespace Cribbb\Tests\Application;
 
 use Mockery as m;
 use Rhumsaa\Uuid\Uuid;
 use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Domain\Model\Identity\HashedPassword;
+use Cribbb\Application\IdentityApplicationService;
 use Cribbb\Application\Commands\RegisterUserCommand;
 
 class IdentityApplicationServiceTest extends \PHPUnit_Framework_TestCase

@@ -21,6 +21,11 @@
 			"tests/TestCase.php"
 		]
 	},
+	"autoload-dev": {
+		"psr-4": {
+			"Cribbb\\Test\\": "tests"
+		}
+	},
 	"scripts": {
 		"pre-update-cmd": [
 			"php artisan clear-compiled"

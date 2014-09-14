@@ -1,6 +1,8 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
 
 use Mockery as m;
+use Cribbb\Domain\Model\Identity\Email;
+use Cribbb\Domain\Model\Identity\EmailIsUnique;
 
 class EmailIsUniqueTest extends \PHPUnit_Framework_TestCase
 {

@@ -1,4 +1,6 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
+
+use Cribbb\Domain\Model\Identity\Username;
 
 class UsernameTest extends \PHPUnit_Framework_TestCase
 {

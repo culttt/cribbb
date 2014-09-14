@@ -1,6 +1,7 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
 
 use Rhumsaa\Uuid\Uuid;
+use Cribbb\Domain\Model\Identity\UserId;
 
 class UserIdTest extends \PHPUnit_Framework_TestCase
 {
