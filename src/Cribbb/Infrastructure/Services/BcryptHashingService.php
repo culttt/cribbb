@@ -13,7 +13,7 @@ class BcryptHashingService implements HashingService
     private $hasher;
 
     /**
-     * Create a new PasswordHashingService
+     * Create a new BcryptHashingService
      *
      * @param BcryptHasher $hasher
      * @return void
@@ -31,6 +31,6 @@ class BcryptHashingService implements HashingService
      */
     public function hash(Password $password)
     {
-        return new HashedPassword($this->hasher->make((string) $password));
+        return new HashedPassword($this->hasher->make($password->toString()));
     }
 }
