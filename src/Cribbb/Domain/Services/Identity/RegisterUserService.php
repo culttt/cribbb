@@ -7,8 +7,8 @@ use Cribbb\Domain\Model\Identity\Password;
 use Cribbb\Domain\Model\Identity\EmailIsUnique;
 use Cribbb\Domain\Model\Identity\UserRepository;
 use Cribbb\Domain\Model\Identity\UsernameIsUnique;
+use Cribbb\Domain\Model\ValueIsNotUniqueException;
 use Cribbb\Domain\Services\Identity\HashingService;
-use Cribbb\Domain\Model\Identity\ValueIsNotUniqueException;
 
 class RegisterUserService
 {

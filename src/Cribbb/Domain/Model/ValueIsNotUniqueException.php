@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Domain\Model;
 
 class ValueIsNotUniqueException extends DomainException
 {

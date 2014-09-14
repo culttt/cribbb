@@ -27,7 +27,7 @@ class RegisterUserServiceTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_throw_exception_if_email_is_not_unique()
     {
-        $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
+        $this->setExpectedException('Cribbb\Domain\Model\ValueIsNotUniqueException');
 
         $this->repository->shouldReceive('userOfEmail')->andReturn(true);
 
@@ -37,7 +37,7 @@ class RegisterUserServiceTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_throw_exception_if_username_is_not_unique()
     {
-        $this->setExpectedException('Cribbb\Domain\Model\Identity\ValueIsNotUniqueException');
+        $this->setExpectedException('Cribbb\Domain\Model\ValueIsNotUniqueException');
 
         $this->repository->shouldReceive('userOfEmail')->andReturn(null);
         $this->repository->shouldReceive('userOfUsername')->andReturn(true);
