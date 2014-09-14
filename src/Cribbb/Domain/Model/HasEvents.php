@@ -1,4 +1,6 @@
-<?php namespace Cribbb;
+<?php namespace Cribbb\Domain\Model;
+
+use BigName\EventDispatcher\Event;
 
 trait HasEvents
 {
@@ -10,10 +12,10 @@ trait HasEvents
     /**
      * Record that an event as occurred
      *
-     * @param $event
+     * @param Event $event
      * @return void
      */
-    public function record($event)
+    public function record(Event $event)
     {
         $this->events[] = $event;
     }

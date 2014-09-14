@@ -1,5 +1,7 @@
 <?php namespace Cribbb\Domain\Model;
 
+use BigName\EventDispatcher\Event;
+
 interface AggregateRoot
 {
     /**
@@ -12,10 +14,10 @@ interface AggregateRoot
     /**
      * Add an event to the pending events
      *
-     * @param $event
+     * @param Event $event
      * @return void
      */
-    public function record($event);
+    public function record(Event $event);
 
     /**
      * Release the events

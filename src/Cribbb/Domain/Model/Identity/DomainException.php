@@ -1,3 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
-class DomainException extends \Exception {}
+class DomainException extends \Exception
+{
+
+}

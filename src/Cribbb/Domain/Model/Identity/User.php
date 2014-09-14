@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
-use Cribbb\HasEvents;
+use Cribbb\Domain\Model\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\Model\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -98,7 +98,7 @@ class User implements AggregateRoot
      */
     public function email()
     {
-        return $this->email;
+        return Email::fromNative($this->email);
     }
 
     /**
@@ -109,7 +109,7 @@ class User implements AggregateRoot
      */
     private function setEmail(Email $email)
     {
-        $this->email = $email;
+        $this->email = $email->toString();
     }
 
     /**
@@ -119,7 +119,7 @@ class User implements AggregateRoot
      */
     public function username()
     {
-        return $this->username;
+        return Username::fromNative($this->username);
     }
 
     /**
@@ -130,7 +130,7 @@ class User implements AggregateRoot
      */
     private function setUsername(Username $username)
     {
-        $this->username = $username;
+        $this->username = $username->toString();
     }
 
     /**
@@ -141,6 +141,6 @@ class User implements AggregateRoot
      */
     private function setPassword(HashedPassword $password)
     {
-        $this->password = $password;
+        $this->password = $password->toString();
     }
 }

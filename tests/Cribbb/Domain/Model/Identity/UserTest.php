@@ -60,8 +60,8 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $user->id());
-        $this->assertEquals($user->email(), 'name@domain.com');
-        $this->assertEquals($user->username(), 'my_username');
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Email', $user->email());
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $user->username());
         $this->assertEquals(1, count($user->release()));
     }
 }
