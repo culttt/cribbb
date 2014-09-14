@@ -1,6 +1,7 @@
 <?php namespace Cribbb\Application\Identity;
 
 use BigName\EventDispatcher\Dispatcher;
+use Cribbb\Domain\Services\RegisterUserService;
 
 class IdentityApplicationService
 {
