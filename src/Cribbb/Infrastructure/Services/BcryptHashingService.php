@@ -2,8 +2,8 @@
 
 use Illuminate\Hashing\BcryptHasher;
 use Cribbb\Domain\Model\Identity\Password;
-use Cribbb\Domain\Model\Identity\HashingService;
 use Cribbb\Domain\Model\Identity\HashedPassword;
+use Cribbb\Domain\Services\Identity\HashingService;
 
 class BcryptHashingService implements HashingService
 {

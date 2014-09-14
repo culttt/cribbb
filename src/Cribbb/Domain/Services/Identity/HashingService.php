@@ -1,4 +1,6 @@
-<?php namespace Cribbb\Domain\Model\Identity;
+<?php namespace Cribbb\Domain\Services\Identity;
+
+use Cribbb\Domain\Model\Identity\Password;
 
 interface HashingService
 {
