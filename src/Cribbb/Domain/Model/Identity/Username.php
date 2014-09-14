@@ -1,7 +1,7 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
 use Assert\Assertion;
-use Cribbb\Domain\Model\ValueObject;
+use Cribbb\Domain\ValueObject;
 
 class Username implements ValueObject
 {

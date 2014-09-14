@@ -1,8 +1,8 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
-use Cribbb\Domain\Model\HasEvents;
+use Cribbb\Domain\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
-use Cribbb\Domain\Model\AggregateRoot;
+use Cribbb\Domain\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
 use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 

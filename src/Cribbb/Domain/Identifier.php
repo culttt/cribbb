@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Domain\Model;
+<?php namespace Cribbb\Domain;
 
 interface Identifier
 {
