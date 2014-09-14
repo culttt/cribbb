@@ -56,7 +56,6 @@ class RegisterUserService
         $password = $this->hashingService->hash($password);
 
         $user = User::register($id, $email, $username, $password);
-
         $this->userRepository->add($user);
 
         return $user;
