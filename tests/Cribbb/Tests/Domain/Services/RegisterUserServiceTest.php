@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Tests\Domain\Model\Services;
+<?php namespace Cribbb\Tests\Domain\Services;
 
 use Mockery as m;
 use Cribbb\Domain\Model\Identity\UserId;
