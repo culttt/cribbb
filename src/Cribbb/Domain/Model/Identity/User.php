@@ -125,7 +125,7 @@ class User implements AggregateRoot
     /**
      * Set the User's username
      *
-     * @param Username
+     * @param Username $username
      * @return void
      */
     private function setUsername(Username $username)
@@ -136,11 +136,24 @@ class User implements AggregateRoot
     /**
      * Set the User's password
      *
-     * @param HashedPassword
+     * @param HashedPassword $password
      * @return void
      */
     private function setPassword(HashedPassword $password)
     {
         $this->password = $password->toString();
+    }
+
+    /**
+     * Reset the User's password
+     *
+     * @param HashedPassword $password
+     * @return void
+     */
+    public function resetPassword(HashedPassword $password)
+    {
+        $this->password = $password;
+
+        $this->record(new PasswordWasReset($this));
     }
 }

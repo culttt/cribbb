@@ -11,6 +11,11 @@ class IdentityApplicationService
     private $registerUserService;
 
     /**
+     * @var PasswordReminderService
+     */
+    private $passwordReminderService;
+
+    /**
      * @var Dispatcher
      */
     private $dispatcher;
@@ -19,13 +24,19 @@ class IdentityApplicationService
      * Create a new IdentityApplicationService
      *
      * @param RegisterUserService $registerUserService
+     * @param PasswordReminderService $passwordReminderService
      * @param Dispatcher $dispatcher
      * @return void
      */
-    public function __construct(RegisterUserService $registerUserService, Dispatcher $dispatcher)
+    public function __construct(
+        RegisterUserService $registerUserService,
+        PasswordReminderService $passwordReminderService,
+        Dispatcher $dispatcher
+    )
     {
-        $this->registerUserService = $registerUserService;
-        $this->dispatcher          = $dispatcher;
+        $this->registerUserService     = $registerUserService;
+        $this->passwordReminderService = $passwordReminderService;
+        $this->dispatcher              = $dispatcher;
     }
 
     /**
@@ -40,6 +51,51 @@ class IdentityApplicationService
             $command->email,
             $command->username,
             $command->password
+        );
+
+        $this->dispatcher->dispatch($user->release());
+
+        return $user;
+    }
+
+    /**
+     * Request a password reminder
+     *
+     * @param RequestReminderCommand $command
+     * @return Cribbb\Domain\Model\Identity\Reminder
+     */
+    public function requestPasswordReminder(RequestReminderCommand $command)
+    {
+        $reminder = $this->passwordReminderService->request($command->email);
+
+        $this->dispatcher->dispatch($reminder->release());
+
+        return $reminder;
+    }
+
+    /**
+     * Check a reminder is valid
+     *
+     * @param CheckReminderCommand $command
+     * @return bool
+     */
+    public function checkPasswordReminderIsValid(CheckReminderCommand $command)
+    {
+        return $this->passwordReminderService->check($command->email, $command->code);
+    }
+
+    /**
+     * Reset a user's password
+     *
+     * @param ResetPasswordCommand $command
+     * @return Cribbb\Domain\Model\Identity\User
+     */
+    public function resetUserPassword(ResetPasswordCommand $command)
+    {
+        $user = $this->passwordReminderService->reset(
+            $command->email,
+            $command->password,
+            $command->code
         );
 
         $this->dispatcher->dispatch($user->release());

@@ -18,6 +18,14 @@ interface UserRepository
     public function add(User $user);
 
     /**
+     * Update an existing User
+     *
+     * @param User $user
+     * @return void
+     */
+    public function update(User $user);
+
+    /**
      * Find a user by their email address
      *
      * @param Email $email
