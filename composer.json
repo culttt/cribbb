@@ -24,7 +24,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Cribbb\\Test\\": "tests"
+			"Cribbb\\Tests\\": "tests"
 		}
 	},
 	"scripts": {

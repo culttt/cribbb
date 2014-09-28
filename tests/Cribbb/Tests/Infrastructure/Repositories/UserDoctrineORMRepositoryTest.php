@@ -21,6 +21,12 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     /** @var EntityManager */
     private $em;
 
+    /** @var ORMExecutor */
+    private $executor;
+
+    /** @var Loader */
+    private $loader;
+
     public function setUp()
     {
         parent::setUp();
