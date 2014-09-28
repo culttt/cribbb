@@ -1,4 +1,7 @@
 # Cribbb
+[![Build Status](https://travis-ci.org/cribbb/cribbb.png?branch=master)](https://travis-ci.org/cribbb/cribbb)
+[![Code Coverage](https://scrutinizer-ci.com/g/cribbb/cribbb/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/cribbb/cribbb/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cribbb/cribbb/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cribbb/cribbb/?branch=master)
 
 ...Full read me coming soon...
 
