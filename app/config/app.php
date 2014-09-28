@@ -65,7 +65,7 @@ return array(
   |
   */
 
-  'key' => 'sssshhhhh',
+  'key' => getenv('ENCRYPTION_KEY'),
 
   'cipher' => MCRYPT_RIJNDAEL_256,
 
@@ -108,7 +108,7 @@ return array(
     'Illuminate\Validation\ValidationServiceProvider',
     'Illuminate\View\ViewServiceProvider',
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    //'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
+    'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider'
   ),
 
   /*
