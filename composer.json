@@ -13,7 +13,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Cribbb\\": "src"
+			"Cribbb\\": "src/"
 		},
 		"classmap": [
 			"app/controllers",
@@ -24,7 +24,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Cribbb\\Tests\\": "tests"
+			"Cribbb\\Tests\\": "tests/"
 		}
 	},
 	"scripts": {
