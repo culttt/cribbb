@@ -1,7 +1,10 @@
 <?php namespace Cribbb\Infrastructure\Repositories;
 
 use Doctrine\DBAL\Connection;
-use Cribbb\Domain\Model\Identity\UserRepository;
+use Cribbb\Domain\Model\Identity\Email;
+use Cribbb\Domain\Model\Identity\Reminder;
+use Cribbb\Domain\Model\Identity\ReminderCode;
+use Cribbb\Domain\Model\Identity\PasswordReminderRepository;
 
 class PasswordReminderDoctrineDBALRepository implements PasswordReminderRepository
 {

@@ -9,13 +9,13 @@ use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
- * @ORM\entity(repositoryClass="Cribbb\Domain\Model\Identity\UserRepository")
  */
 class User implements AggregateRoot
 {
     use HasEvents;
 
     /**
+     * @ORM\Id
      * @ORM\Column(type="string")
      */
     private $id;
