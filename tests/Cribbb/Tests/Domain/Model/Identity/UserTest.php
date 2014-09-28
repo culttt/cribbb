@@ -69,4 +69,25 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $user->username());
         $this->assertEquals(1, count($user->release()));
     }
+
+    /** @test */
+    public function should_update_username()
+    {
+        $user = User::register($this->userId, $this->email, $this->username, $this->password);
+
+        $user->updateUsername(new Username('new_username'));
+
+        $this->assertEquals('new_username', $user->username()->toString());
+        $this->count(1, count($user->release()));
+    }
+
+    /** @test */
+    public function should_reset_password()
+    {
+        $user = User::register($this->userId, $this->email, $this->username, $this->password);
+
+        $user->resetPassword(new HashedPassword('totally_secure_password'));
+
+        $this->count(1, count($user->release()));
+    }
 }

@@ -4,7 +4,9 @@ use Cribbb\Domain\HasEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
+use Cribbb\Domain\Model\Identity\Events\PasswordWasReset;
 use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
+use Cribbb\Domain\Model\Identity\Events\UsernameWasUpdated;
 
 /**
  * @ORM\Entity
@@ -131,6 +133,19 @@ class User implements AggregateRoot
     private function setUsername(Username $username)
     {
         $this->username = $username->toString();
+    }
+
+    /**
+     * Update a User' username
+     *
+     * @param Username $username
+     * @return void
+     */
+    public function updateUsername(Username $username)
+    {
+        $this->setUsername($username);
+
+        $this->record(new UsernameWasUpdated($this));
     }
 
     /**

@@ -73,7 +73,7 @@ class UserDoctrineORMRepository implements UserRepository
      */
     public function userOfEmail(Email $email)
     {
-        return $this->em->getRepository($this->class)->findBy([
+        return $this->em->getRepository($this->class)->findOneBy([
             'email' => $email->toString()
         ]);
     }
@@ -86,7 +86,7 @@ class UserDoctrineORMRepository implements UserRepository
      */
     public function userOfUsername(Username $username)
     {
-        return $this->em->getRepository($this->class)->findBy([
+        return $this->em->getRepository($this->class)->findOneBy([
             'username' => $username->toString()
         ]);
     }
