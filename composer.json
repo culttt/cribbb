@@ -13,7 +13,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Cribbb\\": "src/"
+			"Cribbb\\": "src/Cribbb"
 		},
 		"classmap": [
 			"app/controllers",
