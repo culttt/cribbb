@@ -1,35 +1,15 @@
 <?php namespace Cribbb\Domain\Model\Identity\Events;
 
-use Cribbb\Gettable;
-use BigName\EventDispatcher\Event;
-use Cribbb\Domain\Model\Identity\Reminder;
+use Cribbb\Domain\DomainEvent;
 
-class PasswordReminderCreated implements Event
+class PasswordReminderCreated implements DomainEvent
 {
-    use Gettable;
-
     /**
-     * @var Reminder
-     */
-    private $reminder;
-
-    /**
-     * Create a new PasswordReminderCreated event
-     *
-     * @param Reminder $reminder
-     * @return void
-     */
-    public function __construct(Reminder $reminder)
-    {
-        $this->reminder = $reminder;
-    }
-
-    /**
-     * Return the name of the event
+     * Return the name of the DomainEvent
      *
      * @return string
      */
-    public function getName()
+    public function name()
     {
         return 'PasswordReminderCreated';
     }

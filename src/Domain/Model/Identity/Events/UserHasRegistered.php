@@ -1,35 +1,15 @@
 <?php namespace Cribbb\Domain\Model\Identity\Events;
 
-use Cribbb\Gettable;
-use BigName\EventDispatcher\Event;
-use Cribbb\Domain\Model\Identity\User;
+use Cribbb\Domain\DomainEvent;
 
-class UserHasRegistered implements Event
+class UserHasRegistered implements DomainEvent
 {
-    use Gettable;
-
     /**
-     * @var User
-     */
-    private $user;
-
-    /**
-     * Create a new UserHasRegistered event
-     *
-     * @param User $user
-     * @return void
-     */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
-    /**
-     * Return the name of the event
+     * Return the name of the DomainEvent
      *
      * @return string
      */
-    public function getName()
+    public function name()
     {
         return 'UserHasRegistered';
     }

@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Identity;
 
-use Cribbb\Domain\HasEvents;
+use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -14,7 +14,7 @@ use Cribbb\Domain\Model\Identity\Events\UsernameWasUpdated;
  */
 class User implements AggregateRoot
 {
-    use HasEvents;
+    use RecordsEvents;
 
     /**
      * @ORM\Id

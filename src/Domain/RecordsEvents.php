@@ -1,8 +1,6 @@
 <?php namespace Cribbb\Domain;
 
-use BigName\EventDispatcher\Event;
-
-trait HasEvents
+trait RecordsEvents
 {
     /**
      * @var array
@@ -12,10 +10,10 @@ trait HasEvents
     /**
      * Record that an event as occurred
      *
-     * @param Event $event
+     * @param DomainEvent $event
      * @return void
      */
-    public function record(Event $event)
+    public function record(DomainEvent $event)
     {
         $this->events[] = $event;
     }

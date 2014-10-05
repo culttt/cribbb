@@ -2,14 +2,14 @@
 
 use Carbon\Carbon;
 use Cribbb\Gettable;
-use Cribbb\Domain\HasEvents;
 use Cribbb\Domain\ValueObject;
+use Cribbb\Domain\RecordsEvents;
 use Cribbb\Domain\Model\Identity\Events\PasswordReminderCreated;
 
 class Reminder implements ValueObject
 {
     use Gettable;
-    use HasEvents;
+    use RecordsEvents;
 
     /**
      * @var Email

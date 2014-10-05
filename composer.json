@@ -2,7 +2,6 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"mitch/laravel-doctrine": "~0.5",
-		"heybigname/event-dispatcher": "~1.1",
 		"beberlei/assert": "~2.0",
 		"rhumsaa/uuid": "~2.7"
 	},
