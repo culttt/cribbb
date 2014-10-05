@@ -62,7 +62,7 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $user = $user = $this->repository->userOfEmail(new Email('name@domain.com'));
+        $user = $this->repository->userOfEmail(new Email('name@domain.com'));
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
     }
@@ -91,7 +91,7 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $user = $user = $this->repository->userOfUsername(new Username('username'));
+        $user = $this->repository->userOfUsername(new Username('username'));
 
         $user->updateUsername(new Username('new_username'));
 
