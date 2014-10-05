@@ -50,5 +50,6 @@ class UsernameTest extends \PHPUnit_Framework_TestCase
         $username = new Username('philipbrown');
 
         $this->assertEquals('philipbrown', $username->toString());
+        $this->assertEquals('philipbrown', (string) $username);
     }
 }

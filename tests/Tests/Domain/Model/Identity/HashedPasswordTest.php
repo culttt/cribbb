@@ -50,5 +50,6 @@ class HashedPasswordTest extends \PHPUnit_Framework_TestCase
         $password = new HashedPassword('qcascasercscdccastyuaacaasciop');
 
         $this->assertEquals('qcascasercscdccastyuaacaasciop', $password->toString());
+        $this->assertEquals('qcascasercscdccastyuaacaasciop', (string) $password);
     }
 }

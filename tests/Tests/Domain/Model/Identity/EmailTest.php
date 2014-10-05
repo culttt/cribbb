@@ -50,5 +50,6 @@ class EmailTest extends \PHPUnit_Framework_TestCase
         $email = new Email('name@domain.com');
 
         $this->assertEquals('name@domain.com', $email->toString());
+        $this->assertEquals('name@domain.com', (string) $email);
     }
 }

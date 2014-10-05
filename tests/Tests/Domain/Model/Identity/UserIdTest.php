@@ -54,5 +54,6 @@ class UserIdTest extends \PHPUnit_Framework_TestCase
         $id = UserId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
 
         $this->assertEquals('d16f9fe7-e947-460e-99f6-2d64d65f46bc', $id->toString());
+        $this->assertEquals('d16f9fe7-e947-460e-99f6-2d64d65f46bc', (string) $id);
     }
 }
