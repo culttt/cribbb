@@ -4,7 +4,7 @@ return [
     'simple_annotations' => false,
 
     'metadata' => [
-        base_path('src/Cribbb')
+        base_path('src')
     ],
 
     'proxy' => [
