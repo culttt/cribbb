@@ -1,0 +1,59 @@
+<?php namespace Cribbb\Tests\Domain\Model\Identity;
+
+use Rhumsaa\Uuid\Uuid;
+use Cribbb\Domain\Model\Identity\ReminderId;
+
+class ReminderIdTest extends \PHPUnit_Framework_TestCase
+{
+    /** @test */
+    public function should_require_instance_of_uuid()
+    {
+        $this->setExpectedException('Exception');
+
+        $id = new ReminderId;
+    }
+
+    /** @test */
+    public function should_create_new_reminder_id()
+    {
+        $id = new ReminderId(Uuid::uuid4());
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\ReminderId', $id);
+    }
+
+    /** @test */
+    public function should_generate_new_reminder_id()
+    {
+        $id = ReminderId::generate();
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\ReminderId', $id);
+    }
+
+    /** @test */
+    public function should_create_reminder_id_from_string()
+    {
+        $id = ReminderId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\ReminderId', $id);
+    }
+
+    /** @test */
+    public function should_test_equality()
+    {
+        $one   = ReminderId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
+        $two   = ReminderId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
+        $three = ReminderId::generate();
+
+        $this->assertTrue($one->equals($two));
+        $this->assertFalse($one->equals($three));
+    }
+
+    /** @test */
+    public function should_return_reminder_id_as_string()
+    {
+        $id = ReminderId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
+
+        $this->assertEquals('d16f9fe7-e947-460e-99f6-2d64d65f46bc', $id->toString());
+        $this->assertEquals('d16f9fe7-e947-460e-99f6-2d64d65f46bc', (string) $id);
+    }
+}
