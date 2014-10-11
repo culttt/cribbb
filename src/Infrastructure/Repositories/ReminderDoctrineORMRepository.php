@@ -49,13 +49,11 @@ class ReminderDoctrineORMRepository implements ReminderRepository
             SELECT r FROM Cribbb\Domain\Model\Identity\Reminder r
             WHERE r.code = :code
             AND r.email = :email
-            AND r.created_at < :timestamp
         ');
 
         $query->setParameters([
             'code'      => $code->toString(),
-            'email'     => $email->toString(),
-            'timestamp' => Carbon::now()->addHour()
+            'email'     => $email->toString()
         ]);
 
         return $query->getOneOrNullResult();
