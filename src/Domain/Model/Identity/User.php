@@ -158,17 +158,4 @@ class User implements AggregateRoot
     {
         $this->password = $password->toString();
     }
-
-    /**
-     * Reset the User's password
-     *
-     * @param HashedPassword $password
-     * @return void
-     */
-    public function resetPassword(HashedPassword $password)
-    {
-        $this->password = $password;
-
-        $this->record(new PasswordWasReset($this));
-    }
 }

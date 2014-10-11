@@ -80,14 +80,4 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('new_username', $user->username()->toString());
         $this->count(1, count($user->release()));
     }
-
-    /** @test */
-    public function should_reset_password()
-    {
-        $user = User::register($this->userId, $this->email, $this->username, $this->password);
-
-        $user->resetPassword(new HashedPassword('totally_secure_password'));
-
-        $this->count(1, count($user->release()));
-    }
 }
