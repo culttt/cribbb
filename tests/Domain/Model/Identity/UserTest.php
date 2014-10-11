@@ -10,7 +10,7 @@ use Cribbb\Domain\Model\Identity\HashedPassword;
 class UserTest extends \PHPUnit_Framework_TestCase
 {
     /** @var UserId */
-    private $userId;
+    private $id;
 
     /** @var Email */
     private $email;
@@ -23,8 +23,8 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->userId = new UserId(Uuid::uuid4());
-        $this->email = new Email('name@domain.com');
+        $this->id       = new UserId(Uuid::uuid4());
+        $this->email    = new Email('name@domain.com');
         $this->username = new Username('my_username');
         $this->password = new HashedPassword('super_secret_password');
     }
@@ -41,39 +41,39 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_require_email()
     {
         $this->setExpectedException('Exception');
-        $user = User::register($this->userId, null, $this->username, $this->password);
+        $user = User::register($this->id, null, $this->username, $this->password);
     }
 
     /** @test */
     public function should_require_username()
     {
         $this->setExpectedException('Exception');
-        $user = User::register($this->userId, $this->email, null, $this->password);
+        $user = User::register($this->id, $this->email, null, $this->password);
     }
 
     /** @test */
     public function should_require_password()
     {
         $this->setExpectedException('Exception');
-        $user = User::register($this->userId, $this->email, $this->username, null);
+        $user = User::register($this->id, $this->email, $this->username, null);
     }
 
     /** @test */
     public function should_create_new_user()
     {
-        $user = User::register($this->userId, $this->email, $this->username, $this->password);
+        $user = User::register($this->id, $this->email, $this->username, $this->password);
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
-        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $user->id());
-        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Email', $user->email());
-        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Username', $user->username());
+        $this->assertEquals($this->id,       $user->id());
+        $this->assertEquals($this->email,    $user->email());
+        $this->assertEquals($this->username, $user->username());
         $this->assertEquals(1, count($user->release()));
     }
 
     /** @test */
     public function should_update_username()
     {
-        $user = User::register($this->userId, $this->email, $this->username, $this->password);
+        $user = User::register($this->id, $this->email, $this->username, $this->password);
 
         $user->updateUsername(new Username('new_username'));
 

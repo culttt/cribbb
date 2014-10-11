@@ -36,8 +36,33 @@ class ReminderTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function should_require_reminder_id()
+    {
+        $this->setExpectedException('Exception');
+
+        $reminder = new Reminder(null, $this->email, $this->code);
+    }
+
+    /** @test */
+    public function should_require_email()
+    {
+        $this->setExpectedException('Exception');
+
+        $reminder = new Reminder($this->id, null, $this->code);
+    }
+
+    /** @test */
+    public function should_require_code()
+    {
+        $this->setExpectedException('Exception');
+
+        $reminder = new Reminder($this->id, $this->email, null);
+    }
+
+    /** @test */
     public function should_create_reminder()
     {
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\Reminder', $this->reminder);
         $this->assertEquals($this->id,        $this->reminder->id());
         $this->assertEquals($this->email,     $this->reminder->email());
         $this->assertEquals($this->code,      $this->reminder->code());
