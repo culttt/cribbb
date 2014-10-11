@@ -31,8 +31,7 @@ class Reminder implements AggregateRoot
     private $code;
 
     /**
-     * @ORM\Column(type="datetime")
-     * @var \DateTime
+     * @ORM\Column(type="string")
      */
     private $created_at;
 

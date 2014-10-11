@@ -44,7 +44,8 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     /** @test */
     public function should_return_next_identity()
     {
-        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\UserId', $this->repository->nextIdentity());
+        $this->assertInstanceOf(
+            'Cribbb\Domain\Model\Identity\UserId', $this->repository->nextIdentity());
     }
 
     /** @test */
@@ -52,9 +53,11 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $user = $user = $this->repository->userOfUsername(new Username('username'));
+        $username = new Username('username');
+        $user = $this->repository->userOfUsername($username);
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+        $this->assertEquals($username, $user->username());
     }
 
     /** @test */
@@ -62,9 +65,11 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $user = $this->repository->userOfEmail(new Email('name@domain.com'));
+        $email = new Email('name@domain.com');
+        $user = $this->repository->userOfEmail($email);
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+        $this->assertEquals($email, $user->email());
     }
 
     /** @test */
@@ -93,14 +98,16 @@ class UserDoctrineORMRepositoryTest extends \TestCase
 
         $user = $this->repository->userOfUsername(new Username('username'));
 
-        $user->updateUsername(new Username('new_username'));
+        $username = new Username('new_username');
+        $user->updateUsername($username);
 
         $this->repository->update($user);
 
         $this->em->clear();
 
-        $user = $this->repository->userOfUsername(new Username('new_username'));
+        $user = $this->repository->userOfUsername($username);
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+        $this->assertEquals($username, $user->username());
     }
 }
