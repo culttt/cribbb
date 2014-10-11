@@ -13,6 +13,14 @@ class ReminderCodeTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function should_throw_exception_if_code_generation_fails()
+    {
+        $this->setExpectedException('RuntimeException');
+
+        $code = ReminderCode::generate(null);
+    }
+
+    /** @test */
     public function should_create_a_code_from_a_string()
     {
         $code = ReminderCode::fromNative('D1zcA5ncaEHzmjvCGjJIt3Kd8sGxTTtE7DkathqB');
@@ -37,5 +45,6 @@ class ReminderCodeTest extends \PHPUnit_Framework_TestCase
         $code = ReminderCode::fromNative('D1zcA5ncaEHzmjvCGjJIt3Kd8sGxTTtE7DkathqB');
 
         $this->assertEquals('D1zcA5ncaEHzmjvCGjJIt3Kd8sGxTTtE7DkathqB', $code->toString());
+        $this->assertEquals('D1zcA5ncaEHzmjvCGjJIt3Kd8sGxTTtE7DkathqB', (string) $code);
     }
 }
