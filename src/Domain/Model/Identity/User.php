@@ -53,7 +53,7 @@ class User implements AggregateRoot
         $this->setUsername($username);
         $this->setPassword($password);
 
-        $this->record(new UserHasRegistered($this));
+        $this->record(new UserHasRegistered);
     }
 
     /**
@@ -145,7 +145,7 @@ class User implements AggregateRoot
     {
         $this->setUsername($username);
 
-        $this->record(new UsernameWasUpdated($this));
+        $this->record(new UsernameWasUpdated);
     }
 
     /**

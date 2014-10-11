@@ -51,7 +51,7 @@ class Reminder implements AggregateRoot
         $this->setCode($code);
         $this->setCreatedAt(Carbon::now());
 
-        $this->record(new ReminderWasCreated($this));
+        $this->record(new ReminderWasCreated);
     }
 
     /**
