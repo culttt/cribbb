@@ -75,7 +75,7 @@ class User implements AggregateRoot
     /**
      * Get the User's id
      *
-     * @return UserId;
+     * @return UserId
      */
     public function id()
     {
@@ -94,7 +94,7 @@ class User implements AggregateRoot
     }
 
     /**
-     * Get the User's email address
+     * Get the User's email
      *
      * @return string
      */
@@ -104,7 +104,7 @@ class User implements AggregateRoot
     }
 
     /**
-     * Set the User's email address
+     * Set the User's email
      *
      * @param Email $email
      * @return void
