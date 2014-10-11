@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
+use Cribbb\Domain\Model\Identity\Events\ReminderWasCreated;
 
 /**
  * @ORM\Entity
@@ -49,6 +50,8 @@ class Reminder implements AggregateRoot
         $this->setEmail($email);
         $this->setCode($code);
         $this->setCreatedAt(Carbon::now());
+
+        $this->record(new ReminderWasCreated($this));
     }
 
     /**

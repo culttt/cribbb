@@ -42,6 +42,7 @@ class ReminderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->email,     $this->reminder->email());
         $this->assertEquals($this->code,      $this->reminder->code());
         $this->assertEquals($this->timestamp, $this->reminder->createdAt());
+        $this->assertEquals(1, count($this->reminder->release()));
     }
 
     /** @test */
