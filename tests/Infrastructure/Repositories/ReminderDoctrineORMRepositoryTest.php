@@ -83,6 +83,8 @@ class ReminderDoctrineORMRepositoryTest extends \TestCase
     /** @test */
     public function should_delete_reminder_by_code()
     {
+        $this->executor->execute($this->loader->getFixtures());
+
         $code  = ReminderCode::fromNative('code+99');
         $email = new Email('new@domain.com');
 
@@ -96,6 +98,8 @@ class ReminderDoctrineORMRepositoryTest extends \TestCase
     /** @test */
     public function should_delete_existing_reminders_by_email()
     {
+        $this->executor->execute($this->loader->getFixtures());
+
         $code  = ReminderCode::fromNative('code+99');
         $email = new Email('new@domain.com');
 
@@ -109,6 +113,8 @@ class ReminderDoctrineORMRepositoryTest extends \TestCase
     /** @test */
     public function should_delete_expired_reminders()
     {
+        $this->executor->execute($this->loader->getFixtures());
+
         $code  = ReminderCode::fromNative('code+1');
         $email = new Email('new@domain.com');
 
