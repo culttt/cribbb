@@ -1,11 +1,11 @@
 <?php namespace Cribbb\Domain\Model\Identity\Events;
 
-use Cribbb\Domain\DomainEvent;
+use Cribbb\Domain\Event;
 
-class UserHasRegistered implements DomainEvent
+class UserHasRegistered implements Event
 {
     /**
-     * Return the name of the DomainEvent
+     * Return the name of the Domain Event
      *
      * @return string
      */

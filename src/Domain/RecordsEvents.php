@@ -13,7 +13,7 @@ trait RecordsEvents
      * @param DomainEvent $event
      * @return void
      */
-    public function record(DomainEvent $event)
+    public function record(Event $event)
     {
         $this->events[] = $event;
     }

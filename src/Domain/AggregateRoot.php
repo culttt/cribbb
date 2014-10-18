@@ -12,10 +12,10 @@ interface AggregateRoot
     /**
      * Add an event to the pending events
      *
-     * @param DomainEvent $event
+     * @param Event $event
      * @return void
      */
-    public function record(DomainEvent $event);
+    public function record(Event $event);
 
     /**
      * Release the events

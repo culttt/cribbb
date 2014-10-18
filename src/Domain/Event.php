@@ -1,9 +1,9 @@
 <?php namespace Cribbb\Domain;
 
-interface DomainEvent
+interface Event
 {
     /**
-     * Return the name of the DomainEvent
+     * Return the name of the Domain Event
      *
      * @return string
      */
