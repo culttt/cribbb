@@ -1,6 +1,6 @@
 <?php namespace Cribbb\Application;
 
-use Illuminate\Container\Container as DependencyContainer;
+use Illuminate\Container\Container as IoC;
 
 class LaravelContainer implements Container
 {
@@ -12,10 +12,10 @@ class LaravelContainer implements Container
     /**
      * Create a new LaravelContainer
      *
-     * @param Container $container
+     * @param IoC $container
      * @return void
      */
-    public function __construct(DependencyContainer $container)
+    public function __construct(IoC $container)
     {
         $this->container = $container;
     }
