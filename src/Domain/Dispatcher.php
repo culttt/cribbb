@@ -11,7 +11,7 @@ class Dispatcher
      * Add a Listener
      *
      * @param string $name
-     * @param Listener $listenr
+     * @param Listener $listener
      * @return void
      */
     public function add($name, Listener $listener)
