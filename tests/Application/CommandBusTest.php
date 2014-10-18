@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Application\Tests;
+<?php namespace Cribbb\Tests\Application;
 
 use stdClass;
 use Cribbb\Stubs\HandlerStub;
