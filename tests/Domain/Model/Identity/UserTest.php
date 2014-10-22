@@ -80,4 +80,64 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('new_username', $user->username()->toString());
         $this->count(1, count($user->release()));
     }
+
+    /** @test */
+    public function should_follow_and_have_followers()
+    {
+        $user1 = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('jack@twitter.com'),
+            new Username('jack'),
+            new HashedPassword('square')
+        );
+
+        $user2 = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('ev@twitter.com'),
+            new Username('ev'),
+            new HashedPassword('medium')
+        );
+
+        $user3 = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('biz@twitter.com'),
+            new Username('biz'),
+            new HashedPassword('jelly')
+        );
+
+        $user4 = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('dick@twitter.com'),
+            new Username('dick'),
+            new HashedPassword('feedburner')
+        );
+
+        $user2->follow($user3);
+        $user2->follow($user4);
+        $user3->follow($user4);
+        $user4->follow($user1);
+        $user4->follow($user2);
+        $user4->follow($user3);
+
+        $this->assertEquals(1, $user1->followers()->count());
+        $this->assertEquals(0, $user1->following()->count());
+        $this->assertEquals(1, $user2->followers()->count());
+        $this->assertEquals(2, $user2->following()->count());
+        $this->assertEquals(2, $user3->followers()->count());
+        $this->assertEquals(1, $user3->following()->count());
+        $this->assertEquals(2, $user4->followers()->count());
+        $this->assertEquals(3, $user4->following()->count());
+
+        $user2->unfollow($user3);
+        $user4->unfollow($user3);
+
+        $this->assertEquals(1, $user1->followers()->count());
+        $this->assertEquals(0, $user1->following()->count());
+        $this->assertEquals(1, $user2->followers()->count());
+        $this->assertEquals(1, $user2->following()->count());
+        $this->assertEquals(0, $user3->followers()->count());
+        $this->assertEquals(1, $user3->following()->count());
+        $this->assertEquals(2, $user4->followers()->count());
+        $this->assertEquals(2, $user4->following()->count());
+    }
 }

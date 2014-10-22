@@ -38,6 +38,20 @@ class User implements AggregateRoot
     private $password;
 
     /**
+     * @ORM\ManyToMany(targetEntity="User", mappedBy="following")
+     **/
+    private $followers;
+
+/**
+ * @ORM\ManyToMany(targetEntity="User", inversedBy="followers")
+ * @ORM\JoinTable(name="followers",
+ *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+ *      inverseJoinColumns={@ORM\JoinColumn(name="following_user_id", referencedColumnName="id")}
+ *      )
+ */
+private $following;
+
+    /**
      * Create a new User
      *
      * @param UserId $userId
@@ -52,6 +66,9 @@ class User implements AggregateRoot
         $this->setEmail($email);
         $this->setUsername($username);
         $this->setPassword($password);
+
+        $this->followers = new ArrayCollection;
+        $this->following = new ArrayCollection;
 
         $this->record(new UserHasRegistered);
     }
@@ -170,5 +187,73 @@ class User implements AggregateRoot
         $this->password = $password;
 
         $this->record(new PasswordWasReset($this));
+    }
+
+    /**
+     * Follow another User
+     *
+     * @param User $user
+     * @return void
+     */
+    public function follow(User $user)
+    {
+        $this->following[] = $user;
+
+        $user->followedBy($this);
+    }
+
+    /**
+     * Set followed by User
+     *
+     * @param User $user
+     * @return void
+     */
+    private function followedBy(User $user)
+    {
+        $this->followers[] = $user;
+    }
+
+    /**
+     * Return the User's followers
+     *
+     * @return ArrayCollection
+     */
+    public function followers()
+    {
+        return $this->followers;
+    }
+
+    /**
+     * Return the Users this User is following
+     *
+     * @return ArrayCollection
+     */
+    public function following()
+    {
+        return $this->following;
+    }
+
+    /**
+     * Unfollow a User
+     *
+     * @param User $user
+     * @return void
+     */
+    public function unfollow(User $user)
+    {
+        $this->following->removeElement($user);
+
+        $user->unfollowedBy($this);
+    }
+
+    /**
+     * Set unfollowed by a User
+     *
+     * @param User $user
+     * @return void
+     */
+    private function unfollowedBy(User $user)
+    {
+        $this->followers->removeElement($user);
     }
 }
