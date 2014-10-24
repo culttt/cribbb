@@ -42,14 +42,14 @@ class User implements AggregateRoot
      **/
     private $followers;
 
-/**
- * @ORM\ManyToMany(targetEntity="User", inversedBy="followers")
- * @ORM\JoinTable(name="followers",
- *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
- *      inverseJoinColumns={@ORM\JoinColumn(name="following_user_id", referencedColumnName="id")}
- *      )
- */
-private $following;
+    /**
+     * @ORM\ManyToMany(targetEntity="User", inversedBy="followers")
+     * @ORM\JoinTable(name="followers",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="following_user_id", referencedColumnName="id")}
+     *      )
+     */
+    private $following;
 
     /**
      * Create a new User

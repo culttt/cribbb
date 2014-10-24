@@ -41,6 +41,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_require_email()
     {
         $this->setExpectedException('Exception');
+
         $user = User::register($this->id, null, $this->username, $this->password);
     }
 
@@ -48,6 +49,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_require_username()
     {
         $this->setExpectedException('Exception');
+
         $user = User::register($this->id, $this->email, null, $this->password);
     }
 
@@ -55,6 +57,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_require_password()
     {
         $this->setExpectedException('Exception');
+
         $user = User::register($this->id, $this->email, $this->username, null);
     }
 
