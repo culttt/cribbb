@@ -1,15 +1,15 @@
 <?php namespace Cribbb\Tests\Application\Identity;
 
-use Cribbb\Application\Identity\PasswordResetCommand;
+use Cribbb\Application\Identity\PasswordResetRequestCommand;
 
-class PasswordResetCommandTest extends \PHPUnit_Framework_TestCase
+class PasswordResetRequestCommandTest extends \PHPUnit_Framework_TestCase
 {
     /** @var PasswordResetCommand */
     private $command;
 
     public function setUp()
     {
-        $this->command = new PasswordResetCommand('name@domain.com');
+        $this->command = new PasswordResetRequestCommand('name@domain.com');
     }
 
     /** @test */

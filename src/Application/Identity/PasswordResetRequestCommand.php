@@ -3,7 +3,7 @@
 use Cribbb\Gettable;
 use Cribbb\Application\Command;
 
-class PasswordResetCommand implements Command
+class PasswordResetRequestCommand implements Command
 {
     use Gettable;
 
