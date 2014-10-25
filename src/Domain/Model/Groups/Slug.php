@@ -24,16 +24,6 @@ class Slug implements ValueObject
     }
 
     /**
-     * Return the object as a string
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->value;
-    }
-
-    /**
      * Create a new instance from a native form
      *
      * @param mixed $native
@@ -61,6 +51,16 @@ class Slug implements ValueObject
      * @return string
      */
     public function toString()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Return the object as a string
+     *
+     * @return string
+     */
+    public function __toString()
     {
         return $this->value;
     }

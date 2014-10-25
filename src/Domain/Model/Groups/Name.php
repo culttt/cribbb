@@ -1,6 +1,7 @@
 <?php namespace Cribbb\Domain\Model\Groups;
 
 use Assert\Assertion;
+use Illuminate\Support\Str;
 use Cribbb\Domain\ValueObject;
 
 class Name implements ValueObject
@@ -24,13 +25,13 @@ class Name implements ValueObject
     }
 
     /**
-     * Return the object as a string
+     * Create a Slug from the Name
      *
-     * @return string
+     * @return Slug
      */
-    public function __toString()
+    public function toSlug()
     {
-        return $this->value;
+        return new Slug(Str::slug(strtolower($this->value)));
     }
 
     /**
@@ -61,6 +62,16 @@ class Name implements ValueObject
      * @return string
      */
     public function toString()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Return the object as a string
+     *
+     * @return string
+     */
+    public function __toString()
     {
         return $this->value;
     }

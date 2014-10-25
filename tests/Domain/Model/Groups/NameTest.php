@@ -1,6 +1,7 @@
 <?php namespace Cribbb\Tests\Domain\Model\Groups;
 
 use Cribbb\Domain\Model\Groups\Name;
+use Cribbb\Domain\Model\Groups\Slug;
 
 class NameTest extends \PHPUnit_Framework_TestCase
 {
@@ -15,6 +16,7 @@ class NameTest extends \PHPUnit_Framework_TestCase
     public function should_require_valid_name()
     {
         $this->setExpectedException('Assert\AssertionFailedException');
+
         $name = new Name('???');
     }
 
@@ -22,7 +24,18 @@ class NameTest extends \PHPUnit_Framework_TestCase
     public function should_accept_valid_name()
     {
         $name = new Name('Cribbb');
+
         $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Name', $name);
+    }
+
+    /** @test */
+    public function should_create_slug()
+    {
+        $name = new Name('Cribbb');
+        $slug = $name->toSlug();
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Slug', $slug);
+        $this->assertEquals(new Slug('cribbb'), $slug);
     }
 
     /** @test */
