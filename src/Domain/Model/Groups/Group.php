@@ -3,6 +3,9 @@
 use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
+use Cribbb\Domain\Model\Identity\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Cribbb\Domain\Services\Groups\UserInGroupTranslator;
 
 /**
  * @ORM\Entity
@@ -29,6 +32,21 @@ class Group implements AggregateRoot
     private $slug;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Identity\User", mappedBy="adminOf")
+     **/
+    private $admins;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Identity\User", mappedBy="memberOf")
+     **/
+    private $members;
+
+    /**
+     * @var UserInGroupTranslator
+     */
+    private $userInGroupTranslator;
+
+    /**
      * Create a new Group
      *
      * @param GroupId $groupId
@@ -41,6 +59,11 @@ class Group implements AggregateRoot
         $this->setId($groupId);
         $this->setName($name);
         $this->setSlug($slug);
+
+        $this->admins  = new ArrayCollection;
+        $this->members = new ArrayCollection;
+
+        $this->userInGroupTranslator = new UserInGroupTranslator;
     }
 
     /**
@@ -104,5 +127,51 @@ class Group implements AggregateRoot
     private function setSlug(Slug $slug)
     {
         $this->slug = $slug->toString();
+    }
+
+    /**
+     * Add a User to the Group as a Member
+     *
+     * @param User $user
+     * @return void
+     */
+    public function addMember(User $user)
+    {
+        $this->members[] = $user;
+    }
+
+    /**
+     * Return the Members of the Group
+     *
+     * @return ArrayCollection
+     */
+    public function members()
+    {
+        return $this->members->map(function ($user) {
+            return $this->userInGroupTranslator->memberFrom($user);
+        });
+    }
+
+    /**
+     * Add an User to the Group as an Admin
+     *
+     * @param User $user
+     * @return void
+     */
+    public function addAdmin(User $user)
+    {
+        $this->admins[] = $user;
+    }
+
+    /**
+     * Return the Admins of the Group
+     *
+     * @return ArrayCollection
+     */
+    public function admins()
+    {
+        return $this->admins->map(function ($user) {
+            return $this->userInGroupTranslator->adminFrom($user);
+        });
     }
 }

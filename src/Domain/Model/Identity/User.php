@@ -8,6 +8,8 @@ use Cribbb\Domain\Model\Identity\Events\PasswordWasReset;
 use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 use Cribbb\Domain\Model\Identity\Events\UsernameWasUpdated;
 
+use Cribbb\Domain\Model\Groups\Group;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="users")
@@ -52,6 +54,18 @@ class User implements AggregateRoot
     private $following;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="admins")
+     * @ORM\JoinTable(name="admins_groups")
+     **/
+    private $adminOf;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="members")
+     * @ORM\JoinTable(name="members_groups")
+     **/
+    private $memberOf;
+
+    /**
      * Create a new User
      *
      * @param UserId $userId
@@ -69,6 +83,8 @@ class User implements AggregateRoot
 
         $this->followers = new ArrayCollection;
         $this->following = new ArrayCollection;
+        $this->adminOf   = new ArrayCollection;
+        $this->memberOf  = new ArrayCollection;
 
         $this->record(new UserHasRegistered);
     }
@@ -255,5 +271,51 @@ class User implements AggregateRoot
     private function unfollowedBy(User $user)
     {
         $this->followers->removeElement($user);
+    }
+
+    /**
+     * Add the User as a Member of a Group
+     *
+     * @param Group $group
+     * @return void
+     */
+    public function addAsMemberOf(Group $group)
+    {
+        $this->memberOf[] = $group;
+
+        $group->addMember($this);
+    }
+
+    /**
+     * Return the Groups the User is a member of
+     *
+     * @return ArrayCollection
+     */
+    public function memberOf()
+    {
+        return $this->memberOf;
+    }
+
+    /**
+     * Return the Groups the User is an admin of
+     *
+     * @return ArrayCollection
+     */
+    public function adminOf()
+    {
+        return $this->adminOf;
+    }
+
+    /**
+     * Add the User as an Admin of a Group
+     *
+     * @param Group $group
+     * @return void
+     */
+    public function addAsAdminOf(Group $group)
+    {
+        $this->adminOf[] = $group;
+
+        $group->addAdmin($this);
     }
 }

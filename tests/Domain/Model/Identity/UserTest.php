@@ -7,6 +7,11 @@ use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Domain\Model\Identity\Username;
 use Cribbb\Domain\Model\Identity\HashedPassword;
 
+use Cribbb\Domain\Model\Groups\Name;
+use Cribbb\Domain\Model\Groups\Slug;
+use Cribbb\Domain\Model\Groups\Group;
+use Cribbb\Domain\Model\Groups\GroupId;
+
 class UserTest extends \PHPUnit_Framework_TestCase
 {
     /** @var UserId */
@@ -142,5 +147,55 @@ class UserTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $user3->following()->count());
         $this->assertEquals(2, $user4->followers()->count());
         $this->assertEquals(2, $user4->following()->count());
+    }
+
+    /** @test */
+    public function should_become_a_member_of_a_group()
+    {
+        $user = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('zuck@facebook.com'),
+            new Username('zuck'),
+            new HashedPassword('facemash')
+        );
+
+        $group = new Group(
+            new GroupId(Uuid::uuid4()),
+            new Name('Porcellian'),
+            new Slug('porcellian')
+        );
+
+        $this->assertEquals(0, $group->members()->count());
+        $this->assertEquals(0, $user->memberOf()->count());
+
+        $user->addAsMemberOf($group);
+
+        $this->assertEquals(1, $group->members()->count());
+        $this->assertEquals(1, $user->memberOf()->count());
+    }
+
+    /** @test */
+    public function should_become_an_admin_of_a_group()
+    {
+        $user = User::register(
+            new UserId(Uuid::uuid4()),
+            new Email('zuck@facebook.com'),
+            new Username('zuck'),
+            new HashedPassword('facemash')
+        );
+
+        $group = new Group(
+            new GroupId(Uuid::uuid4()),
+            new Name('Porcellian'),
+            new Slug('porcellian')
+        );
+
+        $this->assertEquals(0, $group->admins()->count());
+        $this->assertEquals(0, $user->adminOf()->count());
+
+        $user->addAsAdminOf($group);
+
+        $this->assertEquals(1, $group->admins()->count());
+        $this->assertEquals(1, $user->adminOf()->count());
     }
 }
