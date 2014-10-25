@@ -76,9 +76,8 @@ class GroupDoctrineORMRepositoryTest extends \TestCase
     {
         $id   = GroupId::generate();
         $name = new Name('Cribbb');
-        $slug = new Slug('cribbb');
 
-        $this->repository->add(new Group($id, $name, $slug));
+        $this->repository->add(new Group($id, $name, $name->toSlug()));
 
         $this->em->clear();
 
@@ -86,6 +85,6 @@ class GroupDoctrineORMRepositoryTest extends \TestCase
 
         $this->assertEquals($id,   $group->id());
         $this->assertEquals($name, $group->name());
-        $this->assertEquals($slug, $group->slug());
+        $this->assertEquals($name->toSlug(), $group->slug());
     }
 }

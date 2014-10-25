@@ -19,8 +19,7 @@ class GroupFixtures implements FixtureInterface
     {
         $id    = GroupId::generate();
         $name  = new Name('Cribbb');
-        $slug  = new Slug('cribbb');
-        $group = new Group($id, $name, $slug);
+        $group = new Group($id, $name, $name->toSlug());
 
         $manager->persist($group);
         $manager->flush();
