@@ -69,7 +69,7 @@ class Group implements AggregateRoot
     /**
      * Get the Group's id
      *
-     * @return Group
+     * @return GroupId
      */
     public function id()
     {

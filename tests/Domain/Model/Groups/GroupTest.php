@@ -4,10 +4,9 @@ use Rhumsaa\Uuid\Uuid;
 use Cribbb\Domain\Model\Groups\Name;
 use Cribbb\Domain\Model\Groups\Slug;
 use Cribbb\Domain\Model\Groups\Group;
-use Cribbb\Domain\Model\Groups\GroupId;
-
 use Cribbb\Domain\Model\Identity\User;
 use Cribbb\Domain\Model\Identity\Email;
+use Cribbb\Domain\Model\Groups\GroupId;
 use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Domain\Model\Identity\Username;
 use Cribbb\Domain\Model\Identity\HashedPassword;
