@@ -4,6 +4,8 @@ use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
 use Cribbb\Domain\Model\Identity\User;
+use Cribbb\Domain\Model\Discussion\Thread;
+use Cribbb\Domain\Model\Discussion\ThreadId;
 use Doctrine\Common\Collections\ArrayCollection;
 use Cribbb\Domain\Services\Groups\UserInGroupTranslator;
 
