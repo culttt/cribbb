@@ -5,8 +5,8 @@ interface NameSpecification
     /**
      * Check to see if the specification is satisfied
      *
-     * @param Name $name
+     * @param string $name
      * @return bool
      */
-    public function isSatisfiedBy(Name $name);
+    public function isSatisfiedBy($name);
 }

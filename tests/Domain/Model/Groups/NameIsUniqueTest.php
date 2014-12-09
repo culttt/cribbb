@@ -22,13 +22,13 @@ class NameIsUniqueTest extends \PHPUnit_Framework_TestCase
     public function should_return_true_when_unique()
     {
         $this->repository->shouldReceive('groupOfName')->andReturn(null);
-        $this->assertTrue($this->spec->isSatisfiedBy(new Name('Cribbb')));
+        $this->assertTrue($this->spec->isSatisfiedBy('Cribbb'));
     }
 
     /** @test */
     public function should_return_false_when_not_unique()
     {
         $this->repository->shouldReceive('groupOfName')->andReturn(['id' => 1]);
-        $this->assertFalse($this->spec->isSatisfiedBy(new Name('Cribbb')));
+        $this->assertFalse($this->spec->isSatisfiedBy('Cribbb'));
     }
 }

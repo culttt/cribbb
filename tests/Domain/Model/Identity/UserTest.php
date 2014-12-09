@@ -1,16 +1,12 @@
 <?php namespace Cribbb\Tests\Domain\Model\Identity;
 
-use Rhumsaa\Uuid\Uuid;
+use Cribbb\Domain\Model\Groups\Group;
 use Cribbb\Domain\Model\Identity\User;
 use Cribbb\Domain\Model\Identity\Email;
+use Cribbb\Domain\Model\Groups\GroupId;
 use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Domain\Model\Identity\Username;
 use Cribbb\Domain\Model\Identity\HashedPassword;
-
-use Cribbb\Domain\Model\Groups\Name;
-use Cribbb\Domain\Model\Groups\Slug;
-use Cribbb\Domain\Model\Groups\Group;
-use Cribbb\Domain\Model\Groups\GroupId;
 
 class UserTest extends \PHPUnit_Framework_TestCase
 {
@@ -28,7 +24,7 @@ class UserTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $this->id       = new UserId(Uuid::uuid4());
+        $this->id       = UserId::generate();
         $this->email    = new Email('name@domain.com');
         $this->username = new Username('my_username');
         $this->password = new HashedPassword('super_secret_password');
@@ -93,28 +89,28 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_follow_and_have_followers()
     {
         $user1 = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('jack@twitter.com'),
             new Username('jack'),
             new HashedPassword('square')
         );
 
         $user2 = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('ev@twitter.com'),
             new Username('ev'),
             new HashedPassword('medium')
         );
 
         $user3 = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('biz@twitter.com'),
             new Username('biz'),
             new HashedPassword('jelly')
         );
 
         $user4 = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('dick@twitter.com'),
             new Username('dick'),
             new HashedPassword('feedburner')
@@ -153,17 +149,13 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_become_a_member_of_a_group()
     {
         $user = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('zuck@facebook.com'),
             new Username('zuck'),
             new HashedPassword('facemash')
         );
 
-        $group = new Group(
-            new GroupId(Uuid::uuid4()),
-            new Name('Porcellian'),
-            new Slug('porcellian')
-        );
+        $group = new Group(GroupId::generate(), 'Porcellian');
 
         $this->assertEquals(0, $group->members()->count());
         $this->assertEquals(0, $user->memberOf()->count());
@@ -178,17 +170,13 @@ class UserTest extends \PHPUnit_Framework_TestCase
     public function should_become_an_admin_of_a_group()
     {
         $user = User::register(
-            new UserId(Uuid::uuid4()),
+            UserId::generate(),
             new Email('zuck@facebook.com'),
             new Username('zuck'),
             new HashedPassword('facemash')
         );
 
-        $group = new Group(
-            new GroupId(Uuid::uuid4()),
-            new Name('Porcellian'),
-            new Slug('porcellian')
-        );
+        $group = new Group(GroupId::generate(), 'Porcellian');
 
         $this->assertEquals(0, $group->admins()->count());
         $this->assertEquals(0, $user->adminOf()->count());

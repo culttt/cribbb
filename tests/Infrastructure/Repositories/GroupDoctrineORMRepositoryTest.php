@@ -1,8 +1,6 @@
 <?php namespace Cribbb\Tests\Infrastructure\Repositories;
 
 use Illuminate\Support\Facades\App;
-use Cribbb\Domain\Model\Groups\Name;
-use Cribbb\Domain\Model\Groups\Slug;
 use Cribbb\Domain\Model\Groups\Group;
 use Cribbb\Domain\Model\Groups\GroupId;
 use Illuminate\Support\Facades\Artisan;
@@ -52,11 +50,10 @@ class GroupDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $name = new Name('Cribbb');
-        $group = $this->repository->groupOfName($name);
+        $group = $this->repository->groupOfName('Cribbb');
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Group', $group);
-        $this->assertEquals($name, $group->name());
+        $this->assertEquals('Cribbb', $group->name());
     }
 
     /** @test */
@@ -64,27 +61,23 @@ class GroupDoctrineORMRepositoryTest extends \TestCase
     {
         $this->executor->execute($this->loader->getFixtures());
 
-        $slug = new Slug('cribbb');
-        $group = $this->repository->groupOfSlug($slug);
+        $group = $this->repository->groupOfSlug('cribbb');
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Group', $group);
-        $this->assertEquals($slug, $group->slug());
+        $this->assertEquals('cribbb', $group->slug());
     }
 
     /** @test */
     public function should_add_new_group()
     {
-        $id   = GroupId::generate();
-        $name = new Name('Cribbb');
-
-        $this->repository->add(new Group($id, $name, $name->toSlug()));
+        $this->repository->add(new Group(GroupId::generate(), 'Cribbb'));
 
         $this->em->clear();
 
-        $group = $this->repository->groupOfName(new Name('Cribbb'));
+        $group = $this->repository->groupOfName('Cribbb');
 
-        $this->assertEquals($id,   $group->id());
-        $this->assertEquals($name, $group->name());
-        $this->assertEquals($name->toSlug(), $group->slug());
+        $this->assertInstanceOf('Cribbb\Domain\Model\Groups\GroupId', $group->id());
+        $this->assertEquals('Cribbb', $group->name());
+        $this->assertEquals('cribbb', $group->slug());
     }
 }

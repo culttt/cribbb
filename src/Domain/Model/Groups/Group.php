@@ -1,5 +1,8 @@
 <?php namespace Cribbb\Domain\Model\Groups;
 
+use Exception;
+use Assert\Assertion;
+use Illuminate\Support\Str;
 use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
@@ -44,6 +47,11 @@ class Group implements AggregateRoot
     private $members;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cribbb\Domain\Model\Discussion\Thread", mappedBy="group")
+     **/
+    private $threads;
+
+    /**
      * @var UserInGroupTranslator
      */
     private $userInGroupTranslator;
@@ -52,18 +60,20 @@ class Group implements AggregateRoot
      * Create a new Group
      *
      * @param GroupId $groupId
-     * @param Name $name
-     * @param Slug $slug
+     * @param string $name
      * @return void
      */
-    public function __construct(GroupId $groupId, Name $name, Slug $slug)
+    public function __construct(GroupId $groupId, $name)
     {
+        Assertion::string($name);
+
         $this->setId($groupId);
         $this->setName($name);
-        $this->setSlug($slug);
+        $this->setSlug(Str::slug($name));
 
         $this->admins  = new ArrayCollection;
         $this->members = new ArrayCollection;
+        $this->threads = new ArrayCollection;
 
         $this->userInGroupTranslator = new UserInGroupTranslator;
     }
@@ -96,18 +106,18 @@ class Group implements AggregateRoot
      */
     public function name()
     {
-        return Name::fromNative($this->name);
+        return $this->name;
     }
 
     /**
      * Set the Group's name
      *
-     * @param Name $name
+     * @param string $name
      * @return void
      */
-    private function setName(Name $name)
+    private function setName($name)
     {
-        $this->name = $name->toString();
+        $this->name = $name;
     }
 
     /**
@@ -117,18 +127,18 @@ class Group implements AggregateRoot
      */
     public function slug()
     {
-        return Slug::fromNative($this->slug);
+        return $this->slug;
     }
 
     /**
      * Set the Group's slug
      *
-     * @param Slug $slug
+     * @param $slug
      * @return void
      */
-    private function setSlug(Slug $slug)
+    private function setSlug($slug)
     {
-        $this->slug = $slug->toString();
+        $this->slug = $slug;
     }
 
     /**
@@ -175,5 +185,46 @@ class Group implements AggregateRoot
         return $this->admins->map(function ($user) {
             return $this->userInGroupTranslator->adminFrom($user);
         });
+    }
+
+    /**
+     * Start a new Thread
+     *
+     * @param User $user
+     * @param string $subject
+     * @return Thread
+     */
+    public function startNewThread(User $user, $subject)
+    {
+        if ($this->members->contains($user)) {
+            $thread = new Thread(ThreadId::generate(), $subject, $this);
+
+            $this->addThread($thread);
+
+            return $thread;
+        }
+
+        throw new Exception('This user is not a member of the Group!');
+    }
+
+    /**
+     * Add a new Thread
+     *
+     * @param Thread $thread
+     * @return void
+     */
+    private function addThread(Thread $thread)
+    {
+        $this->threads[] = $thread;
+    }
+
+    /**
+     * Return the Threads Collection
+     *
+     * @return ArrayCollection
+     */
+    public function threads()
+    {
+        return $this->threads;
     }
 }

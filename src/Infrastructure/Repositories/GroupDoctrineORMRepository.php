@@ -56,26 +56,26 @@ class GroupDoctrineORMRepository implements GroupRepository
     /**
      * Find a Group by it's Name
      *
-     * @param Name $name
+     * @param string $name
      * @return Group
      */
-    public function groupOfName(Name $name)
+    public function groupOfName($name)
     {
         return $this->em->getRepository($this->class)->findOneBy([
-            'name' => $name->toString()
+            'name' => $name
         ]);
     }
 
     /**
      * Find a Group by it's Slug
      *
-     * @param Slug $slug
+     * @param string $slug
      * @return Group
      */
-    public function groupOfSlug(Slug $slug)
+    public function groupOfSlug($slug)
     {
         return $this->em->getRepository($this->class)->findOneBy([
-            'slug' => $slug->toString()
+            'slug' => $slug
         ]);
     }
 }

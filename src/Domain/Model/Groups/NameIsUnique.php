@@ -20,10 +20,10 @@ class NameIsUnique implements NameSpecification
     /**
      * Check to see if the specification is satisfied
      *
-     * @param Name $name
+     * @param $name
      * @return bool
      */
-    public function isSatisfiedBy(Name $name)
+    public function isSatisfiedBy($name)
     {
         if (! $this->repository->groupOfName($name)) {
             return true;

@@ -20,16 +20,16 @@ interface GroupRepository
     /**
      * Find a Group by it's Name
      *
-     * @param Name $name
+     * @param string $name
      * @return Group
      */
-    public function groupOfName(Name $name);
+    public function groupOfName($name);
 
     /**
      * Find a Group by it's Slug
      *
-     * @param Slug $slug
+     * @param string $slug
      * @return Group
      */
-    public function groupOfSlug(Slug $slug);
+    public function groupOfSlug($slug);
 }

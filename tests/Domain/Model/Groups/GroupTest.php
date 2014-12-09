@@ -1,8 +1,6 @@
 <?php namespace Cribbb\Tests\Domain\Model\Groups;
 
 use Rhumsaa\Uuid\Uuid;
-use Cribbb\Domain\Model\Groups\Name;
-use Cribbb\Domain\Model\Groups\Slug;
 use Cribbb\Domain\Model\Groups\Group;
 use Cribbb\Domain\Model\Identity\User;
 use Cribbb\Domain\Model\Identity\Email;
@@ -13,23 +11,11 @@ use Cribbb\Domain\Model\Identity\HashedPassword;
 
 class GroupTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var GroupId */
-    private $id;
-
-    /** @var Name */
-    private $name;
-
-    /** @var Slug */
-    private $slug;
-
     /** @var User */
     private $user;
 
     public function setUp()
     {
-        $this->id   = new GroupId(Uuid::uuid4());
-        $this->name = new Name('Cribbb');
-        $this->slug = new Slug('cribbb');
         $this->user = User::register(
             UserId::generate(),
             new Email('name@domain.com'),
@@ -43,7 +29,7 @@ class GroupTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
 
-        $group = new Group(null, $this->name, $this->slug);
+        $group = new Group(null, 'Cribbb');
     }
 
     /** @test */
@@ -51,33 +37,24 @@ class GroupTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
 
-        $group = new Group($this->id, null, $this->slug);
-    }
-
-    /** @test */
-    public function should_require_slug()
-    {
-        $this->setExpectedException('Exception');
-
-        $group = new Group($this->id, $this->name, null);
+        $group = new Group(GroupId::generate(), null);
     }
 
     /** @test */
     public function should_create_new_group()
     {
-        $group = new Group($this->id, $this->name, $this->slug);
+        $group = new Group(GroupId::generate(), 'Cribbb');
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Group', $group);
-        $this->assertEquals($this->id,   $group->id());
-        $this->assertEquals($this->name, $group->name());
-        $this->assertEquals($this->slug, $group->slug());
+        $this->assertInstanceOf('Cribbb\Domain\Model\Groups\GroupId', $group->id());
+        $this->assertEquals('Cribbb', $group->name());
+        $this->assertEquals('cribbb', $group->slug());
     }
 
     /** @test */
     public function should_have_members_collection()
     {
-        $group = new Group($this->id, $this->name, $this->slug);
-
+        $group = new Group(GroupId::generate(), 'Cribbb');
         $group->addMember($this->user);
 
         $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $group->members());
@@ -87,11 +64,30 @@ class GroupTest extends \PHPUnit_Framework_TestCase
     /** @test */
     public function should_have_admins_collection()
     {
-        $group = new Group($this->id, $this->name, $this->slug);
-
+        $group = new Group(GroupId::generate(), 'Cribbb');
         $group->addAdmin($this->user);
 
         $this->assertInstanceOf('Doctrine\Common\Collections\ArrayCollection', $group->admins());
         $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Admin', $group->admins()->first());
+    }
+
+    /** @test */
+    public function should_create_a_new_thread()
+    {
+        $group = new Group(GroupId::generate(), 'Cribbb');
+        $group->addMember($this->user);
+        $thread = $group->startNewThread($this->user, 'Hello World');
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\Thread', $thread);
+        $this->assertEquals(1, $group->threads()->count());
+    }
+
+    /** @test */
+    public function should_throw_exception_when_non_member_attempts_to_create_thread()
+    {
+        $this->setExpectedException('Exception');
+
+        $group = new Group(GroupId::generate(), 'Cribbb');
+        $thread = $group->startNewThread($this->user, 'Hello World');
     }
 }
