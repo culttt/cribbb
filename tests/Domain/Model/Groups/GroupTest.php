@@ -72,6 +72,30 @@ class GroupTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
+    public function should_check_to_see_if_user_is_member()
+    {
+        $group = new Group(GroupId::generate(), 'Cribbb');
+
+        $this->assertFalse($group->isMember($this->user));
+
+        $group->addMember($this->user);
+
+        $this->assertTrue($group->isMember($this->user));
+    }
+
+    /** @test */
+    public function should_check_to_see_if_user_is_admin()
+    {
+        $group = new Group(GroupId::generate(), 'Cribbb');
+
+        $this->assertFalse($group->isAdmin($this->user));
+
+        $group->addAdmin($this->user);
+
+        $this->assertTrue($group->isAdmin($this->user));
+    }
+
+    /** @test */
     public function should_create_a_new_thread()
     {
         $group = new Group(GroupId::generate(), 'Cribbb');

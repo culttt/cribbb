@@ -66,6 +66,11 @@ class User implements AggregateRoot
     private $memberOf;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cribbb\Domain\Model\Discussion\Post", mappedBy="user")
+     **/
+    private $posts;
+
+    /**
      * Create a new User
      *
      * @param UserId $userId
@@ -85,6 +90,7 @@ class User implements AggregateRoot
         $this->following = new ArrayCollection;
         $this->adminOf   = new ArrayCollection;
         $this->memberOf  = new ArrayCollection;
+        $this->posts     = new ArrayCollection;
 
         $this->record(new UserHasRegistered);
     }

@@ -1,5 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Discussion;
 
+use Exception;
 use Assert\Assertion;
 use Illuminate\Support\Str;
 use Cribbb\Domain\RecordsEvents;
@@ -7,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
 use Cribbb\Domain\Model\Groups\Group;
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Cribbb\Domain\Model\Identity\User;
 
 /**
  * @ORM\Entity
@@ -38,6 +41,11 @@ class Thread implements AggregateRoot
     private $group;
 
     /**
+     * @ORM\OneToMany(targetEntity="Cribbb\Domain\Model\Discussion\Post", mappedBy="thread")
+     **/
+    private $posts;
+
+    /**
      * Create a new Thread
      *
      * @param ThreadId $threadId
@@ -53,6 +61,8 @@ class Thread implements AggregateRoot
         $this->setSubject($subject);
         $this->setSlug(Str::slug($subject));
         $this->setGroup($group);
+
+        $this->posts = new ArrayCollection;
     }
 
     /**
@@ -136,5 +146,46 @@ class Thread implements AggregateRoot
     public function group()
     {
         return $this->group;
+    }
+
+    /**
+     * Create new Post
+     *
+     * @param User $user
+     * @param string $body
+     * @return Post
+     */
+    public function createNewPost(User $user, $body)
+    {
+        if ($this->group->isMember($user)) {
+            $post = new Post(PostId::generate(), $user, $this, $body);
+
+            $this->addPost($post);
+
+            return $post;
+        }
+
+        throw new Exception('This user is not a member of the Group!');
+    }
+
+    /**
+     * Add a new Post
+     *
+     * @param Post $post
+     * @return void
+     */
+    private function addPost(Post $post)
+    {
+        $this->posts[] = $post;
+    }
+
+    /**
+     * Get all the Posts
+     *
+     * @return ArrayCollection
+     */
+    public function posts()
+    {
+        return $this->posts;
     }
 }

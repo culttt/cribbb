@@ -227,4 +227,26 @@ class Group implements AggregateRoot
     {
         return $this->threads;
     }
+
+    /**
+     * Check to see if the User is a Member
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function isMember(User $user)
+    {
+        return $this->members->contains($user);
+    }
+
+    /**
+     * Check to see if the User is an Admin
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function isAdmin(User $user)
+    {
+        return $this->admins->contains($user);
+    }
 }
