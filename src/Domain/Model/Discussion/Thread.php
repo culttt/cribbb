@@ -159,23 +159,12 @@ class Thread implements AggregateRoot
         if ($this->group->isMember($user)) {
             $post = new Post(PostId::generate(), $user, $this, $body);
 
-            $this->addPost($post);
+            $this->posts[] = $post;
 
             return $post;
         }
 
         throw new Exception('This user is not a member of the Group!');
-    }
-
-    /**
-     * Add a new Post
-     *
-     * @param Post $post
-     * @return void
-     */
-    private function addPost(Post $post)
-    {
-        $this->posts[] = $post;
     }
 
     /**

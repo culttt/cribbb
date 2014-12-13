@@ -67,9 +67,9 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function should_fail_to_create_post_when_user_is_not_a_member()
+    public function should_create_post()
     {
-        $this->setExpectedException('Exception');
+        $this->group->addMember($this->user);
 
         $thread = new Thread(ThreadId::generate(), $this->group, 'Hello World');
 
@@ -79,9 +79,9 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function should_create_post()
+    public function should_fail_to_create_post_when_user_is_not_a_member()
     {
-        $this->group->addMember($this->user);
+        $this->setExpectedException('Exception');
 
         $thread = new Thread(ThreadId::generate(), $this->group, 'Hello World');
 
