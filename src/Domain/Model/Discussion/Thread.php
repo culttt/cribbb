@@ -7,9 +7,8 @@ use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
 use Cribbb\Domain\Model\Groups\Group;
-use Doctrine\Common\Collections\ArrayCollection;
-
 use Cribbb\Domain\Model\Identity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity

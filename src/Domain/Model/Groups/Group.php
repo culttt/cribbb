@@ -199,23 +199,12 @@ class Group implements AggregateRoot
         if ($this->members->contains($user)) {
             $thread = new Thread(ThreadId::generate(), $this, $subject);
 
-            $this->addThread($thread);
+            $this->threads[] = $thread;
 
             return $thread;
         }
 
         throw new Exception('This user is not a member of the Group!');
-    }
-
-    /**
-     * Add a new Thread
-     *
-     * @param Thread $thread
-     * @return void
-     */
-    private function addThread(Thread $thread)
-    {
-        $this->threads[] = $thread;
     }
 
     /**

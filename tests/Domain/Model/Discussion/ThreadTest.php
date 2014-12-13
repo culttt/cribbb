@@ -1,15 +1,14 @@
 <?php namespace Cribbb\Tests\Domain\Model\Discussion;
 
+use Cribbb\Domain\Model\Groups\Group;
 use Cribbb\Domain\Model\Identity\User;
+use Cribbb\Domain\Model\Groups\GroupId;
 use Cribbb\Domain\Model\Identity\Email;
 use Cribbb\Domain\Model\Identity\UserId;
-use Cribbb\Domain\Model\Identity\Username;
-use Cribbb\Domain\Model\Identity\HashedPassword;
-
-use Cribbb\Domain\Model\Groups\Group;
-use Cribbb\Domain\Model\Groups\GroupId;
 use Cribbb\Domain\Model\Discussion\Thread;
+use Cribbb\Domain\Model\Identity\Username;
 use Cribbb\Domain\Model\Discussion\ThreadId;
+use Cribbb\Domain\Model\Identity\HashedPassword;
 
 class ThreadTest extends \PHPUnit_Framework_TestCase
 {
