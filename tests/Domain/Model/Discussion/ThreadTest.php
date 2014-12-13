@@ -36,15 +36,7 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
 
-        $thread = new Thread(null, 'Hello World', $this->group);
-    }
-
-    /** @test */
-    public function should_require_subject()
-    {
-        $this->setExpectedException('Exception');
-
-        $thread = new Thread(ThreadId::generate(), null, $this->group);
+        $thread = new Thread(null, $this->group, 'Hello World');
     }
 
     /** @test */
@@ -52,13 +44,21 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
 
-        $thread = new Thread(ThreadId::generate(), 'Hello World');
+        $thread = new Thread(ThreadId::generate(), null, 'Hello World');
+    }
+
+    /** @test */
+    public function should_require_subject()
+    {
+        $this->setExpectedException('Exception');
+
+        $thread = new Thread(ThreadId::generate(), $this->group);
     }
 
     /** @test */
     public function should_create_thread()
     {
-        $thread = new Thread(ThreadId::generate(), 'Hello World', $this->group);
+        $thread = new Thread(ThreadId::generate(), $this->group, 'Hello World');
 
         $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\Thread', $thread);
         $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\ThreadId', $thread->id());
@@ -72,7 +72,7 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     {
         $this->setExpectedException('Exception');
 
-        $thread = new Thread(ThreadId::generate(), 'Hello World', $this->group);
+        $thread = new Thread(ThreadId::generate(), $this->group, 'Hello World');
 
         $post = $thread->createNewPost($this->user, 'Once upon a time...');
 
@@ -84,7 +84,7 @@ class ThreadTest extends \PHPUnit_Framework_TestCase
     {
         $this->group->addMember($this->user);
 
-        $thread = new Thread(ThreadId::generate(), 'Hello World', $this->group);
+        $thread = new Thread(ThreadId::generate(), $this->group, 'Hello World');
 
         $post = $thread->createNewPost($this->user, 'Once upon a time...');
 

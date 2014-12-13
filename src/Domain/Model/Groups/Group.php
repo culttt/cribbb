@@ -197,7 +197,7 @@ class Group implements AggregateRoot
     public function startNewThread(User $user, $subject)
     {
         if ($this->members->contains($user)) {
-            $thread = new Thread(ThreadId::generate(), $subject, $this);
+            $thread = new Thread(ThreadId::generate(), $this, $subject);
 
             $this->addThread($thread);
 

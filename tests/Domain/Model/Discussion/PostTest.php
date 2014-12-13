@@ -32,8 +32,8 @@ class PostTest extends \PHPUnit_Framework_TestCase
 
         $this->thread = new Thread(
             ThreadId::generate(),
-            'Hello World',
-            new Group(GroupId::generate(), 'Cribbb')
+            new Group(GroupId::generate(), 'Cribbb'),
+            'Hello World'
         );
     }
 

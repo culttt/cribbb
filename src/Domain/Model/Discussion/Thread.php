@@ -49,18 +49,18 @@ class Thread implements AggregateRoot
      * Create a new Thread
      *
      * @param ThreadId $threadId
-     * @param string $subject
      * @param Group $group
+     * @param string $subject
      * @return void
      */
-    public function __construct(ThreadId $threadId, $subject, Group $group)
+    public function __construct(ThreadId $threadId, Group $group, $subject)
     {
         Assertion::string($subject);
 
         $this->setId($threadId);
+        $this->setGroup($group);
         $this->setSubject($subject);
         $this->setSlug(Str::slug($subject));
-        $this->setGroup($group);
 
         $this->posts = new ArrayCollection;
     }
