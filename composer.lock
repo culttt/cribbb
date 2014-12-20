@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "672caf8c0a398ca1aec5f9fca61cfdbb",
+    "hash": "eede8b1700c193cb47f50f3837d914e6",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1057,16 +1057,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "dev-remove-deprecated-interface",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/philipbrown/commonmark.git",
-                "reference": "e918a11dfa6f97e35ca6d471c5bc4702534236f6"
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "b354097c4f0c68c08453da3a6f833fa2b3583660"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/philipbrown/commonmark/zipball/e918a11dfa6f97e35ca6d471c5bc4702534236f6",
-                "reference": "e918a11dfa6f97e35ca6d471c5bc4702534236f6",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/b354097c4f0c68c08453da3a6f833fa2b3583660",
+                "reference": "b354097c4f0c68c08453da3a6f833fa2b3583660",
                 "shasum": ""
             },
             "require": {
@@ -1095,6 +1095,7 @@
                     "League\\CommonMark\\Tests\\": "tests/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
@@ -1113,10 +1114,7 @@
                 "markdown",
                 "parser"
             ],
-            "support": {
-                "source": "https://github.com/philipbrown/commonmark/tree/remove-deprecated-interface"
-            },
-            "time": "2014-12-20 13:30:29"
+            "time": "2014-12-16 23:16:50"
         },
         {
             "name": "mitch/laravel-doctrine",
