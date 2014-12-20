@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Infrastructure\Services;
+<?php namespace Cribbb\Infrastructure\Services\Discussion;
 
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;

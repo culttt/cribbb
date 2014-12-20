@@ -1,8 +1,8 @@
-<?php namespace Cribbb\Tests\Infrastructure\Services;
+<?php namespace Cribbb\Tests\Infrastructure\Services\Identity;
 
 use Illuminate\Hashing\BcryptHasher;
 use Cribbb\Domain\Model\Identity\Password;
-use Cribbb\Infrastructure\Services\BcryptHashingService;
+use Cribbb\Infrastructure\Services\Identity\BcryptHashingService;
 
 class BcryptHashingServiceTest extends \PHPUnit_Framework_TestCase
 {

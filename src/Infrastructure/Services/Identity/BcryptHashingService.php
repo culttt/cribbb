@@ -1,4 +1,4 @@
-<?php namespace Cribbb\Infrastructure\Services;
+<?php namespace Cribbb\Infrastructure\Services\Identity;
 
 use Illuminate\Hashing\BcryptHasher;
 use Cribbb\Domain\Model\Identity\Password;

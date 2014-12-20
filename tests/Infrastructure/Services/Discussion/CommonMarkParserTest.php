@@ -1,9 +1,9 @@
-<?php namespace Cribbb\Tests\Infrastructure\Services;
+<?php namespace Cribbb\Tests\Infrastructure\Services\Discussion;
 
 use League\CommonMark\DocParser;
 use League\CommonMark\Environment;
 use League\CommonMark\HtmlRenderer;
-use Cribbb\Infrastructure\Services\CommonMarkParser;
+use Cribbb\Infrastructure\Services\Discussion\CommonMarkParser;
 
 class CommonMarkParserTest extends \PHPUnit_Framework_TestCase
 {
