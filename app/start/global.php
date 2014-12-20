@@ -64,3 +64,5 @@ App::down(function()
 {
 	return Response::make("Be right back!", 503);
 });
+
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
