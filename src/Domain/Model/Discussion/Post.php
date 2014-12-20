@@ -1,5 +1,6 @@
 <?php namespace Cribbb\Domain\Model\Discussion;
 
+use Carbon\Carbon;
 use Assert\Assertion;
 use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
@@ -37,6 +38,11 @@ class Post implements AggregateRoot
     private $thread;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    private $created_at;
+
+    /**
      * Create a new Post
      *
      * @param PostId $PostId
@@ -53,6 +59,7 @@ class Post implements AggregateRoot
         $this->setUser($user);
         $this->setThread($thread);
         $this->setBody($body);
+        $this->setCreatedAt(new Carbon);
     }
 
     /**
@@ -136,5 +143,26 @@ class Post implements AggregateRoot
     private function setBody($body)
     {
         $this->body = $body;
+    }
+
+    /**
+     * Get the created at timestamp
+     *
+     * @return Carbon
+     */
+    public function createdAt()
+    {
+        return Carbon::instance($this->created_at);
+    }
+
+    /**
+     * Set the created at timestamp
+     *
+     * @param Carbon $created_at
+     * @return void
+     */
+    private function setCreatedAt(Carbon $created_at)
+    {
+        $this->created_at = $created_at;
     }
 }

@@ -76,6 +76,7 @@ class PostTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\Post', $post);
         $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\PostId', $post->id());
         $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $post->user());
+        $this->assertInstanceOf('Carbon\Carbon', $post->createdAt());
         $this->assertEquals('Once upon a time...', $post->body());
     }
 }
