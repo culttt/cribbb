@@ -3,12 +3,11 @@
 use Cribbb\Domain\RecordsEvents;
 use Doctrine\ORM\Mapping as ORM;
 use Cribbb\Domain\AggregateRoot;
+use Cribbb\Domain\Model\Groups\Group;
 use Doctrine\Common\Collections\ArrayCollection;
 use Cribbb\Domain\Model\Identity\Events\PasswordWasReset;
 use Cribbb\Domain\Model\Identity\Events\UserHasRegistered;
 use Cribbb\Domain\Model\Identity\Events\UsernameWasUpdated;
-
-use Cribbb\Domain\Model\Groups\Group;
 
 /**
  * @ORM\Entity
@@ -56,19 +55,24 @@ class User implements AggregateRoot
     /**
      * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="admins")
      * @ORM\JoinTable(name="admins_groups")
-     **/
+     */
     private $adminOf;
 
     /**
      * @ORM\ManyToMany(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="members")
      * @ORM\JoinTable(name="members_groups")
-     **/
+     */
     private $memberOf;
 
     /**
      * @ORM\OneToMany(targetEntity="Cribbb\Domain\Model\Discussion\Post", mappedBy="user")
-     **/
+     */
     private $posts;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Cribbb\Domain\Model\Identity\Notification", mappedBy="user")
+     */
+    private $notifications;
 
     /**
      * Create a new User
@@ -86,11 +90,12 @@ class User implements AggregateRoot
         $this->setUsername($username);
         $this->setPassword($password);
 
-        $this->followers = new ArrayCollection;
-        $this->following = new ArrayCollection;
-        $this->adminOf   = new ArrayCollection;
-        $this->memberOf  = new ArrayCollection;
-        $this->posts     = new ArrayCollection;
+        $this->followers     = new ArrayCollection;
+        $this->following     = new ArrayCollection;
+        $this->adminOf       = new ArrayCollection;
+        $this->memberOf      = new ArrayCollection;
+        $this->posts         = new ArrayCollection;
+        $this->notifications = new ArrayCollection;
 
         $this->record(new UserHasRegistered);
     }
