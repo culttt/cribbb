@@ -27,17 +27,24 @@ class Notification
     private $body;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $type;
+
+    /**
      * Create a new Notification
      * 
      * @param NotificationId $id
      * @param User $user
+     * @param NotificationType $type
      * @param string $body
      * @return void
      */
-    public function __construct(NotificationId $id, User $user, $body)
+    public function __construct(NotificationId $id, User $user, NotificationType $type, $body)
     {
         $this->setId($id);
         $this->setUser($user);
+        $this->setType($type);
         $this->setBody($body);
     }
 
@@ -81,6 +88,27 @@ class Notification
     private function setUser(User $user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * Get the Notification Type
+     *
+     * @return string
+     */
+    public function type()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set the Notification Type
+     *
+     * @param NotificationType $type
+     * @return void
+     */
+    private function setType(NotificationType $type)
+    {
+        $this->type = $type->tag();
     }
 
     /**
