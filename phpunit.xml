@@ -14,4 +14,10 @@
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+    <php>
+        <env name="APP_ENV" value="testing"/>
+        <env name="CACHE_DRIVER" value="array"/>
+        <env name="SESSION_DRIVER" value="array"/>
+        <env name="DB_DEFAULT" value="sqlite:memory"/>
+    </php>
 </phpunit>
