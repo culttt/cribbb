@@ -1,9 +1,7 @@
 <?php namespace Cribbb\Tests\Application\Identity;
 
 use Mockery as m;
-use Illuminate\Support\Facades\App;
 use Illuminate\Hashing\BcryptHasher;
-use Illuminate\Support\Facades\Artisan;
 use Cribbb\Domain\Model\Identity\UserId;
 use Cribbb\Application\Identity\UserRegistration;
 use Cribbb\Domain\Services\Identity\RegisterUserService;
@@ -20,8 +18,6 @@ class UserRegistrationTest extends \TestCase
     public function setUp()
     {
         parent::setUp();
-
-        Artisan::call('doctrine:schema:create');
 
         $this->repository = m::mock('Cribbb\Domain\Model\Identity\UserRepository');
 
