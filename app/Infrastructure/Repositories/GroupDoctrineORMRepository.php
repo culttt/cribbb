@@ -1,8 +1,6 @@
 <?php namespace Cribbb\Infrastructure\Repositories;
 
 use Doctrine\ORM\EntityManager;
-use Cribbb\Domain\Model\Groups\Name;
-use Cribbb\Domain\Model\Groups\Slug;
 use Cribbb\Domain\Model\Groups\Group;
 use Cribbb\Domain\Model\Groups\GroupId;
 use Cribbb\Domain\Model\Groups\GroupRepository;
@@ -51,6 +49,19 @@ class GroupDoctrineORMRepository implements GroupRepository
     {
         $this->em->persist($group);
         $this->em->flush();
+    }
+
+    /**
+     * Find a Group by it's id
+     *
+     * @param GroupId $id
+     * @return Group
+     */
+    public function groupOfId(GroupId $id)
+    {
+        return $this->em->getRepository($this->class)->findOneBy([
+            'id' => $id->toString()
+        ]);
     }
 
     /**

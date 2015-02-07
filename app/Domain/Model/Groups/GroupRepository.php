@@ -18,6 +18,14 @@ interface GroupRepository
     public function add(Group $group);
 
     /**
+     * Find a group by its id
+     *
+     * @param GroupId $id
+     * @return Group
+     */
+    public function groupOfId(GroupId $id);
+
+    /**
      * Find a Group by it's Name
      *
      * @param string $name

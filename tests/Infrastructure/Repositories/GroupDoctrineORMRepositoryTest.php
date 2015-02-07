@@ -46,7 +46,18 @@ class GroupDoctrineORMRepositoryTest extends \TestCase
     }
 
     /** @test */
-    public function should_find_name_by_name()
+    public function should_find_group_by_id()
+    {
+        $this->executor->execute($this->loader->getFixtures());
+
+        $group = $this->repository->groupOfId(GroupId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc'));
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Groups\Group', $group);
+        $this->assertEquals('d16f9fe7-e947-460e-99f6-2d64d65f46bc', $group->id());
+    }
+
+    /** @test */
+    public function should_find_group_by_name()
     {
         $this->executor->execute($this->loader->getFixtures());
 
