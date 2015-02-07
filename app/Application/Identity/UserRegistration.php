@@ -48,6 +48,8 @@ class UserRegistration
         if ($this->validate(compact('email', 'username'))) {
             $user = $this->service->register($email, $username, $password);
 
+            /* Dispatch Domain Events */
+
             return $user;
         }
     }
@@ -70,7 +72,7 @@ class UserRegistration
     }
 
     /**
-     * Return the validation errors
+     * Return the errors
      *
      * @return MessageBag
      */
