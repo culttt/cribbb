@@ -11,6 +11,10 @@
 		"mockery/mockery": "~0.8",
 		"doctrine/data-fixtures": "~1.0"
 	},
+	"repositories": [{
+		"type": "vcs",
+		"url": "https://github.com/philipbrown/laravel-doctrine"
+	}],
 	"autoload": {
 		"classmap": [
 			"database"
