@@ -66,6 +66,19 @@ class UserDoctrineORMRepository implements UserRepository
     }
 
     /**
+     * Find a user by their id
+     *
+     * @param UserId $id
+     * @return User
+     */
+    public function userOfId(UserId $id)
+    {
+        return $this->em->getRepository($this->class)->findOneBy([
+            'id' => $id->toString()
+        ]);
+    }
+
+    /**
      * Find a user by their email address
      *
      * @param Email $email

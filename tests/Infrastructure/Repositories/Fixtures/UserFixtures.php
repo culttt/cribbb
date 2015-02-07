@@ -18,7 +18,7 @@ class UserFixtures implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $id       = UserId::generate();
+        $id       = UserId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
         $email    = new Email('name@domain.com');
         $username = new Username('username');
         $password = new HashedPassword('qwerty');

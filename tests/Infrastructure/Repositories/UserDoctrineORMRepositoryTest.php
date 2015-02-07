@@ -49,6 +49,18 @@ class UserDoctrineORMRepositoryTest extends \TestCase
     }
 
     /** @test */
+    public function should_find_user_by_id()
+    {
+        $this->executor->execute($this->loader->getFixtures());
+
+        $id = UserId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
+        $user = $this->repository->userOfId($id);
+
+        $this->assertInstanceOf('Cribbb\Domain\Model\Identity\User', $user);
+        $this->assertEquals($id, $user->id());
+    }
+
+    /** @test */
     public function should_find_user_by_username()
     {
         $this->executor->execute($this->loader->getFixtures());

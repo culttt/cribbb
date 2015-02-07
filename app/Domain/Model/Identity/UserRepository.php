@@ -26,6 +26,14 @@ interface UserRepository
     public function update(User $user);
 
     /**
+     * Find a user by their id
+     *
+     * @param UserId $id
+     * @return User
+     */
+    public function userOfId(UserId $id);
+
+    /**
      * Find a user by their email address
      *
      * @param Email $email

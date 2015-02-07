@@ -113,7 +113,7 @@ class ReminderService
      * Attempt to find a user by their email address
      *
      * @param Email $email
-     * @return Cribbb\Domain\Model\Identity\User
+     * @return User
      */
     private function findUserByEmail(Email $email)
     {
