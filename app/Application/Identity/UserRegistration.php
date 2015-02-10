@@ -3,7 +3,6 @@
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Validator;
 use Cribbb\Domain\Services\Identity\RegisterUserService;
-use Cribbb\Domain\Model\ValueIsNotUniqueException;
 
 class UserRegistration
 {
@@ -66,9 +65,11 @@ class UserRegistration
 
         $validator = Validator::make($data, $this->rules);
 
+        if ($validator->passes()) return true;
+
         $this->errors = $validator->messages();
 
-        return $validator->passes();
+        return false;
     }
 
     /**
