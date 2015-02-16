@@ -40,7 +40,7 @@ class UserRegistration
      * @param string $email
      * @param string $username
      * @param string $password
-     * @return Cribbb\Domain\Identity\User
+     * @return User
      */
     public function register($email, $username, $password)
     {

@@ -110,8 +110,10 @@ class PasswordReminder
     {
         $validator = Validator::make(compact('email'), ['email' => 'email']);
 
+        if ($validator->passes()) return true;
+
         $this->errors = $validator->messages();
 
-        return $validator->passes();
+        return false;
     }
 }
