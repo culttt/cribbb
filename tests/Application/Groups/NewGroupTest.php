@@ -1,6 +1,4 @@
-<?php namespace Cribbb\Application\Groups;
-
-use Cribbb\Domain\Model\Identity\UserId;
+<?php namespace Cribbb\Tests\Application\Groups;
 
 use Mockery as m;
 use Cribbb\Application\Groups\NewGroup;

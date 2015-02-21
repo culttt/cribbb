@@ -35,7 +35,7 @@ class Thread implements AggregateRoot
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="threads")
+     * @ORM\ManyToOne(targetEntity="Cribbb\Domain\Model\Groups\Group", inversedBy="threads", cascade={"persist"})
      **/
     private $group;
 
