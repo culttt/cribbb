@@ -1,29 +1,29 @@
 <?php namespace Cribbb\Tests\Application\Discussion;
 
 use Mockery as m;
-use Cribbb\Application\Discussion\NewThread;
+use Cribbb\Application\Discussion\NewPost;
 
-class NewGroupTest extends \PHPUnit_Framework_TestCase
+class NewPostTest extends \PHPUnit_Framework_TestCase
 {
     /** @var UserRepository */
     private $users;
 
-    /** @var GroupRepository */
-    private $groups;
-
     /** @var ThreadRepository */
     private $threads;
 
-    /** @var NewThread */
+    /** @var PostRepository */
+    private $posts;
+
+    /** @var NewPost */
     private $service;
 
     public function setUp()
     {
         $this->users   = m::mock('Cribbb\Domain\Model\Identity\UserRepository');
-        $this->groups  = m::mock('Cribbb\Domain\Model\Groups\GroupRepository');
         $this->threads = m::mock('Cribbb\Domain\Model\Discussion\ThreadRepository');
+        $this->posts   = m::mock('Cribbb\Domain\Model\Discussion\PostRepository');
 
-        $this->service = new NewThread($this->users, $this->groups, $this->threads);
+        $this->service = new NewPost($this->users, $this->threads, $this->posts);
     }
 
     /** @test */
@@ -40,12 +40,12 @@ class NewGroupTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function should_throw_exception_on_invalid_group_id()
+    public function should_throw_exception_on_invalid_thread_id()
     {
         $this->setExpectedException('Cribbb\Domain\Model\ValueNotFoundException');
 
         $this->users->shouldReceive('userById')->once()->andReturn(true);
-        $this->groups->shouldReceive('groupById')->once()->andReturn(null);
+        $this->threads->shouldReceive('threadById')->once()->andReturn(null);
 
         $this->service->create(
             '7c5e8127-3f77-496c-9bb4-5cb092969d89',
@@ -54,24 +54,24 @@ class NewGroupTest extends \PHPUnit_Framework_TestCase
     }
 
     /** @test */
-    public function should_create_new_thread()
+    public function should_create_new_post()
     {
         $user   = m::mock('Cribbb\Domain\Model\Identity\User');
-        $group  = m::mock('Cribbb\Domain\Model\Groups\Group');
         $thread = m::mock('Cribbb\Domain\Model\Discussion\Thread');
+        $post   = m::mock('Cribbb\Domain\Model\Discussion\Post');
 
         $this->users->shouldReceive('userById')->once()->andReturn($user);
-        $this->groups->shouldReceive('groupById')->once()->andReturn($group);
+        $this->threads->shouldReceive('threadById')->once()->andReturn($thread);
 
-        $group->shouldReceive('startNewThread')->once()->andReturn($thread);
+        $thread->shouldReceive('createNewPost')->once()->andReturn($post);
 
-        $this->threads->shouldReceive('add')->once();
+        $this->posts->shouldReceive('add')->once();
 
-        $thread = $this->service->create(
+        $post = $this->service->create(
             '7c5e8127-3f77-496c-9bb4-5cb092969d89',
             'a3d9e532-0ea8-4572-8e83-119fc49e4c6f',
             'Hello World');
 
-        $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\Thread', $thread);
+        $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\Post', $post);
     }
 }

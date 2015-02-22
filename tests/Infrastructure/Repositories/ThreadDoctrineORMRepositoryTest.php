@@ -52,7 +52,7 @@ class ThreadDoctrineORMRepositoryTest extends \TestCase
     }
 
     /** @test */
-    public function should_add_new_group()
+    public function should_add_new_thread()
     {
         $group = new Group(GroupId::generate(), 'Cribbb');
         $id = ThreadId::generate();
@@ -62,9 +62,9 @@ class ThreadDoctrineORMRepositoryTest extends \TestCase
 
         $this->em->clear();
 
-        $group = $this->repository->threadOfId($id);
+        $thread = $this->repository->threadOfId($id);
 
-        $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\ThreadId', $group->id());
-        $this->assertEquals('hello-world', $group->slug());
+        $this->assertInstanceOf('Cribbb\Domain\Model\Discussion\ThreadId', $thread->id());
+        $this->assertEquals('hello-world', $thread->slug());
     }
 }
