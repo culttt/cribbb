@@ -3,7 +3,7 @@
 use Mockery as m;
 use Cribbb\Application\Discussion\NewThread;
 
-class NewGroupTest extends \PHPUnit_Framework_TestCase
+class NewThreadTest extends \PHPUnit_Framework_TestCase
 {
     /** @var UserRepository */
     private $users;
