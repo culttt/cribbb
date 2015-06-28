@@ -1,7 +1,6 @@
 <?php namespace Cribbb\Events;
 
-abstract class Event {
-
-	//
-
+abstract class Event
+{
+    //
 }
