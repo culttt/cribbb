@@ -3,24 +3,25 @@
 use Exception;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
     /**
-     * A list of the exception types that should not be reported.
+     * A list of the exception types that should not be reported
      *
      * @var array
      */
     protected $dontReport = [
         HttpException::class,
+        CribbbException::class
     ];
 
     /**
-     * Report or log an exception.
+     * Report or log an exception
      *
-     * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
-     *
-     * @param  \Exception  $e
+     * @param Exception $e
      * @return void
      */
     public function report(Exception $e)
@@ -29,14 +30,52 @@ class Handler extends ExceptionHandler
     }
 
     /**
-     * Render an exception into an HTTP response.
+     * Render an exception into an HTTP response
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Exception $e
+     * @return Response
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if (config('app.debug')) {
+            return parent::render($request, $e);
+        }
+
+        return $this->handle($request, $e);
+    }
+
+    /**
+     * Convert the Exception into a JSON HTTP Response
+     *
+     * @param Request $request
+     * @param Exception $e
+     * @return JSONResponse
+     */
+    private function handle($request, Exception $e) {
+        if ($e instanceOf CribbbException) {
+            $data   = $e->toArray();
+            $status = $e->getStatus();
+        }
+
+        if ($e instanceOf NotFoundHttpException) {
+            $data = array_merge([
+                'id'     => 'not_found',
+                'status' => '404'
+            ], config('errors.not_found'));
+
+            $status = 404;
+        }
+
+        if ($e instanceOf MethodNotAllowedHttpException) {
+            $data = array_merge([
+                'id'     => 'method_not_allowed',
+                'status' => '405'
+            ], config('errors.method_not_allowed'));
+
+            $status = 405;
+        }
+
+        return response()->json($data, $status);
     }
 }
