@@ -26,6 +26,17 @@ return [
     'precondition_failed' => [
         'title'  => 'The server does not meet one of the preconditions that the requester put on the request.',
         'detail' => 'Your request did not satisfy the required preconditions.'
-    ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Errors
+    |--------------------------------------------------------------------------
+    */
+
+    'user_does_not_belong_to_group' => [
+        'title'  => 'The user does not belong to the group',
+        'detail' => 'User %s does not belong to Group %s'
+    ],
 
 ];
