@@ -143,8 +143,8 @@ return [
         Cribbb\Providers\AppServiceProvider::class,
         Cribbb\Providers\EventServiceProvider::class,
         Cribbb\Providers\RouteServiceProvider::class,
-        Cribbb\Providers\OauthServiceProvider::class
-
+        Cribbb\Providers\OauthServiceProvider::class,
+        Cribbb\Providers\ContextServiceProvider::class
     ],
 
     /*
