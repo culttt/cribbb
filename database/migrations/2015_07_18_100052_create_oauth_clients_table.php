@@ -14,6 +14,7 @@ class CreateOauthClientsTable extends Migration
     {
         Schema::create('oauth_clients', function (BluePrint $table) {
             $table->string('id')->primary();
+            $table->string('name');
             $table->string('secret');
             $table->timestamps();
 
